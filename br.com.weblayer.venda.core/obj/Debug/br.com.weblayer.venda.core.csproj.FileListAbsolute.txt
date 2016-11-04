@@ -1,0 +1,9 @@
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.pdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.apk
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core-Signed.apk
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.pdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\android\bin\br.com.weblayer.venda.core.apk
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\R.cs.flag
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\uploadflags.txt
