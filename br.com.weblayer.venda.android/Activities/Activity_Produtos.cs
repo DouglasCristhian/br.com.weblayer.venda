@@ -28,7 +28,7 @@ namespace br.com.weblayer.venda.android.Activities
             SetContentView(Resource.Layout.Activity_Produtos);
 
             FindViews();
-            BindData();
+            BindViews();
             FillList();         
         }
 
@@ -50,19 +50,12 @@ namespace br.com.weblayer.venda.android.Activities
             return base.OnOptionsItemSelected(item);
         }
 
-        protected void OnResume(Bundle savedInstanceState)
-        {
-            base.OnResume();
-            Intent intent = new Intent();
-            intent.GetStringExtra("codigo");
-        }
-
         private void FindViews()
         {
             lstViewProdutos = FindViewById<ListView>(Resource.Id.listViewProdutos);
         }
 
-        private void BindData()
+        private void BindViews()
         {
             lstViewProdutos.ItemClick += LstViewProdutos_ItemClick;
         }

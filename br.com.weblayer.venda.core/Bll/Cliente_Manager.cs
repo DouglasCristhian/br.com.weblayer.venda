@@ -7,7 +7,7 @@ namespace br.com.weblayer.venda.core.Bll
     {
         
 
-        public List<Cliente> GetProduto(string filtro)
+        public List<Cliente> GetCliente(string filtro)
         {
 
             List<Cliente> lista = new List<Cliente>();
