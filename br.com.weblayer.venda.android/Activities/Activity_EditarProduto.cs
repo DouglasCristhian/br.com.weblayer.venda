@@ -104,23 +104,12 @@ namespace br.com.weblayer.venda.android.Fragments
             }
             catch (Exception ex)
             {
-                //exibir erro para o cliente;
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
-            
+
         }
 
         private void Delete()
-        {
-
-            //Confirmar a exclusão do item
-            Exibir_alerta();
-
-            var produto = new Produto_Manager();
-
-            produto.Save(prod);
-        }
-
-        private void Exibir_alerta()
         {
             AlertDialog alerta = new AlertDialog.Builder(this).Create();
             alerta.SetMessage("Tem certeza que deseja excluir este produto?");
@@ -136,7 +125,19 @@ namespace br.com.weblayer.venda.android.Fragments
 
             alert.SetPositiveButton("Sim!", (senderAlert, args) =>
             {
-                Finish();
+                try
+                {
+                    var produto = new Produto_Manager();
+
+                    produto.Delete(prod);
+
+                    Finish();
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                }
+
             });
 
             RunOnUiThread(() =>
