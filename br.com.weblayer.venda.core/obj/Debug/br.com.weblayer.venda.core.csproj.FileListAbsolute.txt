@@ -19,3 +19,15 @@ D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\R.cs.flag
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\uploadflags.txt
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll.mdb
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.pdb
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.apk
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core-Signed.apk
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.csprojResolveAssemblyReference.cache
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.pdb
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\android\bin\br.com.weblayer.venda.core.apk
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\R.cs.flag
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\uploadflags.txt
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll.mdb
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb
