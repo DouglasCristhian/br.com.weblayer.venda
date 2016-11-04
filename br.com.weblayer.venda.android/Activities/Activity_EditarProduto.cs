@@ -17,15 +17,13 @@ using System.Threading.Tasks;
 namespace br.com.weblayer.venda.android.Fragments
 {
     [Activity(Label = "Editar Produto")]
-    public class Activity_EditarProduto : Activity
+    public class Activity_EditarProduto : Activity_Base
     {
         private EditText txtCodigoProd;
         private EditText txtNomeProd;
         private EditText txtUniMedidadeProd;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
-        private Button btnSalvar;
-        private Button btnExcluir;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,10 +31,40 @@ namespace br.com.weblayer.venda.android.Fragments
             SetContentView(Resource.Layout.Activity_EditarProduto);
 
             var jsonnota = Intent.GetStringExtra("JsonNotaProd");
-            prod = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonnota);
+            if (jsonnota == null)
+            {
+                prod = null;
+            }
+            else
+            {
+                prod = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonnota);
+            }
 
             FindViews();
-            BindData();
+            BindView();
+            BindModel();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.Botoes_EditarProduto, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_salvarproduto:
+                    Save();
+                    return true;
+
+                case Resource.Id.action_deletarproduto:
+                    Delete();
+                    return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
 
         private void FindViews()
@@ -45,27 +73,53 @@ namespace br.com.weblayer.venda.android.Fragments
             txtNomeProd = FindViewById<EditText>(Resource.Id.txtNome);
             txtUniMedidadeProd = FindViewById<EditText>(Resource.Id.txtUnidadeMedida);
             txtTabelaPrecoProd = FindViewById<EditText>(Resource.Id.txtTabelaPrecos);
-            btnSalvar = FindViewById<Button>(Resource.Id.btnSalvarProduto);
-            btnExcluir = FindViewById<Button>(Resource.Id.btnExcluirProduto);
         }
 
-        private void BindData()
+        private void BindView()
         {
+            if (prod == null)
+                return;
+
             txtCodigoProd.Text = prod.ds_CodigoProduto;
             txtNomeProd.Text = prod.ds_NomeProduto;
             txtUniMedidadeProd.Text = prod.ds_UniMedidaProduto;
             txtTabelaPrecoProd.Text = prod.ds_TblPrecoProduto;
-
-            btnSalvar.Click += BtnSalvar_Click;
-            btnExcluir.Click += BtnExcluir_Click;
         }
 
-        private void BtnSalvar_Click(object sender, EventArgs e)
+        private void BindModel()
         {
-            Finish();
+            if (prod == null)
+                prod = new Produto();
+
+            prod.ds_CodigoProduto = txtCodigoProd.Text;
+            prod.ds_NomeProduto = txtNomeProd.Text;
+            prod.ds_UniMedidaProduto = txtUniMedidadeProd.Text;
+            prod.ds_TblPrecoProduto = txtTabelaPrecoProd.Text;
         }
 
-        private void BtnExcluir_Click(object sender, EventArgs e)
+        private void Save()
+        {
+            try
+            {
+                BindModel();
+                var produto = new Produto_Manager();
+                produto.Salvar(prod);
+
+                Finish();
+            }
+            catch (Exception ex)
+            {
+                //exibir erro para o cliente;
+            }
+            
+        }
+
+        private void Delete()
+        {
+            Exibir_alerta();
+        }
+
+        private void Exibir_alerta()
         {
             AlertDialog alerta = new AlertDialog.Builder(this).Create();
             alerta.SetMessage("Tem certeza que deseja excluir este produto?");
@@ -74,9 +128,9 @@ namespace br.com.weblayer.venda.android.Fragments
 
             alert.SetTitle("Tem certeza que deseja excluir este produto?");
 
-            alert.SetNegativeButton("Não!", (senderAlert, args) => 
+            alert.SetNegativeButton("Não!", (senderAlert, args) =>
             {
-                
+
             });
 
             alert.SetPositiveButton("Sim!", (senderAlert, args) =>
@@ -84,11 +138,10 @@ namespace br.com.weblayer.venda.android.Fragments
                 Finish();
             });
 
-            RunOnUiThread(() => 
+            RunOnUiThread(() =>
             {
                 alert.Show();
             });
         }
-
     }
 }

@@ -11,6 +11,7 @@
       </intent-filter>
     </activity>
     <activity android:label="Editar Produto" android:name="md5b32d0697ac99619344602a8ddc95568b.Activity_EditarProduto" />
+    <activity android:label="Ajuda" android:name="md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Ajuda" />
     <activity android:label="Pedidos" android:name="md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Pedidos" />
     <activity android:label="Tabela de Preços" android:name="md5ecc2ac2a7298ebcc3325b787522723bd.Activity_TabelaPrecos" />
     <activity android:label="Clientes" android:name="md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Clientes" />

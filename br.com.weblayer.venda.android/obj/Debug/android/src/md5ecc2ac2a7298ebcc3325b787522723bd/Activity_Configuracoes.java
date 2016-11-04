@@ -2,7 +2,7 @@ package md5ecc2ac2a7298ebcc3325b787522723bd;
 
 
 public class Activity_Configuracoes
-	extends android.app.Activity
+	extends md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Base
 	implements
 		mono.android.IGCUserPeer
 {

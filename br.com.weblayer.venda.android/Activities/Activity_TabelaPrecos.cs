@@ -13,7 +13,7 @@ using Android.Widget;
 namespace br.com.weblayer.venda.android.Activities
 {
     [Activity(Label = "Tabela de Preços")]
-    public class Activity_TabelaPrecos : Activity
+    public class Activity_TabelaPrecos : Activity_Base
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

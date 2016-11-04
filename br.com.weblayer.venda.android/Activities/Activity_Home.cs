@@ -10,7 +10,7 @@ using Android.Content;
 namespace br.com.weblayer.venda.android
 {
     [Activity(Label = "Home", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : Activity_Base
     {
         private List<string> ItensLista;
         private ListView ListViewHome;
@@ -27,39 +27,26 @@ namespace br.com.weblayer.venda.android
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            base.OnCreateOptionsMenu(menu);
-            MenuInflater.Inflate(Resource.Layout.Botao_Configuracao, menu);
-
+            //base.OnCreateOptionsMenu(menu);
+            MenuInflater.Inflate(Resource.Layout.Botoes_Home, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
-        public bool onOptionsItemSelected(IMenuItem item)
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch(item.ItemId)
             {
                 case Resource.Id.action_configuracoes:
-
-                    Ir_Configuracoes();
-
+                    StartActivity(typeof(Activity_Configuracoes));
                     return true;
 
                 case Resource.Id.action_ajuda:
-                    Toast.MakeText(this, "uia2", ToastLength.Short).Show();
-
-                    return true;
-
-                default:
+                    StartActivity(typeof(Activity_Ajuda));
                     return true;
             }
+
+            return base.OnOptionsItemSelected(item);
         }
-
-        private void Ir_Configuracoes()
-        {
-            Intent i = new Intent(this, typeof(Activity_Configuracoes));
-            StartActivity(i);
-
-        }
-
 
         private void FindViews()
         {

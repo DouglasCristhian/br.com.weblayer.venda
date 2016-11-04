@@ -16,7 +16,7 @@ using br.com.weblayer.venda.android.Adapters;
 namespace br.com.weblayer.venda.android.Activities
 {
     [Activity(Label = "Produtos")]
-    public class Activity_Produtos : Activity
+    public class Activity_Produtos : Activity_Base
     {
         private ListView lstViewProdutos;
         private List<Produto> lstProdutos;
@@ -29,6 +29,24 @@ namespace br.com.weblayer.venda.android.Activities
             FindViews();
             BindData();
             FillList();         
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.Botoes_Produtos, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_AddProduct:
+                    StartActivity(typeof(Activity_EditarProduto));
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
 
         protected void OnResume(Bundle savedInstanceState)
@@ -50,7 +68,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FillList()
         {
-            lstProdutos = new Produto_Manager().GetProduto();
+            lstProdutos = new Produto_Manager().GetProduto("");
             lstViewProdutos.Adapter = new Adapter_Produtos_ListView(this, lstProdutos);
         }
 

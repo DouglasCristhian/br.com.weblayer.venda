@@ -2,4 +2,5 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">br.com.weblayer.venda.android</string>
+    <string name="TextoTeste">"Dúvidas?\nEntre em contato conosco, ou se preferir preencha o formulário.\nTelefone: (11) 4063-5420 (São Paulo)\nE-mail: suporte@weblayer.com.br"</string>
 </resources>

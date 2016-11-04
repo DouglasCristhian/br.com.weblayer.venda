@@ -14,9 +14,11 @@ namespace br.com.weblayer.venda.android.ClasseTeste
 {
     public class Produto_Manager 
     {
-        public List<Produto> GetProduto()
+        List<Produto> listaprod = new List<Produto>();
+
+        public List<Produto> GetProduto(string filtro)
         {
-            var listaprod = new List<Produto>();
+            //var listaprod = new List<Produto>();
 
             listaprod.Add(new Produto { ds_CodigoProduto = "AAA", ds_NomeProduto = "Manteiga com Sal", ds_UniMedidaProduto = "CX", ds_TblPrecoProduto = "0,05" });
             listaprod.Add(new Produto { ds_CodigoProduto = "BBB", ds_NomeProduto = "Manteiga sem Sal", ds_UniMedidaProduto = "CX", ds_TblPrecoProduto = "0,50" });
@@ -24,5 +26,17 @@ namespace br.com.weblayer.venda.android.ClasseTeste
 
             return listaprod;
         }
+
+        public void Salvar(Produto obj)
+        {
+            //salvar na base
+        }
+
+        public void Excluir(Produto obj)
+        {
+            //excluir na base
+        }
+
+
     }
 }

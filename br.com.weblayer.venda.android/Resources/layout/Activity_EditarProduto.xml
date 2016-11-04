@@ -63,17 +63,4 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:text=""/>
-
-  <Button
-    android:id="@+id/btnSalvarProduto"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Salvar Alterações"/>
-
-  <Button
-    android:id="@+id/btnExcluirProduto"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Excluir Produto"/>
-  
 </LinearLayout>

@@ -13,7 +13,7 @@ using Android.Widget;
 namespace br.com.weblayer.venda.android.Activities
 {
     [Activity(Label = "Pedidos")]
-    public class Activity_Pedidos : Activity
+    public class Activity_Pedidos : Activity_Base
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
