@@ -13,7 +13,7 @@ using Android.Widget;
 namespace br.com.weblayer.venda.android.Activities
 {
     [Activity(Label = "Activity_EditarCliente")]
-    public class Activity_EditarCliente : Activity
+    public class Activity_EditarCliente : Activity_Base
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

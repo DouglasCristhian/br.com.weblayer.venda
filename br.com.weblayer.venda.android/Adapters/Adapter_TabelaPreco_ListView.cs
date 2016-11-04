@@ -51,7 +51,7 @@ namespace br.com.weblayer.venda.android.Adapters
 
             if (row == null)
             {
-                LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_TabelaPreco_ListView, null, false);
+                row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_TabelaPreco_ListView, null, false);
             }
 
             row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = mItems[position].id_Codigo.ToString();

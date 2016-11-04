@@ -38,7 +38,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindViews()
         {
-            lstViewTabelaPrecos.Click += LstViewTabelaPrecos_Click;
+            lstViewTabelaPrecos.ItemClick += LstViewTabelaPrecos_Click;
         }
 
         private void FillList()
@@ -49,7 +49,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void LstViewTabelaPrecos_Click(object sender, AdapterView.ItemClickEventArgs e)
         {
-            var ListViewTabelaPrecoClick = sender as ListView;
+            var ListViewTabelaPreco = sender as ListView;
             var t = lstTabelaPrecos[e.Position];
 
             Intent intent = new Intent();
