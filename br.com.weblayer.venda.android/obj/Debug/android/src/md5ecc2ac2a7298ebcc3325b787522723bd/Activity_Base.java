@@ -1,7 +1,7 @@
-package md52c04ecc0be466a10429ea56df007a65a;
+package md5ecc2ac2a7298ebcc3325b787522723bd;
 
 
-public class MainActivity
+public class Activity_Base
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -13,15 +13,15 @@ public class MainActivity
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"n_onCreateOptionsMenu:(Landroid/view/Menu;)Z:GetOnCreateOptionsMenu_Landroid_view_Menu_Handler\n" +
 			"";
-		mono.android.Runtime.register ("br.com.weblayer.venda.android.MainActivity, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", MainActivity.class, __md_methods);
+		mono.android.Runtime.register ("br.com.weblayer.venda.android.Activities.Activity_Base, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", Activity_Base.class, __md_methods);
 	}
 
 
-	public MainActivity () throws java.lang.Throwable
+	public Activity_Base () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == MainActivity.class)
-			mono.android.TypeManager.Activate ("br.com.weblayer.venda.android.MainActivity, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == Activity_Base.class)
+			mono.android.TypeManager.Activate ("br.com.weblayer.venda.android.Activities.Activity_Base, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

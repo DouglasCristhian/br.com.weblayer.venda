@@ -4,6 +4,8 @@ using Android.OS;
 using System.Collections.Generic;
 using System;
 using br.com.weblayer.venda.android.Activities;
+using Android.Views;
+using Android.Content;
 
 namespace br.com.weblayer.venda.android
 {
@@ -17,10 +19,47 @@ namespace br.com.weblayer.venda.android
         {
             base.OnCreate(bundle);
             SetContentView (Resource.Layout.Activity_Home);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             FindViews();
             BindData();                  
         }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            base.OnCreateOptionsMenu(menu);
+            MenuInflater.Inflate(Resource.Layout.Botao_Configuracao, menu);
+
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public bool onOptionsItemSelected(IMenuItem item)
+        {
+            switch(item.ItemId)
+            {
+                case Resource.Id.action_configuracoes:
+
+                    Ir_Configuracoes();
+
+                    return true;
+
+                case Resource.Id.action_ajuda:
+                    Toast.MakeText(this, "uia2", ToastLength.Short).Show();
+
+                    return true;
+
+                default:
+                    return true;
+            }
+        }
+
+        private void Ir_Configuracoes()
+        {
+            Intent i = new Intent(this, typeof(Activity_Configuracoes));
+            StartActivity(i);
+
+        }
+
 
         private void FindViews()
         {

@@ -45,7 +45,16 @@ namespace br.com.weblayer.venda.android
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_ajuda = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int ic_configuracoes = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Icon = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int search = 2130837507;
 			
 			static Drawable()
 			{
@@ -59,6 +68,12 @@ namespace br.com.weblayer.venda.android
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f050015
+			public const int action_ajuda = 2131034133;
+			
+			// aapt resource value: 0x7f050014
+			public const int action_configuracoes = 2131034132;
 			
 			// aapt resource value: 0x7f05000a
 			public const int btnExcluirProduto = 2131034122;
@@ -153,6 +168,9 @@ namespace br.com.weblayer.venda.android
 			
 			// aapt resource value: 0x7f030006
 			public const int Adapter_Produtos_ListView = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int Botao_Configuracao = 2130903047;
 			
 			static Layout()
 			{
