@@ -9,8 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.android.Activities;
-using br.com.weblayer.venda.android.ClasseTeste;
+using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Adapters
 {

@@ -1,18 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.android.ClasseTeste;
 using br.com.weblayer.venda.android.Activities;
-using br.com.weblayer.venda.android.Adapters;
-using System.Threading.Tasks;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -102,8 +95,10 @@ namespace br.com.weblayer.venda.android.Fragments
             try
             {
                 BindModel();
+
                 var produto = new Produto_Manager();
-                produto.Salvar(prod);
+
+                produto.Save(prod);
 
                 Finish();
             }
@@ -116,7 +111,13 @@ namespace br.com.weblayer.venda.android.Fragments
 
         private void Delete()
         {
+
+            //Confirmar a exclusão do item
             Exibir_alerta();
+
+            var produto = new Produto_Manager();
+
+            produto.Save(prod);
         }
 
         private void Exibir_alerta()

@@ -64,15 +64,12 @@
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Activity_Produtos.cs" />
     <Compile Include="Adapters\Adapter_Produtos_ListView.cs" />
-    <Compile Include="ClasseTeste\Produto.cs" />
-    <Compile Include="ClasseTeste\Produto_Manager.cs" />
     <Compile Include="Activities\Activity_EditarProduto.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_AddProduct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\br.com.weblayer.venda.core\br.com.weblayer.venda.core.csproj">
+      <Project>{fe80a9a8-51c1-4225-836c-13365075f7d6}</Project>
+      <Name>br.com.weblayer.venda.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

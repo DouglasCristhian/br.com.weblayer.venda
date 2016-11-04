@@ -99,6 +99,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "br.com.weblayer.venda.android.dll" comes first in this list. */
 		"br.com.weblayer.venda.android.dll",
+		"br.com.weblayer.venda.core.dll",
 		"Newtonsoft.Json.dll",
 		"System.Threading.dll",
 		"System.Runtime.dll",

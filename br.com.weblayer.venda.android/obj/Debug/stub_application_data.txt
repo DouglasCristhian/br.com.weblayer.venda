@@ -1,2 +1,0 @@
-android.app.Application
-br.com.weblayer.venda.android

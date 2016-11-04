@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace br.com.weblayer.venda.android.ClasseTeste
+namespace br.com.weblayer.venda.core.Model
 {
     public class Produto 
     {

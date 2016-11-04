@@ -9,8 +9,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using br.com.weblayer.venda.core.Model;
 
-namespace br.com.weblayer.venda.android.ClasseTeste
+namespace br.com.weblayer.venda.core.Bll
 {
     public class Produto_Manager 
     {
@@ -27,12 +28,12 @@ namespace br.com.weblayer.venda.android.ClasseTeste
             return listaprod;
         }
 
-        public void Salvar(Produto obj)
+        public void Save(Produto obj)
         {
             //salvar na base
         }
 
-        public void Excluir(Produto obj)
+        public void Delete(Produto obj)
         {
             //excluir na base
         }
