@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bll\TabelaPreco_Manager.cs" />
+    <Compile Include="Bll\Cliente_Manager.cs" />
     <Compile Include="Bll\Produto_Manager.cs" />
+    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\TabelaPreco.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

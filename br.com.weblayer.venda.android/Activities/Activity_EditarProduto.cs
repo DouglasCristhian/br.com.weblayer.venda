@@ -73,10 +73,10 @@ namespace br.com.weblayer.venda.android.Fragments
             if (prod == null)
                 return;
 
-            txtCodigoProd.Text = prod.ds_CodigoProduto;
-            txtNomeProd.Text = prod.ds_NomeProduto;
-            txtUniMedidadeProd.Text = prod.ds_UniMedidaProduto;
-            txtTabelaPrecoProd.Text = prod.ds_TblPrecoProduto;
+            txtCodigoProd.Text = prod.id_Codigo;
+            txtNomeProd.Text = prod.ds_Nome;
+            txtUniMedidadeProd.Text = prod.ds_UniMedida;
+            txtTabelaPrecoProd.Text = prod.id_TabPreco;
         }
 
         private void BindModel()
@@ -84,10 +84,10 @@ namespace br.com.weblayer.venda.android.Fragments
             if (prod == null)
                 prod = new Produto();
 
-            prod.ds_CodigoProduto = txtCodigoProd.Text;
-            prod.ds_NomeProduto = txtNomeProd.Text;
-            prod.ds_UniMedidaProduto = txtUniMedidadeProd.Text;
-            prod.ds_TblPrecoProduto = txtTabelaPrecoProd.Text;
+            prod.id_Codigo = txtCodigoProd.Text;
+            prod.ds_Nome = txtNomeProd.Text;
+            prod.ds_UniMedida = txtUniMedidadeProd.Text;
+            prod.id_TabPreco = txtTabelaPrecoProd.Text;
         }
 
         private void Save()

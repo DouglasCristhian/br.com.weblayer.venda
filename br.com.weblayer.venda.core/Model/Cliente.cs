@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace br.com.weblayer.venda.core.Model
 {
-    public class Produto 
+    public class Cliente 
     {
         public string id_Codigo { get; set; }
-        public string ds_Nome { get; set; }
-        public string ds_UniMedida { get; set; }
-        public string id_TabPreco { get; set; }
+        public string ds_RazaoSocial { get; set; }
+        public string ds_NomeFantasia { get; set; }
+        public string ds_Cnpj { get; set; }
     }
 }

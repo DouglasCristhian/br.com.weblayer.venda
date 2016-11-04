@@ -54,10 +54,10 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_Produtos_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtCodigoProduto).Text = mItems[position].ds_CodigoProduto.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = mItems[position].ds_NomeProduto.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = mItems[position].ds_UniMedidaProduto.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtTblPrecoProduto).Text = mItems[position].ds_TblPrecoProduto.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtCodigoProduto).Text = mItems[position].id_Codigo.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = mItems[position].ds_Nome.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = mItems[position].ds_UniMedida.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtTblPrecoProduto).Text = mItems[position].id_TabPreco.ToString();
 
             return row;
         }
