@@ -1,3 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_salvarproduto" android:icon="@drawable/ic_salvar" android:showAsAction="always" />
-    <item android:id="@+id/action_deletarproduto" android:icon="@drawable/ic_deletarproduto" android:showAsAction="always" /></menu>
