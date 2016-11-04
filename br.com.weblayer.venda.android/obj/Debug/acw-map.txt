@@ -1,0 +1,40 @@
+br.com.weblayer.venda.android.MainActivity, br.com.weblayer.venda.android;md52c04ecc0be466a10429ea56df007a65a.MainActivity
+br.com.weblayer.venda.android.MainActivity, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52c04ecc0be466a10429ea56df007a65a.MainActivity
+br.com.weblayer.venda.android.MainActivity;md52c04ecc0be466a10429ea56df007a65a.MainActivity
+br.com.weblayer.venda.android.MainActivity;md52c04ecc0be466a10429ea56df007a65a.MainActivity
+br.com.weblayer.venda.android.Fragments.Activity_EditarProduto, br.com.weblayer.venda.android;md5b32d0697ac99619344602a8ddc95568b.Activity_EditarProduto
+br.com.weblayer.venda.android.Fragments.Activity_EditarProduto, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5b32d0697ac99619344602a8ddc95568b.Activity_EditarProduto
+br.com.weblayer.venda.android.Fragments.Activity_EditarProduto;md5b32d0697ac99619344602a8ddc95568b.Activity_EditarProduto
+br.com.weblayer.venda.android.fragments.Activity_EditarProduto;md5b32d0697ac99619344602a8ddc95568b.Activity_EditarProduto
+br.com.weblayer.venda.android.Adapters.Adapter_Produtos_ListView, br.com.weblayer.venda.android;md595ce7131a908834fcc8da047cb92bf5f.Adapter_Produtos_ListView
+br.com.weblayer.venda.android.Adapters.Adapter_Produtos_ListView, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md595ce7131a908834fcc8da047cb92bf5f.Adapter_Produtos_ListView
+br.com.weblayer.venda.android.Adapters.Adapter_Produtos_ListView;md595ce7131a908834fcc8da047cb92bf5f.Adapter_Produtos_ListView
+br.com.weblayer.venda.android.adapters.Adapter_Produtos_ListView;md595ce7131a908834fcc8da047cb92bf5f.Adapter_Produtos_ListView
+br.com.weblayer.venda.android.Activities.Activity_Ajuda, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Ajuda
+br.com.weblayer.venda.android.Activities.Activity_Ajuda, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Ajuda
+br.com.weblayer.venda.android.Activities.Activity_Ajuda;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Ajuda
+br.com.weblayer.venda.android.activities.Activity_Ajuda;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Ajuda
+br.com.weblayer.venda.android.Activities.Activity_Base, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Base
+br.com.weblayer.venda.android.Activities.Activity_Base, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Base
+br.com.weblayer.venda.android.Activities.Activity_Base;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Base
+br.com.weblayer.venda.android.activities.Activity_Base;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Base
+br.com.weblayer.venda.android.Activities.Activity_Pedidos, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Pedidos
+br.com.weblayer.venda.android.Activities.Activity_Pedidos, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Pedidos
+br.com.weblayer.venda.android.Activities.Activity_Pedidos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Pedidos
+br.com.weblayer.venda.android.activities.Activity_Pedidos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Pedidos
+br.com.weblayer.venda.android.Activities.Activity_TabelaPrecos, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_TabelaPrecos
+br.com.weblayer.venda.android.Activities.Activity_TabelaPrecos, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_TabelaPrecos
+br.com.weblayer.venda.android.Activities.Activity_TabelaPrecos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_TabelaPrecos
+br.com.weblayer.venda.android.activities.Activity_TabelaPrecos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_TabelaPrecos
+br.com.weblayer.venda.android.Activities.Activity_Clientes, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Clientes
+br.com.weblayer.venda.android.Activities.Activity_Clientes, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Clientes
+br.com.weblayer.venda.android.Activities.Activity_Clientes;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Clientes
+br.com.weblayer.venda.android.activities.Activity_Clientes;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Clientes
+br.com.weblayer.venda.android.Activities.Activity_Configuracoes, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Configuracoes
+br.com.weblayer.venda.android.Activities.Activity_Configuracoes, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Configuracoes
+br.com.weblayer.venda.android.Activities.Activity_Configuracoes;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Configuracoes
+br.com.weblayer.venda.android.activities.Activity_Configuracoes;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Configuracoes
+br.com.weblayer.venda.android.Activities.Activity_Produtos, br.com.weblayer.venda.android;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Produtos
+br.com.weblayer.venda.android.Activities.Activity_Produtos, br.com.weblayer.venda.android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Produtos
+br.com.weblayer.venda.android.Activities.Activity_Produtos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Produtos
+br.com.weblayer.venda.android.activities.Activity_Produtos;md5ecc2ac2a7298ebcc3325b787522723bd.Activity_Produtos
