@@ -139,13 +139,13 @@
     <AndroidResource Include="Resources\drawable\ic_salvar.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Botoes_EditarProduto.xml" />
+    <AndroidResource Include="Resources\layout\Botoes_Editar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_Base.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Botoes_Produtos.xml" />
+    <AndroidResource Include="Resources\layout\Botoes_InserirNovo.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_AddProduct.png" />
@@ -161,6 +161,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Adapter_TabelaPreco_ListView.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_EditarClientes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_EditarTabelaPreco.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

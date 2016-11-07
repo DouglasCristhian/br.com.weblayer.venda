@@ -35,12 +35,11 @@ namespace br.com.weblayer.venda.android.Fragments
 
             FindViews();
             BindView();
-            BindModel();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_EditarProduto, menu);
+            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -48,11 +47,11 @@ namespace br.com.weblayer.venda.android.Fragments
         {
             switch (item.ItemId)
             {
-                case Resource.Id.action_salvarproduto:
+                case Resource.Id.action_salvar:
                     Save();
                     return true;
 
-                case Resource.Id.action_deletarproduto:
+                case Resource.Id.action_deletar:
                     Delete();
                     return true;
             }
@@ -90,8 +89,41 @@ namespace br.com.weblayer.venda.android.Fragments
             prod.id_TabPreco = txtTabelaPrecoProd.Text;
         }
 
+        private bool ValidateViews()
+        {
+            var validacao = true;
+
+            if (txtCodigoProd.Length() == 0)
+            {
+                validacao = false;
+                txtCodigoProd.Error = "Código do produto inválido!";
+            }
+
+            if (txtNomeProd.Length() == 0)
+            {
+                validacao = false;
+                txtNomeProd.Error = "Nome do produto inválido!";
+            }
+
+            if (txtUniMedidadeProd.Length() == 0)
+            {
+                validacao = false;
+                txtUniMedidadeProd.Error = "Unidade de medida inválida!";
+            }
+
+            if (txtTabelaPrecoProd.Length() == 0)
+            {
+                validacao = false;
+                txtTabelaPrecoProd.Error = "Tabela de preço inválida!";
+            }
+
+            return validacao;
+        }
+
         private void Save()
         {
+            if (!ValidateViews())
+                return;
             try
             {
                 BindModel();
@@ -111,8 +143,8 @@ namespace br.com.weblayer.venda.android.Fragments
 
         private void Delete()
         {
-            AlertDialog alerta = new AlertDialog.Builder(this).Create();
-            alerta.SetMessage("Tem certeza que deseja excluir este produto?");
+            if (!ValidateViews())
+                return;
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
 

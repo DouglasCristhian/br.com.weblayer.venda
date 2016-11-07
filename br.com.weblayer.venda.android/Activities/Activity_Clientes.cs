@@ -31,6 +31,24 @@ namespace br.com.weblayer.venda.android.Activities
             FillList();
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_AddProduct:
+                    StartActivity(typeof(Activity_EditarCliente));
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
         private void FindViews()
         {
             lstViewClientes = FindViewById<ListView>(Resource.Id.lstViewCliente);

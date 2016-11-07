@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-      android:id="@+id/action_salvarproduto"
+      android:id="@+id/action_salvar"
       android:icon="@drawable/ic_salvar"
       android:showAsAction="always"/>
     <item
-      android:id="@+id/action_deletarproduto"
+      android:id="@+id/action_deletar"
       android:icon="@drawable/ic_deletarproduto"
       android:showAsAction="always"/>
 </menu>

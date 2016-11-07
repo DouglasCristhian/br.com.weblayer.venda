@@ -31,6 +31,24 @@ namespace br.com.weblayer.venda.android.Activities
             FillList();
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_AddProduct:
+                    StartActivity(typeof(Activity_EditarTabelaPreco));
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
         private void FindViews()
         {
             lstViewTabelaPrecos = FindViewById<ListView>(Resource.Id.listViewTabelaPrecos);
@@ -55,7 +73,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_EditarTabelaPreco));
 
-            intent.PutExtra("JsonNotaProd", Newtonsoft.Json.JsonConvert.SerializeObject(t));
+            intent.PutExtra("JsonNotaTabela", Newtonsoft.Json.JsonConvert.SerializeObject(t));
             StartActivityForResult(intent, 0);
         }
 

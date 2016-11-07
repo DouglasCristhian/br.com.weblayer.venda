@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="400dp"
+    android:minHeight="500dp">
+
+  <TextView
+    android:id="@+id/lblCodigoTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Código"/>
+
+  <EditText
+    android:id="@+id/txtCodigoTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:text=""/>
+
+  <TextView
+    android:id="@+id/lblDescricaoTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Descrição"/>
+
+  <EditText
+    android:id="@+id/txtDescricaoTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:text=""/>
+
+  <TextView
+    android:id="@+id/lblValorTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Valor"/>
+
+  <EditText
+    android:id="@+id/txtValorTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:text=""/>
+
+  <TextView
+    android:id="@+id/lblDescontoMaxTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Desconto Maximo"/>
+
+  <EditText
+    android:id="@+id/txtDescontoMaxTabelaPreco"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:text=""/>
+</LinearLayout>

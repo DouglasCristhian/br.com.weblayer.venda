@@ -25,7 +25,6 @@ namespace br.com.weblayer.venda.core.Bll
             //var x = 1 / y;
             string erros="";
 
-
             //regras....
             if (obj.id_Codigo.Length < 3) //codigo do produto deve ter mais de 10 caracteres
                 erros= erros + "\n Código do produto é inválido!Ele deve ter no mínimo 10 carac...";

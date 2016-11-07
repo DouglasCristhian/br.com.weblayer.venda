@@ -14,6 +14,15 @@ namespace br.com.weblayer.venda.core.Model
 {
     public class TabelaPreco
     {
+
+        public TabelaPreco( ) {}
+
+        public TabelaPreco(string id_codigo, string ds_descricao)
+        {
+            this.id_Codigo = id_Codigo;
+            this.ds_Descricao = ds_descricao;
+        }
+
         public string id_Codigo { get; set; }
         public string ds_Descricao { get; set; }
         public decimal Valor { get; set; }

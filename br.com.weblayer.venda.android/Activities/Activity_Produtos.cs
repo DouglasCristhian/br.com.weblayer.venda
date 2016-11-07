@@ -34,7 +34,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Produtos, menu);
+            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 

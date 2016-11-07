@@ -21,7 +21,7 @@ namespace br.com.weblayer.venda.core.Bll
             return lista;
         }
 
-        public void Save(Produto obj)
+        public void Save(Cliente obj)
         {
             //salvar na base
             //var y = 0;
@@ -44,7 +44,7 @@ namespace br.com.weblayer.venda.core.Bll
 
         }
 
-        public void Delete(Produto obj)
+        public void Delete(Cliente obj)
         {
             //excluir na base
             //var y = 0;
