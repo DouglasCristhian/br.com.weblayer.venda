@@ -6,7 +6,7 @@ namespace br.com.weblayer.venda.core.Bll
 {
     public class Cliente_Manager 
     {
-        
+        public string Mensagem;
 
         public IList<Cliente> GetClientes(string filtro)
         {
@@ -17,12 +17,16 @@ namespace br.com.weblayer.venda.core.Bll
         {
             var Repository = new ClienteRepository();
             Repository.Save(obj);
+
+            Mensagem = $"Cliente {obj.ds_RazaoSocial} atualizado com sucesso";
         }
 
         public void Delete(Cliente obj)
         {
             var Repository = new ClienteRepository();
             Repository.Delete(obj);
+
+            Mensagem = $"Cliente {obj.ds_RazaoSocial} excluído com sucesso";
         }
 
 

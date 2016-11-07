@@ -20,7 +20,7 @@ namespace br.com.weblayer.venda.core.Model
         public int id { get; set; }
 
         [MaxLength(12), NotNull]
-        public string id_Codigo { get; set; }
+        public string id_Codigo { get; set;}
 
         [MaxLength(200), NotNull]
         public string ds_Nome { get; set; }

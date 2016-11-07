@@ -125,13 +125,16 @@ namespace br.com.weblayer.venda.android.Activities
         {
             if (!ValidateViews())
                 return;
-
             try
             {
                 BindModel();
 
                 var cliente = new Cliente_Manager();
                 cliente.Save(cli);
+
+                Intent myIntent = new Intent(this, typeof(Activity_Clientes));
+                myIntent.PutExtra("mensagem", cliente.Mensagem);
+                SetResult(Result.Ok, myIntent);
                 Finish();
             }
             catch (Exception ex)
@@ -142,9 +145,6 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void Delete()
         {
-            if (!ValidateViews())
-                return;
-
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
             alert.SetTitle("Tem certeza que deseja excluir este cliente?");
@@ -159,9 +159,11 @@ namespace br.com.weblayer.venda.android.Activities
                 try
                 {
                     var cliente = new Cliente_Manager();
-
                     cliente.Delete(cli);
 
+                    Intent myIntent = new Intent(this, typeof(Activity_Clientes));
+                    myIntent.PutExtra("mensagem", cliente.Mensagem);
+                    SetResult(Result.Ok, myIntent);
                     Finish();
                 }
                 catch (Exception ex)

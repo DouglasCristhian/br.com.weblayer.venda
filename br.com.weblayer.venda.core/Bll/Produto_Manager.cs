@@ -7,12 +7,11 @@ namespace br.com.weblayer.venda.core.Bll
 {
     public class Produto_Manager 
     {
+        public string Mensagem;
 
         public IList<Produto> GetProduto(string filtro)
         {
-
             return new ProdutoRepository().List();
-
         }
 
         public void Save(Produto obj)
@@ -30,18 +29,19 @@ namespace br.com.weblayer.venda.core.Bll
 
             if (erros.Length>0)
                 throw new Exception(erros);
-
-
+            
             var Repository = new ProdutoRepository();
             Repository.Save(obj);
 
-
+            Mensagem = $"Produto {obj.ds_Nome} atualizado com sucesso";
         }
 
         public void Delete(Produto obj)
         {
             var Repository = new ProdutoRepository();
             Repository.Delete(obj);
+
+            Mensagem = $"Produto {obj.ds_Nome} excluído com sucesso";
         }
 
 

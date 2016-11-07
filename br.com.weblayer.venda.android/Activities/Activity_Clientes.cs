@@ -27,7 +27,7 @@ namespace br.com.weblayer.venda.android.Activities
             SetContentView(Resource.Layout.Activity_Clientes);
 
             FindViews();
-            BindData();
+            BindViews();
             FillList();
         }
 
@@ -42,7 +42,9 @@ namespace br.com.weblayer.venda.android.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_AddProduct:
-                    StartActivity(typeof(Activity_EditarCliente));
+                    Intent intent = new Intent();
+                    intent.SetClass(this, typeof(Activity_EditarCliente));
+                    StartActivityForResult(intent, 0);
                     break;
             }
 
@@ -54,7 +56,7 @@ namespace br.com.weblayer.venda.android.Activities
             lstViewClientes = FindViewById<ListView>(Resource.Id.lstViewCliente);
         }
 
-        private void BindData()
+        private void BindViews()
         {
             lstViewClientes.ItemClick += LstViewClientes_ItemClick;
         }
@@ -75,6 +77,18 @@ namespace br.com.weblayer.venda.android.Activities
 
             intent.PutExtra("JsonNotaCli", Newtonsoft.Json.JsonConvert.SerializeObject(t));
             StartActivityForResult(intent, 0);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {
+                var mensagem = data.GetStringExtra("mensagem");
+                Toast.MakeText(this, mensagem, ToastLength.Short).Show();
+
+                FillList();
+            }
         }
     }
 }

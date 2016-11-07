@@ -138,6 +138,9 @@ namespace br.com.weblayer.venda.android.Activities
                 var tabelapreco = new TabelaPreco_Manager();
                 tabelapreco.Save(tblPreco);
 
+                Intent myIntent = new Intent(this, typeof(Activity_TabelaPrecos));
+                myIntent.PutExtra("mensagem", tabelapreco.Mensagem);
+                SetResult(Result.Ok, myIntent);
                 Finish();
             }
             catch (Exception ex)
@@ -148,9 +151,6 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void Delete()
         {
-            if (!ValidateViews())
-                return;
-
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.SetTitle("Tem certeza que deseja excluir esta tabela?");
 
@@ -164,9 +164,11 @@ namespace br.com.weblayer.venda.android.Activities
                 try
                 {
                     var tabela = new TabelaPreco_Manager();
-
                     tabela.Delete(tblPreco);
 
+                    Intent myIntent = new Intent(this, typeof(Activity_Clientes));
+                    myIntent.PutExtra("mensagem", tabela.Mensagem);
+                    SetResult(Result.Ok, myIntent);
                     Finish();
                 }
                 catch (Exception ex)

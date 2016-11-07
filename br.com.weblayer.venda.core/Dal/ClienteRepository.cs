@@ -19,7 +19,6 @@ namespace br.com.weblayer.venda.core.Dal
 
         public void Save(Cliente entidade)
         {
-
             try
             {
                 if (entidade.id>0)
@@ -33,7 +32,6 @@ namespace br.com.weblayer.venda.core.Dal
             }
         }
 
-
         public void Delete(Cliente entidade)
         {
             Database.GetConnection().Delete(entidade);
@@ -46,5 +44,15 @@ namespace br.com.weblayer.venda.core.Dal
              
         }
 
+        public void MakeDataMock()
+        {
+            if (List().Count > 0)
+                return;
+
+            Save(new Cliente() { id_Codigo = "1", ds_NomeFantasia = "UNITY SISTEMAS", ds_RazaoSocial = "XPTO SOFTWARE", ds_Cnpj = "456824535" });
+            Save(new Cliente() { id_Codigo = "2", ds_NomeFantasia = "INVISIBLE TUCS", ds_RazaoSocial = "TPA ONIX", ds_Cnpj = "564545787" });
+            Save(new Cliente() { id_Codigo = "3", ds_NomeFantasia = "ALPHA BETA", ds_RazaoSocial = "HARDWARES CPO", ds_Cnpj = "5487646" });
+            Save(new Cliente() { id_Codigo = "4", ds_NomeFantasia = "ECONÔMICO", ds_RazaoSocial = "LA DOS SANTOS", ds_Cnpj = "5452462" });
+        }
     }
 }

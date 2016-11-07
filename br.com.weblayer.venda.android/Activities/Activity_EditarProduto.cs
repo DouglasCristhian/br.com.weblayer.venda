@@ -6,6 +6,7 @@ using Android.Widget;
 using br.com.weblayer.venda.android.Activities;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
+using Android.Content;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -35,6 +36,7 @@ namespace br.com.weblayer.venda.android.Fragments
 
             FindViews();
             BindView();
+           // BindModel();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -129,23 +131,21 @@ namespace br.com.weblayer.venda.android.Fragments
                 BindModel();
 
                 var produto = new Produto_Manager();
-
                 produto.Save(prod);
 
+                Intent myIntent = new Intent(this, typeof(Activity_Produtos));
+                myIntent.PutExtra("mensagem", produto.Mensagem);
+                SetResult(Result.Ok, myIntent);
                 Finish();
             }
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
-
         }
 
         private void Delete()
         {
-            if (!ValidateViews())
-                return;
-
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
             alert.SetTitle("Tem certeza que deseja excluir este produto?");
@@ -160,9 +160,11 @@ namespace br.com.weblayer.venda.android.Fragments
                 try
                 {
                     var produto = new Produto_Manager();
-
                     produto.Delete(prod);
 
+                    Intent myIntent = new Intent(this, typeof(Activity_Produtos));
+                    myIntent.PutExtra("mensagem", produto.Mensagem);
+                    SetResult(Result.Ok, myIntent);
                     Finish();
                 }
                 catch (Exception ex)

@@ -37,6 +37,10 @@ namespace br.com.weblayer.venda.core.Dal
         public static void Initialize()
         {
             CreateDatabase(GetConnection());
+
+            new ProdutoRepository().MakeDataMock();
+            new TabelaPrecoRepository().MakeDataMock();
+            new ClienteRepository().MakeDataMock();
         }
 
      
@@ -54,9 +58,7 @@ namespace br.com.weblayer.venda.core.Dal
                 connection.CreateTable<Cliente>();
                 connection.CreateTable<Produto>();
                 connection.CreateTable<TabelaPreco>();
-
             }
         }
-
     }
 }

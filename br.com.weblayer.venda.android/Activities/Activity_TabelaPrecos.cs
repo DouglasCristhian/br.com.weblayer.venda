@@ -42,7 +42,9 @@ namespace br.com.weblayer.venda.android.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_AddProduct:
-                    StartActivity(typeof(Activity_EditarTabelaPreco));
+                    Intent intent = new Intent();
+                    intent.SetClass(this, typeof(Activity_EditarTabelaPreco));
+                    StartActivityForResult(intent, 0);
                     break;
             }
 
@@ -77,5 +79,16 @@ namespace br.com.weblayer.venda.android.Activities
             StartActivityForResult(intent, 0);
         }
 
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {
+                var mensagem = data.GetStringExtra("mensagem");
+                Toast.MakeText(this, mensagem, ToastLength.Short).Show();
+
+                FillList();
+            }
+        }
     }
 }
