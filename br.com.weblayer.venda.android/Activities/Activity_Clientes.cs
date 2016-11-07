@@ -19,7 +19,7 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_Clientes : Activity_Base
     {
         private ListView lstViewClientes;
-        private List<Cliente> lstClientes;
+        private IList<Cliente> lstClientes;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -61,7 +61,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FillList()
         {
-            lstClientes = new Cliente_Manager().GetCliente("");
+            lstClientes = new Cliente_Manager().GetClientes("");
             lstViewClientes.Adapter = new Adapter_Cliente_ListView(this, lstClientes);
         }
 

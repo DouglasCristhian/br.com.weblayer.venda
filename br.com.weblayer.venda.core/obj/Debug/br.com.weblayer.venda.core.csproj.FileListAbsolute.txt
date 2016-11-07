@@ -16,8 +16,6 @@ D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.webl
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\android\bin\br.com.weblayer.venda.core.apk
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\R.cs.flag
 D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\uploadflags.txt
-D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll.mdb
-D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.pdb
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.apk
@@ -29,3 +27,15 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\R.cs.fla
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\uploadflags.txt
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll.mdb
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLite-net.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLitePCLRaw.batteries_green.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLitePCLRaw.core.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLitePCLRaw.lib.e_sqlite3.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLite-net.xml
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\SQLite-net.dll.mdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.csprojResolveAssemblyReference.cache
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\obj\Debug\br.com.weblayer.venda.core.dll.mdb
+D:\GitHub\br.com.weblayer.venda\br.com.weblayer.venda.core\bin\Debug\br.com.weblayer.venda.core.dll.mdb

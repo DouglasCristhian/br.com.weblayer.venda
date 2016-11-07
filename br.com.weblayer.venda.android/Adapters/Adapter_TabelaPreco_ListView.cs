@@ -8,10 +8,10 @@ namespace br.com.weblayer.venda.android.Adapters
 {
     public class Adapter_TabelaPreco_ListView : BaseAdapter<TabelaPreco>
     {
-        public List<TabelaPreco> mItems;
+        public IList<TabelaPreco> mItems;
         private Context mContext;
 
-        public Adapter_TabelaPreco_ListView(Context context, List<TabelaPreco> items)
+        public Adapter_TabelaPreco_ListView(Context context, IList<TabelaPreco> items)
         {
             mItems = items;
             mContext = context;
@@ -47,8 +47,8 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_TabelaPreco_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = mItems[position].id_Codigo.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtDescricaoTabelaPreco).Text = mItems[position].ds_Descricao.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = mItems[position].id_Codigo;
+            row.FindViewById<TextView>(Resource.Id.txtDescricaoTabelaPreco).Text = mItems[position].ds_Descricao;
             row.FindViewById<TextView>(Resource.Id.txtValorTabelaPreco).Text = mItems[position].Valor.ToString();
             row.FindViewById<TextView>(Resource.Id.txtDescontoMaxTabelaPreco).Text = mItems[position].DescontoMaximo.ToString();
 

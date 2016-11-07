@@ -20,7 +20,7 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_Produtos : Activity_Base
     {
         private ListView lstViewProdutos;
-        private List<Produto> lstProdutos;
+        private IList<Produto> lstProdutos;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

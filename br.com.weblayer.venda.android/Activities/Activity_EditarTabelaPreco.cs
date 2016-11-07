@@ -122,8 +122,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             tblPreco.id_Codigo = txtCodTabelaPreco.Text;
             tblPreco.ds_Descricao = txtDescricaoTabelaPreco.Text;
-            tblPreco.Valor = decimal.Parse(txtValorTabelaPreco.Text);
-            tblPreco.DescontoMaximo = Convert.ToDecimal(txtDescMaxTabelaPreco.Text);
+            tblPreco.Valor = double.Parse(txtValorTabelaPreco.Text);
+            tblPreco.DescontoMaximo = double.Parse(txtDescMaxTabelaPreco.Text);
 
         }
 

@@ -19,7 +19,7 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_TabelaPrecos : Activity_Base
     {
         private ListView lstViewTabelaPrecos;
-        private List<TabelaPreco> lstTabelaPrecos;
+        private IList<TabelaPreco> lstTabelaPrecos;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

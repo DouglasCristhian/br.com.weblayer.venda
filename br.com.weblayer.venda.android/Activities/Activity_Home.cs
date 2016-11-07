@@ -21,6 +21,8 @@ namespace br.com.weblayer.venda.android
             SetContentView (Resource.Layout.Activity_Home);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            core.Dal.Database.Initialize();
+
             FindViews();
             BindData();                  
         }
