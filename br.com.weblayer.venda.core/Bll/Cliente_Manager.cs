@@ -7,7 +7,7 @@ namespace br.com.weblayer.venda.core.Bll
     {
         
 
-        public List<Cliente> GetProduto(string filtro)
+        public List<Cliente> GetClientes(string filtro)
         {
 
             List<Cliente> lista = new List<Cliente>();
@@ -21,34 +21,14 @@ namespace br.com.weblayer.venda.core.Bll
             return lista;
         }
 
-        public void Save(Produto obj)
+        public void Save(Cliente obj)
         {
-            //salvar na base
-            //var y = 0;
-            //var x = 1 / y;
-            //string erros="";
-
-
-            //regras....
-            //if (obj.ds_CodigoProduto.Length < 3) //codigo do produto deve ter mais de 10 caracteres
-            //    erros= erros + "\n Código do produto é inválido!Ele deve ter no mínimo 10 carac...";
-
-            //if (obj.ds_NomeProduto.Length < 20) //bla bla...
-            //    erros = erros + "\n Descrição do produto não pode ser blala...";
-
-
-            //if (erros.Length>0)
-            //    throw new Exception(erros);
-
-            //persistir os dados,,,
-
+            
         }
 
-        public void Delete(Produto obj)
+        public void Delete(Cliente obj)
         {
-            //excluir na base
-            //var y = 0;
-            //var x = 1 / y;
+
         }
 
 

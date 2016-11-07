@@ -9,14 +9,24 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 
 namespace br.com.weblayer.venda.core.Model
 {
+    [Table("Produto")]
     public class TabelaPreco
     {
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
+
+        [MaxLength(20), NotNull]
         public string id_Codigo { get; set; }
+
+        [MaxLength(200), NotNull]
         public string ds_Descricao { get; set; }
+
         public decimal Valor { get; set; }
+
         public decimal DescontoMaximo { get; set; }
     }
 }

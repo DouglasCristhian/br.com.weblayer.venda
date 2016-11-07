@@ -15,10 +15,10 @@ namespace br.com.weblayer.venda.android.Adapters
 {
     public class Adapter_Produtos_ListView : BaseAdapter<Produto>
     {
-        public List<Produto> mItems;
+        public IList<Produto> mItems;
         private Context mContext;
 
-        public Adapter_Produtos_ListView(Context context, List<Produto> items)
+        public Adapter_Produtos_ListView(Context context, IList<Produto> items)
         {
             mItems = items;
             mContext = context;
