@@ -10,12 +10,13 @@ using Android.Content;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
-    [Activity(Label = "Editar Produto")]
+    [Activity(Label = "Editar Produto", MainLauncher = false)]
     public class Activity_EditarProduto : Activity_Base
     {
         private EditText txtCodigoProd;
         private EditText txtNomeProd;
-        private EditText txtUniMedidadeProd;
+        private Spinner spinUniMedidadeProd;
+        private string spinValor;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
 
@@ -36,7 +37,6 @@ namespace br.com.weblayer.venda.android.Fragments
 
             FindViews();
             BindView();
-           // BindModel();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -61,25 +61,42 @@ namespace br.com.weblayer.venda.android.Fragments
             return base.OnOptionsItemSelected(item);
         }
 
-        private void FindViews()
+        private void Spinner()
+        {
+            spinUniMedidadeProd.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
+            var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.unidades_medida, Android.Resource.Layout.SimpleSpinnerItem);
+
+            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleExpandableListItem1);        
+            spinUniMedidadeProd.Adapter = adapter;
+        }
+
+        private void spinUnidadeMedidadProd_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            var spinner = sender as Spinner;
+            spinValor = spinUniMedidadeProd.SelectedItem.ToString();
+        }
+
+        private void FindViews() //mapear as variaveis para as views
         {
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
             txtNomeProd = FindViewById<EditText>(Resource.Id.txtNome);
-            txtUniMedidadeProd = FindViewById<EditText>(Resource.Id.txtUnidadeMedida);
+            spinUniMedidadeProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);          
             txtTabelaPrecoProd = FindViewById<EditText>(Resource.Id.txtTabelaPrecos);
         }
 
-        private void BindView()
+        private void BindView() //pegar dados do modelo e atribuir as views
         {
             if (prod == null)
-                return;
+                return;       
 
             txtCodigoProd.Text = prod.id_Codigo;
             txtNomeProd.Text = prod.ds_Nome;
-            txtUniMedidadeProd.Text = prod.ds_UniMedida;
             txtTabelaPrecoProd.Text = prod.id_TabPreco;
-        }
+            spinValor = prod.ds_UniMedida;
 
+            Spinner();         
+        }
+                
         private void BindModel()
         {
             if (prod == null)
@@ -87,8 +104,8 @@ namespace br.com.weblayer.venda.android.Fragments
 
             prod.id_Codigo = txtCodigoProd.Text;
             prod.ds_Nome = txtNomeProd.Text;
-            prod.ds_UniMedida = txtUniMedidadeProd.Text;
             prod.id_TabPreco = txtTabelaPrecoProd.Text;
+            prod.ds_UniMedida = spinValor;
         }
 
         private bool ValidateViews()
@@ -105,12 +122,6 @@ namespace br.com.weblayer.venda.android.Fragments
             {
                 validacao = false;
                 txtNomeProd.Error = "Nome do produto inválido!";
-            }
-
-            if (txtUniMedidadeProd.Length() == 0)
-            {
-                validacao = false;
-                txtUniMedidadeProd.Error = "Unidade de medida inválida!";
             }
 
             if (txtTabelaPrecoProd.Length() == 0)

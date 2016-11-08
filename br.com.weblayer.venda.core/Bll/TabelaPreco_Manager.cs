@@ -17,6 +17,17 @@ namespace br.com.weblayer.venda.core.Bll
 
         public void Save(TabelaPreco obj)
         {
+            var erros = "";
+
+            //regras....
+            if (obj.id_Codigo.Length < 2)
+                erros = erros + "\n O código da tabela de preços é inválido! Ele deve ter no mínimo 2 caracteres!";
+
+            if (obj.ds_Descricao.Length < 5)
+                erros = erros + "\n A descrição da tabela deve ter no mínimo 10 caracteres!";
+
+            //TODO: Devidas exceções
+
             var Repository = new TabelaPrecoRepository();
             Repository.Save(obj);
 
@@ -30,7 +41,5 @@ namespace br.com.weblayer.venda.core.Bll
 
             Mensagem = $"Tabela de preços {obj.ds_Descricao} excluída com sucesso";
         }
-
-
     }
 }
