@@ -6,9 +6,83 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:layout_gravity="center_vertical">
+  
   <TextView
-     android:id="@+id/txtPedidos"
+     android:id="@+id/lblCodigoPedido"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     android:text="Pedidos"/>
+     android:text="Id_Código"/>
+
+  <EditText
+     android:id="@+id/txtCodigoPedido"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+  
+  <TextView
+     android:id="@+id/lblIdCliente"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Código do Cliente"/>
+
+  <EditText
+     android:id="@+id/txtIdCliente"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblIdVendedor"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Código do Vendedor"/>
+
+  <EditText
+     android:id="@+id/txtIdvendedor"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblValorTotal"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Valor total"/>
+
+  <EditText
+     android:id="@+id/txtValorTotal"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblDataEmissao"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Data de Emissão"/>
+
+  <EditText
+     android:id="@+id/txtDataEmissao"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <EditText
+     android:id="@+id/lblObservacao"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Observacões:"/>
+
+  <EditText
+     android:id="@+id/txtObservacao"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/> 
+  
+  <Button
+     android:id="@+id/btnAdicionar"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Adicionar Produtos"/>
+
+  <Button
+     android:id="@+id/btnFinalizar"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Finalizar Pedido"/>
+
 </LinearLayout>

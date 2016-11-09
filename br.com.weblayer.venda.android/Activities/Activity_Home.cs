@@ -2,14 +2,12 @@
 using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
-using System;
 using br.com.weblayer.venda.android.Activities;
 using Android.Views;
-using Android.Content;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(Label = "Home", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Home", MainLauncher = false, Icon = "@drawable/icon")]
     public class MainActivity : Activity_Base
     {
         private List<string> ItensLista;
