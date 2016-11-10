@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:layout_gravity="center_vertical">
-  
+
   <TextView
      android:id="@+id/lblCodigoPedido"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
+     android:layout_alignParentTop ="true"
      android:text="Id_Código"/>
 
   <EditText
      android:id="@+id/txtCodigoPedido"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"/>
-  
+
   <TextView
      android:id="@+id/lblIdCliente"
      android:layout_height="wrap_content"
@@ -71,8 +72,8 @@
   <EditText
      android:id="@+id/txtObservacao"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"/> 
-  
+     android:layout_width="match_parent"/>
+
   <Button
      android:id="@+id/btnAdicionar"
      android:layout_height="wrap_content"

@@ -11,7 +11,7 @@ using Android.Widget;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Pedidos", MainLauncher = true)]
+    [Activity(Label = "Pedidos", MainLauncher = false)]
     public class Activity_Pedidos : Activity_Base
     {
         private EditText id_Codigo;
@@ -29,7 +29,6 @@ namespace br.com.weblayer.venda.android.Activities
             SetContentView(Resource.Layout.Activity_Pedidos);
 
             //TODO: Desabilitar botão finalizar pedido se faltarem dados
-
             FindViews();
             BindViews();
         }
@@ -48,6 +47,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindViews()
         {
+            Valor_Total.Text = "0";
             btnAdicionar.Click += BtnAdicionar_Click;
             btnFinalizar.Click += BtnFinalizar_Click;
         }

@@ -6,4 +6,79 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:layout_gravity="center_vertical">
+
+  <TextView
+     android:id="@+id/lblIdPedido"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Id_Pedido"/>
+
+  <EditText
+     android:id="@+id/txtIdPedido"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblIdProduto"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:focusable="false"
+     android:text="Id_Produto"/>
+
+  <EditText
+     android:id="@+id/txtIdProduto"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblValorItem"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Valor Item"/>
+
+  <EditText
+     android:id="@+id/txtValorItem"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblQuantidade"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Quantidade"/>
+
+  <EditText
+     android:id="@+id/txtQuantidade"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <TextView
+     android:id="@+id/lblValorTotal"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Valor Total"/>
+
+  <EditText
+     android:id="@+id/txtValorTotal"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"/>
+
+  <Button
+     android:id="@+id/btnCancelar"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Cancelar"/>
+
+  <Button
+     android:id="@+id/btnAdicionarOutro"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Adicionar"/>
+
+  <Button
+     android:id="@+id/btnFinalizarPedidoItem"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:text="Finalizar"/>
+  
 </LinearLayout>

@@ -7,7 +7,7 @@ using Android.Views;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(Label = "Home", MainLauncher = false, Icon = "@drawable/icon")]
+    [Activity(Label = "Home", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity_Base
     {
         private List<string> ItensLista;

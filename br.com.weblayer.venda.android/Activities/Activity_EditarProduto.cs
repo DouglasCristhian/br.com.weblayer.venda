@@ -20,7 +20,7 @@ namespace br.com.weblayer.venda.android.Fragments
         private string spinValor;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
-     //   private List<string> mItems;
+        //private List<string> mItems;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,11 +36,6 @@ namespace br.com.weblayer.venda.android.Fragments
             {
                 prod = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonnota);
             }
-
-           /* mItems = new List<string>(3);
-            mItems.Add("CX");
-            mItems.Add("PCT");
-            mItems.Add("UN");*/
 
             FindViews();
             Spinner();
@@ -71,6 +66,9 @@ namespace br.com.weblayer.venda.android.Fragments
 
         private void Spinner()
         {
+            //TODO: Retornar valor escolhido no momento da reinicialização do spinner
+
+
             //SpinnerListAdapter adapter = new SpinnerListAdapter(this, mItems);
 
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
@@ -132,7 +130,6 @@ namespace br.com.weblayer.venda.android.Fragments
             prod.ds_Nome = txtNomeProd.Text;
             prod.id_TabPreco = txtTabelaPrecoProd.Text;
             prod.ds_UniMedida = spinValor;
-
         }
 
         private bool ValidateViews()

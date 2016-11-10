@@ -14,13 +14,13 @@ using SQLite;
 namespace br.com.weblayer.venda.core.Model
 {
     [Table("Produto")]
-    public class Produto 
+    public class Produto
     {
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
         [MaxLength(12), NotNull]
-        public string id_Codigo { get; set;}
+        public string id_Codigo { get; set; }
 
         [MaxLength(200), NotNull]
         public string ds_Nome { get; set; }
@@ -30,5 +30,7 @@ namespace br.com.weblayer.venda.core.Model
 
         [MaxLength(20), NotNull]
         public string id_TabPreco { get; set; }
+
+        public double ds_ValorProduto {get; set;}
     }
 }

@@ -44,7 +44,5 @@ namespace br.com.weblayer.venda.core.Bll
 
             Mensagem = $"Produto {obj.ds_Nome} excluído com sucesso";
         }
-
-
     }
 }
