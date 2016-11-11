@@ -81,6 +81,7 @@
     <Compile Include="Activities\Activity_EditarTabelaPreco.cs" />
     <Compile Include="Activities\Activity_PedidoItem.cs" />
     <Compile Include="Activities\Activity_PedidoProduto.cs" />
+    <Compile Include="Activities\Activity_EditarPedidos.cs" />
     <Compile Include="Activities\Activity_Pedidos.cs" />
     <Compile Include="Activities\Activity_TabelaPrecos.cs" />
     <Compile Include="Activities\Activity_Clientes.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Activity_Produtos.cs" />
     <Compile Include="Adapters\Adapter_Cliente_ListView.cs" />
+    <Compile Include="Adapters\Adapter_PedidoItem_ListView.cs" />
     <Compile Include="Adapters\Adapter_Produtos_ListView.cs" />
     <Compile Include="Activities\Activity_EditarProduto.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
@@ -122,7 +124,7 @@
     <AndroidResource Include="Resources\layout\Activity_Clientes.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Activity_Pedidos.xml" />
+    <AndroidResource Include="Resources\layout\Activity_EditarPedidos.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_TabelaPrecos.xml" />
@@ -201,6 +203,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_PedidoProduto.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_Pedido.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Adapter_PedidoItem_ListView.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

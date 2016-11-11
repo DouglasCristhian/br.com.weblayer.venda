@@ -162,7 +162,7 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\v
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\icon.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_produtos.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_clientes.xml
-D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_pedidos.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_editarpedidos.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_tabelaprecos.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_editarproduto.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\adapter_produtos_listview.xml
@@ -185,6 +185,8 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\l
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\spinnerlistadapter.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_pedidoitem.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_pedidoproduto.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_pedido.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\adapter_pedidoitem_listview.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\R.cs.flag
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\uploadflags.txt
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\bin\Debug\br.com.weblayer.venda.android.dll.mdb

@@ -16,7 +16,7 @@ namespace br.com.weblayer.venda.core.Bll
 
         public void Save(Pedido obj)
         {
-            var erros = "";
+           /* var erros = "";
 
             //regras....
             if (obj.id_Codigo.Length < 2)
@@ -28,12 +28,12 @@ namespace br.com.weblayer.venda.core.Bll
             //TODO: Devidas exceções
 
             if (erros.Length > 0)
-                throw new Exception(erros);
+                throw new Exception(erros);*/
 
             var Repository = new PedidoRepository();
             Repository.Save(obj);
 
-            Mensagem = $"Pedido {obj.id_Codigo} atualizado com sucesso";
+            //Mensagem = $"Pedido {obj.id_Codigo} atualizado com sucesso";
         }
 
         public void Delete(Pedido obj)
