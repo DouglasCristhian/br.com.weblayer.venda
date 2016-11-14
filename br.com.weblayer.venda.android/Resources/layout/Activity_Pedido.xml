@@ -12,7 +12,7 @@
      android:layout_width="match_parent"
      android:hint="Informe o filtro"/>
   <ListView
-     android:id="@+id/listviewPedidoItem"
+     android:id="@+id/listviewPedido"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 </LinearLayout>

@@ -4,6 +4,8 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Android.Text;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -18,6 +20,7 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnCancelar;
         private Button btnAdicionarOutro;
         private Button btnFinalizarPedidoItem;
+        private PedidoItem ped_item;
         private string jsonnotaId;
         private string jsonnotaValor;
         private double go;
@@ -71,6 +74,15 @@ namespace br.com.weblayer.venda.android.Activities
             txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
         }
 
+        private void Clean()
+        {
+            txtIdPedido.Text = "";
+            txtIdProduto.Text = "";
+            txtValorItem.Text = "";
+            txtQuantidadeItem.Text = "";
+            txtValorTotal.Text = "0";
+        }
+
         private void TxtQuantidadeItem_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtQuantidadeItem.Text.Length == 0)
@@ -120,15 +132,71 @@ namespace br.com.weblayer.venda.android.Activities
         private void BtnFinalizarPedidoItem_Click(object sender, EventArgs e)
         {
             Finish();
+            Save();
         }
 
-        private void Clean()
+        private void BindModel()
         {
-            txtIdPedido.Text = "";
-            txtIdProduto.Text = "";
-            txtValorItem.Text = "";
-            txtQuantidadeItem.Text = "";
-            txtValorTotal.Text = "";
+            ped_item = new PedidoItem();
+
+            ped_item.id_pedido = int.Parse(txtIdPedido.Text.ToString());
+            ped_item.id_produto = int.Parse(txtIdProduto.Text);
+            ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
+            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());
+        }
+
+        private void Save()
+        {
+            try
+            {
+                BindModel();
+
+                var ped = new PedidoItem_Manager();
+                ped.Save(ped_item);
+
+                Intent myIntent = new Intent();
+                myIntent.PutExtra("mensagem", ped.Mensagem);
+                SetResult(Result.Ok, myIntent);
+                Toast.MakeText(this, "salvooo", ToastLength.Short).Show();
+                Finish();
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            }
+        }
+
+        private void Delete()
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+            alert.SetTitle("Tem certeza que deseja excluir este produto?");
+            alert.SetNegativeButton("Não!", (senderAlert, args) =>
+            {
+
+            });
+            alert.SetPositiveButton("Sim!", (senderAlert, args) =>
+            {
+                try
+                {
+                    var ped = new PedidoItem_Manager();
+                    ped.Delete(ped_item);
+
+                    Intent myIntent = new Intent();
+                    myIntent.PutExtra("mensagem", ped.Mensagem);
+                    SetResult(Result.Ok, myIntent);
+                    Finish();
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                }
+
+            });
+            RunOnUiThread(() =>
+            {
+                alert.Show();
+            });
         }
     }
 }

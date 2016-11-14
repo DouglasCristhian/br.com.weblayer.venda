@@ -85,7 +85,7 @@ namespace br.com.weblayer.venda.android
                     break;
 
                 case 3:
-                    StartActivity(typeof(Activity_Pedidos));
+                    StartActivity(typeof(Activity_Pedido));
                     break;
 
                 default:

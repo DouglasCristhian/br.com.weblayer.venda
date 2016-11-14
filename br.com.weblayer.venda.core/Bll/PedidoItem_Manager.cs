@@ -23,15 +23,18 @@ namespace br.com.weblayer.venda.core.Bll
             return new PedidoItemRepository().List();
         }
 
-        public void Save(Pedido obj)
+        public void Save(PedidoItem obj)
         {
-
-
-            var Repository = new PedidoRepository();
+            var Repository = new PedidoItemRepository();
             Repository.Save(obj);
-
-
         }
 
+        public void Delete(PedidoItem obj)
+        {
+            var Repository = new PedidoItemRepository();
+            Repository.Delete(obj);
+
+            Mensagem = $"Pedido {obj.id_pedido} excluído com sucesso";
+        }
     }
 }

@@ -12,10 +12,10 @@ using br.com.weblayer.venda.android.Adapters;
 namespace br.com.weblayer.venda.android.Activities
 {
     [Activity(Label = "Activity_Pedidos")]
-    public class Activity_Pedidos : Activity_Base
+    public class Activity_Pedido : Activity_Base
     {
-        private ListView lstViewPedidoItem;
-        private IList<PedidoItem> lstPedidoItem;
+        private ListView lstViewPedido;
+        private IList<Pedido> lstPedido;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,29 +48,29 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FindViews()
         {
-            lstViewPedidoItem = FindViewById<ListView>(Resource.Id.listviewPedidoItem);
+            lstViewPedido = FindViewById<ListView>(Resource.Id.listviewPedido);
         }
 
         private void BindViews()
         {
-            lstViewPedidoItem.ItemClick += LstViewPedidoItem_ItemClick;
+            lstViewPedido.ItemClick += LstViewPedidoItem_ItemClick;
         }
 
         private void FillList()
         {
-            lstPedidoItem = new PedidoItem_Manager().GetPedidoItem();
-            lstViewPedidoItem.Adapter = new Adapter_PedidoItem_ListView(this, lstPedidoItem);
+            lstPedido = new Pedido_Manager().GetPedidos("");
+            lstViewPedido.Adapter = new Adapter_Pedido_ListView(this, lstPedido);
         }
 
         private void LstViewPedidoItem_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var ListViewPedidoItemClick = sender as ListView;
-            var t = lstPedidoItem[e.Position];
+            var t = lstPedido[e.Position];
 
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_EditarPedidos));
 
-            intent.PutExtra("JsonNotaPedidoItem", Newtonsoft.Json.JsonConvert.SerializeObject(t));
+            intent.PutExtra("JsonNotaPedido", Newtonsoft.Json.JsonConvert.SerializeObject(t));
             StartActivityForResult(intent, 0);          
         }
 
@@ -82,7 +82,5 @@ namespace br.com.weblayer.venda.android.Activities
                 FillList();
             }
         }
-
-
     }
 }
