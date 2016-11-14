@@ -94,6 +94,7 @@
     <Compile Include="Activities\Activity_EditarProduto.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
     <Compile Include="Adapters\SpinnerListAdapter.cs" />
+    <Compile Include="Helpers\DatePickerHelper.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

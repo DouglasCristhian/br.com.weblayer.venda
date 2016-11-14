@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.logistica.android.Helpers;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -15,7 +16,7 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtid_Codigo;
         private EditText txtid_Cliente;
         private EditText txtid_Vendedor;
-        private EditText txtDataEmissao;
+        private TextView txtDataEmissao;
         private EditText txtValor_Total;
         private EditText txtObservacao;
         private Button btnAdicionar;
@@ -40,6 +41,7 @@ namespace br.com.weblayer.venda.android.Activities
             
             //TODO: Desabilitar botão finalizar pedido se faltarem dados
             FindViews();
+            BindData();
             BindViews();
         }
 
@@ -64,12 +66,35 @@ namespace br.com.weblayer.venda.android.Activities
             return base.OnOptionsItemSelected(item);
         }
 
+        private void BindData()
+        {
+            btnAdicionar.Click += BtnAdicionar_Click;
+            btnFinalizar.Click += BtnFinalizar_Click1;
+            txtDataEmissao.Click += EventtxtDataEmissao_Click;
+        }
+
+        private void EventtxtDataEmissao_Click(object sender, EventArgs e)
+        {
+            DatePickerHelper frag = DatePickerHelper.NewInstance(delegate (DateTime time)
+            {
+                txtDataEmissao.Text = time.ToShortDateString();
+            });
+
+            frag.Show(FragmentManager, DatePickerHelper.TAG);
+        }
+
+        private void BtnFinalizar_Click1(object sender, EventArgs e)
+        {
+            Save();
+            Finish();
+        }
+
         private void FindViews()
         {
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
             txtid_Cliente = FindViewById<EditText>(Resource.Id.txtIdCliente);
             txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
-            txtDataEmissao = FindViewById<EditText>(Resource.Id.txtDataEmissao);
+            txtDataEmissao = FindViewById<TextView>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<EditText>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
@@ -78,15 +103,15 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindViews()
         {
-            if (pedidoitem == null)
+            if (pedido == null)
                 return;
 
             txtid_Codigo.Text = pedidoitem.id_pedido.ToString();
-            //txtid_Vendedor.Text = pedido.id_vendedor.ToString();
-            //txtid_Cliente.Text = pedido.id_cliente.ToString();
+            txtid_Vendedor.Text = pedido.id_vendedor.ToString();
+            txtid_Cliente.Text = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedidoitem.vl_item.ToString();
-           // txtDataEmissao.Text = pedido.dt_emissao.ToString();
-           // txtObservacao.Text = pedido.ds_observacao.ToString();         
+            txtDataEmissao.Text = pedido.dt_emissao.ToString();
+            txtObservacao.Text = pedido.ds_observacao.ToString();         
         }
 
         private void BindModel()
@@ -97,8 +122,8 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.id_Codigo = txtid_Codigo.Text;
             pedido.id_vendedor = txtid_Vendedor.Text;
             pedido.id_cliente = txtid_Cliente.Text;
-           // pedido.vl_total = double.Parse(txtValor_Total.ToString());
-         //   pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
+            pedido.vl_total = double.Parse(txtValor_Total.Text);
+            pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
             pedido.ds_observacao = txtObservacao.Text;
         }
 
@@ -110,12 +135,13 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BtnFinalizar_Click(object sender, EventArgs e)
         { 
-            Finish();
+            
+            //Finish();
         }
 
         private void Save()
         {
-            //try
+          //  try
            // {
                 BindModel();
 
@@ -126,11 +152,11 @@ namespace br.com.weblayer.venda.android.Activities
                 myIntent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, myIntent);
                 Finish();
-          //  }
-           // catch (Exception ex)
-           // {
-             //   Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
            // }
+           // catch (Exception ex)
+          //  {
+           //    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+          //  }
         }
 
         private void Delete()

@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.core.Model;
+using Android.Text;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -20,7 +14,7 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtIdProduto;
         private EditText txtValorItem;
         private EditText txtQuantidadeItem;
-        private EditText txtValorTotal;
+        private TextView txtValorTotal;
         private Button btnCancelar;
         private Button btnAdicionarOutro;
         private Button btnFinalizarPedidoItem;
@@ -44,9 +38,10 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 jsonnotaValor = "";
             }
-
+          
             FindViews();
-            BindViews(); 
+            BindData();
+            BindViews();
         }
 
         private void FindViews()
@@ -55,7 +50,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtIdProduto = FindViewById<EditText>(Resource.Id.txtIdProduto);
             txtValorItem = FindViewById<EditText>(Resource.Id.txtValorItem);
             txtQuantidadeItem = FindViewById<EditText>(Resource.Id.txtQuantidade);
-            txtValorTotal = FindViewById<EditText>(Resource.Id.txtValorTotal);
+            txtValorTotal = FindViewById<TextView>(Resource.Id.txtValorTotal);
             btnCancelar = FindViewById<Button>(Resource.Id.btnCancelar);
             btnAdicionarOutro = FindViewById<Button>(Resource.Id.btnAdicionarOutro);
             btnFinalizarPedidoItem = FindViewById<Button>(Resource.Id.btnFinalizarPedidoItem);
@@ -65,15 +60,32 @@ namespace br.com.weblayer.venda.android.Activities
         {
             txtIdProduto.Text = jsonnotaId;
             txtValorItem.Text = jsonnotaValor;
+        }
+
+        private void BindData()
+        {
             btnCancelar.Click += BtnCancelar_Click;
             btnAdicionarOutro.Click += BtnAdicionarOutro_Click;
             btnFinalizarPedidoItem.Click += BtnFinalizarPedidoItem_Click;
             txtIdProduto.Click += TxtIdProduto_Click;
+            txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
         }
 
-        private void TxtQuantidadeItem_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        private void TxtQuantidadeItem_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            if (txtQuantidadeItem.Text.Length == 0)
+            {
+                go = 0;
+            }
+            else if ((txtQuantidadeItem.Text.Length != 0) && (txtValorItem.Text.Length == 0))
+            {
+                go = 0;
+            }
+            else
+            { 
+               go = double.Parse(txtQuantidadeItem.Text.ToString()) * double.Parse(txtValorItem.Text.ToString());
+            }
+            txtValorTotal.Text = go.ToString();
         }
 
         private void TxtIdProduto_Click(object sender, EventArgs e)
@@ -95,16 +107,14 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            txtIdPedido.Text = "";
-            txtIdProduto.Text = "";
-            txtValorItem.Text = "";
-            txtQuantidadeItem.Text = "";
-            txtValorTotal.Text = "";
+            Clean();
+            //CANCELA
         }
 
         private void BtnAdicionarOutro_Click(object sender, EventArgs e)
         {
-
+            Clean();
+            //TODO: SALVAR PEDIDOITEM
         }
 
         private void BtnFinalizarPedidoItem_Click(object sender, EventArgs e)
@@ -112,5 +122,13 @@ namespace br.com.weblayer.venda.android.Activities
             Finish();
         }
 
+        private void Clean()
+        {
+            txtIdPedido.Text = "";
+            txtIdProduto.Text = "";
+            txtValorItem.Text = "";
+            txtQuantidadeItem.Text = "";
+            txtValorTotal.Text = "";
+        }
     }
 }

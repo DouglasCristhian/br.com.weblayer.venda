@@ -39,7 +39,8 @@
   <EditText
      android:id="@+id/txtValorItem"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+     android:layout_width="match_parent"
+     android:inputType="numberDecimal"/>
 
   <TextView
      android:id="@+id/lblQuantidade"
@@ -50,6 +51,7 @@
   <EditText
      android:id="@+id/txtQuantidade"
      android:layout_height="wrap_content"
+     android:inputType="number"
      android:layout_width="match_parent"/>
 
   <TextView
@@ -58,10 +60,12 @@
      android:layout_width="match_parent"
      android:text="Valor Total"/>
 
-  <EditText
+  <TextView
      android:id="@+id/txtValorTotal"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+     android:layout_width="match_parent"
+     android:textAppearance="?android:attr/textAppearanceMedium"
+     android:text = "0"/>
 
   <Button
      android:id="@+id/btnCancelar"
