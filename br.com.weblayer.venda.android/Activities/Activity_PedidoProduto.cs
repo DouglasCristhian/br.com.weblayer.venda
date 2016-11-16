@@ -52,12 +52,10 @@ namespace br.com.weblayer.venda.android.Activities
             var ListViewProdutoClick = sender as ListView;
             var t = lstProdutos[e.Position];
 
-            var intent = new Intent(this, typeof(Activity_PedidoItem));
-            //intent.SetClass(this, typeof(Activity_PedidoItem));
+            Intent intent = new Intent();
             intent.PutExtra("JsonNotaIdProduto", t.id_Codigo);
             intent.PutExtra("JsonNotaValorProduto", t.ds_ValorProduto.ToString());
             SetResult(Result.Ok, intent);
-            StartActivity(intent);
             Finish();
         }
     }

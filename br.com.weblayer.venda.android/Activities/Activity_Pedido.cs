@@ -11,7 +11,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_Pedidos")]
+    [Activity(Label = "Activity_Pedido")]
     public class Activity_Pedido : Activity_Base
     {
         private ListView lstViewPedido;
@@ -38,6 +38,7 @@ namespace br.com.weblayer.venda.android.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_AddProduct:
+                    //Intent para Editarpedidos vazio, aguarda o save para poder repopular a lista.
                     Intent intent = new Intent();
                     intent.SetClass(this, typeof(Activity_EditarPedidos));
                     StartActivityForResult(intent, 0);
@@ -67,9 +68,9 @@ namespace br.com.weblayer.venda.android.Activities
             var ListViewPedidoItemClick = sender as ListView;
             var t = lstPedido[e.Position];
 
+            //Intent para o EditarPedidos já com dados, para editar o pedido. Aguarda retorno do save para atualizar a lista
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_EditarPedidos));
-
             intent.PutExtra("JsonNotaPedido", Newtonsoft.Json.JsonConvert.SerializeObject(t));
             StartActivityForResult(intent, 0);          
         }
@@ -79,6 +80,7 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
+                //Seja novo ou atualizado, se o retorno das intents foi igual a Ok, a lista é repopulada
                 FillList();
             }
         }

@@ -24,6 +24,7 @@ namespace br.com.weblayer.venda.android.Activities
         private string jsonnotaId;
         private string jsonnotaValor;
         private double go;
+        public double montante;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -102,10 +103,11 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void TxtIdProduto_Click(object sender, EventArgs e)
         {
-            Intent myIntent = new Intent();
-            myIntent.SetClass(this, typeof(Activity_PedidoProduto));
-            StartActivityForResult(myIntent, 0);
-            Finish();
+            //Intent para pegar o produto escolhido e trazer para a activity PedidoItem
+            Intent intent = new Intent();
+            intent.SetClass(this, typeof(Activity_PedidoProduto));
+            StartActivityForResult(intent, 0);
+
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -113,7 +115,12 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
-                Toast.MakeText(this, "Chegou", ToastLength.Short).Show();             
+                Toast.MakeText(this, "Chegou", ToastLength.Short).Show();
+
+                jsonnotaId = data.GetStringExtra("JsonNotaIdProduto");
+                jsonnotaValor = data.GetStringExtra("JsonNotaValorProduto");
+
+                BindViews();
             }
         }
 
@@ -125,14 +132,27 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BtnAdicionarOutro_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Save();
+                Toast.MakeText(this, $"Item {txtIdPedido.Text} adicionado ao pedido com sucesso!", ToastLength.Long).Show();
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.ToString(), ToastLength.Short).Show();
+            }
             Clean();
             //TODO: SALVAR PEDIDOITEM
         }
 
         private void BtnFinalizarPedidoItem_Click(object sender, EventArgs e)
         {
+            Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
+            intent.PutExtra("valoritem", montante.ToString());
+            SetResult(Result.Ok, intent);
             Finish();
-            Save();
+
+            //Save();
         }
 
         private void BindModel()
@@ -142,7 +162,7 @@ namespace br.com.weblayer.venda.android.Activities
             ped_item.id_pedido = int.Parse(txtIdPedido.Text.ToString());
             ped_item.id_produto = int.Parse(txtIdProduto.Text);
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
-            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());
+            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());   
         }
 
         private void Save()
@@ -154,12 +174,9 @@ namespace br.com.weblayer.venda.android.Activities
                 var ped = new PedidoItem_Manager();
                 ped.Save(ped_item);
 
-                Intent myIntent = new Intent();
-                myIntent.PutExtra("mensagem", ped.Mensagem);
-                SetResult(Result.Ok, myIntent);
-                Toast.MakeText(this, "salvooo", ToastLength.Short).Show();
-                Finish();
+                montante = montante + double.Parse(txtValorTotal.Text.ToString());
             }
+
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
@@ -182,10 +199,10 @@ namespace br.com.weblayer.venda.android.Activities
                     var ped = new PedidoItem_Manager();
                     ped.Delete(ped_item);
 
-                    Intent myIntent = new Intent();
-                    myIntent.PutExtra("mensagem", ped.Mensagem);
-                    SetResult(Result.Ok, myIntent);
-                    Finish();
+                    Intent intent = new Intent();
+                    intent.PutExtra("mensagem", ped.Mensagem);
+                    SetResult(Result.Ok, intent);
+                   // Finish();
                 }
                 catch (Exception ex)
                 {

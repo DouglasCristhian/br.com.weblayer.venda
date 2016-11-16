@@ -10,7 +10,7 @@ using br.com.weblayer.logistica.android.Helpers;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Pedidos", MainLauncher = false)]
+    [Activity(Label = "Activity_EditarPedidos", MainLauncher = false)]
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
@@ -20,7 +20,7 @@ namespace br.com.weblayer.venda.android.Activities
         private TextView txtValor_Total;
         private EditText txtObservacao;
         private Button btnAdicionar;
-        private Button btnFinalizar;
+        private Button btnFinalizarPedido;
         private Pedido pedido;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,6 +28,7 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_EditarPedidos);
 
+            //Receber o JsonNotaPedido para fazer edição e salvar
             var jsonnota = Intent.GetStringExtra("JsonNotaPedido");
             if (jsonnota == null)
             {
@@ -68,7 +69,7 @@ namespace br.com.weblayer.venda.android.Activities
         private void BindData()
         {
             btnAdicionar.Click += BtnAdicionar_Click;
-            btnFinalizar.Click += BtnFinalizar_Click1;
+            btnFinalizarPedido.Click += BtnFinalizarPedido_Click;
             txtDataEmissao.Click += EventtxtDataEmissao_Click;
         }
 
@@ -81,7 +82,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
-            btnFinalizar = FindViewById<Button>(Resource.Id.btnFinalizar);
+            btnFinalizarPedido = FindViewById<Button>(Resource.Id.btnFinalizar);
         }
 
         private void BindViews()
@@ -142,20 +143,17 @@ namespace br.com.weblayer.venda.android.Activities
             frag.Show(FragmentManager, DatePickerHelper.TAG);
         }
 
-        private void BtnFinalizar_Click1(object sender, EventArgs e)
+        private void BtnFinalizarPedido_Click(object sender, EventArgs e)
         {
             Save();
-            Finish();
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(Activity_PedidoItem));
-        }
-
-        private void BtnFinalizar_Click(object sender, EventArgs e)
-        {            
-            //Finish();
+            //Começa intent para adicionar um novo pedidoitem. Aguarda resultado para trazer o valor do item de volta
+            Intent intent = new Intent();
+            intent.SetClass(this, typeof(Activity_PedidoItem));
+            StartActivityForResult(intent, 0);
         }
 
         private void Save()
@@ -169,9 +167,10 @@ namespace br.com.weblayer.venda.android.Activities
                 var ped = new Pedido_Manager();
                 ped.Save(pedido);
 
-                Intent myIntent = new Intent();
-                myIntent.PutExtra("mensagem", ped.Mensagem);
-                SetResult(Result.Ok, myIntent);
+                //Começa intent para enviar mensagem à Activity anterior (Activity_Pedido)
+                Intent intent = new Intent();
+                intent.PutExtra("mensagem", ped.Mensagem);
+                SetResult(Result.Ok, intent);
                 Finish();
             }
             catch (Exception ex)
@@ -198,9 +197,10 @@ namespace br.com.weblayer.venda.android.Activities
                     var ped = new Pedido_Manager();
                     ped.Delete(pedido);
 
-                    Intent myIntent = new Intent();
-                    myIntent.PutExtra("mensagem", ped.Mensagem);
-                    SetResult(Result.Ok, myIntent);
+                    //Começa intent para enviar mensagem à Activity anterior (Activity_Pedido)
+                    Intent intent = new Intent();
+                    intent.PutExtra("mensagem", ped.Mensagem);
+                    SetResult(Result.Ok, intent);
                     Finish();
                 }
                 catch (Exception ex)
@@ -214,6 +214,18 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 alert.Show();
             });
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {   
+                //Aguarda resultado da Activity_PedidoItem
+                string result = data.GetStringExtra("valoritem");
+                double go = double.Parse(txtValor_Total.Text.ToString()) + double.Parse(result);
+                txtValor_Total.Text = go.ToString();
+            }
         }
     }
 }

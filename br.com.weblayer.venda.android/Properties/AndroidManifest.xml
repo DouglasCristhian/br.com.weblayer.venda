@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.com.weblayer.venda.android" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="23" />
 	<application android:label="w/venda">
-    
-  </application>
+    <activity android:name=".Activity_EditarPedidos" android:launchMode="singleTop" />
+
+    </application>
 </manifest>
