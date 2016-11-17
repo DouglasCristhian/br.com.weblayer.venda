@@ -39,7 +39,6 @@ namespace br.com.weblayer.venda.android.Activities
                 pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonnota);
             }
             
-            //TODO: Desabilitar botão finalizar pedido se faltarem dados
             FindViews();
             BindData();
             BindViews();
@@ -71,6 +70,12 @@ namespace br.com.weblayer.venda.android.Activities
             btnAdicionar.Click += BtnAdicionar_Click;
             btnFinalizarPedido.Click += BtnFinalizarPedido_Click;
             txtDataEmissao.Click += EventtxtDataEmissao_Click;
+            txtValor_Total.Click += TxtValor_Total_Click;
+        }
+
+        private void TxtValor_Total_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(Activity_ProdutosPedidoList));
         }
 
         private void FindViews()

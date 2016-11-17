@@ -12,7 +12,7 @@ namespace br.com.weblayer.venda.android.Activities
     [Activity(Label = "Activity_PedidoItem")]
     public class Activity_PedidoItem : Activity_Base
     {
-        private EditText txtIdPedido;
+        //private EditText txtIdPedido;
         private EditText txtIdProduto;
         private EditText txtValorItem;
         private EditText txtQuantidadeItem;
@@ -23,6 +23,7 @@ namespace br.com.weblayer.venda.android.Activities
         private PedidoItem ped_item;
         private string jsonnotaId;
         private string jsonnotaValor;
+        private string jsonProdutosPedidoList;
         private double go;
         public double montante;
 
@@ -42,7 +43,13 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 jsonnotaValor = "";
             }
-          
+
+            jsonProdutosPedidoList = Intent.GetStringExtra("JsonProdutosPedidoList");
+            if (jsonProdutosPedidoList != null)
+            {
+                ped_item = Newtonsoft.Json.JsonConvert.DeserializeObject<PedidoItem>(jsonProdutosPedidoList);
+            }
+
             FindViews();
             BindData();
             BindViews();
@@ -50,7 +57,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FindViews()
         {
-            txtIdPedido = FindViewById<EditText>(Resource.Id.txtIdPedido);
+            //txtIdPedido = FindViewById<EditText>(Resource.Id.txtIdPedido);
             txtIdProduto = FindViewById<EditText>(Resource.Id.txtIdProduto);
             txtValorItem = FindViewById<EditText>(Resource.Id.txtValorItem);
             txtQuantidadeItem = FindViewById<EditText>(Resource.Id.txtQuantidade);
@@ -64,6 +71,15 @@ namespace br.com.weblayer.venda.android.Activities
         {
             txtIdProduto.Text = jsonnotaId;
             txtValorItem.Text = jsonnotaValor;
+
+            if (ped_item == null)
+                return;
+
+            txtIdProduto.Text = ped_item.id_produto.ToString();
+            txtQuantidadeItem.Text = ped_item.nr_quantidade.ToString();
+            txtValorItem.Text = ped_item.vl_item.ToString();
+            double go = double.Parse(ped_item.nr_quantidade.ToString()) * double.Parse(ped_item.vl_item.ToString());
+            txtValorTotal.Text = go.ToString();
         }
 
         private void BindData()
@@ -77,7 +93,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void Clean()
         {
-            txtIdPedido.Text = "";
+            //txtIdPedido.Text = "";
             txtIdProduto.Text = "";
             txtValorItem.Text = "";
             txtQuantidadeItem.Text = "";
@@ -107,7 +123,6 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoProduto));
             StartActivityForResult(intent, 0);
-
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -127,7 +142,6 @@ namespace br.com.weblayer.venda.android.Activities
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Clean();
-            //CANCELA
         }
 
         private void BtnAdicionarOutro_Click(object sender, EventArgs e)
@@ -135,14 +149,13 @@ namespace br.com.weblayer.venda.android.Activities
             try
             {
                 Save();
-                Toast.MakeText(this, $"Item {txtIdPedido.Text} adicionado ao pedido com sucesso!", ToastLength.Long).Show();
+                Toast.MakeText(this, $"Item {txtIdProduto.Text} adicionado ao pedido com sucesso!", ToastLength.Long).Show();
             }
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.ToString(), ToastLength.Short).Show();
             }
             Clean();
-            //TODO: SALVAR PEDIDOITEM
         }
 
         private void BtnFinalizarPedidoItem_Click(object sender, EventArgs e)
@@ -151,15 +164,13 @@ namespace br.com.weblayer.venda.android.Activities
             intent.PutExtra("valoritem", montante.ToString());
             SetResult(Result.Ok, intent);
             Finish();
-
-            //Save();
         }
 
         private void BindModel()
         {
             ped_item = new PedidoItem();
-
-            ped_item.id_pedido = int.Parse(txtIdPedido.Text.ToString());
+            
+            ped_item.id_pedido = 222;
             ped_item.id_produto = int.Parse(txtIdProduto.Text);
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
             ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());   

@@ -47,10 +47,13 @@
      android:layout_width="match_parent"
      android:text="Valor total"/>
 
-  <EditText
+  <TextView
      android:id="@+id/txtValorTotal"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+     android:layout_width="match_parent"
+     android:textAppearance="?android:attr/textAppearanceMedium"
+     android:clickable="true"
+     android:text="0"/>
 
   <TextView
      android:id="@+id/lblDataEmissao"

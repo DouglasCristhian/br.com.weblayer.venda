@@ -83,6 +83,7 @@
     <Compile Include="Activities\Activity_PedidoProduto.cs" />
     <Compile Include="Activities\Activity_EditarPedidos.cs" />
     <Compile Include="Activities\Activity_Pedido.cs" />
+    <Compile Include="Activities\Activity_ProdutosPedidoList.cs" />
     <Compile Include="Activities\Activity_TabelaPrecos.cs" />
     <Compile Include="Activities\Activity_Clientes.cs" />
     <Compile Include="Activities\Activity_Configuracoes.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Activities\Activity_Produtos.cs" />
     <Compile Include="Adapters\Adapter_Cliente_ListView.cs" />
     <Compile Include="Adapters\Adapter_PedidoItem_ListView.cs" />
+    <Compile Include="Adapters\Adapter_Pedido_ListView.cs" />
     <Compile Include="Adapters\Adapter_Produtos_ListView.cs" />
     <Compile Include="Activities\Activity_EditarProduto.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
@@ -141,7 +143,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Botoes_Home.xml" />
+    <AndroidResource Include="Resources\layout\Botoes_Home.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\search.png" />
@@ -210,6 +214,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Adapter_Pedido_ListView.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Adapter_PedidoItem_ListView.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_ProdutosPedidoList.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,8 +18,10 @@ namespace br.com.weblayer.venda.android.Fragments
         private EditText txtNomeProd;
         private Spinner spinUniMedidaProd;
         private string spinValor;
+        private int spinvalorint;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
+        private string[] unidades_medida;
         //private List<string> mItems;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,8 +39,13 @@ namespace br.com.weblayer.venda.android.Fragments
                 prod = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonnota);
             }
 
+            unidades_medida = new string[]
+            {
+                "CX", "PCT", "UN"
+            };
+            
+
             FindViews();
-            Spinner();
             BindView();
         }
 
@@ -64,49 +71,27 @@ namespace br.com.weblayer.venda.android.Fragments
             return base.OnOptionsItemSelected(item);
         }
 
-        private void Spinner()
-        {
-            //TODO: Retornar valor escolhido no momento da reinicialização do spinner
-
-
-            //SpinnerListAdapter adapter = new SpinnerListAdapter(this, mItems);
-
-            spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
-            var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.unidades_medida, Android.Resource.Layout.SimpleListItem1);
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleDropDownItem1Line);
-           spinUniMedidaProd.Adapter = adapter;
-
-            //adapter3 = adapter3.GetItem(spinValor);
-
-            //spinValor = adapter[position].ToString();
-
-           // spinValor = spinUniMedidaProd.SelectedItem.ToString();
-
-            // SpinUniMedidadeProd.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
-            //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.unidades_medida, Android.Resource.Layout.SimpleSpinnerItem);
-
-            //adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleExpandableListItem1);        
-            // spinUniMedidadeProd.Adapter = adapter;
-        }
-
-        private void spinUnidadeMedidadProd_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        private void spinUnidadeMedidadProd_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
             var spinner = sender as Spinner;
+            // int position = spinner.SelectedItemPosition;
 
-           // int position = spinner.SelectedItemPosition;
-            //string result = spinner[position].ToString();
-
-            spinValor = e.ToString();
-            spinValor = spinUniMedidaProd.SelectedItem.ToString();
+            // spinValor = e.ToString();
+            //spinValor = e.ToString();
+            // spinValor = spinUniMedidaProd.SelectedItem.ToString();
+            //spinValor = spinUniMedidaProd.Id;
+            spinvalorint = spinUniMedidaProd.Id;
         }
 
         private void FindViews() //mapear as variaveis para as views
         {
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
             txtNomeProd = FindViewById<EditText>(Resource.Id.txtNome);
-            spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);          
             txtTabelaPrecoProd = FindViewById<EditText>(Resource.Id.txtTabelaPrecos);
+            spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
+
+            spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
+            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, unidades_medida);
         }
 
         private void BindView() //pegar dados do modelo e atribuir as views
@@ -117,8 +102,9 @@ namespace br.com.weblayer.venda.android.Fragments
             txtCodigoProd.Text = prod.id_Codigo;
             txtNomeProd.Text = prod.ds_Nome;
             txtTabelaPrecoProd.Text = prod.id_TabPreco;
-            spinValor = prod.ds_UniMedida.ToString();
-       
+            spinUniMedidaProd.SetSelection(spinvalorint);
+          //  spinValor = prod.ds_UniMedida.ToString();
+
         }
                 
         private void BindModel()
@@ -129,7 +115,7 @@ namespace br.com.weblayer.venda.android.Fragments
             prod.id_Codigo = txtCodigoProd.Text;
             prod.ds_Nome = txtNomeProd.Text;
             prod.id_TabPreco = txtTabelaPrecoProd.Text;
-            prod.ds_UniMedida = spinValor;
+            prod.ds_UniMedida = spinValor.ToString();
         }
 
         private bool ValidateViews()
