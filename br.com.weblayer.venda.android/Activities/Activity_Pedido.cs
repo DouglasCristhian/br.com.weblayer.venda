@@ -71,7 +71,7 @@ namespace br.com.weblayer.venda.android.Activities
             //Intent para o EditarPedidos já com dados, para editar o pedido. Aguarda retorno do save para atualizar a lista
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_EditarPedidos));
-            intent.PutExtra("JsonNotaPedido", Newtonsoft.Json.JsonConvert.SerializeObject(t));
+            intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(t));
             StartActivityForResult(intent, 0);          
         }
 

@@ -19,22 +19,22 @@ namespace br.com.weblayer.venda.core.Model
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
-        [MaxLength(20), NotNull]
+        [MaxLength(20)]
         public string id_Codigo { get; set; }
 
-        [MaxLength(15), NotNull]
+        [MaxLength(15)]
         public DateTime dt_emissao { get; set; }
 
-        [MaxLength(20), NotNull]
+        [MaxLength(20)]
         public string id_cliente { get; set; }
 
-        [MaxLength(20), NotNull]
+        [MaxLength(20)]
         public string id_vendedor { get; set; }
 
         [MaxLength(20)]
         public double vl_total { get; set; }
 
-        [MaxLength(200), NotNull]
+        [MaxLength(200)]
         public string ds_observacao { get; set; }
     }
 }

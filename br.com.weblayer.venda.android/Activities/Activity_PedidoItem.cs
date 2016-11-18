@@ -12,7 +12,6 @@ namespace br.com.weblayer.venda.android.Activities
     [Activity(Label = "Activity_PedidoItem")]
     public class Activity_PedidoItem : Activity_Base
     {
-        //private EditText txtIdPedido;
         private EditText txtIdProduto;
         private EditText txtValorItem;
         private EditText txtQuantidadeItem;
@@ -24,6 +23,7 @@ namespace br.com.weblayer.venda.android.Activities
         private string jsonnotaId;
         private string jsonnotaValor;
         private string jsonProdutosPedidoList;
+        private string Id_Pedido;
         private double go;
         public double montante;
 
@@ -48,6 +48,12 @@ namespace br.com.weblayer.venda.android.Activities
             if (jsonProdutosPedidoList != null)
             {
                 ped_item = Newtonsoft.Json.JsonConvert.DeserializeObject<PedidoItem>(jsonProdutosPedidoList);
+            }
+
+            Id_Pedido = Intent.GetStringExtra("Id_Pedido");
+            if (Id_Pedido == null)
+            {
+                Id_Pedido = null;
             }
 
             FindViews();
@@ -169,8 +175,8 @@ namespace br.com.weblayer.venda.android.Activities
         private void BindModel()
         {
             ped_item = new PedidoItem();
-            
-            ped_item.id_pedido = 222;
+
+            ped_item.id_pedido = int.Parse(Id_Pedido.ToString());
             ped_item.id_produto = int.Parse(txtIdProduto.Text);
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
             ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());   
@@ -213,7 +219,6 @@ namespace br.com.weblayer.venda.android.Activities
                     Intent intent = new Intent();
                     intent.PutExtra("mensagem", ped.Mensagem);
                     SetResult(Result.Ok, intent);
-                   // Finish();
                 }
                 catch (Exception ex)
                 {

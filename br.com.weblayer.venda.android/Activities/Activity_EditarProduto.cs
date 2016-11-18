@@ -78,9 +78,9 @@ namespace br.com.weblayer.venda.android.Fragments
 
             // spinValor = e.ToString();
             //spinValor = e.ToString();
-            // spinValor = spinUniMedidaProd.SelectedItem.ToString();
+            spinValor = spinUniMedidaProd.SelectedItem.ToString();
             //spinValor = spinUniMedidaProd.Id;
-            spinvalorint = spinUniMedidaProd.Id;
+           // spinvalorint = spinUniMedidaProd.Id;
         }
 
         private void FindViews() //mapear as variaveis para as views
@@ -102,9 +102,7 @@ namespace br.com.weblayer.venda.android.Fragments
             txtCodigoProd.Text = prod.id_Codigo;
             txtNomeProd.Text = prod.ds_Nome;
             txtTabelaPrecoProd.Text = prod.id_TabPreco;
-            spinUniMedidaProd.SetSelection(spinvalorint);
-          //  spinValor = prod.ds_UniMedida.ToString();
-
+            spinValor = prod.ds_UniMedida.ToString();
         }
                 
         private void BindModel()
