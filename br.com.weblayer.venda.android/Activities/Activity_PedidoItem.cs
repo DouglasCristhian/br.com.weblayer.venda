@@ -20,10 +20,11 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnAdicionarOutro;
         private Button btnFinalizarPedidoItem;
         private PedidoItem ped_item;
+        private Pedido pedido;
         private string jsonnotaId;
         private string jsonnotaValor;
         private string jsonProdutosPedidoList;
-        private string Id_Pedido;
+        private string IdPedido;
         private double go;
         public double montante;
 
@@ -50,10 +51,14 @@ namespace br.com.weblayer.venda.android.Activities
                 ped_item = Newtonsoft.Json.JsonConvert.DeserializeObject<PedidoItem>(jsonProdutosPedidoList);
             }
 
-            Id_Pedido = Intent.GetStringExtra("Id_Pedido");
-            if (Id_Pedido == null)
+            IdPedido = Intent.GetStringExtra("Id_Pedido");
+            if (IdPedido == null)
             {
-                Id_Pedido = null;
+                IdPedido = "";
+            }
+            else
+            {
+                Toast.MakeText(this, IdPedido.ToString(), ToastLength.Short).Show();
             }
 
             FindViews();
@@ -63,7 +68,6 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FindViews()
         {
-            //txtIdPedido = FindViewById<EditText>(Resource.Id.txtIdPedido);
             txtIdProduto = FindViewById<EditText>(Resource.Id.txtIdProduto);
             txtValorItem = FindViewById<EditText>(Resource.Id.txtValorItem);
             txtQuantidadeItem = FindViewById<EditText>(Resource.Id.txtQuantidade);
@@ -99,7 +103,6 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void Clean()
         {
-            //txtIdPedido.Text = "";
             txtIdProduto.Text = "";
             txtValorItem.Text = "";
             txtQuantidadeItem.Text = "";
@@ -176,7 +179,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             ped_item = new PedidoItem();
 
-            ped_item.id_pedido = int.Parse(Id_Pedido.ToString());
+            ped_item.id_pedido = int.Parse(IdPedido.ToString());
             ped_item.id_produto = int.Parse(txtIdProduto.Text);
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
             ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());   

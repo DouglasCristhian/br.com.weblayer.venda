@@ -32,10 +32,10 @@ namespace br.com.weblayer.venda.android.Activities
             var jsonnota = Intent.GetStringExtra("JsonPedido");
             if (jsonnota == null)
             {
-                //pedido = null;
-                pedido = new Pedido();
-                var ped = new Pedido_Manager();
-                ped.Save(pedido);
+                pedido = null;
+               // pedido = new Pedido();
+               // var ped = new Pedido_Manager();
+               // ped.Save(pedido);
             }
             else
             {
@@ -154,14 +154,20 @@ namespace br.com.weblayer.venda.android.Activities
         private void BtnFinalizarPedido_Click(object sender, EventArgs e)
         {
             Save();
+            Finish();
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
-        { 
+        {
+            if (!ValidateViews())
+                return;
+
             //Começa intent para adicionar um novo pedidoitem. Aguarda resultado para trazer o valor do item de volta
+            Save();
+
             Intent intent = new Intent();
-            intent.PutExtra("Id_Pedido", pedido.id);
             intent.SetClass(this, typeof(Activity_PedidoItem));
+            intent.PutExtra("Id_Pedido", pedido.id.ToString());
             StartActivityForResult(intent, 0);
         }
 
@@ -180,7 +186,7 @@ namespace br.com.weblayer.venda.android.Activities
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
-                Finish();
+                //Finish();
             }
             catch (Exception ex)
             {
