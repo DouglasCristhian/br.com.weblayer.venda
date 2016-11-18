@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Dal;
+using System.Collections;
 
 namespace br.com.weblayer.venda.core.Bll
 {
@@ -18,8 +19,10 @@ namespace br.com.weblayer.venda.core.Bll
     {
         public string Mensagem;
 
-        public IList<PedidoItem> GetPedidoItem()
+        public IList<PedidoItem> GetPedidoItem(string obj, int id)
         {
+            // List<PedidoItem> filtrado = new PedidoItemRepository().List().Where
+            // return filtrado;
             return new PedidoItemRepository().List();
         }
 
