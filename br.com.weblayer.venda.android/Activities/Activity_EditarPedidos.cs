@@ -77,8 +77,11 @@ namespace br.com.weblayer.venda.android.Activities
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
-        {       
-            StartActivity(typeof(Activity_ProdutosPedidoList));
+        {
+            Intent intent = new Intent();
+            intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
+            intent.PutExtra("Id_Pedido", pedido.id.ToString());
+            StartActivity(intent);
         }
 
         private void FindViews()

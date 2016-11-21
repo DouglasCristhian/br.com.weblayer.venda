@@ -20,9 +20,9 @@ namespace br.com.weblayer.venda.core.Bll
     {
         public string Mensagem;
 
-        public IList<PedidoItem> GetPedidoItem()
+        public IList<PedidoItem> GetPedidoItem(int id_pedido)
         {
-            return new PedidoItemRepository().List();
+            return new PedidoItemRepository().List(id_pedido);
         }
 
         public void Save(PedidoItem obj)

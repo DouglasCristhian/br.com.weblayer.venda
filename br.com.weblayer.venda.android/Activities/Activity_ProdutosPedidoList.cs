@@ -20,15 +20,23 @@ namespace br.com.weblayer.venda.android.Activities
     {
         private ListView lstViewProdutosPedido;
         private IList<PedidoItem> lstPedidoItem;
+        private string IdPedido;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_ProdutosPedidoList);
-                    
+
+            IdPedido = Intent.GetStringExtra("Id_Pedido");
+            if (IdPedido == null)
+                return;
+
             FindViews();
             BindViews();
             FillList();
+
+          
+            
         }
 
         private void FindViews()
@@ -43,7 +51,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FillList()
         {
-            lstPedidoItem = new PedidoItem_Manager().GetPedidoItem();
+            lstPedidoItem = new PedidoItem_Manager().GetPedidoItem(int.Parse(IdPedido));
             lstViewProdutosPedido.Adapter = new Adapter_PedidoItem_ListView(this, lstPedidoItem);
         }
 
