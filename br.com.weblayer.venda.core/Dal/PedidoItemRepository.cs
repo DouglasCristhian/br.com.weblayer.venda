@@ -25,6 +25,10 @@ namespace br.com.weblayer.venda.core.Dal
                     Database.GetConnection().Update(entidade);
                 else
                     Database.GetConnection().Insert(entidade);
+
+                //
+
+
             }
             catch (Exception e)
             {
@@ -42,14 +46,19 @@ namespace br.com.weblayer.venda.core.Dal
             return Database.GetConnection().Table<PedidoItem>().ToList();
         }
 
+        public IList<PedidoItem> List(int id_pedido)
+        {
+            return Database.GetConnection().Table<PedidoItem>().Where(x => x.id_pedido == id_pedido).ToList();
+        }
+
         public void MakeDataMock()
         {
             if (List().Count > 0)
                 return;
 
-            Save(new PedidoItem() { id_pedido = 1, id_produto = 01, nr_quantidade = 5, vl_item = 15.00 });
-            Save(new PedidoItem() { id_pedido = 2, id_produto = 02, nr_quantidade = 6, vl_item = 10.00 });
-            Save(new PedidoItem() { id_pedido = 3, id_produto = 03, nr_quantidade = 7, vl_item = 5.00 });
+            //Save(new PedidoItem() { id_pedido = 1, id_produto = 01, nr_quantidade = 5, vl_item = 15.00 });
+            //Save(new PedidoItem() { id_pedido = 2, id_produto = 02, nr_quantidade = 6, vl_item = 10.00 });
+            //Save(new PedidoItem() { id_pedido = 3, id_produto = 03, nr_quantidade = 7, vl_item = 5.00 });
         }
     }
 }

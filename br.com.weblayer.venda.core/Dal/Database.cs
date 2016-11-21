@@ -41,8 +41,9 @@ namespace br.com.weblayer.venda.core.Dal
             new ProdutoRepository().MakeDataMock();
             new TabelaPrecoRepository().MakeDataMock();
             new ClienteRepository().MakeDataMock();
-            new PedidoItemRepository().MakeDataMock();
             new PedidoRepository().MakeDataMock();
+            //new PedidoItemRepository().MakeDataMock();
+
         } 
 
         private static void CreateDatabase(SQLiteConnection connection)

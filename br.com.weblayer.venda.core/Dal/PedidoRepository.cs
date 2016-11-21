@@ -25,6 +25,9 @@ namespace br.com.weblayer.venda.core.Dal
                     Database.GetConnection().Update(entidade);
                 else
                     Database.GetConnection().Insert(entidade);
+
+                //Somar os itens e atualizar dados da capa...
+
             }
             catch (Exception e)
             {
