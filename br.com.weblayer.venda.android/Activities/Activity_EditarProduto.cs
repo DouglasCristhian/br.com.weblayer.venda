@@ -8,6 +8,7 @@ using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
 using Android.Content;
 using static Android.Widget.AdapterView;
+using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -74,13 +75,7 @@ namespace br.com.weblayer.venda.android.Fragments
         private void spinUnidadeMedidadProd_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
             var spinner = sender as Spinner;
-            // int position = spinner.SelectedItemPosition;
-
-            // spinValor = e.ToString();
-            //spinValor = e.ToString();
             spinValor = spinUniMedidaProd.SelectedItem.ToString();
-            //spinValor = spinUniMedidaProd.Id;
-           // spinvalorint = spinUniMedidaProd.Id;
         }
 
         private void FindViews() //mapear as variaveis para as views
@@ -91,7 +86,7 @@ namespace br.com.weblayer.venda.android.Fragments
             spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
 
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
-            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, unidades_medida);
+            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, unidades_medida);
         }
 
         private void BindView() //pegar dados do modelo e atribuir as views

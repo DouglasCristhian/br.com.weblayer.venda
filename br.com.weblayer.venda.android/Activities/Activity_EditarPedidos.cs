@@ -77,8 +77,7 @@ namespace br.com.weblayer.venda.android.Activities
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
-        {
-           // PedidoItem pedidoitem = new PedidoItem_Manager().GetPedidoItem(pedido, pedido.id);
+        {       
             StartActivity(typeof(Activity_ProdutosPedidoList));
         }
 

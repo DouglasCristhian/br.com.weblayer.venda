@@ -25,7 +25,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_ProdutosPedidoList);
-
+                    
             FindViews();
             BindViews();
             FillList();
