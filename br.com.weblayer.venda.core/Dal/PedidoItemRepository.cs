@@ -21,13 +21,16 @@ namespace br.com.weblayer.venda.core.Dal
         {
             try
             {
+                var pedidorepo = new PedidoRepository();
+                var pedido = pedidorepo.Get(entidade.id_pedido);
+                double valor = entidade.nr_quantidade * entidade.vl_item;
+                pedido.vl_total += valor;
+                pedidorepo.Save(pedido); //atualizar o total do item...
+
                 if (entidade.id > 0)
                     Database.GetConnection().Update(entidade);
                 else
                     Database.GetConnection().Insert(entidade);
-
-                //
-
 
             }
             catch (Exception e)
@@ -39,6 +42,11 @@ namespace br.com.weblayer.venda.core.Dal
         public void Delete(PedidoItem entidade)
         {
             Database.GetConnection().Delete(entidade);
+
+            var pedidorepo = new PedidoRepository();
+            var pedido = pedidorepo.Get(entidade.id_pedido);
+            pedidorepo.Save(pedido); //atualizar o total do item...
+
         }
 
         public IList<PedidoItem> List()
@@ -56,9 +64,9 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            //Save(new PedidoItem() { id_pedido = 1, id_produto = 01, nr_quantidade = 5, vl_item = 15.00 });
-            //Save(new PedidoItem() { id_pedido = 2, id_produto = 02, nr_quantidade = 6, vl_item = 10.00 });
-            //Save(new PedidoItem() { id_pedido = 3, id_produto = 03, nr_quantidade = 7, vl_item = 5.00 });
+            Save(new PedidoItem() { id_pedido = 1, id_produto = 01, nr_quantidade = 5, vl_item = 15.00 });
+            Save(new PedidoItem() { id_pedido = 2, id_produto = 02, nr_quantidade = 6, vl_item = 10.00 });
+            Save(new PedidoItem() { id_pedido = 3, id_produto = 03, nr_quantidade = 7, vl_item = 5.00 });
         }
     }
 }

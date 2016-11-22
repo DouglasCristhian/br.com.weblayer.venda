@@ -20,7 +20,6 @@ namespace br.com.weblayer.venda.android.Activities
         private TextView txtValor_Total;
         private EditText txtObservacao;
         private Button btnAdicionar;
-        private Button btnFinalizarPedido;
         private Pedido pedido;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -59,6 +58,8 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 case Resource.Id.action_salvar:
                     Save();
+                    Finish();
+                    Toast.MakeText(this, "Pedido atualizado com sucesso!",ToastLength.Short).Show();
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -71,7 +72,6 @@ namespace br.com.weblayer.venda.android.Activities
         private void BindData()
         {
             btnAdicionar.Click += BtnAdicionar_Click;
-            btnFinalizarPedido.Click += BtnFinalizarPedido_Click;
             txtDataEmissao.Click += EventtxtDataEmissao_Click;
             txtValor_Total.Click += TxtValor_Total_Click;
         }
@@ -81,7 +81,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
             intent.PutExtra("Id_Pedido", pedido.id.ToString());
-            StartActivity(intent);
+            StartActivityForResult(intent, 0);
         }
 
         private void FindViews()
@@ -93,7 +93,6 @@ namespace br.com.weblayer.venda.android.Activities
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
-            btnFinalizarPedido = FindViewById<Button>(Resource.Id.btnFinalizar);
         }
 
         private void BindViews()
@@ -117,7 +116,6 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.id_Codigo = txtid_Codigo.Text;
             pedido.id_vendedor = txtid_Vendedor.Text;
             pedido.id_cliente = txtid_Cliente.Text;
-            pedido.vl_total = double.Parse(txtValor_Total.Text);
             pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
             pedido.ds_observacao = txtObservacao.Text;
         }
@@ -154,12 +152,6 @@ namespace br.com.weblayer.venda.android.Activities
             frag.Show(FragmentManager, DatePickerHelper.TAG);
         }
 
-        private void BtnFinalizarPedido_Click(object sender, EventArgs e)
-        {
-            Save();
-            Finish();
-        }
-
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
             if (!ValidateViews())
@@ -171,6 +163,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
             intent.PutExtra("Id_Pedido", pedido.id.ToString());
+            intent.PutExtra("Operacao", "Adicionar");
             StartActivityForResult(intent, 0);
         }
 
@@ -189,7 +182,6 @@ namespace br.com.weblayer.venda.android.Activities
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
-                //Finish();
             }
             catch (Exception ex)
             {
@@ -238,11 +230,16 @@ namespace br.com.weblayer.venda.android.Activities
         {
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
-            {   
-                //Aguarda resultado da Activity_PedidoItem
-                string result = data.GetStringExtra("valoritem");
-                double go = double.Parse(txtValor_Total.Text.ToString()) + double.Parse(result);
-                txtValor_Total.Text = go.ToString();
+            {
+                //Atualizar o obj de pedido
+                pedido = new Pedido_Manager().Get(pedido.id);
+                BindViews();
+            }
+
+            if (resultCode == Result.FirstUser)
+            {
+
+                Toast.MakeText(this, "Olá!", ToastLength.Short).Show();
             }
         }
     }

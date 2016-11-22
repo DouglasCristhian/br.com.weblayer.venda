@@ -15,18 +15,45 @@ namespace br.com.weblayer.venda.core.Dal
 {
     public class PedidoRepository 
     {
+        private double vl_totalitens;
+
         public string Mensage { get; set; }
+
+        public Pedido Get(int id)
+        {
+            return Database.GetConnection().Table<Pedido>().Where(x => x.id == id).FirstOrDefault();
+        }
 
         public void Save(Pedido entidade)
         {
             try
             {
                 if (entidade.id > 0)
-                    Database.GetConnection().Update(entidade);
-                else
-                    Database.GetConnection().Insert(entidade);
+                {
+                    var repoitem = new PedidoItemRepository();
+                    var itens = repoitem.List(entidade.id);
+                    foreach (var item in itens)
+                    vl_totalitens += item.nr_quantidade * item.vl_item;
 
-                //Somar os itens e atualizar dados da capa...
+                    //entidade.vl_total = vl_totalitens;
+                    Database.GetConnection().Update(entidade);
+                }
+                else
+                {
+                    Database.GetConnection().Insert(entidade);
+                }
+                    
+
+                //Somar o valor total dos itens**************************
+                //var repoitem = new PedidoItemRepository();
+                //var itens = repoitem.List(entidade.id);
+                //foreach (var item in itens)
+                //    vl_totalitens += item.nr_quantidade * item.vl_item;
+
+                //entidade.vl_total = vl_totalitens;
+                //*********************************************************
+
+
 
             }
             catch (Exception e)
@@ -38,6 +65,14 @@ namespace br.com.weblayer.venda.core.Dal
         public void Delete(Pedido entidade)
         {
             Database.GetConnection().Delete(entidade);
+
+            var repoitem = new PedidoItemRepository();
+
+            //Listando os itens e excluindo....
+            var itens = repoitem.List(entidade.id);
+            foreach (var item in itens)
+                repoitem.Delete(item);
+
         }
 
         public IList<Pedido> List()

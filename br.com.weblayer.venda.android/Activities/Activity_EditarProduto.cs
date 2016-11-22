@@ -19,11 +19,9 @@ namespace br.com.weblayer.venda.android.Fragments
         private EditText txtNomeProd;
         private Spinner spinUniMedidaProd;
         private string spinValor;
-        private int spinvalorint;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
         private string[] unidades_medida;
-        //private List<string> mItems;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

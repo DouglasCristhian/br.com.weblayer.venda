@@ -54,7 +54,7 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_PedidoItem_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtIdProdutoPedidoItem).Text = "Código Produto: " + mItems[position].id_produto.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtIdProdutoPedidoItem).Text = "Produto: " + mItems[position].id_produto.ToString();
             row.FindViewById<TextView>(Resource.Id.txtValorPedidoItem).Text = "Valor Item: R$" + mItems[position].vl_item.ToString();
             row.FindViewById<TextView>(Resource.Id.txtQuantidadePedidoItem).Text = "Quantidade Item: " + mItems[position].nr_quantidade.ToString();
             double go = double.Parse(mItems[position].nr_quantidade.ToString()) * double.Parse(mItems[position].vl_item.ToString());

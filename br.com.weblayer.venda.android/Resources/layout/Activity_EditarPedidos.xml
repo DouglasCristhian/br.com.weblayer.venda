@@ -84,10 +84,4 @@
      android:layout_width="match_parent"
      android:text="Adicionar Produtos"/>
 
-  <Button
-     android:id="@+id/btnFinalizar"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Finalizar Pedido"/>
-
 </LinearLayout>

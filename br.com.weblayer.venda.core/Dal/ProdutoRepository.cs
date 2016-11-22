@@ -17,6 +17,12 @@ namespace br.com.weblayer.venda.core.Dal
     {
         public string Mensage { get; set; }
 
+        public Produto Get(int id)
+        {
+            return Database.GetConnection().Table<Produto>().Where(x => x.id == id).FirstOrDefault();
+        }
+
+
         public void Save(Produto entidade)
         {
 

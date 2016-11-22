@@ -17,6 +17,11 @@ namespace br.com.weblayer.venda.core.Dal
     {
         public string Mensage { get; set; }
 
+        public TabelaPreco Get(int id)
+        {
+            return Database.GetConnection().Table<TabelaPreco>().Where(x => x.id == id).FirstOrDefault();
+        }
+
         public void Save(TabelaPreco entidade)
         {
 

@@ -42,7 +42,7 @@ namespace br.com.weblayer.venda.core.Dal
             new TabelaPrecoRepository().MakeDataMock();
             new ClienteRepository().MakeDataMock();
             new PedidoRepository().MakeDataMock();
-            //new PedidoItemRepository().MakeDataMock();
+          //  new PedidoItemRepository().MakeDataMock();
 
         } 
 

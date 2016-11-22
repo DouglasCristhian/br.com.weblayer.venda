@@ -33,10 +33,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             FindViews();
             BindViews();
-            FillList();
-
-          
-            
+            FillList();       
         }
 
         private void FindViews()
@@ -52,7 +49,12 @@ namespace br.com.weblayer.venda.android.Activities
         private void FillList()
         {
             lstPedidoItem = new PedidoItem_Manager().GetPedidoItem(int.Parse(IdPedido));
-            lstViewProdutosPedido.Adapter = new Adapter_PedidoItem_ListView(this, lstPedidoItem);
+            if (lstPedidoItem.Count == 0)
+            {
+                Finish();
+            }
+            else
+                lstViewProdutosPedido.Adapter = new Adapter_PedidoItem_ListView(this, lstPedidoItem);
         }
 
         private void LstViewProdutosPedido_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -63,6 +65,8 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
             intent.PutExtra("JsonProdutosPedidoList", Newtonsoft.Json.JsonConvert.SerializeObject(t));
+            intent.PutExtra("Id_Pedido", t.id_pedido.ToString());
+            intent.PutExtra("Operacao", "Atualizar");
             StartActivityForResult(intent, 0);
         }
 
@@ -70,8 +74,11 @@ namespace br.com.weblayer.venda.android.Activities
         {
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
-            {
+            {                
                 FillList();
+                Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
+                SetResult(Result.FirstUser, intent);
+
             }
         }
     }
