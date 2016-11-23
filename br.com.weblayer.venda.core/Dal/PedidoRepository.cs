@@ -30,31 +30,18 @@ namespace br.com.weblayer.venda.core.Dal
             {
                 if (entidade.id > 0)
                 {
-                    //var repoitem = new PedidoItemRepository();
-                    //var itens = repoitem.List(entidade.id);
-                    //foreach (var item in itens)
-                    //vl_totalitens += item.nr_quantidade * item.vl_item;
+                    var repoitem = new PedidoItemRepository();
+                    var itens = repoitem.List(entidade.id);
+                    foreach (var item in itens)
+                        vl_totalitens += item.nr_quantidade * item.vl_item;
 
-                    //entidade.vl_total = vl_totalitens;
+                    entidade.vl_total = vl_totalitens;
                     Database.GetConnection().Update(entidade);
                 }
                 else
                 {
                     Database.GetConnection().Insert(entidade);
                 }
-                    
-
-                //Somar o valor total dos itens**************************
-                //var repoitem = new PedidoItemRepository();
-                //var itens = repoitem.List(entidade.id);
-                //foreach (var item in itens)
-                //    vl_totalitens += item.nr_quantidade * item.vl_item;
-
-                //entidade.vl_total = vl_totalitens;
-                //*********************************************************
-
-
-
             }
             catch (Exception e)
             {
@@ -64,7 +51,7 @@ namespace br.com.weblayer.venda.core.Dal
 
         public void Delete(Pedido entidade)
         {
-            Database.GetConnection().Delete(entidade);
+           // Database.GetConnection().Delete(entidade);
 
             var repoitem = new PedidoItemRepository();
 
@@ -72,6 +59,8 @@ namespace br.com.weblayer.venda.core.Dal
             var itens = repoitem.List(entidade.id);
             foreach (var item in itens)
                 repoitem.Delete(item);
+
+            Database.GetConnection().Delete(entidade);
 
         }
 

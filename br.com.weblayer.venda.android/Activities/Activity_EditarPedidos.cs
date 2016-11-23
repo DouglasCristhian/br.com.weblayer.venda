@@ -202,8 +202,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             alert.SetPositiveButton("Sim!", (senderAlert, args) =>
             {
-                try
-                {
+              //  try
+               // {
                     var ped = new Pedido_Manager();
                     ped.Delete(pedido);
 
@@ -212,11 +212,11 @@ namespace br.com.weblayer.venda.android.Activities
                     intent.PutExtra("mensagem", ped.Mensagem);
                     SetResult(Result.Ok, intent);
                     Finish();
-                }
-                catch (Exception ex)
-                {
-                    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                //}
 
             });
 

@@ -21,16 +21,15 @@ namespace br.com.weblayer.venda.core.Dal
         {
             try
             {
-                var pedidorepo = new PedidoRepository();
-                var pedido = pedidorepo.Get(entidade.id_pedido);
-                double valor = entidade.nr_quantidade * entidade.vl_item;
-                pedido.vl_total += valor;
-                pedidorepo.Save(pedido); //atualizar o total do item...
-
                 if (entidade.id > 0)
-                    Database.GetConnection().Update(entidade);
+                    Database.GetConnection().Update(entidade);                    
                 else
                     Database.GetConnection().Insert(entidade);
+
+                var pedidorepo = new PedidoRepository();
+                var pedido = pedidorepo.Get(entidade.id_pedido);
+                pedidorepo.Save(pedido); //atualizar o total do item...
+
 
             }
             catch (Exception e)
