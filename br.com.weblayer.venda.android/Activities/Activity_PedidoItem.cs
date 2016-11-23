@@ -300,6 +300,7 @@ namespace br.com.weblayer.venda.android.Activities
 
                 var ped = new PedidoItem_Manager();
                 ped.Save(ped_item);
+
                // Finish();
 
             }
@@ -324,7 +325,6 @@ namespace br.com.weblayer.venda.android.Activities
                 try
                 {
                     var ped = new PedidoItem_Manager();
-
 
                     Intent intent = new Intent();
                     intent.PutExtra("mensagem", ped.Mensagem);

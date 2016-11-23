@@ -51,6 +51,8 @@ namespace br.com.weblayer.venda.android.Activities
             lstPedidoItem = new PedidoItem_Manager().GetPedidoItem(int.Parse(IdPedido));
             if (lstPedidoItem.Count == 0)
             {
+                Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
+                SetResult(Result.Ok, intent);
                 Finish();
             }
             else
@@ -77,7 +79,7 @@ namespace br.com.weblayer.venda.android.Activities
             {                
                 FillList();
                 Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
-                SetResult(Result.FirstUser, intent);
+                SetResult(Result.Ok, intent);
 
             }
         }

@@ -235,12 +235,6 @@ namespace br.com.weblayer.venda.android.Activities
                 pedido = new Pedido_Manager().Get(pedido.id);
                 BindViews();
             }
-
-            if (resultCode == Result.FirstUser)
-            {
-
-                Toast.MakeText(this, "Olá!", ToastLength.Short).Show();
-            }
         }
     }
 }
