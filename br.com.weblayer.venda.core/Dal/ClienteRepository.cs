@@ -17,6 +17,12 @@ namespace br.com.weblayer.venda.core.Dal
     {
         public string Mensage { get; set; }
 
+        public IList<Cliente> GetBytabPreco(int id_tabpreco)
+        {
+            return Database.GetConnection().Table<Cliente>().Where(x => x.id_TabelaPreco == id_tabpreco).ToList();
+            //return Database.GetConnection().Table<Cliente>().ToList();
+        }
+
         public void Save(Cliente entidade)
         {
             try
@@ -49,10 +55,8 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            Save(new Cliente() { id_Codigo = "1", ds_NomeFantasia = "UNITY SISTEMAS", ds_RazaoSocial = "XPTO SOFTWARE", ds_Cnpj = "456824535" });
-            Save(new Cliente() { id_Codigo = "2", ds_NomeFantasia = "INVISIBLE TUCS", ds_RazaoSocial = "TPA ONIX", ds_Cnpj = "564545787" });
-            Save(new Cliente() { id_Codigo = "3", ds_NomeFantasia = "ALPHA BETA", ds_RazaoSocial = "HARDWARES CPO", ds_Cnpj = "5487646" });
-            Save(new Cliente() { id_Codigo = "4", ds_NomeFantasia = "ECONÔMICO", ds_RazaoSocial = "LA DOS SANTOS", ds_Cnpj = "5452462" });
+            Save(new Cliente() { id_Codigo = "1", ds_NomeFantasia = "UNITY SISTEMAS", ds_RazaoSocial = "XPTO SOFTWARE", ds_Cnpj = "456824535", id_TabelaPreco = 11});
+            Save(new Cliente() { id_Codigo = "2", ds_NomeFantasia = "INVISIBLE TUCS", ds_RazaoSocial = "TPA ONIX", ds_Cnpj = "564545787", id_TabelaPreco = 22 });       
         }
     }
 }

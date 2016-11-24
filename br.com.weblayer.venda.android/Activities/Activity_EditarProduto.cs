@@ -8,7 +8,6 @@ using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
 using Android.Content;
 using static Android.Widget.AdapterView;
-using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -18,10 +17,10 @@ namespace br.com.weblayer.venda.android.Fragments
         private EditText txtCodigoProd;
         private EditText txtNomeProd;
         private Spinner spinUniMedidaProd;
-        private string spinValor;
         private EditText txtTabelaPrecoProd;
         private Produto prod;
         private string[] unidades_medida;
+        private string spinValor;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,9 +42,10 @@ namespace br.com.weblayer.venda.android.Fragments
                 "CX", "PCT", "UN"
             };
             
-
             FindViews();
             BindView();
+
+            spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_UniMedida));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -70,12 +70,6 @@ namespace br.com.weblayer.venda.android.Fragments
             return base.OnOptionsItemSelected(item);
         }
 
-        private void spinUnidadeMedidadProd_ItemSelected(object sender, ItemSelectedEventArgs e)
-        {
-            var spinner = sender as Spinner;
-            spinValor = spinUniMedidaProd.SelectedItem.ToString();
-        }
-
         private void FindViews() //mapear as variaveis para as views
         {
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
@@ -90,14 +84,14 @@ namespace br.com.weblayer.venda.android.Fragments
         private void BindView() //pegar dados do modelo e atribuir as views
         {
             if (prod == null)
-                return;       
+                return;
 
             txtCodigoProd.Text = prod.id_Codigo;
             txtNomeProd.Text = prod.ds_Nome;
             txtTabelaPrecoProd.Text = prod.id_TabPreco;
             spinValor = prod.ds_UniMedida.ToString();
         }
-                
+
         private void BindModel()
         {
             if (prod == null)
@@ -132,6 +126,27 @@ namespace br.com.weblayer.venda.android.Fragments
             }
 
             return validacao;
+        }
+
+        private void spinUnidadeMedidadProd_ItemSelected(object sender, ItemSelectedEventArgs e)
+        {
+            var spinner = sender as Spinner;
+            spinValor = spinUniMedidaProd.SelectedItem.ToString();
+        }
+
+        private int getIndex(Spinner spinner, string myString)
+        {
+            int index = 0;
+
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
 
         private void Save()

@@ -63,4 +63,16 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:text=""/>
+
+  <TextView
+    android:id="@+id/lblSpinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Tabela de Precos"/>
+  
+  <Spinner
+    android:id="@+id/spinnerTblPrecos"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Mas gente"/>
 </LinearLayout>

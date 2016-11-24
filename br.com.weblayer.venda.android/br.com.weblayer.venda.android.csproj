@@ -89,6 +89,7 @@
     <Compile Include="Activities\Activity_Configuracoes.cs" />
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Activity_Produtos.cs" />
+    <Compile Include="Activities\TabelaPrecoSpinner.cs" />
     <Compile Include="Adapters\Adapter_Cliente_ListView.cs" />
     <Compile Include="Adapters\Adapter_PedidoItem_ListView.cs" />
     <Compile Include="Adapters\Adapter_Pedido_ListView.cs" />

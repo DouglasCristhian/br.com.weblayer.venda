@@ -32,15 +32,15 @@ namespace br.com.weblayer.venda.android.Activities
             if (jsonnota == null)
             {
                 pedido = null;
-               // pedido = new Pedido();
-               // var ped = new Pedido_Manager();
-               // ped.Save(pedido);
+                // pedido = new Pedido();
+                // var ped = new Pedido_Manager();
+                // ped.Save(pedido);
             }
             else
             {
                 pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonnota);
             }
-            
+
             FindViews();
             BindData();
             BindViews();
@@ -59,7 +59,7 @@ namespace br.com.weblayer.venda.android.Activities
                 case Resource.Id.action_salvar:
                     Save();
                     Finish();
-                    Toast.MakeText(this, "Pedido atualizado com sucesso!",ToastLength.Short).Show();
+                    Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -67,21 +67,6 @@ namespace br.com.weblayer.venda.android.Activities
                     return true;
             }
             return base.OnOptionsItemSelected(item);
-        }
-
-        private void BindData()
-        {
-            btnAdicionar.Click += BtnAdicionar_Click;
-            txtDataEmissao.Click += EventtxtDataEmissao_Click;
-            txtValor_Total.Click += TxtValor_Total_Click;
-        }
-
-        private void TxtValor_Total_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent();
-            intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
-            intent.PutExtra("Id_Pedido", pedido.id.ToString());
-            StartActivityForResult(intent, 0);
         }
 
         private void FindViews()
@@ -120,6 +105,13 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.ds_observacao = txtObservacao.Text;
         }
 
+        private void BindData()
+        {
+            btnAdicionar.Click += BtnAdicionar_Click;
+            txtDataEmissao.Click += EventtxtDataEmissao_Click;
+            txtValor_Total.Click += TxtValor_Total_Click;
+        }
+
         private bool ValidateViews()
         {
             var validacao = true;
@@ -140,6 +132,14 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             return validacao;
+        }
+
+        private void TxtValor_Total_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent();
+            intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
+            intent.PutExtra("Id_Pedido", pedido.id.ToString());
+            StartActivityForResult(intent, 0);
         }
 
         private void EventtxtDataEmissao_Click(object sender, EventArgs e)
@@ -167,6 +167,17 @@ namespace br.com.weblayer.venda.android.Activities
             StartActivityForResult(intent, 0);
         }
 
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {
+                //Atualizar o obj de pedido
+                pedido = new Pedido_Manager().Get(pedido.id);
+                BindViews();
+            }
+        }
+
         private void Save()
         {
             if (!ValidateViews())
@@ -185,7 +196,7 @@ namespace br.com.weblayer.venda.android.Activities
             }
             catch (Exception ex)
             {
-               Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
         }
 
@@ -202,8 +213,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             alert.SetPositiveButton("Sim!", (senderAlert, args) =>
             {
-              //  try
-               // {
+                try
+                {
                     var ped = new Pedido_Manager();
                     ped.Delete(pedido);
 
@@ -212,11 +223,11 @@ namespace br.com.weblayer.venda.android.Activities
                     intent.PutExtra("mensagem", ped.Mensagem);
                     SetResult(Result.Ok, intent);
                     Finish();
-                //}
-                //catch (Exception ex)
-                //{
-                //    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
-                //}
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                }
 
             });
 
@@ -224,17 +235,6 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 alert.Show();
             });
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            if (resultCode == Result.Ok)
-            {
-                //Atualizar o obj de pedido
-                pedido = new Pedido_Manager().Get(pedido.id);
-                BindViews();
-            }
         }
     }
 }

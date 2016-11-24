@@ -65,37 +65,6 @@ namespace br.com.weblayer.venda.android.Activities
             return base.OnOptionsItemSelected(item);
         }
 
-        private bool ValidateViews()
-        {
-            var validacao = true;
-
-            if (txtCodTabelaPreco.Length() == 0)
-            {
-                validacao = false;
-                txtCodTabelaPreco.Error = "Código da tabela inválido!";
-            }
-
-            if (txtDescricaoTabelaPreco.Length() == 0)
-            {
-                validacao = false;
-                txtDescricaoTabelaPreco.Error = "Descrição da tabela inválida!";
-            }
-
-            if (txtValorTabelaPreco.Length() == 0)
-            {
-                validacao = false;
-                txtValorTabelaPreco.Error = "Valor da tabela inválido!";
-            }
-
-            if (txtDescMaxTabelaPreco.Length() == 0)
-            {
-                validacao = false;
-                txtDescMaxTabelaPreco.Error = "Desconto máximo inválido!";
-            }
-
-            return validacao;
-        }
-
         private void FindViews()
         {
             txtCodTabelaPreco = FindViewById<EditText>(Resource.Id.txtCodigoTabelaPreco);
@@ -127,6 +96,37 @@ namespace br.com.weblayer.venda.android.Activities
 
         }
 
+        private bool ValidateViews()
+        {
+            var validacao = true;
+
+            if (txtCodTabelaPreco.Length() == 0)
+            {
+                validacao = false;
+                txtCodTabelaPreco.Error = "Código da tabela inválido!";
+            }
+
+            if (txtDescricaoTabelaPreco.Length() == 0)
+            {
+                validacao = false;
+                txtDescricaoTabelaPreco.Error = "Descrição da tabela inválida!";
+            }
+
+            if (txtValorTabelaPreco.Length() == 0)
+            {
+                validacao = false;
+                txtValorTabelaPreco.Error = "Valor da tabela inválido!";
+            }
+
+            if (txtDescMaxTabelaPreco.Length() == 0)
+            {
+                validacao = false;
+                txtDescMaxTabelaPreco.Error = "Desconto máximo inválido!";
+            }
+
+            return validacao;
+        }
+
         private void Save()
         {
             if (!ValidateViews())
@@ -142,6 +142,7 @@ namespace br.com.weblayer.venda.android.Activities
                 myIntent.PutExtra("mensagem", tabelapreco.Mensagem);
                 SetResult(Result.Ok, myIntent);
                 Finish();
+
             }
             catch (Exception ex)
             {

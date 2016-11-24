@@ -1,12 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
@@ -58,6 +51,7 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtRazaoSocial).Text = mItems[position].ds_RazaoSocial.ToString();
             row.FindViewById<TextView>(Resource.Id.txtNomeFantasia).Text = mItems[position].ds_NomeFantasia.ToString();
             row.FindViewById<TextView>(Resource.Id.txtCNPJ).Text = mItems[position].ds_Cnpj.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtTabelaPrecoCli).Text = mItems[position].id_TabelaPreco.ToString();
 
             return row;
         }

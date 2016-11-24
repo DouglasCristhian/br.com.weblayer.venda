@@ -20,7 +20,6 @@ namespace br.com.weblayer.venda.android.Activities
     {
         private ListView lstViewProdutos;
         private IList<Produto> lstProdutos;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

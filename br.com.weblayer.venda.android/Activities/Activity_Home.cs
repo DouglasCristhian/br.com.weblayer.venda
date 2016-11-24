@@ -27,7 +27,6 @@ namespace br.com.weblayer.venda.android
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            //base.OnCreateOptionsMenu(menu);
             MenuInflater.Inflate(Resource.Layout.Botoes_Home, menu);
             return base.OnCreateOptionsMenu(menu);
         }

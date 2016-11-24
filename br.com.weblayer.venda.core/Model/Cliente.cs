@@ -19,8 +19,10 @@ namespace br.com.weblayer.venda.core.Model
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
-        [MaxLength(60), NotNull]
+        [MaxLength(60)]
         public string id_Codigo { get; set; }
+
+        public int id_TabelaPreco { get; set; }
 
         [MaxLength(200), NotNull]
         public string ds_RazaoSocial { get; set; }

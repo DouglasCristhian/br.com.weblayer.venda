@@ -6,6 +6,9 @@ using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
+using System.Collections.Generic;
+using br.com.weblayer.venda.core.Dal;
+using static Android.Widget.AdapterView;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -16,7 +19,10 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtRazaoSocialCli;
         private EditText txtNomeFantasiaCli;
         private EditText txtCNPJCli;
+        public Spinner spinnerTabelaPreco;
         private Cliente cli;
+        List<TabelaPrecoSpinner> tblprecospinner;
+        private string spinvalortbl;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,6 +42,16 @@ namespace br.com.weblayer.venda.android.Activities
 
             FindViews();
             BindView();
+
+            tblprecospinner = PopulateSpinnerList();          
+            spinnerTabelaPreco.Adapter = new ArrayAdapter<TabelaPrecoSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
+
+            if (cli != null)
+            {
+                spinnerTabelaPreco.SetSelection(getIndex(spinnerTabelaPreco, cli.id_TabelaPreco.ToString()));
+            }
+            else
+                cli = null;
         }
 
         public override bool OnCreateOptionsMenu(IMenu item)
@@ -57,6 +73,43 @@ namespace br.com.weblayer.venda.android.Activities
                     return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void FindViews()
+        {
+            txtCodCli = FindViewById<EditText>(Resource.Id.txtCodigoCliente);
+            txtNomeFantasiaCli = FindViewById<EditText>(Resource.Id.txtNomeFantasia);
+            txtRazaoSocialCli = FindViewById<EditText>(Resource.Id.txtRazaoSocial);
+            txtCNPJCli = FindViewById<EditText>(Resource.Id.txtCNPJ);
+            spinnerTabelaPreco = FindViewById<Spinner>(Resource.Id.spinnerTblPrecos);
+
+            spinnerTabelaPreco.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPreco_ItemSelected);
+
+        }
+
+        private void BindView()
+        {
+            if (cli == null)
+                return;
+
+            txtCodCli.Text = cli.id_Codigo;
+            txtNomeFantasiaCli.Text = cli.ds_NomeFantasia;
+            txtRazaoSocialCli.Text = cli.ds_RazaoSocial;
+            txtCNPJCli.Text = cli.ds_Cnpj;
+            spinvalortbl = cli.id_TabelaPreco.ToString();
+        }
+
+        private void BindModel()
+        {
+            if (cli == null)
+                cli = new Cliente();
+
+            cli.id_Codigo = txtCodCli.Text;
+            cli.ds_NomeFantasia = txtNomeFantasiaCli.Text;
+            cli.ds_RazaoSocial = txtRazaoSocialCli.Text;
+            cli.ds_Cnpj = txtCNPJCli.Text;
+            var mytabelapreco = tblprecospinner[spinnerTabelaPreco.SelectedItemPosition];
+            cli.id_TabelaPreco = mytabelapreco.Id();
         }
 
         private bool ValidateViews()
@@ -90,34 +143,42 @@ namespace br.com.weblayer.venda.android.Activities
             return validacao;
         }
 
-        private void FindViews()
+        private void spinTblPreco_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
-            txtCodCli = FindViewById<EditText>(Resource.Id.txtCodigoCliente);
-            txtNomeFantasiaCli = FindViewById<EditText>(Resource.Id.txtNomeFantasia);
-            txtRazaoSocialCli = FindViewById<EditText>(Resource.Id.txtRazaoSocial);
-            txtCNPJCli = FindViewById<EditText>(Resource.Id.txtCNPJ);
+            spinvalortbl = spinnerTabelaPreco.SelectedItem.ToString();
         }
 
-        private void BindView()
+        private int getIndex(Spinner spinner, string myString)
         {
-            if (cli == null)
-                return;
+            int index = 0;
 
-            txtCodCli.Text = cli.id_Codigo;
-            txtNomeFantasiaCli.Text = cli.ds_NomeFantasia;
-            txtRazaoSocialCli.Text = cli.ds_RazaoSocial;
-            txtCNPJCli.Text = cli.ds_Cnpj;
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
 
-        private void BindModel()
+        private List<TabelaPrecoSpinner> PopulateSpinnerList()
         {
-            if (cli == null)
-                cli = new Cliente();
+            List<TabelaPrecoSpinner> minhalista = new List<TabelaPrecoSpinner>();
+            TabelaPrecoRepository repo = new TabelaPrecoRepository();
 
-            cli.id_Codigo = txtCodCli.Text;
-            cli.ds_NomeFantasia = txtNomeFantasiaCli.Text;
-            cli.ds_RazaoSocial = txtRazaoSocialCli.Text;
-            cli.ds_Cnpj = txtCNPJCli.Text;
+            for (int i = 1; i <= 4; i++)
+            {
+                var go = repo.Get(i);
+                if (go != null)
+                {
+                    minhalista.Add(new TabelaPrecoSpinner(go.id,go.ds_Descricao));
+                    var teste = go.id;
+                }
+            }
+        
+            return minhalista;
         }
 
         private void Save()

@@ -24,7 +24,6 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnSalvarAtualizar;
         private Button btnExcluirPedidoItem;
         private PedidoItem ped_item;
-        private Pedido pedido;
         private string jsonnotaId;
         private string jsonnotaValor;
         private string jsonProdutosPedidoList;
@@ -84,7 +83,7 @@ namespace br.com.weblayer.venda.android.Activities
             btnCancelarPedidoItem = FindViewById<Button>(Resource.Id.btnCancelar);
             btnLimparPedidoItem = FindViewById<Button>(Resource.Id.btnLimparPedidoItem);
 
-            btnSalvarAtualizar = FindViewById<Button>(Resource.Id.btnSalvarAtualizar);        
+            btnSalvarAtualizar = FindViewById<Button>(Resource.Id.btnSalvarAtualizar);
             btnExcluirPedidoItem = FindViewById<Button>(Resource.Id.btnExcluirPedidoItem);
 
             if (Operacao == "Adicionar")
@@ -116,18 +115,37 @@ namespace br.com.weblayer.venda.android.Activities
             txtValorTotal.Text = go.ToString();
         }
 
+        private void BindModel()
+        {
+            ped_item = new PedidoItem();
+
+            ped_item.id = int.Parse(IdItem.ToString());
+            ped_item.id_pedido = int.Parse(IdPedido.ToString());
+            ped_item.id_produto = int.Parse(txtIdProduto.Text);
+            ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
+            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());
+        }
+
         private void BindData()
         {
             btnSalvarPedidoItem.Click += BtnSalvarPedidoItem_Click;
             btnSalvarOutroPedItem.Click += BtnSalvarOutroPedItem_Click;
             btnSalvarAtualizar.Click += BtnSalvarAtualizar_Click;
             btnLimparPedidoItem.Click += BtnLimparPedidoItem_Click;
-            btnCancelarPedidoItem.Click += BtnCancelarPedidoItem_Click;                     
+            btnCancelarPedidoItem.Click += BtnCancelarPedidoItem_Click;
             btnExcluirPedidoItem.Click += BtnExcluirPedidoItem_Click;
 
             txtIdProduto.Click += TxtIdProduto_Click;
             txtValorItem.TextChanged += TxtValorItem_TextChanged;
             txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
+        }
+
+        private void Clean()
+        {
+            txtIdProduto.Text = "";
+            txtValorItem.Text = "";
+            txtQuantidadeItem.Text = "";
+            txtValorTotal.Text = "0";
         }
 
         private bool ValidateViews()
@@ -155,14 +173,6 @@ namespace br.com.weblayer.venda.android.Activities
             return validacao;
         }
 
-        private void Clean()
-        {
-            txtIdProduto.Text = "";
-            txtValorItem.Text = "";
-            txtQuantidadeItem.Text = "";
-            txtValorTotal.Text = "0";
-        }
-
         private void TxtQuantidadeItem_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtQuantidadeItem.Text.Length == 0)
@@ -174,8 +184,8 @@ namespace br.com.weblayer.venda.android.Activities
                 go = 0;
             }
             else
-            { 
-               go = double.Parse(txtQuantidadeItem.Text.ToString()) * double.Parse(txtValorItem.Text.ToString());
+            {
+                go = double.Parse(txtQuantidadeItem.Text.ToString()) * double.Parse(txtValorItem.Text.ToString());
             }
             txtValorTotal.Text = go.ToString();
         }
@@ -205,18 +215,6 @@ namespace br.com.weblayer.venda.android.Activities
             StartActivityForResult(intent, 0);
         }
 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            if (resultCode == Result.Ok)
-            {
-                jsonnotaId = data.GetStringExtra("JsonNotaIdProduto");
-                jsonnotaValor = data.GetStringExtra("JsonNotaValorProduto");
-
-                BindViews();
-            }
-        }
-
         private void BtnSalvarAtualizar_Click(object sender, EventArgs e)
         {
             if (!ValidateViews())
@@ -225,9 +223,8 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
             SetResult(Result.Ok, intent);
             Save();
-            Finish();        
+            Finish();
         }
-
 
         private void BtnLimparPedidoItem_Click(object sender, EventArgs e)
         {
@@ -236,7 +233,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BtnCancelarPedidoItem_Click(object sender, EventArgs e)
         {
-            Finish();           
+            Finish();
         }
 
         private void BtnSalvarOutroPedItem_Click(object sender, EventArgs e)
@@ -248,7 +245,7 @@ namespace br.com.weblayer.venda.android.Activities
                 Save();
                 Toast.MakeText(this, $"Item {txtIdProduto.Text} adicionado ao pedido com sucesso!", ToastLength.Long).Show();
                 Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
-                SetResult(Result.Ok, intent);                
+                SetResult(Result.Ok, intent);
             }
             catch (Exception ex)
             {
@@ -257,13 +254,12 @@ namespace br.com.weblayer.venda.android.Activities
             Clean();
         }
 
-        //SALVAR AQUI-------------------------------------------------------------------SALVAR AQUI//
         private void BtnSalvarPedidoItem_Click(object sender, EventArgs e)
         {
             if (!ValidateViews())
                 return;
             try
-            {               
+            {
                 Save();
                 Toast.MakeText(this, $"Item {txtIdProduto.Text} adicionado ao pedido com sucesso!", ToastLength.Long).Show();
                 Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
@@ -281,15 +277,16 @@ namespace br.com.weblayer.venda.android.Activities
             Delete();
         }
 
-        private void BindModel()
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            ped_item = new PedidoItem();
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (resultCode == Result.Ok)
+            {
+                jsonnotaId = data.GetStringExtra("JsonNotaIdProduto");
+                jsonnotaValor = data.GetStringExtra("JsonNotaValorProduto");
 
-            ped_item.id = int.Parse(IdItem.ToString());
-            ped_item.id_pedido = int.Parse(IdPedido.ToString());
-            ped_item.id_produto = int.Parse(txtIdProduto.Text);
-            ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
-            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());   
+                BindViews();
+            }
         }
 
         private void Save()
@@ -301,7 +298,7 @@ namespace br.com.weblayer.venda.android.Activities
                 var ped = new PedidoItem_Manager();
                 ped.Save(ped_item);
 
-               // Finish();
+                // Finish();
 
             }
 
@@ -332,7 +329,7 @@ namespace br.com.weblayer.venda.android.Activities
 
                     ped.Delete(ped_item);
 
-                Finish();
+                    Finish();
                 }
                 catch (Exception ex)
                 {
