@@ -47,11 +47,11 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_Produtos_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtCodigoProduto).Text = mItems[position].id_Codigo.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = mItems[position].ds_Nome.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = mItems[position].ds_UniMedida.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtTabPreco).Text = mItems[position].id_TabPreco.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = mItems[position].ds_ValorProduto.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtCodigoProduto).Text = mItems[position].id_codigo.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = mItems[position].ds_nome.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = mItems[position].ds_unimedida.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtTabPreco).Text = mItems[position].id_tabpreco.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = mItems[position].vl_Valor.ToString();
 
             return row;
         }

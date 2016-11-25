@@ -78,10 +78,10 @@ namespace br.com.weblayer.venda.android.Activities
             if (tblPreco == null)
                 return;
 
-            txtCodTabelaPreco.Text = tblPreco.id_Codigo;
-            txtDescricaoTabelaPreco.Text = tblPreco.ds_Descricao;
-            txtValorTabelaPreco.Text = tblPreco.Valor.ToString();
-            txtDescMaxTabelaPreco.Text = tblPreco.DescontoMaximo.ToString();
+            txtCodTabelaPreco.Text = tblPreco.id_codigo;
+            txtDescricaoTabelaPreco.Text = tblPreco.ds_descricao;
+            txtValorTabelaPreco.Text = tblPreco.vl_valor.ToString();
+            txtDescMaxTabelaPreco.Text = tblPreco.vl_descontomaximo.ToString();
         }
 
         private void BindModel()
@@ -89,10 +89,10 @@ namespace br.com.weblayer.venda.android.Activities
             if (tblPreco == null)
                 tblPreco = new TabelaPreco();
 
-            tblPreco.id_Codigo = txtCodTabelaPreco.Text;
-            tblPreco.ds_Descricao = txtDescricaoTabelaPreco.Text;
-            tblPreco.Valor = double.Parse(txtValorTabelaPreco.Text);
-            tblPreco.DescontoMaximo = double.Parse(txtDescMaxTabelaPreco.Text);
+            tblPreco.id_codigo = txtCodTabelaPreco.Text;
+            tblPreco.ds_descricao = txtDescricaoTabelaPreco.Text;
+            tblPreco.vl_valor= double.Parse(txtValorTabelaPreco.Text);
+            tblPreco.vl_descontomaximo = double.Parse(txtDescMaxTabelaPreco.Text);
 
         }
 

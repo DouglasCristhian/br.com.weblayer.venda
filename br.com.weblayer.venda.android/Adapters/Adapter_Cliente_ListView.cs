@@ -51,7 +51,7 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtRazaoSocial).Text = mItems[position].ds_RazaoSocial.ToString();
             row.FindViewById<TextView>(Resource.Id.txtNomeFantasia).Text = mItems[position].ds_NomeFantasia.ToString();
             row.FindViewById<TextView>(Resource.Id.txtCNPJ).Text = mItems[position].ds_Cnpj.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtTabelaPrecoCli).Text = mItems[position].id_TabelaPreco.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtTabelaPrecoCli).Text = mItems[position].id_tabelapreco.ToString();
 
             return row;
         }

@@ -1,14 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace br.com.weblayer.venda.core.Model
@@ -20,17 +9,17 @@ namespace br.com.weblayer.venda.core.Model
         public int id { get; set; }
 
         [MaxLength(12), NotNull]
-        public string id_Codigo { get; set; }
+        public string id_codigo { get; set; }
 
         [MaxLength(200), NotNull]
-        public string ds_Nome { get; set; }
+        public string ds_nome { get; set; }
 
         [MaxLength(20), NotNull]
-        public string ds_UniMedida { get; set; }
+        public string ds_unimedida { get; set; }
 
         [MaxLength(20), NotNull]
-        public string id_TabPreco { get; set; }
+        public string id_tabpreco { get; set; }
 
-        public double ds_ValorProduto {get; set;}
+        public double vl_Valor {get; set;}
     }
 }

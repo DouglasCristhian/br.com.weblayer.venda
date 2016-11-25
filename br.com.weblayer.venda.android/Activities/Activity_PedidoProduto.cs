@@ -52,8 +52,8 @@ namespace br.com.weblayer.venda.android.Activities
             var t = lstProdutos[e.Position];
 
             Intent intent = new Intent();
-            intent.PutExtra("JsonNotaIdProduto", t.id_Codigo);
-            intent.PutExtra("JsonNotaValorProduto", t.ds_ValorProduto.ToString());
+            intent.PutExtra("JsonNotaIdProduto", t.id_codigo);
+            intent.PutExtra("JsonNotaValorProduto", t.vl_Valor.ToString());
             SetResult(Result.Ok, intent);
             Finish();
         }

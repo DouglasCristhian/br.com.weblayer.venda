@@ -47,10 +47,10 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_TabelaPreco_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = mItems[position].id_Codigo;
-            row.FindViewById<TextView>(Resource.Id.txtDescricaoTabelaPreco).Text = mItems[position].ds_Descricao;
-            row.FindViewById<TextView>(Resource.Id.txtValorTabelaPreco).Text = mItems[position].Valor.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtDescontoMaxTabelaPreco).Text = mItems[position].DescontoMaximo.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = mItems[position].id_codigo;
+            row.FindViewById<TextView>(Resource.Id.txtDescricaoTabelaPreco).Text = mItems[position].ds_descricao;
+            row.FindViewById<TextView>(Resource.Id.txtValorTabelaPreco).Text = mItems[position].vl_valor.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtDescontoMaxTabelaPreco).Text = mItems[position].vl_descontomaximo.ToString();
 
             return row;
         }

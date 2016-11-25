@@ -46,7 +46,7 @@ namespace br.com.weblayer.venda.core.Bll
             var Repository = new PedidoRepository();
             Repository.Delete(obj);
 
-            Mensagem = $"Pedido {obj.id_Codigo} excluído com sucesso";
+            Mensagem = $"Pedido {obj.id_codigo} excluído com sucesso";
         }
 
 

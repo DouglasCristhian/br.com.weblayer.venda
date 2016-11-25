@@ -19,13 +19,13 @@ namespace br.com.weblayer.venda.core.Bll
             var erros="";
             
             //regras....
-            if (obj.id_Codigo.Length < 2) 
+            if (obj.id_codigo.Length < 2) 
                 erros= erros + "\n O código do produto é inválido! Ele deve ter no mínimo 2 caracteres!";
 
-            if (obj.ds_Nome.Length < 10) 
+            if (obj.ds_nome.Length < 10) 
                 erros = erros + "\n A descrição do produto deve ter no mínimo 10 caracteres!";
 
-            if (obj.id_TabPreco.Length > 7)
+            if (obj.id_tabpreco.Length > 7)
                 erros = erros + "\n A tabela de preços deve ter no máximo sete caracteres!";
 
             if (erros.Length>0)
@@ -34,7 +34,7 @@ namespace br.com.weblayer.venda.core.Bll
             var Repository = new ProdutoRepository();
             Repository.Save(obj);
 
-            Mensagem = $"Produto {obj.ds_Nome} atualizado com sucesso";
+            Mensagem = $"Produto {obj.ds_nome} atualizado com sucesso";
         }
 
         public void Delete(Produto obj)
@@ -42,7 +42,7 @@ namespace br.com.weblayer.venda.core.Bll
             var Repository = new ProdutoRepository();
             Repository.Delete(obj);
 
-            Mensagem = $"Produto {obj.ds_Nome} excluído com sucesso";
+            Mensagem = $"Produto {obj.ds_nome} excluído com sucesso";
         }
     }
 }

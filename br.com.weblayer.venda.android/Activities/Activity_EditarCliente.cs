@@ -48,7 +48,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (cli != null)
             {
-                spinnerTabelaPreco.SetSelection(getIndex(spinnerTabelaPreco, cli.id_TabelaPreco.ToString()));
+                spinnerTabelaPreco.SetSelection(getIndex(spinnerTabelaPreco, cli.id_tabelapreco.ToString()));
             }
             else
                 cli = null;
@@ -96,7 +96,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtNomeFantasiaCli.Text = cli.ds_NomeFantasia;
             txtRazaoSocialCli.Text = cli.ds_RazaoSocial;
             txtCNPJCli.Text = cli.ds_Cnpj;
-            spinvalortbl = cli.id_TabelaPreco.ToString();
+            spinvalortbl = cli.id_tabelapreco.ToString();
         }
 
         private void BindModel()
@@ -109,7 +109,7 @@ namespace br.com.weblayer.venda.android.Activities
             cli.ds_RazaoSocial = txtRazaoSocialCli.Text;
             cli.ds_Cnpj = txtCNPJCli.Text;
             var mytabelapreco = tblprecospinner[spinnerTabelaPreco.SelectedItemPosition];
-            cli.id_TabelaPreco = mytabelapreco.Id();
+            cli.id_tabelapreco = mytabelapreco.Id();
         }
 
         private bool ValidateViews()
@@ -173,7 +173,7 @@ namespace br.com.weblayer.venda.android.Activities
                 var go = repo.Get(i);
                 if (go != null)
                 {
-                    minhalista.Add(new TabelaPrecoSpinner(go.id,go.ds_Descricao));
+                    minhalista.Add(new TabelaPrecoSpinner(go.id,go.ds_descricao));
                     var teste = go.id;
                 }
             }

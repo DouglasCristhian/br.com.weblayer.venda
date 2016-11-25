@@ -1,14 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace br.com.weblayer.venda.core.Model
@@ -20,7 +10,7 @@ namespace br.com.weblayer.venda.core.Model
         public int id { get; set; }
 
         [MaxLength(20)]
-        public string id_Codigo { get; set; }
+        public string id_codigo { get; set; }
 
         [MaxLength(15)]
         public DateTime dt_emissao { get; set; }
