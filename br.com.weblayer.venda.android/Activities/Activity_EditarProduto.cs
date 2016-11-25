@@ -45,7 +45,8 @@ namespace br.com.weblayer.venda.android.Fragments
             FindViews();
             BindView();
 
-            spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
+            if (prod !=null)
+                spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
