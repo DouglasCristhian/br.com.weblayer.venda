@@ -1,14 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using SQLite;
 
 namespace br.com.weblayer.venda.core.Model
@@ -22,7 +11,7 @@ namespace br.com.weblayer.venda.core.Model
         [MaxLength(60)]
         public string id_Codigo { get; set; }
 
-        public int id_TabelaPreco { get; set; }
+        public int id_tabelapreco { get; set; }
 
         [MaxLength(200), NotNull]
         public string ds_RazaoSocial { get; set; }

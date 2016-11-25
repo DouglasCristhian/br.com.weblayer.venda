@@ -58,8 +58,8 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            Save(new TabelaPreco() { id_Codigo = "11", ds_Descricao = "TABELA 1", Valor = 5.00, DescontoMaximo = 5 });
-            Save(new TabelaPreco() { id_Codigo = "22", ds_Descricao = "TABELA 2", Valor = 12.00, DescontoMaximo = 3 });
+            Save(new TabelaPreco() { id_codigo = "11", ds_descricao = "TABELA 1", vl_valor = 5.00, vl_descontomaximo = 5 });
+            Save(new TabelaPreco() { id_codigo = "22", ds_descricao = "TABELA 2", vl_valor = 12.00, vl_descontomaximo = 3 });
         }
 
     }

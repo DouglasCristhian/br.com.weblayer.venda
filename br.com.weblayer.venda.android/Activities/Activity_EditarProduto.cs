@@ -45,7 +45,8 @@ namespace br.com.weblayer.venda.android.Fragments
             FindViews();
             BindView();
 
-            spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_UniMedida));
+            if (prod !=null)
+                spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -86,10 +87,10 @@ namespace br.com.weblayer.venda.android.Fragments
             if (prod == null)
                 return;
 
-            txtCodigoProd.Text = prod.id_Codigo;
-            txtNomeProd.Text = prod.ds_Nome;
-            txtTabelaPrecoProd.Text = prod.id_TabPreco;
-            spinValor = prod.ds_UniMedida.ToString();
+            txtCodigoProd.Text = prod.id_codigo;
+            txtNomeProd.Text = prod.ds_nome;
+            txtTabelaPrecoProd.Text = prod.id_tabpreco;
+            spinValor = prod.ds_unimedida.ToString();
         }
 
         private void BindModel()
@@ -97,10 +98,10 @@ namespace br.com.weblayer.venda.android.Fragments
             if (prod == null)
                 prod = new Produto();
 
-            prod.id_Codigo = txtCodigoProd.Text;
-            prod.ds_Nome = txtNomeProd.Text;
-            prod.id_TabPreco = txtTabelaPrecoProd.Text;
-            prod.ds_UniMedida = spinValor.ToString();
+            prod.id_codigo = txtCodigoProd.Text;
+            prod.ds_nome = txtNomeProd.Text;
+            prod.id_tabpreco = txtTabelaPrecoProd.Text;
+            prod.ds_unimedida= spinValor.ToString();
         }
 
         private bool ValidateViews()

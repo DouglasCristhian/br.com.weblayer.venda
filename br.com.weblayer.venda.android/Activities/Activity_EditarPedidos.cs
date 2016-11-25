@@ -85,7 +85,7 @@ namespace br.com.weblayer.venda.android.Activities
             if (pedido == null)
                 return;
 
-            txtid_Codigo.Text = pedido.id_Codigo.ToString();
+            txtid_Codigo.Text = pedido.id_codigo.ToString();
             txtid_Vendedor.Text = pedido.id_vendedor.ToString();
             txtid_Cliente.Text = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
@@ -98,7 +98,7 @@ namespace br.com.weblayer.venda.android.Activities
             if (pedido == null)
                 pedido = new Pedido();
 
-            pedido.id_Codigo = txtid_Codigo.Text;
+            pedido.id_codigo = txtid_Codigo.Text;
             pedido.id_vendedor = txtid_Vendedor.Text;
             pedido.id_cliente = txtid_Cliente.Text;
             pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
