@@ -55,8 +55,8 @@
     android:layout_height="wrap_content"
     android:text="Tabela de Preço"/>
 
-  <EditText
-    android:id="@+id/txtTabelaPrecos"
+  <Spinner
+    android:id="@+id/spinTabelaPrecosProd"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"

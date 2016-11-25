@@ -12,26 +12,25 @@ using Android.Widget;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    class TabelaPrecoSpinner
+    class mSpinner 
     {
-        public int id_Tabela;
-        public string ds_Tabela;
+        public int id_Produto;
+        public string ds_Produto;
 
-        public TabelaPrecoSpinner(int Id_tabela, string Ds_Tabela)
+        public mSpinner(int idprod, string dsprod)
         {
-            id_Tabela = Id_tabela;
-            ds_Tabela = Ds_Tabela;
-
+            id_Produto = idprod;
+            ds_Produto = dsprod;
         }
 
         public int Id()
         {
-            return id_Tabela;
+            return id_Produto;
         }
 
         public override string ToString()
         {
-            return ds_Tabela;
+            return ds_Produto;
         }
     }
 }

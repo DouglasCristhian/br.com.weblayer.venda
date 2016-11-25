@@ -60,6 +60,7 @@ namespace br.com.weblayer.venda.android
             ItensLista.Add("Produtos");
             ItensLista.Add("Clientes");
             ItensLista.Add("Tabela de Preços");
+            ItensLista.Add("Preços");
             ItensLista.Add("Pedidos");
 
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, ItensLista);
@@ -84,6 +85,10 @@ namespace br.com.weblayer.venda.android
                     break;
 
                 case 3:
+                    StartActivity(typeof(Activity_ProdTabelaPreco));
+                    break;
+
+                case 4:
                     StartActivity(typeof(Activity_Pedido));
                     break;
 

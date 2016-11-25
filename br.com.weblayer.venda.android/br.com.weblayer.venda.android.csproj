@@ -78,23 +78,26 @@
     <Compile Include="Activities\Activity_Ajuda.cs" />
     <Compile Include="Activities\Activity_Base.cs" />
     <Compile Include="Activities\Activity_EditarCliente.cs" />
+    <Compile Include="Activities\Activity_EditarProdTabelaPreco.cs" />
     <Compile Include="Activities\Activity_EditarTabelaPreco.cs" />
     <Compile Include="Activities\Activity_PedidoItem.cs" />
     <Compile Include="Activities\Activity_PedidoProduto.cs" />
     <Compile Include="Activities\Activity_EditarPedidos.cs" />
     <Compile Include="Activities\Activity_Pedido.cs" />
     <Compile Include="Activities\Activity_ProdutosPedidoList.cs" />
+    <Compile Include="Activities\Activity_ProdTabelaPreco.cs" />
     <Compile Include="Activities\Activity_TabelaPrecos.cs" />
     <Compile Include="Activities\Activity_Clientes.cs" />
     <Compile Include="Activities\Activity_Configuracoes.cs" />
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Activity_Produtos.cs" />
-    <Compile Include="Activities\TabelaPrecoSpinner.cs" />
+    <Compile Include="Activities\mSpinner.cs" />
     <Compile Include="Adapters\Adapter_Cliente_ListView.cs" />
     <Compile Include="Adapters\Adapter_PedidoItem_ListView.cs" />
     <Compile Include="Adapters\Adapter_Pedido_ListView.cs" />
     <Compile Include="Adapters\Adapter_Produtos_ListView.cs" />
     <Compile Include="Activities\Activity_EditarProduto.cs" />
+    <Compile Include="Adapters\Adapter_ProdTabelaPreco_ListView.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
     <Compile Include="Adapters\SpinnerListAdapter.cs" />
     <Compile Include="Helpers\DatePickerHelper.cs" />
@@ -221,6 +224,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_ProdutosPedidoList.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Adapter_ProdTabelaPreco_ListView.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_EditarProdTabelaPreco.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_ProdTabelaPreco.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -76,7 +76,7 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            Save(new Pedido() { id_codigo = "1", dt_emissao = DateTime.Parse("2016/04/01"), id_cliente = "C_A", id_vendedor = "V_A", vl_total = 0.0, ds_observacao = "Testando 123" });
+            Save(new Pedido() { id_codigo = "1", dt_emissao = DateTime.Parse("2016/04/01"), id_cliente = 1, id_vendedor = 1, vl_total = 0.0, ds_observacao = "Testando 123" });
 
         }
     }

@@ -7,6 +7,8 @@ using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.logistica.android.Helpers;
+using System.Collections.Generic;
+using br.com.weblayer.venda.core.Dal;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -14,13 +16,16 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
-        private EditText txtid_Cliente;
         private EditText txtid_Vendedor;
         private TextView txtDataEmissao;
         private TextView txtValor_Total;
         private EditText txtObservacao;
         private Button btnAdicionar;
         private Pedido pedido;
+        private string idcli;
+        private string idcliente;
+        private Spinner spinnerClientes;
+        List<mSpinner> tblclientespinner;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,9 +37,6 @@ namespace br.com.weblayer.venda.android.Activities
             if (jsonnota == null)
             {
                 pedido = null;
-                // pedido = new Pedido();
-                // var ped = new Pedido_Manager();
-                // ped.Save(pedido);
             }
             else
             {
@@ -44,6 +46,33 @@ namespace br.com.weblayer.venda.android.Activities
             FindViews();
             BindData();
             BindViews();
+
+            tblclientespinner = PopulateSpinner();
+            spinnerClientes.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblclientespinner);
+
+            if (pedido != null)
+            {
+                spinnerClientes.SetSelection(getIndex(spinnerClientes, pedido.id_cliente.ToString()));
+            }
+            else
+                pedido = null;
+
+      
+        }
+
+        private int getIndex(Spinner spinner, string myString)
+        {
+            int index = 0;
+
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -58,8 +87,7 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 case Resource.Id.action_salvar:
                     Save();
-                    Finish();
-                    Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
+                    
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -72,12 +100,20 @@ namespace br.com.weblayer.venda.android.Activities
         private void FindViews()
         {
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
-            txtid_Cliente = FindViewById<EditText>(Resource.Id.txtIdCliente);
+            spinnerClientes = FindViewById<Spinner>(Resource.Id.spinnerIdCliente);
             txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
             txtDataEmissao = FindViewById<TextView>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
+
+            spinnerClientes.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(TblClientes_ItemSelected);
+        }
+
+        private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            idcliente = spinnerClientes.SelectedItem.ToString();
+            ///idcli = spinnerClientes.SelectedItemId.ToString();
         }
 
         private void BindViews()
@@ -87,7 +123,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             txtid_Codigo.Text = pedido.id_codigo.ToString();
             txtid_Vendedor.Text = pedido.id_vendedor.ToString();
-            txtid_Cliente.Text = pedido.id_cliente.ToString();
+            idcliente = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
             txtDataEmissao.Text = pedido.dt_emissao.ToString();
             txtObservacao.Text = pedido.ds_observacao.ToString();
@@ -99,8 +135,9 @@ namespace br.com.weblayer.venda.android.Activities
                 pedido = new Pedido();
 
             pedido.id_codigo = txtid_Codigo.Text;
-            pedido.id_vendedor = txtid_Vendedor.Text;
-            pedido.id_cliente = txtid_Cliente.Text;
+            pedido.id_vendedor = 1;
+            var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
+            pedido.id_cliente = idcli.Id();
             pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
             pedido.ds_observacao = txtObservacao.Text;
         }
@@ -120,18 +157,36 @@ namespace br.com.weblayer.venda.android.Activities
                 validacao = false;
                 txtid_Codigo.Error = "Código do Pedido inválido!";
             }
-            if (txtid_Cliente.Length() == 0)
-            {
-                validacao = false;
-                txtid_Cliente.Error = "Código do Cliente inválido!";
-            }
+
             if (txtid_Vendedor.Length() == 0)
             {
                 validacao = false;
                 txtid_Vendedor.Error = "Código do Vendedor inválido!";
             }
 
+            if (spinnerClientes.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, selecione o código do cliente", ToastLength.Short).Show();
+            }
+
             return validacao;
+        }
+
+        private List<mSpinner> PopulateSpinner()
+        {
+            List<mSpinner> minhalista = new List<mSpinner>();
+            var listaclientes = new ClienteRepository().List();
+
+            minhalista.Add(new mSpinner(0, "Selecione o cliente..."));
+
+            foreach (var item in listaclientes)
+            {
+                minhalista.Add(new mSpinner(item.id, item.id_Codigo));
+            }
+
+            return minhalista;
+
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
@@ -193,6 +248,10 @@ namespace br.com.weblayer.venda.android.Activities
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
+
+                Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
+                Finish();
+                
             }
             catch (Exception ex)
             {

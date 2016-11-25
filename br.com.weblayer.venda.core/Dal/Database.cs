@@ -42,6 +42,7 @@ namespace br.com.weblayer.venda.core.Dal
             new TabelaPrecoRepository().MakeDataMock();
             new ClienteRepository().MakeDataMock();
             new PedidoRepository().MakeDataMock();
+            new ProdutoTabelaPrecoRepository().MakeDataMock();
           //  new PedidoItemRepository().MakeDataMock();
 
         } 
@@ -61,6 +62,7 @@ namespace br.com.weblayer.venda.core.Dal
                 connection.CreateTable<TabelaPreco>();
                 connection.CreateTable<PedidoItem>();
                 connection.CreateTable<Pedido>();
+                connection.CreateTable<ProdutoTabelaPreco>();
             }
         }
     }

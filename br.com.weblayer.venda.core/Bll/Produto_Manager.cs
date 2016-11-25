@@ -25,9 +25,6 @@ namespace br.com.weblayer.venda.core.Bll
             if (obj.ds_nome.Length < 10) 
                 erros = erros + "\n A descrição do produto deve ter no mínimo 10 caracteres!";
 
-            if (obj.id_tabpreco.Length > 7)
-                erros = erros + "\n A tabela de preços deve ter no máximo sete caracteres!";
-
             if (erros.Length>0)
                 throw new Exception(erros);
             

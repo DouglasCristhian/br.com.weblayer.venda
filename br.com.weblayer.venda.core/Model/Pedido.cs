@@ -16,10 +16,10 @@ namespace br.com.weblayer.venda.core.Model
         public DateTime dt_emissao { get; set; }
 
         [MaxLength(20)]
-        public string id_cliente { get; set; }
+        public int id_cliente { get; set; }
 
         [MaxLength(20)]
-        public string id_vendedor { get; set; }
+        public int id_vendedor { get; set; }
 
         [MaxLength(20)]
         public double vl_total { get; set; }

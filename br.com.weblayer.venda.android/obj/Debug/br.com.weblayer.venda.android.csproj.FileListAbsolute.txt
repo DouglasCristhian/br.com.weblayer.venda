@@ -196,6 +196,9 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\l
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\adapter_pedido_listview.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\adapter_pedidoitem_listview.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_produtospedidolist.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\adapter_prodtabelapreco_listview.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_editarprodtabelapreco.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_prodtabelapreco.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\R.cs.flag
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\uploadflags.txt
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\bin\Debug\br.com.weblayer.venda.android.dll.mdb

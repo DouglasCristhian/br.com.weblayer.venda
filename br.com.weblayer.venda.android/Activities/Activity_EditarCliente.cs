@@ -21,7 +21,7 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtCNPJCli;
         public Spinner spinnerTabelaPreco;
         private Cliente cli;
-        List<TabelaPrecoSpinner> tblprecospinner;
+        List<mSpinner> tblprecospinner;
         private string spinvalortbl;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -44,7 +44,7 @@ namespace br.com.weblayer.venda.android.Activities
             BindView();
 
             tblprecospinner = PopulateSpinnerList();          
-            spinnerTabelaPreco.Adapter = new ArrayAdapter<TabelaPrecoSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
+            spinnerTabelaPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
 
             if (cli != null)
             {
@@ -163,9 +163,9 @@ namespace br.com.weblayer.venda.android.Activities
             return index;
         }
 
-        private List<TabelaPrecoSpinner> PopulateSpinnerList()
+        private List<mSpinner> PopulateSpinnerList()
         {
-            List<TabelaPrecoSpinner> minhalista = new List<TabelaPrecoSpinner>();
+            List<mSpinner> minhalista = new List<mSpinner>();
             TabelaPrecoRepository repo = new TabelaPrecoRepository();
 
             for (int i = 1; i <= 4; i++)
@@ -173,7 +173,7 @@ namespace br.com.weblayer.venda.android.Activities
                 var go = repo.Get(i);
                 if (go != null)
                 {
-                    minhalista.Add(new TabelaPrecoSpinner(go.id,go.ds_descricao));
+                    minhalista.Add(new mSpinner(go.id,go.ds_descricao));
                     var teste = go.id;
                 }
             }

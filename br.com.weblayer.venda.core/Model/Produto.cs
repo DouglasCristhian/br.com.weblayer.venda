@@ -18,7 +18,7 @@ namespace br.com.weblayer.venda.core.Model
         public string ds_unimedida { get; set; }
 
         [MaxLength(20), NotNull]
-        public string id_tabpreco { get; set; }
+        public int id_tabpreco { get; set; }
 
         public double vl_Valor {get; set;}
     }
