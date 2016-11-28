@@ -8,6 +8,7 @@ namespace br.com.weblayer.venda.core.Bll
     {
         public string Mensagem;
 
+        
         public TabelaPreco Get(int id)
         {
             return new TabelaPrecoRepository().Get(id);

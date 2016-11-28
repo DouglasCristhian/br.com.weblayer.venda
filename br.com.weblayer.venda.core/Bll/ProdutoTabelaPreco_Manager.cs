@@ -18,6 +18,12 @@ namespace br.com.weblayer.venda.core.Bll
     {
         public string Mensagem;
 
+        public ProdutoTabelaPreco Get(int id_tabelapreco, int id_produto)
+        {
+            return new ProdutoTabelaPrecoRepository().Get(id_tabelapreco, id_produto);
+        }
+
+
         public IList<ProdutoTabelaPreco> GetProdTabPreco(string filtro)
         {
             return new ProdutoTabelaPrecoRepository().List();

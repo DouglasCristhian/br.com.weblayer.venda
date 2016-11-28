@@ -14,6 +14,11 @@ namespace br.com.weblayer.venda.core.Dal
             return Database.GetConnection().Table<ProdutoTabelaPreco>().Where(x => x.id == id).FirstOrDefault();
         }
 
+        public ProdutoTabelaPreco Get(int id_tabelapreco, int id_produto)
+        {
+            return Database.GetConnection().Table<ProdutoTabelaPreco>().Where(x => x.id_tabpreco == id_tabelapreco && x.id_produto == id_produto).FirstOrDefault();
+        }
+
         public void Save(ProdutoTabelaPreco entidade)
         {
             try

@@ -23,7 +23,7 @@
      android:id="@+id/lblIdCliente"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     android:text="Código do Cliente"/>
+     android:text="Cliente"/>
 
   <Spinner
      android:id="@+id/spinnerIdCliente"
@@ -34,7 +34,7 @@
      android:id="@+id/lblIdVendedor"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     android:text="Código do Vendedor"/>
+     android:text="Vendedor"/>
 
   <EditText
      android:id="@+id/txtIdvendedor"

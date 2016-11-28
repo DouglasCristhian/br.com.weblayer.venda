@@ -22,7 +22,6 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtObservacao;
         private Button btnAdicionar;
         private Pedido pedido;
-        private string idcli;
         private string idcliente;
         private Spinner spinnerClientes;
         List<mSpinner> tblclientespinner;
@@ -52,12 +51,11 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                spinnerClientes.SetSelection(getIndex(spinnerClientes, pedido.id_cliente.ToString()));
+                spinnerClientes.SetSelection(getIndexByValue(spinnerClientes, long.Parse(pedido.id_codigo.ToString())));
             }
             else
                 pedido = null;
-
-      
+     
         }
 
         private int getIndex(Spinner spinner, string myString)
@@ -67,6 +65,22 @@ namespace br.com.weblayer.venda.android.Activities
             for (int i = 0; i < spinner.Count; i++)
             {
                 if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        private int getIndexByValue(Spinner spinner, long myId)
+        {
+            int index = 0;
+
+            var adapter = (ArrayAdapter<mSpinner>)spinner.Adapter;
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (adapter.GetItemId(i) == myId)
                 {
                     index = i;
                     break;
@@ -113,7 +127,6 @@ namespace br.com.weblayer.venda.android.Activities
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             idcliente = spinnerClientes.SelectedItem.ToString();
-            ///idcli = spinnerClientes.SelectedItemId.ToString();
         }
 
         private void BindViews()
@@ -182,7 +195,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             foreach (var item in listaclientes)
             {
-                minhalista.Add(new mSpinner(item.id, item.id_Codigo));
+                minhalista.Add(new mSpinner(item.id, item.ds_NomeFantasia));
             }
 
             return minhalista;
@@ -217,8 +230,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
-            intent.PutExtra("Id_Pedido", pedido.id.ToString());
-            intent.PutExtra("Operacao", "Adicionar");
+
+            intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             StartActivityForResult(intent, 0);
         }
 

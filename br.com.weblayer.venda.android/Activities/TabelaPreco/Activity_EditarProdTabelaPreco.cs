@@ -1,12 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
@@ -19,11 +15,11 @@ namespace br.com.weblayer.venda.android.Activities
     [Activity(Label = "Activity_EditarProdTabelaPreco", MainLauncher = false)]
     public class Activity_EditarProdTabelaPreco : Activity
     {
-        private Spinner spinIdProduto;
-        private Spinner spinIdTabPreco;
-        private EditText txt_ProdTabPreco;
         private string valoridproduto;
         private string valoridtabpreco;
+        private EditText txt_ProdTabPreco;
+        private Spinner spinIdProduto;
+        private Spinner spinIdTabPreco;
         private ProdutoTabelaPreco prodtabpreco;
         List<mSpinner> tblprecospinner;
         List<mSpinner> tblprodutospinner;
@@ -47,7 +43,7 @@ namespace br.com.weblayer.venda.android.Activities
             FindView();
             BindView();
 
-            tblprecospinner = PopulateSpinnerList();
+            tblprecospinner = PopulateTabPrecoSpinnerList();
             spinIdTabPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
 
             tblprodutospinner = PopulateProdutoSpinnerList();
@@ -55,8 +51,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (prodtabpreco != null)
             {
-                spinIdTabPreco.SetSelection(getIndex(spinIdTabPreco, prodtabpreco.id_tabpreco.ToString()));
-                spinIdProduto.SetSelection(getIndex(spinIdProduto, prodtabpreco.id_produto.ToString()));
+                spinIdTabPreco.SetSelection(getIndexByValue(spinIdTabPreco, prodtabpreco.id_tabpreco));
+                spinIdProduto.SetSelection(getIndexByValue(spinIdProduto, prodtabpreco.id_produto));
             }
             else
                 prodtabpreco = null;
@@ -90,8 +86,8 @@ namespace br.com.weblayer.venda.android.Activities
             spinIdTabPreco = FindViewById<Spinner>(Resource.Id.spinnerIdTabPreco);
             txt_ProdTabPreco = FindViewById<EditText>(Resource.Id.txtValorTabProd);
 
-            spinIdTabPreco.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinIdTabPreco_ItemSelected);
-            spinIdProduto.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinIdProduto_ItemSelected);
+            spinIdTabPreco.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinIdTabPreco_ItemSelected);
+            spinIdProduto.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinIdProduto_ItemSelected);
         }
 
         private void BindView()
@@ -126,6 +122,19 @@ namespace br.com.weblayer.venda.android.Activities
                 txt_ProdTabPreco.Error = "Valor inválido!";
             }
 
+            if (spinIdTabPreco.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira a tabela de preço!", ToastLength.Short).Show();
+            }
+
+            if (spinIdProduto.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira o código do produto!", ToastLength.Short).Show();
+            }
+
+
             return validacao;
         }
 
@@ -139,13 +148,29 @@ namespace br.com.weblayer.venda.android.Activities
             valoridtabpreco = spinIdTabPreco.SelectedItem.ToString();
         }
 
-        private int getIndex(Spinner spinner, string myString)
+        //private int getIndex(Spinner spinner, string myString)
+        //{
+        //    int index = 0;
+
+        //    for (int i = 0; i < spinner.Count; i++)
+        //    {
+        //        if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+        //        {
+        //            index = i;
+        //            break;
+        //        }
+        //    }
+        //    return index;
+        //}
+
+        private int getIndexByValue(Spinner spinner, long myId)
         {
             int index = 0;
 
-            for (int i = 1; i < spinner.Count; i++)
+            var adapter = (ArrayAdapter<mSpinner>)spinner.Adapter;
+            for (int i = 0; i < spinner.Count; i++)
             {
-                if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                if (adapter.GetItemId(i) == myId)
                 {
                     index = i;
                     break;
@@ -154,7 +179,7 @@ namespace br.com.weblayer.venda.android.Activities
             return index;
         }
 
-        private List<mSpinner> PopulateSpinnerList()
+        private List<mSpinner> PopulateTabPrecoSpinnerList()
         {
             List<mSpinner> minhalista = new List<mSpinner>();
             var listatabelapreco = new TabelaPrecoRepository().List();
@@ -163,9 +188,9 @@ namespace br.com.weblayer.venda.android.Activities
 
             foreach (var item in listatabelapreco)
             {
-                minhalista.Add(new mSpinner(item.id, item.ds_descricao));
+                minhalista.Add(new mSpinner(item.id, item.id_codigo));
             }
-            
+
             return minhalista;
         }
 
@@ -244,5 +269,5 @@ namespace br.com.weblayer.venda.android.Activities
                 alert.Show();
             });
         }
-    }   
+    }
 }

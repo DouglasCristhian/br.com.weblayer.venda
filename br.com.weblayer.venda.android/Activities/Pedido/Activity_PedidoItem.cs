@@ -23,48 +23,35 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnLimparPedidoItem;
         private Button btnSalvarAtualizar;
         private Button btnExcluirPedidoItem;
+
         private PedidoItem ped_item;
-        private string jsonnotaId;
-        private string jsonnotaValor;
-        private string jsonProdutosPedidoList;
-        private string IdPedido;
-        private string IdItem;
-        private string Operacao;
+        private Pedido pedido;
         private double go;
-        public double montante;
+        private string Operacao;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_PedidoItem);
 
-            jsonnotaId = Intent.GetStringExtra("JsonNotaIdProduto");
-            if (jsonnotaId == null)
-            {
-                jsonnotaId = "";
-            }
+            Operacao = "incluir";
 
-            jsonnotaValor = Intent.GetStringExtra("JsonNotaValorProduto");
-            if (jsonnotaValor == null)
-            {
-                jsonnotaValor = "";
-            }
+            //Trazendo o obj do pedido da tela anterior
+            string jsonPedido = Intent.GetStringExtra("JsonPedido");
+            if (jsonPedido == null)
+                return;
 
-            jsonProdutosPedidoList = Intent.GetStringExtra("JsonProdutosPedidoList");
-            if (jsonProdutosPedidoList != null)
-            {
+            pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonPedido);
+            //******************************************
+
+            //TODO: JsonProdutosPedidoList ->JsonPedidoItem
+            string jsonProdutosPedidoList = Intent.GetStringExtra("JsonProdutosPedidoList");
+            if (jsonProdutosPedidoList != null) //Edição
+            { 
                 ped_item = Newtonsoft.Json.JsonConvert.DeserializeObject<PedidoItem>(jsonProdutosPedidoList);
-                IdPedido = ped_item.id_pedido.ToString();
-                IdItem = ped_item.id.ToString();
+                Operacao = "editar";
             }
-
-            IdPedido = Intent.GetStringExtra("Id_Pedido");
-            if (IdPedido == null)
-            {
-                IdPedido = "";
-            }
-
-            Operacao = Intent.GetStringExtra("Operacao");
+            
 
             FindViews();
             BindData();
@@ -86,13 +73,12 @@ namespace br.com.weblayer.venda.android.Activities
             btnSalvarAtualizar = FindViewById<Button>(Resource.Id.btnSalvarAtualizar);
             btnExcluirPedidoItem = FindViewById<Button>(Resource.Id.btnExcluirPedidoItem);
 
-            if (Operacao == "Adicionar")
+            if (Operacao == "incluir")
             {
                 btnSalvarAtualizar.Visibility = ViewStates.Gone;
                 btnExcluirPedidoItem.Visibility = ViewStates.Gone;
-                IdItem = "0";
             }
-            else if (Operacao == "Atualizar")
+            else if (Operacao == "editar")
             {
                 btnSalvarPedidoItem.Visibility = ViewStates.Gone;
                 btnSalvarOutroPedItem.Visibility = ViewStates.Gone;
@@ -102,8 +88,6 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindViews()
         {
-            txtIdProduto.Text = jsonnotaId;
-            txtValorItem.Text = jsonnotaValor;
 
             if (ped_item == null)
                 return;
@@ -117,10 +101,10 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindModel()
         {
-            ped_item = new PedidoItem();
+            if (ped_item==null)
+                ped_item = new PedidoItem();
 
-            ped_item.id = int.Parse(IdItem.ToString());
-            ped_item.id_pedido = int.Parse(IdPedido.ToString());
+            ped_item.id_pedido = pedido.id;
             ped_item.id_produto = int.Parse(txtIdProduto.Text);
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
             ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());
@@ -282,10 +266,16 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
-                jsonnotaId = data.GetStringExtra("JsonNotaIdProduto");
-                jsonnotaValor = data.GetStringExtra("JsonNotaValorProduto");
+                //TODO: JsonNotaIdProduto ->JsonIdProduto
+                txtIdProduto.Text = data.GetStringExtra("JsonNotaIdProduto");
+                
+                //Buscar o preco vinculado a tabela de preco ****************************************
+                //ID_Cliente (no obj de pedido)
+                //get no obj do cliente
+                //obj do cliente eu consigo pegar qual é a tabela de preço que ele está utilizando.
+                //id_tabpreco + id_produto -> buscar o valor na tabela preço.
+                //***********************************************************************************
 
-                BindViews();
             }
         }
 

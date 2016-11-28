@@ -15,6 +15,7 @@ namespace br.com.weblayer.venda.android.Activities
     [Activity(Label = "Activity_EditarCliente")]
     public class Activity_EditarCliente : Activity_Base
     {
+        private string spinvalortbl;
         private EditText txtCodCli;
         private EditText txtRazaoSocialCli;
         private EditText txtNomeFantasiaCli;
@@ -22,7 +23,6 @@ namespace br.com.weblayer.venda.android.Activities
         public Spinner spinnerTabelaPreco;
         private Cliente cli;
         List<mSpinner> tblprecospinner;
-        private string spinvalortbl;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,12 +43,12 @@ namespace br.com.weblayer.venda.android.Activities
             FindViews();
             BindView();
 
-            tblprecospinner = PopulateSpinnerList();          
+            tblprecospinner = PopulateTabPrecoSpinnerList();          
             spinnerTabelaPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
 
             if (cli != null)
             {
-                spinnerTabelaPreco.SetSelection(getIndex(spinnerTabelaPreco, cli.id_tabelapreco.ToString()));
+                spinnerTabelaPreco.SetSelection(getIndexByValue(spinnerTabelaPreco, cli.id_tabelapreco));
             }
             else
                 cli = null;
@@ -140,6 +140,12 @@ namespace br.com.weblayer.venda.android.Activities
                 txtCNPJCli.Error = "CNPJ inválido!";
             }
 
+            if (spinnerTabelaPreco.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira a tabela de preços desejada!", ToastLength.Short).Show();
+            }
+
             return validacao;
         }
 
@@ -148,13 +154,29 @@ namespace br.com.weblayer.venda.android.Activities
             spinvalortbl = spinnerTabelaPreco.SelectedItem.ToString();
         }
 
-        private int getIndex(Spinner spinner, string myString)
+        //private int getIndex(Spinner spinner, string myString)
+        //{
+        //    int index = 0;
+
+        //    for (int i = 0; i < spinner.Count; i++)
+        //    {
+        //        if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+        //        {
+        //            index = i;
+        //            break;
+        //        }
+        //    }
+        //    return index;
+        //}
+
+        private int getIndexByValue(Spinner spinner, long myId)
         {
             int index = 0;
 
+            var adapter = (ArrayAdapter<mSpinner>)spinner.Adapter;
             for (int i = 0; i < spinner.Count; i++)
             {
-                if (spinner.GetItemAtPosition(i).ToString().Equals(myString, StringComparison.InvariantCultureIgnoreCase))
+                if (adapter.GetItemId(i) == myId)
                 {
                     index = i;
                     break;
@@ -163,21 +185,19 @@ namespace br.com.weblayer.venda.android.Activities
             return index;
         }
 
-        private List<mSpinner> PopulateSpinnerList()
+
+        private List<mSpinner> PopulateTabPrecoSpinnerList()
         {
             List<mSpinner> minhalista = new List<mSpinner>();
-            TabelaPrecoRepository repo = new TabelaPrecoRepository();
+            var listatabelapreco = new TabelaPrecoRepository().List();
 
-            for (int i = 1; i <= 4; i++)
+            minhalista.Add(new mSpinner(0, "Selecione..."));
+
+            foreach (var item in listatabelapreco)
             {
-                var go = repo.Get(i);
-                if (go != null)
-                {
-                    minhalista.Add(new mSpinner(go.id,go.ds_descricao));
-                    var teste = go.id;
-                }
+                minhalista.Add(new mSpinner(item.id, item.id_codigo));
             }
-        
+
             return minhalista;
         }
 

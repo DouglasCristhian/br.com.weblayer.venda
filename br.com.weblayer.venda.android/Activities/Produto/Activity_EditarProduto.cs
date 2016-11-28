@@ -43,17 +43,20 @@ namespace br.com.weblayer.venda.android.Fragments
 
             unidades_medida = new string[]
             {
-                "CX", "PCT", "UN"
+                "Selecione", "CX", "PCT", "UN"
             };
             
             FindViews();
             BindView();
 
-            tblprecoList = PopulateSpinnerList();
+            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, unidades_medida);
+
+            tblprecoList = PopulateTabPrecoSpinnerList();
             spinnerTblPrecoProd.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecoList);
 
-            spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
-
+            if (prod != null)
+                spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
+                spinnerTblPrecoProd.SetSelection(getIndexByValue(spinnerTblPrecoProd, prod.id_tabpreco));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -85,8 +88,7 @@ namespace br.com.weblayer.venda.android.Fragments
             spinnerTblPrecoProd = FindViewById<Spinner>(Resource.Id.spinTabelaPrecosProd);
             spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
-
-            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, unidades_medida);
+            
             spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
         }
 
@@ -129,6 +131,24 @@ namespace br.com.weblayer.venda.android.Fragments
                 txtNomeProd.Error = "Nome do produto inválido!";
             }
 
+            if (spinnerTblPrecoProd.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira a tabela de preços!", ToastLength.Short).Show();
+            }
+
+            if (spinnerTblPrecoProd.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira a tabela de preços!", ToastLength.Short).Show();
+            }
+
+            if (spinUniMedidaProd.SelectedItemPosition == 0)
+            {
+                validacao = false;
+                Toast.MakeText(this, "Por favor, insira a unidade de medida!", ToastLength.Short).Show();
+            }
+
             return validacao;
         }
 
@@ -158,19 +178,32 @@ namespace br.com.weblayer.venda.android.Fragments
             return index;
         }
 
-        private List<mSpinner> PopulateSpinnerList()
+        private int getIndexByValue(Spinner spinner, long myId)
+        {
+            int index = 0;
+
+            var adapter = (ArrayAdapter<mSpinner>)spinner.Adapter;
+            for (int i = 0; i < spinner.Count; i++)
+            {
+                if (adapter.GetItemId(i) == myId)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        private List<mSpinner> PopulateTabPrecoSpinnerList()
         {
             List<mSpinner> minhalista = new List<mSpinner>();
-            TabelaPrecoRepository repo = new TabelaPrecoRepository();
+            var listatabelapreco = new TabelaPrecoRepository().List();
 
-            for (int i = 1; i <= 4; i++)
+            minhalista.Add(new mSpinner(0, "Selecione..."));
+
+            foreach (var item in listatabelapreco)
             {
-                var go = repo.Get(i);
-                if (go != null)
-                {
-                    minhalista.Add(new mSpinner(go.id, go.ds_descricao));
-                    var teste = go.id;
-                }
+                minhalista.Add(new mSpinner(item.id, item.id_codigo));
             }
 
             return minhalista;

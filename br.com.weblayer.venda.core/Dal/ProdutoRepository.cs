@@ -45,10 +45,8 @@ namespace br.com.weblayer.venda.core.Dal
         }
 
         public IList<Produto> List()
-        {
-            
-            return Database.GetConnection().Table<Produto>().ToList();
-             
+        {            
+            return Database.GetConnection().Table<Produto>().ToList();           
         }
 
         public void MakeDataMock()
@@ -58,8 +56,8 @@ namespace br.com.weblayer.venda.core.Dal
             
             Save(new Produto() { id_codigo = "11111", ds_nome = "LAPIS DE COR AMARELO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 5.00 });
             Save(new Produto() { id_codigo = "22222", ds_nome = "LAPIS DE COR VERMELHO", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 10.00 });
-            Save(new Produto() { id_codigo = "33333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 3, vl_Valor = 15.00 });
-            Save(new Produto() { id_codigo = "44444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "CX", id_tabpreco = 4, vl_Valor = 20.00 });
+            Save(new Produto() { id_codigo = "33333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 15.00 });
+            Save(new Produto() { id_codigo = "44444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 20.00 });
         }
 
     }

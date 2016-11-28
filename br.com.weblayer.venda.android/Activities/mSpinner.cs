@@ -14,23 +14,23 @@ namespace br.com.weblayer.venda.android.Activities
 {
     class mSpinner 
     {
-        public int id_Produto;
-        public string ds_Produto;
+        public int id;
+        public string ds;
 
         public mSpinner(int idprod, string dsprod)
         {
-            id_Produto = idprod;
-            ds_Produto = dsprod;
+            id = idprod;
+            ds = dsprod;
         }
 
         public int Id()
         {
-            return id_Produto;
+            return id;
         }
 
         public override string ToString()
         {
-            return ds_Produto;
+            return ds;
         }
     }
 }
