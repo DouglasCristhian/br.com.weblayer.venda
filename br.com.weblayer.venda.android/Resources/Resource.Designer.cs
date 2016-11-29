@@ -94,41 +94,41 @@ namespace br.com.weblayer.venda.android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060068
+			public const int action_AddProduct = 2131099752;
+			
+			// aapt resource value: 0x7f060067
+			public const int action_ajuda = 2131099751;
+			
 			// aapt resource value: 0x7f060066
-			public const int action_AddProduct = 2131099750;
+			public const int action_configuracoes = 2131099750;
 			
 			// aapt resource value: 0x7f060065
-			public const int action_ajuda = 2131099749;
+			public const int action_deletar = 2131099749;
 			
 			// aapt resource value: 0x7f060064
-			public const int action_configuracoes = 2131099748;
-			
-			// aapt resource value: 0x7f060063
-			public const int action_deletar = 2131099747;
-			
-			// aapt resource value: 0x7f060062
-			public const int action_salvar = 2131099746;
+			public const int action_salvar = 2131099748;
 			
 			// aapt resource value: 0x7f060022
 			public const int btnAdicionar = 2131099682;
 			
-			// aapt resource value: 0x7f060046
-			public const int btnCancelar = 2131099718;
+			// aapt resource value: 0x7f060048
+			public const int btnCancelar = 2131099720;
+			
+			// aapt resource value: 0x7f060047
+			public const int btnExcluirPedidoItem = 2131099719;
 			
 			// aapt resource value: 0x7f060045
-			public const int btnExcluirPedidoItem = 2131099717;
+			public const int btnLimparPedidoItem = 2131099717;
 			
 			// aapt resource value: 0x7f060043
-			public const int btnLimparPedidoItem = 2131099715;
+			public const int btnSalvar = 2131099715;
 			
-			// aapt resource value: 0x7f060041
-			public const int btnSalvar = 2131099713;
+			// aapt resource value: 0x7f060046
+			public const int btnSalvarAtualizar = 2131099718;
 			
 			// aapt resource value: 0x7f060044
-			public const int btnSalvarAtualizar = 2131099716;
-			
-			// aapt resource value: 0x7f060042
-			public const int btnSalvarOutro = 2131099714;
+			public const int btnSalvarOutro = 2131099716;
 			
 			// aapt resource value: 0x7f060005
 			public const int checkBox_Tema1 = 2131099653;
@@ -139,14 +139,11 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060007
 			public const int checkBox_Tema3 = 2131099655;
 			
-			// aapt resource value: 0x7f06004a
-			public const int edtInformarFiltro = 2131099722;
+			// aapt resource value: 0x7f06004c
+			public const int edtInformarFiltro = 2131099724;
 			
-			// aapt resource value: 0x7f060047
-			public const int edtInformarFiltro2 = 2131099719;
-			
-			// aapt resource value: 0x7f060067
-			public const int item1 = 2131099751;
+			// aapt resource value: 0x7f060049
+			public const int edtInformarFiltro2 = 2131099721;
 			
 			// aapt resource value: 0x7f060012
 			public const int lblCNPJ = 2131099666;
@@ -160,23 +157,23 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060016
 			public const int lblCodigoPedido = 2131099670;
 			
-			// aapt resource value: 0x7f060031
-			public const int lblCodigoTabelaPreco = 2131099697;
+			// aapt resource value: 0x7f060033
+			public const int lblCodigoTabelaPreco = 2131099699;
 			
 			// aapt resource value: 0x7f06001e
 			public const int lblDataEmissao = 2131099678;
 			
-			// aapt resource value: 0x7f060037
-			public const int lblDescontoMaxTabelaPreco = 2131099703;
+			// aapt resource value: 0x7f060039
+			public const int lblDescontoMaxTabelaPreco = 2131099705;
 			
-			// aapt resource value: 0x7f060033
-			public const int lblDescricaoTabelaPreco = 2131099699;
+			// aapt resource value: 0x7f060035
+			public const int lblDescricaoTabelaPreco = 2131099701;
 			
 			// aapt resource value: 0x7f060018
 			public const int lblIdCliente = 2131099672;
 			
-			// aapt resource value: 0x7f06003b
-			public const int lblIdProduto = 2131099707;
+			// aapt resource value: 0x7f06003d
+			public const int lblIdProduto = 2131099709;
 			
 			// aapt resource value: 0x7f060023
 			public const int lblIdProdutoTbl = 2131099683;
@@ -196,8 +193,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060020
 			public const int lblObservacao = 2131099680;
 			
-			// aapt resource value: 0x7f06003f
-			public const int lblQuantidade = 2131099711;
+			// aapt resource value: 0x7f060041
+			public const int lblQuantidade = 2131099713;
 			
 			// aapt resource value: 0x7f06000e
 			public const int lblRazaoSocial = 2131099662;
@@ -211,14 +208,17 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f06002d
 			public const int lblUnidadeMedida = 2131099693;
 			
-			// aapt resource value: 0x7f06003d
-			public const int lblValorItem = 2131099709;
+			// aapt resource value: 0x7f06003f
+			public const int lblValorItem = 2131099711;
+			
+			// aapt resource value: 0x7f060031
+			public const int lblValorProd = 2131099697;
 			
 			// aapt resource value: 0x7f060027
 			public const int lblValorTabProd = 2131099687;
 			
-			// aapt resource value: 0x7f060035
-			public const int lblValorTabelaPreco = 2131099701;
+			// aapt resource value: 0x7f060037
+			public const int lblValorTabelaPreco = 2131099703;
 			
 			// aapt resource value: 0x7f06001c
 			public const int lblValorTotal = 2131099676;
@@ -226,29 +226,29 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060004
 			public const int linearLayout1 = 2131099652;
 			
-			// aapt resource value: 0x7f06004b
-			public const int listViewProdutos = 2131099723;
+			// aapt resource value: 0x7f06004d
+			public const int listViewProdutos = 2131099725;
 			
-			// aapt resource value: 0x7f060048
-			public const int listViewProdutos2 = 2131099720;
-			
-			// aapt resource value: 0x7f06004c
-			public const int listViewProdutosPedido = 2131099724;
+			// aapt resource value: 0x7f06004a
+			public const int listViewProdutos2 = 2131099722;
 			
 			// aapt resource value: 0x7f06004e
-			public const int listViewTabelaPrecos = 2131099726;
+			public const int listViewProdutosPedido = 2131099726;
 			
-			// aapt resource value: 0x7f060039
-			public const int listviewHome = 2131099705;
+			// aapt resource value: 0x7f060050
+			public const int listViewTabelaPrecos = 2131099728;
 			
-			// aapt resource value: 0x7f06003a
-			public const int listviewPedido = 2131099706;
+			// aapt resource value: 0x7f06003b
+			public const int listviewHome = 2131099707;
+			
+			// aapt resource value: 0x7f06003c
+			public const int listviewPedido = 2131099708;
 			
 			// aapt resource value: 0x7f060003
 			public const int lstViewCliente = 2131099651;
 			
-			// aapt resource value: 0x7f060049
-			public const int lstViewProdTabPreco = 2131099721;
+			// aapt resource value: 0x7f06004b
+			public const int lstViewProdTabPreco = 2131099723;
 			
 			// aapt resource value: 0x7f060001
 			public const int relativeLayoutBase = 2131099649;
@@ -289,44 +289,44 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060017
 			public const int txtCodigoPedido = 2131099671;
 			
-			// aapt resource value: 0x7f06005d
-			public const int txtCodigoProduto = 2131099741;
+			// aapt resource value: 0x7f06005f
+			public const int txtCodigoProduto = 2131099743;
 			
-			// aapt resource value: 0x7f060032
-			public const int txtCodigoTabelaPreco = 2131099698;
+			// aapt resource value: 0x7f060034
+			public const int txtCodigoTabelaPreco = 2131099700;
 			
 			// aapt resource value: 0x7f06001f
 			public const int txtDataEmissao = 2131099679;
 			
-			// aapt resource value: 0x7f060054
-			public const int txtData_Emissao = 2131099732;
-			
-			// aapt resource value: 0x7f060038
-			public const int txtDescontoMaxTabelaPreco = 2131099704;
-			
-			// aapt resource value: 0x7f060034
-			public const int txtDescricaoTabelaPreco = 2131099700;
-			
-			// aapt resource value: 0x7f06003c
-			public const int txtIdProduto = 2131099708;
-			
 			// aapt resource value: 0x7f060056
-			public const int txtIdProdutoPedidoItem = 2131099734;
+			public const int txtData_Emissao = 2131099734;
 			
-			// aapt resource value: 0x7f06005a
-			public const int txtIdProdutoTblPreco = 2131099738;
+			// aapt resource value: 0x7f06003a
+			public const int txtDescontoMaxTabelaPreco = 2131099706;
 			
-			// aapt resource value: 0x7f06005b
-			public const int txtIdTabelaPrecoTblPrecos = 2131099739;
+			// aapt resource value: 0x7f060036
+			public const int txtDescricaoTabelaPreco = 2131099702;
 			
-			// aapt resource value: 0x7f060051
-			public const int txtId_Cliente = 2131099729;
+			// aapt resource value: 0x7f06003e
+			public const int txtIdProduto = 2131099710;
 			
-			// aapt resource value: 0x7f060050
-			public const int txtId_Pedido = 2131099728;
+			// aapt resource value: 0x7f060058
+			public const int txtIdProdutoPedidoItem = 2131099736;
+			
+			// aapt resource value: 0x7f06005c
+			public const int txtIdProdutoTblPreco = 2131099740;
+			
+			// aapt resource value: 0x7f06005d
+			public const int txtIdTabelaPrecoTblPrecos = 2131099741;
+			
+			// aapt resource value: 0x7f060053
+			public const int txtId_Cliente = 2131099731;
 			
 			// aapt resource value: 0x7f060052
-			public const int txtId_Vendedor = 2131099730;
+			public const int txtId_Pedido = 2131099730;
+			
+			// aapt resource value: 0x7f060054
+			public const int txtId_Vendedor = 2131099732;
 			
 			// aapt resource value: 0x7f06001b
 			public const int txtIdvendedor = 2131099675;
@@ -337,29 +337,29 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f060011
 			public const int txtNomeFantasia = 2131099665;
 			
-			// aapt resource value: 0x7f06005e
-			public const int txtNomeProduto = 2131099742;
+			// aapt resource value: 0x7f060060
+			public const int txtNomeProduto = 2131099744;
 			
 			// aapt resource value: 0x7f060021
 			public const int txtObservacao = 2131099681;
 			
-			// aapt resource value: 0x7f06004d
-			public const int txtPrecos = 2131099725;
+			// aapt resource value: 0x7f06004f
+			public const int txtPrecos = 2131099727;
 			
-			// aapt resource value: 0x7f060040
-			public const int txtQuantidade = 2131099712;
+			// aapt resource value: 0x7f060042
+			public const int txtQuantidade = 2131099714;
 			
-			// aapt resource value: 0x7f060058
-			public const int txtQuantidadePedidoItem = 2131099736;
+			// aapt resource value: 0x7f06005a
+			public const int txtQuantidadePedidoItem = 2131099738;
 			
 			// aapt resource value: 0x7f06000f
 			public const int txtRazaoSocial = 2131099663;
 			
-			// aapt resource value: 0x7f060060
-			public const int txtTabPreco = 2131099744;
+			// aapt resource value: 0x7f060062
+			public const int txtTabPreco = 2131099746;
 			
-			// aapt resource value: 0x7f06004f
-			public const int txtTabelaPrecoCli = 2131099727;
+			// aapt resource value: 0x7f060051
+			public const int txtTabelaPrecoCli = 2131099729;
 			
 			// aapt resource value: 0x7f060009
 			public const int txtTema1Teste = 2131099657;
@@ -370,41 +370,44 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f06000b
 			public const int txtTema3Teste = 2131099659;
 			
-			// aapt resource value: 0x7f06005f
-			public const int txtUniMedidaProduto = 2131099743;
-			
-			// aapt resource value: 0x7f06003e
-			public const int txtValorItem = 2131099710;
-			
-			// aapt resource value: 0x7f060057
-			public const int txtValorPedidoItem = 2131099735;
-			
-			// aapt resource value: 0x7f06005c
-			public const int txtValorPrecos = 2131099740;
-			
 			// aapt resource value: 0x7f060061
-			public const int txtValorProduto = 2131099745;
+			public const int txtUniMedidaProduto = 2131099745;
+			
+			// aapt resource value: 0x7f060040
+			public const int txtValorItem = 2131099712;
+			
+			// aapt resource value: 0x7f060059
+			public const int txtValorPedidoItem = 2131099737;
+			
+			// aapt resource value: 0x7f06005e
+			public const int txtValorPrecos = 2131099742;
+			
+			// aapt resource value: 0x7f060032
+			public const int txtValorProd = 2131099698;
+			
+			// aapt resource value: 0x7f060063
+			public const int txtValorProduto = 2131099747;
 			
 			// aapt resource value: 0x7f060028
 			public const int txtValorTabProd = 2131099688;
 			
-			// aapt resource value: 0x7f060036
-			public const int txtValorTabelaPreco = 2131099702;
+			// aapt resource value: 0x7f060038
+			public const int txtValorTabelaPreco = 2131099704;
 			
 			// aapt resource value: 0x7f06001d
 			public const int txtValorTotal = 2131099677;
 			
-			// aapt resource value: 0x7f060059
-			public const int txtValorTotalPedidoItem = 2131099737;
+			// aapt resource value: 0x7f06005b
+			public const int txtValorTotalPedidoItem = 2131099739;
 			
-			// aapt resource value: 0x7f060053
-			public const int txtValor_Total = 2131099731;
+			// aapt resource value: 0x7f060055
+			public const int txtValor_Total = 2131099733;
 			
 			// aapt resource value: 0x7f060008
 			public const int txtVersaoApp = 2131099656;
 			
-			// aapt resource value: 0x7f060055
-			public const int txt_Observacao = 2131099733;
+			// aapt resource value: 0x7f060057
+			public const int txt_Observacao = 2131099735;
 			
 			static Id()
 			{
@@ -496,9 +499,6 @@ namespace br.com.weblayer.venda.android
 			
 			// aapt resource value: 0x7f030019
 			public const int Botoes_InserirNovo = 2130903065;
-			
-			// aapt resource value: 0x7f03001a
-			public const int SpinnerListAdapter = 2130903066;
 			
 			static Layout()
 			{

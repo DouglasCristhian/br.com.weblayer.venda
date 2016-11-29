@@ -91,7 +91,7 @@
     <Compile Include="Activities\Activity_Configuracoes.cs" />
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Produto\Activity_Produtos.cs" />
-    <Compile Include="Activities\mSpinner.cs" />
+    <Compile Include="Adapters\mSpinner.cs" />
     <Compile Include="Adapters\Adapter_Cliente_ListView.cs" />
     <Compile Include="Adapters\Adapter_PedidoItem_ListView.cs" />
     <Compile Include="Adapters\Adapter_Pedido_ListView.cs" />
@@ -99,8 +99,8 @@
     <Compile Include="Activities\Produto\Activity_EditarProduto.cs" />
     <Compile Include="Adapters\Adapter_ProdTabelaPreco_ListView.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
-    <Compile Include="Adapters\SpinnerListAdapter.cs" />
     <Compile Include="Helpers\DatePickerHelper.cs" />
+    <Compile Include="Helpers\Mask.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -203,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_EditarTabelaPreco.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\SpinnerListAdapter.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_PedidoItem.xml" />

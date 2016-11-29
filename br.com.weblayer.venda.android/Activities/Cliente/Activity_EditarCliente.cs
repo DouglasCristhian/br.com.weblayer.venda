@@ -9,6 +9,8 @@ using br.com.weblayer.venda.core.Bll;
 using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
 using static Android.Widget.AdapterView;
+using br.com.weblayer.logistica.android.Helpers;
+using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -48,7 +50,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (cli != null)
             {
-                spinnerTabelaPreco.SetSelection(getIndexByValue(spinnerTabelaPreco, cli.id_tabelapreco));
+                spinnerTabelaPreco.SetSelection(getIndexByValue(spinnerTabelaPreco, cli.id));
             }
             else
                 cli = null;
@@ -82,6 +84,8 @@ namespace br.com.weblayer.venda.android.Activities
             txtRazaoSocialCli = FindViewById<EditText>(Resource.Id.txtRazaoSocial);
             txtCNPJCli = FindViewById<EditText>(Resource.Id.txtCNPJ);
             spinnerTabelaPreco = FindViewById<Spinner>(Resource.Id.spinnerTblPrecos);
+
+            txtCNPJCli.AddTextChangedListener(new Mask(txtCNPJCli, "##.###.###/####-##"));
 
             spinnerTabelaPreco.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPreco_ItemSelected);
 
@@ -195,7 +199,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             foreach (var item in listatabelapreco)
             {
-                minhalista.Add(new mSpinner(item.id, item.id_codigo));
+                minhalista.Add(new mSpinner(item.id, item.ds_descricao));
             }
 
             return minhalista;

@@ -10,6 +10,7 @@ using Android.Content;
 using static Android.Widget.AdapterView;
 using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
+using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -18,6 +19,7 @@ namespace br.com.weblayer.venda.android.Fragments
     {
         private EditText txtCodigoProd;
         private EditText txtNomeProd;
+        private EditText txtValorProd;
         private Spinner spinUniMedidaProd;
         private Spinner spinnerTblPrecoProd;
         private Produto prod;
@@ -85,6 +87,7 @@ namespace br.com.weblayer.venda.android.Fragments
         {
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
             txtNomeProd = FindViewById<EditText>(Resource.Id.txtNome);
+            txtValorProd = FindViewById<EditText>(Resource.Id.txtValorProd);
             spinnerTblPrecoProd = FindViewById<Spinner>(Resource.Id.spinTabelaPrecosProd);
             spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
@@ -99,6 +102,7 @@ namespace br.com.weblayer.venda.android.Fragments
 
             txtCodigoProd.Text = prod.id_codigo;
             txtNomeProd.Text = prod.ds_nome;
+            txtValorProd.Text = prod.vl_Valor.ToString();
             valortbpreco = prod.id_tabpreco.ToString();
             spinValor = prod.ds_unimedida.ToString();
         }
@@ -113,6 +117,7 @@ namespace br.com.weblayer.venda.android.Fragments
             var mytabelapreco = tblprecoList[spinnerTblPrecoProd.SelectedItemPosition];
             prod.id_tabpreco = mytabelapreco.Id();
             prod.ds_unimedida= spinValor.ToString();
+            prod.vl_Valor = double.Parse(txtValorProd.Text.ToString());
         }
 
         private bool ValidateViews()
@@ -203,7 +208,7 @@ namespace br.com.weblayer.venda.android.Fragments
 
             foreach (var item in listatabelapreco)
             {
-                minhalista.Add(new mSpinner(item.id, item.id_codigo));
+                minhalista.Add(new mSpinner(item.id, item.ds_descricao));
             }
 
             return minhalista;
@@ -213,8 +218,8 @@ namespace br.com.weblayer.venda.android.Fragments
         {
             if (!ValidateViews())
                 return;
-            try
-            {
+            //try
+            //{
                 BindModel();
 
                 var produto = new Produto_Manager();
@@ -224,11 +229,11 @@ namespace br.com.weblayer.venda.android.Fragments
                 myIntent.PutExtra("mensagem", produto.Mensagem);
                 SetResult(Result.Ok, myIntent);
                 Finish();
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            //}
         }
 
         private void Delete()

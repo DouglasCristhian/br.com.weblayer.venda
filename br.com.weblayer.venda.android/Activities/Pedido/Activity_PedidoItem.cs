@@ -26,6 +26,8 @@ namespace br.com.weblayer.venda.android.Activities
 
         private PedidoItem ped_item;
         private Pedido pedido;
+        private Produto produto;
+        private Cliente cliente;
         private double go;
         private string Operacao;
 
@@ -34,24 +36,31 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_PedidoItem);
 
-            Operacao = "incluir";
+           // Operacao = "incluir";
 
             //Trazendo o obj do pedido da tela anterior
             string jsonPedido = Intent.GetStringExtra("JsonPedido");
             if (jsonPedido == null)
-                return;
+                return;        
 
             pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonPedido);
             //******************************************
 
             //TODO: JsonProdutosPedidoList ->JsonPedidoItem
-            string jsonProdutosPedidoList = Intent.GetStringExtra("JsonProdutosPedidoList");
+            string jsonProdutosPedidoList = Intent.GetStringExtra("JsonPedidoItem");
             if (jsonProdutosPedidoList != null) //Edição
-            { 
+            {
                 ped_item = Newtonsoft.Json.JsonConvert.DeserializeObject<PedidoItem>(jsonProdutosPedidoList);
                 Operacao = "editar";
             }
-            
+            else
+            { 
+                Operacao = "incluir";
+            }
+            string jsonCliente = Intent.GetStringExtra("JsonCliente");
+            if (jsonCliente != null)
+                cliente = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(jsonCliente);
+
 
             FindViews();
             BindData();
@@ -267,15 +276,24 @@ namespace br.com.weblayer.venda.android.Activities
             if (resultCode == Result.Ok)
             {
                 //TODO: JsonNotaIdProduto ->JsonIdProduto
-                txtIdProduto.Text = data.GetStringExtra("JsonNotaIdProduto");
-                
+                //txtIdProduto.Text = data.GetStringExtra("JsonIdProduto");
+
+                var jsonidproduto = data.GetStringExtra("JsonIdProduto");
+                produto = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonidproduto);
+                txtIdProduto.Text = produto.id_codigo;
+                txtValorItem.Text = produto.vl_Valor.ToString();
+
+                var tabprecoprod = new ProdutoTabelaPreco_Manager().Get(cliente.id_tabelapreco, produto.id);
+
+                if (tabprecoprod != null)
+                    txtValorItem.Text = tabprecoprod.vl_Valor.ToString();
+
                 //Buscar o preco vinculado a tabela de preco ****************************************
                 //ID_Cliente (no obj de pedido)
                 //get no obj do cliente
                 //obj do cliente eu consigo pegar qual é a tabela de preço que ele está utilizando.
                 //id_tabpreco + id_produto -> buscar o valor na tabela preço.
                 //***********************************************************************************
-
             }
         }
 
@@ -287,7 +305,6 @@ namespace br.com.weblayer.venda.android.Activities
 
                 var ped = new PedidoItem_Manager();
                 ped.Save(ped_item);
-
                 // Finish();
 
             }

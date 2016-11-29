@@ -9,6 +9,11 @@ namespace br.com.weblayer.venda.core.Bll
     {
         public string Mensagem;
 
+        public Cliente Get(int id)
+        {
+            return new ClienteRepository().Get(id);
+        }
+
         public IList<Cliente> GetClientes(string filtro)
         {
             return new ClienteRepository().List();

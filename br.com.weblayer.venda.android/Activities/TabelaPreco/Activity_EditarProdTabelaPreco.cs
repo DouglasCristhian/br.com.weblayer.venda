@@ -9,6 +9,8 @@ using br.com.weblayer.venda.core.Model;
 using static Android.Widget.AdapterView;
 using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.logistica.android.Helpers;
+using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -188,7 +190,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             foreach (var item in listatabelapreco)
             {
-                minhalista.Add(new mSpinner(item.id, item.id_codigo));
+                minhalista.Add(new mSpinner(item.id, item.ds_descricao));
             }
 
             return minhalista;
@@ -203,7 +205,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             foreach (var item in listaprodutos)
             {
-                minhalista.Add(new mSpinner(item.id, item.id_codigo));
+                minhalista.Add(new mSpinner(item.id, item.ds_nome));
             }
 
             return minhalista;

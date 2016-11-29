@@ -32,12 +32,12 @@ namespace br.com.weblayer.venda.core.Dal
                     Database.GetConnection().Update(entidade);
                 else
                     Database.GetConnection().Insert(entidade);
-            }
+        }
             catch (Exception e)
             {
                 Mensage = $"Falha ao Inserir a entidade {entidade.GetType()}. Erro: {e.Message}";
             }
-        }
+}
 
         public void Delete(Produto entidade)
         {
@@ -54,10 +54,10 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
             
-            Save(new Produto() { id_codigo = "11111", ds_nome = "LAPIS DE COR AMARELO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 5.00 });
-            Save(new Produto() { id_codigo = "22222", ds_nome = "LAPIS DE COR VERMELHO", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 10.00 });
-            Save(new Produto() { id_codigo = "33333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 15.00 });
-            Save(new Produto() { id_codigo = "44444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 20.00 });
+            Save(new Produto() { id_codigo = "1111", ds_nome = "LAPIS DE COR AMARELO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 1.00 });
+            Save(new Produto() { id_codigo = "2222", ds_nome = "LAPIS DE COR VERMELHO", ds_unimedida = "PCT", id_tabpreco = 2, vl_Valor = 1.00 });
+            Save(new Produto() { id_codigo = "3333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 1.00 });
+            Save(new Produto() { id_codigo = "4444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "UN", id_tabpreco = 1, vl_Valor = 1.00 });
         }
 
     }

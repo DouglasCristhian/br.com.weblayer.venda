@@ -17,6 +17,11 @@ namespace br.com.weblayer.venda.core.Dal
     {
         public string Mensage { get; set; }
 
+        public Cliente Get(int id)
+        {
+            return Database.GetConnection().Table<Cliente>().Where(x => x.id == id).FirstOrDefault();
+        }
+
         public IList<Cliente> GetBytabPreco(int id_tabpreco)
         {
             return Database.GetConnection().Table<Cliente>().Where(x => x.id_tabelapreco == id_tabpreco).ToList();
@@ -54,8 +59,8 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            Save(new Cliente() { id_Codigo = "1", ds_NomeFantasia = "UNITY SISTEMAS", ds_RazaoSocial = "XPTO SOFTWARE", ds_Cnpj = "456824535", id_tabelapreco = 1});
-            Save(new Cliente() { id_Codigo = "2", ds_NomeFantasia = "INVISIBLE TUCS", ds_RazaoSocial = "TPA ONIX", ds_Cnpj = "564545787", id_tabelapreco = 2 });       
+            Save(new Cliente() { id_Codigo = "1", ds_NomeFantasia = "UNITY SISTEMAS", ds_RazaoSocial = "XPTO SOFTWARE", ds_Cnpj = "11.111.111/1111-11", id_tabelapreco = 1});
+            Save(new Cliente() { id_Codigo = "2", ds_NomeFantasia = "INVISIBLE TUCS", ds_RazaoSocial = "TPA ONIX", ds_Cnpj = "22.222.222/2222-22", id_tabelapreco = 2 });       
         }
     }
 }

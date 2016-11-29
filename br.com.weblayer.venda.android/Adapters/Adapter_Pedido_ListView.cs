@@ -17,7 +17,6 @@ namespace br.com.weblayer.venda.android.Adapters
     {
         public IList<Pedido> mItems;
         private Context mContext;
-        private Cliente cli;
 
         public Adapter_Pedido_ListView(Context context, IList<Pedido> items)
         {

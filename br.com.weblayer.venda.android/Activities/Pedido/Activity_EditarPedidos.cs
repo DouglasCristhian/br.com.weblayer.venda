@@ -9,6 +9,7 @@ using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.logistica.android.Helpers;
 using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
+using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -51,7 +52,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                spinnerClientes.SetSelection(getIndexByValue(spinnerClientes, long.Parse(pedido.id_codigo.ToString())));
+                spinnerClientes.SetSelection(getIndexByValue(spinnerClientes, pedido.id));
             }
             else
                 pedido = null;
@@ -231,7 +232,10 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
 
+            var obj_cliente = new Cliente_Manager().Get(pedido.id);
+
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
+            intent.PutExtra("JsonCliente", Newtonsoft.Json.JsonConvert.SerializeObject(obj_cliente));
             StartActivityForResult(intent, 0);
         }
 
