@@ -36,17 +36,13 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_PedidoItem);
 
-           // Operacao = "incluir";
-
             //Trazendo o obj do pedido da tela anterior
             string jsonPedido = Intent.GetStringExtra("JsonPedido");
             if (jsonPedido == null)
                 return;        
 
             pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonPedido);
-            //******************************************
 
-            //TODO: JsonProdutosPedidoList ->JsonPedidoItem
             string jsonProdutosPedidoList = Intent.GetStringExtra("JsonPedidoItem");
             if (jsonProdutosPedidoList != null) //Edição
             {

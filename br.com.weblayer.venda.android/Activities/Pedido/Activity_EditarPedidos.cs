@@ -207,7 +207,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
-            intent.PutExtra("Id_Pedido", pedido.id.ToString());
+            intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             StartActivityForResult(intent, 0);
         }
 
