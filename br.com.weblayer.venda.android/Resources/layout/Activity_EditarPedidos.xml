@@ -12,7 +12,7 @@
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
      android:layout_alignParentTop ="true"
-     android:text="Id_Código"/>
+     android:text="Código no Cliente"/>
 
   <EditText
      android:id="@+id/txtCodigoPedido"
@@ -30,7 +30,7 @@
      android:layout_height="wrap_content"
      android:layout_width="match_parent"/>
 
-  <TextView
+  <!--<TextView
      android:id="@+id/lblIdVendedor"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
@@ -39,7 +39,7 @@
   <EditText
      android:id="@+id/txtIdvendedor"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+     android:layout_width="match_parent"/>-->
 
   <TextView
      android:id="@+id/lblValorTotal"

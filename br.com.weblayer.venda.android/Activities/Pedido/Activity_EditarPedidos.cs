@@ -13,11 +13,11 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_EditarPedidos", MainLauncher = false)]
+    [Activity(Label = "Pedido", MainLauncher = false)]
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
-        private EditText txtid_Vendedor;
+        //private EditText txtid_Vendedor;
         private TextView txtDataEmissao;
         private TextView txtValor_Total;
         private EditText txtObservacao;
@@ -116,7 +116,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
             spinnerClientes = FindViewById<Spinner>(Resource.Id.spinnerIdCliente);
-            txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
+            //txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
             txtDataEmissao = FindViewById<TextView>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
@@ -136,7 +136,7 @@ namespace br.com.weblayer.venda.android.Activities
                 return;
 
             txtid_Codigo.Text = pedido.id_codigo.ToString();
-            txtid_Vendedor.Text = pedido.id_vendedor.ToString();
+            //txtid_Vendedor.Text = pedido.id_vendedor.ToString();
             idcliente = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
             txtDataEmissao.Text = pedido.dt_emissao.ToString();
@@ -172,11 +172,11 @@ namespace br.com.weblayer.venda.android.Activities
                 txtid_Codigo.Error = "Código do Pedido inválido!";
             }
 
-            if (txtid_Vendedor.Length() == 0)
-            {
-                validacao = false;
-                txtid_Vendedor.Error = "Código do Vendedor inválido!";
-            }
+            //if (txtid_Vendedor.Length() == 0)
+            //{
+            //    validacao = false;
+            //    txtid_Vendedor.Error = "Código do Vendedor inválido!";
+            //}
 
             if (spinnerClientes.SelectedItemPosition == 0)
             {

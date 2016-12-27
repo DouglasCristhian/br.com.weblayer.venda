@@ -10,7 +10,7 @@ using Android.Views;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_PedidoItem")]
+    [Activity(Label = "Item do Pedido")]
     public class Activity_PedidoItem : Activity_Base
     {
         private TextView txtIdProduto;
@@ -36,12 +36,12 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Activity_PedidoItem);
 
-           // Operacao = "incluir";
+            // Operacao = "incluir";
 
             //Trazendo o obj do pedido da tela anterior
             string jsonPedido = Intent.GetStringExtra("JsonPedido");
             if (jsonPedido == null)
-                return;        
+                return;
 
             pedido = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(jsonPedido);
             //******************************************
@@ -54,7 +54,7 @@ namespace br.com.weblayer.venda.android.Activities
                 Operacao = "editar";
             }
             else
-            { 
+            {
                 Operacao = "incluir";
             }
             string jsonCliente = Intent.GetStringExtra("JsonCliente");
@@ -110,7 +110,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void BindModel()
         {
-            if (ped_item==null)
+            if (ped_item == null)
                 ped_item = new PedidoItem();
 
             ped_item.id_pedido = pedido.id;
@@ -283,11 +283,13 @@ namespace br.com.weblayer.venda.android.Activities
                 txtIdProduto.Text = produto.id_codigo;
                 txtValorItem.Text = produto.vl_Valor.ToString();
 
-                var tabprecoprod = new ProdutoTabelaPreco_Manager().Get(cliente.id_tabelapreco, produto.id);
+                if (cliente != null)
+                {
+                    var tabprecoprod = new ProdutoTabelaPreco_Manager().Get(cliente.id_tabelapreco, produto.id);
 
-                if (tabprecoprod != null)
-                    txtValorItem.Text = tabprecoprod.vl_Valor.ToString();
-
+                    if (tabprecoprod != null)
+                        txtValorItem.Text = tabprecoprod.vl_Valor.ToString();
+                }
                 //Buscar o preco vinculado a tabela de preco ****************************************
                 //ID_Cliente (no obj de pedido)
                 //get no obj do cliente

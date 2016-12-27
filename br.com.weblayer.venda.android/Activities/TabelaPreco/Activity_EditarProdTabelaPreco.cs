@@ -14,7 +14,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_EditarProdTabelaPreco", MainLauncher = false)]
+    [Activity(Label = "Preço", MainLauncher = false)]
     public class Activity_EditarProdTabelaPreco : Activity
     {
         private string valoridproduto;

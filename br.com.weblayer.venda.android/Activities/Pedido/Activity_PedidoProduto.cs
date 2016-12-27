@@ -15,7 +15,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_PedidoProduto")]
+    [Activity(Label = "Escolha o Produto")]
     public class Activity_PedidoProduto : Activity
     {
         private ListView lstViewProdutos;

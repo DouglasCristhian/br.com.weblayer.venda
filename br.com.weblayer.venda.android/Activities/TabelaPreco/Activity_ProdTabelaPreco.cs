@@ -15,7 +15,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_ProdutoTabelaPreco")]
+    [Activity(Label = "Preços")]
     public class Activity_ProdTabelaPreco : Activity
     {
         private ListView lstViewProdTabPreco;
