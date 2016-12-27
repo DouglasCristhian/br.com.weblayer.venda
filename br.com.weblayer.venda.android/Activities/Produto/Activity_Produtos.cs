@@ -12,7 +12,7 @@ using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_Produtos")]
+    [Activity(Label = "Produtos")]
     public class Activity_Produtos : Activity_Base
     {
         private ListView lstViewProdutos;
