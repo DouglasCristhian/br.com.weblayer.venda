@@ -1,96 +1,142 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_gravity="center_vertical">
-  
-  <TextView
-     android:id="@+id/lblIdProduto"
+    android:minWidth="400dp"
+    android:minHeight="500dp">
+
+    <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
+
+    <TextView
+       android:id="@+id/lblIdProduto"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:focusable="false"
+       android:text="Produto"/>
+
+    <TextView
+       android:id="@+id/txtIdProduto"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"
+       android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+       android:id="@+id/lblValorItem"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Valor Item"/>
+
+    <EditText
+       android:id="@+id/txtValorItem"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"
+       android:inputType="numberDecimal"/>
+
+    <TextView
+       android:id="@+id/lblQuantidade"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Quantidade"/>
+
+    <EditText
+       android:id="@+id/txtQuantidade"
+       android:layout_height="wrap_content"
+       android:inputType="number"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"/>
+
+    <TextView
+       android:id="@+id/lblValorTotal"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Valor Total"/>
+
+    <TextView
+       android:id="@+id/txtValorTotal"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:text = "0"/>
+
+    <Button
+       android:id="@+id/btnSalvar"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginRight="18dip"
+       android:layout_marginLeft="18dip"
+       android:layout_marginTop="10dip"
+       android:text="Salvar"/>
+
+    <Button
+       android:id="@+id/btnSalvarOutro"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginRight="18dip"
+       android:layout_marginLeft="18dip"
+       android:text="Salvar +"/>
+
+    <Button
+      android:id="@+id/btnLimparPedidoItem"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_marginRight="18dip"
+      android:layout_marginLeft="18dip"
+      android:text="Limpar"/>
+
+    <Button
+      android:id="@+id/btnSalvarAtualizar"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_marginRight="18dip"
+      android:layout_marginLeft="18dip"
+      android:text="Salvar"/>
+
+    <Button
+      android:id="@+id/btnExcluirPedidoItem"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_marginRight="18dip"
+      android:layout_marginLeft="18dip"
+      android:text="Excluir"/>
+
+    <Button
+     android:id="@+id/btnCancelar"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     android:focusable="false"
-     android:text="Produto"/>
+     android:layout_marginRight="18dip"
+     android:layout_marginLeft="18dip"
+     android:text="Cancelar"/>
 
-  <TextView
-     android:id="@+id/txtIdProduto"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-  <TextView
-     android:id="@+id/lblValorItem"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Valor Item"/>
-
-  <EditText
-     android:id="@+id/txtValorItem"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:inputType="numberDecimal"/>
-
-  <TextView
-     android:id="@+id/lblQuantidade"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Quantidade"/>
-
-  <EditText
-     android:id="@+id/txtQuantidade"
-     android:layout_height="wrap_content"
-     android:inputType="number"
-     android:layout_width="match_parent"/>
-
-  <TextView
-     android:id="@+id/lblValorTotal"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Valor Total"/>
-
-  <TextView
-     android:id="@+id/txtValorTotal"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:textAppearance="?android:attr/textAppearanceMedium"
-     android:text = "0"/>
-  
-  <Button
-     android:id="@+id/btnSalvar"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Salvar"/>
-
-  <Button
-     android:id="@+id/btnSalvarOutro"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Salvar +"/>
-  
-  <Button
-    android:id="@+id/btnLimparPedidoItem"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Limpar"/>
-
-  <Button
-    android:id="@+id/btnSalvarAtualizar"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Salvar"/>
-
-  <Button
-    android:id="@+id/btnExcluirPedidoItem"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Excluir"/>
-
-  <Button
-   android:id="@+id/btnCancelar"
-   android:layout_height="wrap_content"
-   android:layout_width="match_parent"
-   android:text="Cancelar"/>
-  
-</LinearLayout>
+  </LinearLayout>
+</ScrollView>

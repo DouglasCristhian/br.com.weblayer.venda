@@ -4,12 +4,15 @@ using Android.OS;
 using System.Collections.Generic;
 using br.com.weblayer.venda.android.Activities;
 using Android.Views;
+using System;
+using Android.Support.V7.App;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(Label = "Home", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity_Base
+    [Activity(MainLauncher = true)]
+    public class MainActivity : Activity
     {
+        Android.Support.V7.Widget.Toolbar toolbar;
         private List<string> ItensLista;
         private ListView ListViewHome;
 
@@ -17,39 +20,39 @@ namespace br.com.weblayer.venda.android
         {
             base.OnCreate(bundle);
             SetContentView (Resource.Layout.Activity_Home);
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             core.Dal.Database.Initialize();
 
             FindViews();
-            BindData();                  
+            BindData();
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        private void Toolbar_MenuItemClick(object sender, Android.Support.V7.Widget.Toolbar.MenuItemClickEventArgs e)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Home, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch(item.ItemId)
+            switch (e.Item.ItemId)
             {
                 case Resource.Id.action_configuracoes:
                     StartActivity(typeof(Activity_Configuracoes));
-                    return true;
+                    break;
 
                 case Resource.Id.action_ajuda:
                     StartActivity(typeof(Activity_Ajuda));
-                    return true;
+                    break;
             }
-
-            return base.OnOptionsItemSelected(item);
         }
 
         private void FindViews()
         {
             ListViewHome = FindViewById<ListView>(Resource.Id.listviewHome);
+
+            toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            toolbar.Title = " W/Vendas";
+            toolbar.SetLogo(Resource.Mipmap.ic_launcher);
+            toolbar.InflateMenu(Resource.Menu.menu_toolbar);
+            toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
+            toolbar.Menu.RemoveItem(Resource.Id.action_deletar);
+            toolbar.Menu.RemoveItem(Resource.Id.action_salvar);
+            toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
         }
 
         private void BindData()
@@ -65,7 +68,10 @@ namespace br.com.weblayer.venda.android
 
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, ItensLista);
             ListViewHome.Adapter = adapter;
+
+            toolbar.MenuItemClick += Toolbar_MenuItemClick;
         }
+
 
         private void ListViewHome_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {

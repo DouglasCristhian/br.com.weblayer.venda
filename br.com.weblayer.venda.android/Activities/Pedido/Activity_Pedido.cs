@@ -11,16 +11,41 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_Pedido")]
+    [Activity(Label = "Pedidos")]
     public class Activity_Pedido : Activity_Base
     {
         private ListView lstViewPedido;
         private IList<Pedido> lstPedido;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_Pedido;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                //case Android.Resource.Id.Home:
+                //    Finish();
+
+                //    return true;
+
+                case Resource.Id.action_adicionar:
+                    Intent intent = new Intent();
+                    intent.SetClass(this, typeof(Activity_EditarPedidos));
+                    StartActivityForResult(intent, 0);
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_Pedido);
 
             FindViews();
             BindViews();
@@ -29,22 +54,12 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_salvar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
             return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_AddProduct:
-                    //Intent para Editarpedidos vazio, aguarda o save para poder repopular a lista.
-                    Intent intent = new Intent();
-                    intent.SetClass(this, typeof(Activity_EditarPedidos));
-                    StartActivityForResult(intent, 0);
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
         }
 
         private void FindViews()

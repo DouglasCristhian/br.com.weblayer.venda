@@ -15,15 +15,23 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_PedidoProduto")]
-    public class Activity_PedidoProduto : Activity
+    [Activity(Label = "Produtos do Pedido")]
+    public class Activity_PedidoProduto : Activity_Base
     {
         private ListView lstViewProdutos;
         private IList<Produto> lstProdutos;
+
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_PedidoProduto;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_PedidoProduto);
 
             FindViews();
             BindViews();

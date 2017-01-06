@@ -14,7 +14,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
-    [Activity(Label = "Editar Produto", MainLauncher = false)]
+    [Activity(Label = "Editar Produtos", MainLauncher = false)]
     public class Activity_EditarProduto : Activity_Base
     {
         private EditText txtCodigoProd;
@@ -28,10 +28,17 @@ namespace br.com.weblayer.venda.android.Fragments
         private string[] unidades_medida;
         private string spinValor;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarProduto;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarProduto);
 
             var jsonnota = Intent.GetStringExtra("JsonNotaProd");
             if (jsonnota == null)
@@ -49,22 +56,19 @@ namespace br.com.weblayer.venda.android.Fragments
             };
             
             FindViews();
+            SetStyle();
             BindView();
 
-            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, unidades_medida);
+            spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, unidades_medida);
 
             tblprecoList = PopulateTabPrecoSpinnerList();
-            spinnerTblPrecoProd.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecoList);
+            spinnerTblPrecoProd.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprecoList);
 
             if (prod != null)
+            {
                 spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
                 spinnerTblPrecoProd.SetSelection(getIndexByValue(spinnerTblPrecoProd, prod.id_tabpreco));
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, menu);
-            return base.OnCreateOptionsMenu(menu);
+            }
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -83,6 +87,22 @@ namespace br.com.weblayer.venda.android.Fragments
             return base.OnOptionsItemSelected(item);
         }
 
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
+
+            if (prod == null)
+            {
+                menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
+            return base.OnCreateOptionsMenu(menu);
+        }
+
         private void FindViews() //mapear as variaveis para as views
         {
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
@@ -93,6 +113,15 @@ namespace br.com.weblayer.venda.android.Fragments
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
             
             spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
+        }
+
+        private void SetStyle()
+        {
+            txtCodigoProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtNomeProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinnerTblPrecoProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinUniMedidaProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void BindView() //pegar dados do modelo e atribuir as views

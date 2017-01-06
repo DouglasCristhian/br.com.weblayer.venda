@@ -9,28 +9,31 @@ using br.com.weblayer.venda.android.Fragments;
 using br.com.weblayer.venda.android.Adapters;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
+using System;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_Produtos")]
+    [Activity(Label = "Produtos")]
     public class Activity_Produtos : Activity_Base
     {
         private ListView lstViewProdutos;
         private IList<Produto> lstProdutos;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override int LayoutResource
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_Produtos);
-
-            FindViews();
-            BindViews();
-            FillList();         
+            get
+            {
+                return Resource.Layout.Activity_Produtos;
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_salvar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -38,14 +41,22 @@ namespace br.com.weblayer.venda.android.Activities
         {
             switch (item.ItemId)
             {
-                case Resource.Id.action_AddProduct:
+                case Resource.Id.action_adicionar:
                     Intent intent = new Intent();
                     intent.SetClass(this, typeof(Activity_EditarProduto));
                     StartActivityForResult(intent, 0);
                     break;
             }
-
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            FindViews();
+            BindViews();
+            FillList();         
         }
 
         private void FindViews()

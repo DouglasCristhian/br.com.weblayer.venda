@@ -7,6 +7,7 @@ using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.android.Adapters;
+using System;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -16,10 +17,30 @@ namespace br.com.weblayer.venda.android.Activities
         private ListView lstViewClientes;
         private IList<Cliente> lstClientes;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_Clientes;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_adicionar:
+                    Intent intent = new Intent();
+                    intent.SetClass(this, typeof(Activity_EditarCliente));
+                    StartActivityForResult(intent, 0);
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_Clientes);
 
             FindViews();
             BindViews();
@@ -28,22 +49,12 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_salvar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
             return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_AddProduct:
-                    Intent intent = new Intent();
-                    intent.SetClass(this, typeof(Activity_EditarCliente));
-                    StartActivityForResult(intent, 0);
-                    break;
-            }
-
-            return base.OnOptionsItemSelected(item);
         }
 
         private void FindViews()

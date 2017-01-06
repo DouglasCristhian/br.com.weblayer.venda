@@ -1,87 +1,137 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_gravity="center_vertical">
+    android:minWidth="400dp"
+    android:minHeight="500dp">
 
-  <TextView
-     android:id="@+id/lblCodigoPedido"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:layout_alignParentTop ="true"
-     android:text="Id_Código"/>
+    <include
+    android:id="@+id/toolbar"
+    layout="@layout/toolbar"/>
 
-  <EditText
-     android:id="@+id/txtCodigoPedido"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+    <TextView
+       android:id="@+id/lblCodigoPedido"
+       android:layout_marginTop="15dip"
+       android:layout_marginLeft = "18dip"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_alignParentTop ="true"
+       android:textSize="18sp"
+       android:text="Código do Pedido"/>
 
-  <TextView
-     android:id="@+id/lblIdCliente"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Cliente"/>
+    <EditText
+       android:id="@+id/txtCodigoPedido"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
 
-  <Spinner
-     android:id="@+id/spinnerIdCliente"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+    <TextView
+       android:id="@+id/lblIdCliente"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:textSize="18sp"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Cliente"/>
 
-  <TextView
-     android:id="@+id/lblIdVendedor"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Vendedor"/>
+    <Spinner
+       android:id="@+id/spinnerIdCliente"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
 
-  <EditText
-     android:id="@+id/txtIdvendedor"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+    <TextView
+       android:id="@+id/lblIdVendedor"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:textSize="18sp"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Vendedor"/>
 
-  <TextView
-     android:id="@+id/lblValorTotal"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Valor total"/>
+    <EditText
+       android:id="@+id/txtIdvendedor"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
 
-  <TextView
-     android:id="@+id/txtValorTotal"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:textAppearance="?android:attr/textAppearanceMedium"
-     android:clickable="true"
-     android:text="0"/>
+    <TextView
+       android:id="@+id/lblValorTotal"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:textSize="18sp"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Valor total"/>
 
-  <TextView
-     android:id="@+id/lblDataEmissao"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Data de Emissão"/>
+    <TextView
+       android:id="@+id/txtValorTotal"
+       android:layout_marginLeft = "18dip"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:clickable="true"
+       android:text="0"/>
 
-  <TextView
-     android:id="@+id/txtDataEmissao"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:clickable="true"/>
+    <TextView
+       android:id="@+id/lblDataEmissao"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:textSize="18sp"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Data de Emissão"/>
 
-  <EditText
-     android:id="@+id/lblObservacao"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Observacões:"/>
+    <TextView
+       android:id="@+id/txtDataEmissao"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:clickable="true"/>
 
-  <EditText
-     android:id="@+id/txtObservacao"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"/>
+    <TextView
+       android:id="@+id/lblObservacao"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:text="Observacões:"/>
 
-  <Button
-     android:id="@+id/btnAdicionar"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Adicionar Item"/>
+    <EditText
+       android:id="@+id/txtObservacao"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
 
-</LinearLayout>
+    <Button
+       android:id="@+id/btnAdicionar"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Adicionar Item"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
+
+  </LinearLayout>
+</ScrollView>

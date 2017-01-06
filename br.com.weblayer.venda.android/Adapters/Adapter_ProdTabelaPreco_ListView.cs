@@ -56,7 +56,7 @@ namespace br.com.weblayer.venda.android.Adapters
 
             row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Código do Produto: " + mitems[position].id_produto.ToString();
             row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Código da Tabela: " + mitems[position].id_tabpreco.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços :" + mitems[position].vl_Valor.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços: " + mitems[position].vl_Valor.ToString();
 
 
             return row;

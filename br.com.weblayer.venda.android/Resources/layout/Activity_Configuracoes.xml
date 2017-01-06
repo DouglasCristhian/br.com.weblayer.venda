@@ -5,11 +5,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:layout_gravity="center_vertical">
+  
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
 
   <CheckBox
     android:id="@+id/checkBox_Tema1"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="18dip"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Tema 1"/>
@@ -18,43 +23,23 @@
     android:id="@+id/checkBox_Tema2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="18dip"
     android:text="Tema 2"/>
 
   <CheckBox
     android:id="@+id/checkBox_Tema3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="18dip"
     android:text="Tema 3"/>
 
   <TextView
      android:id="@+id/txtVersaoApp"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
+     android:layout_marginLeft="18dip"
      android:layout_marginTop="10dp"  
      android:textAppearance="?android:attr/textAppearanceMedium"
      android:text="Versão XXX"/>
-
-  <TextView
-     android:id="@+id/txtTema1Teste"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:layout_marginTop="10dp"
-     android:textAppearance="?android:attr/textAppearanceMedium"
-     android:text="Desativado"/>
-
-  <TextView
-     android:id="@+id/txtTema2Teste"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:layout_marginTop="10dp"
-     android:textAppearance="?android:attr/textAppearanceMedium"
-     android:text="Desativado"/>
-
-  <TextView
-     android:id="@+id/txtTema3Teste"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:layout_marginTop="10dp"
-     android:textAppearance="?android:attr/textAppearanceMedium"
-     android:text="Desativado"/>
+ 
 </LinearLayout>

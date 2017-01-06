@@ -1,80 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="400dp"
     android:minHeight="500dp">
 
-  <TextView
-    android:id="@+id/lblCodigoCliente"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Código"/>
+    <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
 
-  <EditText
-    android:id="@+id/txtCodigoCliente"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:text=""/>
+    <TextView
+      android:id="@+id/lblCodigoCliente"
+      android:layout_marginTop="30dip"
+      android:layout_marginLeft = "18dip"
+      android:textSize="18sp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Código"/>
 
-  <TextView
-    android:id="@+id/lblRazaoSocial"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Razão Social"/>
+    <EditText
+      android:id="@+id/txtCodigoCliente"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginLeft="18dip"
+      android:layout_marginRight="18dip"
+      android:text=""/>
 
-  <EditText
-    android:id="@+id/txtRazaoSocial"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:inputType="text"
-    android:text=""/>
+    <TextView
+      android:id="@+id/lblRazaoSocial"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft = "18dip"
+      android:text="Razão Social"/>
 
-  <TextView
-    android:id="@+id/lblNomeFantasia"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Nome Fantasia"/>
+    <EditText
+      android:id="@+id/txtRazaoSocial"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginLeft="18dip"
+      android:layout_marginRight="18dip"
+      android:inputType="text"
+      android:text=""/>
 
-  <EditText
-    android:id="@+id/txtNomeFantasia"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:inputType="text"
-    android:text=""/>
+    <TextView
+      android:id="@+id/lblNomeFantasia"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft = "18dip"
+      android:text="Nome Fantasia"/>
 
-  <TextView
-    android:id="@+id/lblCNPJ"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="CNPJ"/>
+    <EditText
+      android:id="@+id/txtNomeFantasia"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginLeft="18dip"
+      android:layout_marginRight="18dip"
+      android:inputType="text"
+      android:text=""/>
 
-  <EditText
-    android:id="@+id/txtCNPJ"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:text=""/>
+    <TextView
+      android:id="@+id/lblCNPJ"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft = "18dip"
+      android:text="CNPJ"/>
 
-  <TextView
-    android:id="@+id/lblSpinner"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Tabela de Precos"/>
-  
-  <Spinner
-    android:id="@+id/spinnerTblPrecos"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Mas gente"/>
-</LinearLayout>
+    <EditText
+      android:id="@+id/txtCNPJ"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginLeft="18dip"
+      android:layout_marginRight="18dip"
+      android:text=""/>
+
+    <TextView
+      android:id="@+id/lblSpinner"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft = "18dip"
+      android:text="Tabela de Precos"/>
+
+    <Spinner
+      android:id="@+id/spinnerTblPrecos"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="18sp"
+      android:layout_marginLeft="18dip"
+      android:layout_marginRight="18dip"/>
+  </LinearLayout>
+</ScrollView>

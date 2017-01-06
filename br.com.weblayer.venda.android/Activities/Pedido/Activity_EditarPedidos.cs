@@ -13,7 +13,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_EditarPedidos", MainLauncher = false)]
+    [Activity(Label = "Editar Pedidos", MainLauncher = false)]
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
@@ -27,10 +27,33 @@ namespace br.com.weblayer.venda.android.Activities
         private Spinner spinnerClientes;
         List<mSpinner> tblclientespinner;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarPedidos;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_salvar:
+                    Save();
+                    Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
+                    return true;
+
+                case Resource.Id.action_deletar:
+                    Delete();
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarPedidos);
 
             //Receber o JsonPedido para fazer edição e salvar
             var jsonnota = Intent.GetStringExtra("JsonPedido");
@@ -44,11 +67,12 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             FindViews();
+            SetStyle();
             BindData();
             BindViews();
 
             tblclientespinner = PopulateSpinner();
-            spinnerClientes.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblclientespinner);
+            spinnerClientes.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblclientespinner);
 
             if (pedido != null)
             {
@@ -57,6 +81,21 @@ namespace br.com.weblayer.venda.android.Activities
             else
                 pedido = null;
      
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
+
+            if (pedido == null)
+            {
+                menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         private int getIndex(Spinner spinner, string myString)
@@ -90,28 +129,6 @@ namespace br.com.weblayer.venda.android.Activities
             return index;
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_salvar:
-                    Save();
-                    
-                    return true;
-
-                case Resource.Id.action_deletar:
-                    Delete();
-                    return true;
-            }
-            return base.OnOptionsItemSelected(item);
-        }
-
         private void FindViews()
         {
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
@@ -122,7 +139,19 @@ namespace br.com.weblayer.venda.android.Activities
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
 
+            txtDataEmissao.SetBackgroundColor(Android.Graphics.Color.LightGray);
+
             spinnerClientes.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(TblClientes_ItemSelected);
+        }
+
+        private void SetStyle()
+        {
+            txtid_Codigo.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinnerClientes.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtid_Vendedor.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtDataEmissao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValor_Total.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -152,14 +181,23 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.id_vendedor = 1;
             var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
             pedido.id_cliente = idcli.Id();
-            pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
+            pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text.ToString());//(txtDataEmissao.Text);
             pedido.ds_observacao = txtObservacao.Text;
         }
 
         private void BindData()
         {
+            if (pedido == null)
+            {
+                txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                txtDataEmissao.Click += EventtxtDataEmissao_Click;
+            }
+            else
+            {
+                txtDataEmissao.Clickable = false;
+            }
+
             btnAdicionar.Click += BtnAdicionar_Click;
-            txtDataEmissao.Click += EventtxtDataEmissao_Click;
             txtValor_Total.Click += TxtValor_Total_Click;
         }
 
@@ -215,7 +253,8 @@ namespace br.com.weblayer.venda.android.Activities
         {
             DatePickerHelper frag = DatePickerHelper.NewInstance(delegate (DateTime time)
             {
-                txtDataEmissao.Text = time.ToShortDateString();
+                var tempo = DateTime.Now.ToString("HH:mm:ss");
+                txtDataEmissao.Text = time.ToShortDateString() + " " + tempo;
             });
 
             frag.Show(FragmentManager, DatePickerHelper.TAG);
@@ -232,7 +271,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
 
-            var obj_cliente = new Cliente_Manager().Get(pedido.id);
+            var obj_cliente = new Cliente_Manager().Get(pedido.id_cliente);
 
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             intent.PutExtra("JsonCliente", Newtonsoft.Json.JsonConvert.SerializeObject(obj_cliente));
@@ -266,7 +305,7 @@ namespace br.com.weblayer.venda.android.Activities
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
 
-                Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
+               
                 Finish();
                 
             }

@@ -10,7 +10,7 @@ using Android.Views;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_PedidoItem")]
+    [Activity(Label = "Adicionar Itens ao Pedido")]
     public class Activity_PedidoItem : Activity_Base
     {
         private TextView txtIdProduto;
@@ -23,7 +23,6 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnLimparPedidoItem;
         private Button btnSalvarAtualizar;
         private Button btnExcluirPedidoItem;
-
         private PedidoItem ped_item;
         private Pedido pedido;
         private Produto produto;
@@ -31,10 +30,30 @@ namespace br.com.weblayer.venda.android.Activities
         private double go;
         private string Operacao;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_PedidoItem;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    Finish();
+
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_PedidoItem);
+            //SetContentView(Resource.Layout.Activity_PedidoItem);
 
             //Trazendo o obj do pedido da tela anterior
             string jsonPedido = Intent.GetStringExtra("JsonPedido");
@@ -53,12 +72,14 @@ namespace br.com.weblayer.venda.android.Activities
             { 
                 Operacao = "incluir";
             }
+
             string jsonCliente = Intent.GetStringExtra("JsonCliente");
             if (jsonCliente != null)
                 cliente = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(jsonCliente);
 
 
             FindViews();
+            SetStyle();
             BindData();
             BindViews();
         }
@@ -102,6 +123,14 @@ namespace br.com.weblayer.venda.android.Activities
             txtValorItem.Text = ped_item.vl_item.ToString();
             double go = double.Parse(ped_item.nr_quantidade.ToString()) * double.Parse(ped_item.vl_item.ToString());
             txtValorTotal.Text = go.ToString();
+        }
+
+        private void SetStyle()
+        {
+            txtIdProduto.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorItem.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtQuantidadeItem.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorTotal.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void BindModel()
@@ -271,9 +300,6 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
-                //TODO: JsonNotaIdProduto ->JsonIdProduto
-                //txtIdProduto.Text = data.GetStringExtra("JsonIdProduto");
-
                 var jsonidproduto = data.GetStringExtra("JsonIdProduto");
                 produto = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonidproduto);
                 txtIdProduto.Text = produto.id_codigo;
@@ -283,13 +309,6 @@ namespace br.com.weblayer.venda.android.Activities
 
                 if (tabprecoprod != null)
                     txtValorItem.Text = tabprecoprod.vl_Valor.ToString();
-
-                //Buscar o preco vinculado a tabela de preco ****************************************
-                //ID_Cliente (no obj de pedido)
-                //get no obj do cliente
-                //obj do cliente eu consigo pegar qual é a tabela de preço que ele está utilizando.
-                //id_tabpreco + id_produto -> buscar o valor na tabela preço.
-                //***********************************************************************************
             }
         }
 

@@ -15,18 +15,25 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_ProdutosPedidoList")]
-    public class Activity_ProdutosPedidoList : Activity
+    [Activity(Label = "Lista de Produtos do Pedido")]
+    public class Activity_ProdutosPedidoList : Activity_Base
     {
         private ListView lstViewProdutosPedido;
         private IList<PedidoItem> lstPedidoItem;
         private string IdPedido;
         private Pedido ped;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_ProdutosPedidoList;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_ProdutosPedidoList);
 
             IdPedido = Intent.GetStringExtra("JsonPedido");
             if (IdPedido == null)

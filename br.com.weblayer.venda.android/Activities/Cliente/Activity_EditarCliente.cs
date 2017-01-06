@@ -14,7 +14,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Activity_EditarCliente")]
+    [Activity(Label = "Editar Cliente")]
     public class Activity_EditarCliente : Activity_Base
     {
         private string spinvalortbl;
@@ -26,10 +26,32 @@ namespace br.com.weblayer.venda.android.Activities
         private Cliente cli;
         List<mSpinner> tblprecospinner;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarClientes;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_salvar:
+                    Save();
+                    return true;
+
+                case Resource.Id.action_deletar:
+                    Delete();
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarClientes);
 
             var jsonnota = Intent.GetStringExtra("JsonNotaCli");
 
@@ -43,10 +65,11 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             FindViews();
+            SetStyle();
             BindView();
 
             tblprecospinner = PopulateTabPrecoSpinnerList();          
-            spinnerTabelaPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
+            spinnerTabelaPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprecospinner);
 
             if (cli != null)
             {
@@ -56,25 +79,19 @@ namespace br.com.weblayer.venda.android.Activities
                 cli = null;
         }
 
-        public override bool OnCreateOptionsMenu(IMenu item)
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, item);
-            return base.OnCreateOptionsMenu(item);
-        }
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
+            if (cli == null)
             {
-                case Resource.Id.action_salvar:
-                    Save();                   
-                    return true;
-
-                case Resource.Id.action_deletar:
-                    Delete();
-                    return true;
+                menu.RemoveItem(Resource.Id.action_deletar);
             }
-            return base.OnOptionsItemSelected(item);
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         private void FindViews()
@@ -101,6 +118,15 @@ namespace br.com.weblayer.venda.android.Activities
             txtRazaoSocialCli.Text = cli.ds_RazaoSocial;
             txtCNPJCli.Text = cli.ds_Cnpj;
             spinvalortbl = cli.id_tabelapreco.ToString();
+        }
+
+        private void SetStyle()
+        {
+            txtCodCli.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtRazaoSocialCli.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtNomeFantasiaCli.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtCNPJCli.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinnerTabelaPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void BindModel()
