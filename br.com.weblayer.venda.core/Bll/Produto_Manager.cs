@@ -19,11 +19,11 @@ namespace br.com.weblayer.venda.core.Bll
             var erros="";
             
             //regras....
-            if (obj.id_codigo.Length < 2) 
-                erros= erros + "\n O código do produto é inválido! Ele deve ter no mínimo 2 caracteres!";
+            //if (obj.id_codigo.Length < 2) 
+            //    erros= erros + "\n O código do produto é inválido! Ele deve ter no mínimo 2 caracteres!";
 
-            if (obj.ds_nome.Length < 10) 
-                erros = erros + "\n A descrição do produto deve ter no mínimo 10 caracteres!";
+            //if (obj.ds_nome.Length < 10) 
+            //    erros = erros + "\n A descrição do produto deve ter no mínimo 10 caracteres!";
 
             if (erros.Length>0)
                 throw new Exception(erros);
