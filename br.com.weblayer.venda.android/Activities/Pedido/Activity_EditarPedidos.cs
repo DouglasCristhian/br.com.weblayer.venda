@@ -10,6 +10,7 @@ using br.com.weblayer.logistica.android.Helpers;
 using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.android.Adapters;
+using System.Globalization;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -40,8 +41,7 @@ namespace br.com.weblayer.venda.android.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_salvar:
-                    Save();
-                    Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
+                    Save();                  
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -86,7 +86,7 @@ namespace br.com.weblayer.venda.android.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
-            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_adicionar);
             menu.RemoveItem(Resource.Id.action_configuracoes);
 
@@ -168,7 +168,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtid_Vendedor.Text = pedido.id_vendedor.ToString();
             idcliente = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
-            txtDataEmissao.Text = pedido.dt_emissao.ToString();
+            txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtObservacao.Text = pedido.ds_observacao.ToString();
         }
 
@@ -177,11 +177,14 @@ namespace br.com.weblayer.venda.android.Activities
             if (pedido == null)
                 pedido = new Pedido();
 
+            string data = (txtDataEmissao.Text);
+            var datahora = DateTime.Parse(data, CultureInfo.CreateSpecificCulture("pt-BR"));
+
             pedido.id_codigo = txtid_Codigo.Text;
             pedido.id_vendedor = 1;
             var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
             pedido.id_cliente = idcli.Id();
-            pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text.ToString());//(txtDataEmissao.Text);
+            pedido.dt_emissao = datahora;
             pedido.ds_observacao = txtObservacao.Text;
         }
 
@@ -189,16 +192,19 @@ namespace br.com.weblayer.venda.android.Activities
         {
             if (pedido == null)
             {
-                txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 txtDataEmissao.Click += EventtxtDataEmissao_Click;
             }
             else
             {
                 txtDataEmissao.Clickable = false;
+                if (pedido.vl_total != 0)
+                {
+                    txtValor_Total.Click += TxtValor_Total_Click;
+                }
             }
 
-            btnAdicionar.Click += BtnAdicionar_Click;
-            txtValor_Total.Click += TxtValor_Total_Click;
+            btnAdicionar.Click += BtnAdicionar_Click;         
         }
 
         private bool ValidateViews()
@@ -242,7 +248,7 @@ namespace br.com.weblayer.venda.android.Activities
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
-        {
+        {          
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
@@ -253,8 +259,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             DatePickerHelper frag = DatePickerHelper.NewInstance(delegate (DateTime time)
             {
-                var tempo = DateTime.Now.ToString("HH:mm:ss");
-                txtDataEmissao.Text = time.ToShortDateString() + " " + tempo;
+                txtDataEmissao.Text = time.ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("pt-BR"));
             });
 
             frag.Show(FragmentManager, DatePickerHelper.TAG);
@@ -305,9 +310,8 @@ namespace br.com.weblayer.venda.android.Activities
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
 
-               
                 Finish();
-                
+
             }
             catch (Exception ex)
             {

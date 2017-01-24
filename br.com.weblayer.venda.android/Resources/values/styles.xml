@@ -22,10 +22,8 @@
   </style>
 
   <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
-    <item name="android:textColorPrimary">@android:color/white</item>
-    <!-- Text Color dos items do Overflow menu-->
-    <item name="android:background">@android:color/white</item>
-    <!--Background do overflow menu-->
+    <item name="android:textColorPrimary">@android:color/black</item> <!-- Text Color dos items do Overflow menu-->
+
   </style>
 
 </resources>

@@ -48,10 +48,13 @@ namespace br.com.weblayer.venda.core.Dal
         }
 
         public IList<Cliente> List()
+        {          
+            return Database.GetConnection().Table<Cliente>().ToList();            
+        }
+
+        public IList<Cliente> ListFiltro(string filtro)
         {
-            
-            return Database.GetConnection().Table<Cliente>().ToList();
-             
+            return Database.GetConnection().Table<Cliente>().Where(x => x.ds_NomeFantasia.StartsWith(filtro)).ToList();
         }
 
         public void MakeDataMock()

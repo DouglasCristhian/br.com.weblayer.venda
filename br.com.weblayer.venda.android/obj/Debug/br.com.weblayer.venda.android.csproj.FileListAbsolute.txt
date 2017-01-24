@@ -185,7 +185,7 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\l
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\search.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_ajuda.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_configuracoes.png
-D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_ajuda.xml
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_sobre.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_configuracoes.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_deletarproduto.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_salvar.png
@@ -246,6 +246,7 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\m
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\mipmap-xxxhdpi\ic_save.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\menu\menu_toolbar.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\weblayer_logo.png
+D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_novidades.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\R.cs.flag
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\uploadflags.txt
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\bin\Debug\br.com.weblayer.venda.android.dll.mdb

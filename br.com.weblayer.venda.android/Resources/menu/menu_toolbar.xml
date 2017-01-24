@@ -13,13 +13,17 @@
     android:id="@+id/action_adicionar"
     android:icon="@mipmap/ic_add"
     app:showAsAction="always"/>
-    <item
-    android:id="@+id/action_configuracoes"
-    android:icon="@mipmap/ic_settings"
-     app:showAsAction="always"/> 
+
     <item
-    android:id="@+id/action_ajuda"
+    android:id="@+id/action_sobre"
+    android:title="Sobre"
     android:icon="@mipmap/ic_help"
-    app:showAsAction="always"/>
-    
+    app:showAsAction="never"/>
+
+  <item
+    android:id="@+id/action_configuracoes"
+    android:title="Configurações"
+    android:icon="@mipmap/ic_settings"
+    app:showAsAction="never"/>
+
 </menu>

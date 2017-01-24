@@ -16,6 +16,7 @@ namespace br.com.weblayer.venda.android.Activities
     {
         private ListView lstViewClientes;
         private IList<Cliente> lstClientes;
+        private EditText edtFiltro;
 
         protected override int LayoutResource
         {
@@ -50,7 +51,7 @@ namespace br.com.weblayer.venda.android.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
-            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_deletar);
             menu.RemoveItem(Resource.Id.action_salvar);
             menu.RemoveItem(Resource.Id.action_configuracoes);
@@ -60,16 +61,23 @@ namespace br.com.weblayer.venda.android.Activities
         private void FindViews()
         {
             lstViewClientes = FindViewById<ListView>(Resource.Id.lstViewCliente);
+            edtFiltro = FindViewById<EditText>(Resource.Id.edtFiltro);
         }
 
         private void BindViews()
         {
             lstViewClientes.ItemClick += LstViewClientes_ItemClick;
+            edtFiltro.TextChanged += EdtFiltro_TextChanged;
+        }
+
+        private void EdtFiltro_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            FillList();
         }
 
         private void FillList()
         {
-            lstClientes = new Cliente_Manager().GetClientes("");
+            lstClientes = new Cliente_Manager().GetClientes(edtFiltro.Text.ToString());
             lstViewClientes.Adapter = new Adapter_Cliente_ListView(this, lstClientes);
         }
 

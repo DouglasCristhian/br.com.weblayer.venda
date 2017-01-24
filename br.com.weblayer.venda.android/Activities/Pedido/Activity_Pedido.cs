@@ -55,7 +55,7 @@ namespace br.com.weblayer.venda.android.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
-            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_deletar);
             menu.RemoveItem(Resource.Id.action_salvar);
             menu.RemoveItem(Resource.Id.action_configuracoes);
@@ -95,6 +95,8 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
+                var mensagem = data.GetStringExtra("mensagem");
+                Toast.MakeText(this, mensagem, ToastLength.Short).Show();
                 //Seja novo ou atualizado, se o retorno das intents foi igual a Ok, a lista é repopulada
                 FillList();
             }

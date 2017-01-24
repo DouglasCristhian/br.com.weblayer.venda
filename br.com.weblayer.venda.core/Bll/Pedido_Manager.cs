@@ -38,7 +38,7 @@ namespace br.com.weblayer.venda.core.Bll
             var Repository = new PedidoRepository();
             Repository.Save(obj);
 
-            //Mensagem = $"Pedido {obj.id_Codigo} atualizado com sucesso";
+            Mensagem = $"Pedido {obj.id_codigo} atualizado com sucesso";
         }
 
         public void Delete(Pedido obj)

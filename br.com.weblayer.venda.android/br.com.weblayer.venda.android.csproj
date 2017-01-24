@@ -113,7 +113,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\Activity_Ajuda.cs" />
+    <Compile Include="Activities\Activity_Novidades.cs" />
+    <Compile Include="Activities\Activity_Sobre.cs" />
     <Compile Include="Activities\Activity_Base.cs" />
     <Compile Include="Activities\Cliente\Activity_EditarCliente.cs" />
     <Compile Include="Activities\TabelaPreco\Activity_EditarProdTabelaPreco.cs" />
@@ -194,7 +195,7 @@
     <AndroidResource Include="Resources\drawable\ic_configuracoes.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Activity_Ajuda.xml" />
+    <AndroidResource Include="Resources\layout\Activity_Sobre.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_Configuracoes.xml" />
@@ -383,6 +384,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Weblayer_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Activity_Novidades.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.24.2.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

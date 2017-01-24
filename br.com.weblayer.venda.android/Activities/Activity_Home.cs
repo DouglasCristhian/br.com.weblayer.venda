@@ -35,8 +35,8 @@ namespace br.com.weblayer.venda.android
                     StartActivity(typeof(Activity_Configuracoes));
                     break;
 
-                case Resource.Id.action_ajuda:
-                    StartActivity(typeof(Activity_Ajuda));
+                case Resource.Id.action_sobre:
+                    StartActivity(typeof(Activity_Sobre));
                     break;
             }
         }

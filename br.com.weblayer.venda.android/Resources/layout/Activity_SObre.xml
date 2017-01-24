@@ -5,23 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical">
-  
-  <include
-    android:id="@+id/toolbar"
-    layout="@layout/toolbar"/>
 
-  <!--<TextView
-     android:id="@+id/txtPrecos"
-     android:layout_marginTop="10dp"
-     android:layout_marginLeft="18dip"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="Tabela de Preços"
-     android:textSize="17sp"/>-->
-  
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
+
   <ListView
-     android:id="@+id/listViewTabelaPrecos"
-     android:layout_marginTop="10dp"
+     android:id="@+id/listviewSobre"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"/>
+
 </LinearLayout>

@@ -18,6 +18,7 @@ namespace br.com.weblayer.venda.android.Activities
     {
         private ListView lstViewProdutos;
         private IList<Produto> lstProdutos;
+        private EditText edtFiltro;
 
         protected override int LayoutResource
         {
@@ -30,7 +31,7 @@ namespace br.com.weblayer.venda.android.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
-            menu.RemoveItem(Resource.Id.action_ajuda);
+            menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_deletar);
             menu.RemoveItem(Resource.Id.action_salvar);
             menu.RemoveItem(Resource.Id.action_configuracoes);
@@ -62,17 +63,26 @@ namespace br.com.weblayer.venda.android.Activities
         private void FindViews()
         {
             lstViewProdutos = FindViewById<ListView>(Resource.Id.listViewProdutos);
+            edtFiltro = FindViewById<EditText>(Resource.Id.edtFiltro);
         }
 
         private void BindViews()
         {
             lstViewProdutos.ItemClick += LstViewProdutos_ItemClick;
+            edtFiltro.TextChanged += EdtFiltro_TextChanged;
+
+        }
+
+        private void EdtFiltro_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            FillList();
         }
 
         private void FillList()
         {
-            lstProdutos = new Produto_Manager().GetProduto("");
+            lstProdutos = new Produto_Manager().GetProd(edtFiltro.Text.ToString());
             lstViewProdutos.Adapter = new Adapter_Produtos_ListView(this, lstProdutos);
+            
         }
 
         private void LstViewProdutos_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
