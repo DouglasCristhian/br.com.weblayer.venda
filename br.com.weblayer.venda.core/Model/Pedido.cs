@@ -18,8 +18,14 @@ namespace br.com.weblayer.venda.core.Model
         [MaxLength(20), NotNull]
         public int id_cliente { get; set; }
 
+        [MaxLength(200), NotNull]
+        public string ds_cliente { get; set; }
+
         [MaxLength(20), NotNull]
         public int id_vendedor { get; set; }
+
+        [MaxLength(200), NotNull]
+        public string ds_vendedor { get; set; }
 
         [MaxLength(20)]
         public double vl_total { get; set; }
