@@ -20,10 +20,4 @@
     android:icon="@mipmap/ic_help"
     app:showAsAction="never"/>
 
-  <item
-    android:id="@+id/action_configuracoes"
-    android:title="Configurações"
-    android:icon="@mipmap/ic_settings"
-    app:showAsAction="never"/>
-
 </menu>

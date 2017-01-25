@@ -88,7 +88,6 @@ namespace br.com.weblayer.venda.android.Activities
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_adicionar);
-            menu.RemoveItem(Resource.Id.action_configuracoes);
 
             if (pedido == null)
             {

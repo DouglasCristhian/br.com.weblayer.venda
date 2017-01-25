@@ -31,10 +31,6 @@ namespace br.com.weblayer.venda.android
         {
             switch (e.Item.ItemId)
             {
-                case Resource.Id.action_configuracoes:
-                    StartActivity(typeof(Activity_Configuracoes));
-                    break;
-
                 case Resource.Id.action_sobre:
                     StartActivity(typeof(Activity_Sobre));
                     break;

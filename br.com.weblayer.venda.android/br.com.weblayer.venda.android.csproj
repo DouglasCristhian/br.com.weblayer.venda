@@ -127,7 +127,6 @@
     <Compile Include="Activities\TabelaPreco\Activity_ProdTabelaPreco.cs" />
     <Compile Include="Activities\TabelaPreco\Activity_TabelaPrecos.cs" />
     <Compile Include="Activities\Cliente\Activity_Clientes.cs" />
-    <Compile Include="Activities\Activity_Configuracoes.cs" />
     <Compile Include="Activities\Activity_Home.cs" />
     <Compile Include="Activities\Produto\Activity_Produtos.cs" />
     <Compile Include="Adapters\mSpinner.cs" />
@@ -196,9 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Activity_Sobre.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Activity_Configuracoes.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_deletarproduto.png" />

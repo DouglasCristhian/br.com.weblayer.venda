@@ -58,7 +58,6 @@ namespace br.com.weblayer.venda.android.Activities
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_deletar);
             menu.RemoveItem(Resource.Id.action_salvar);
-            menu.RemoveItem(Resource.Id.action_configuracoes);
             return base.OnCreateOptionsMenu(menu);
         }
 

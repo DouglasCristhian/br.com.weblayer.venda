@@ -186,7 +186,6 @@ D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\d
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_ajuda.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_configuracoes.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_sobre.xml
-D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_configuracoes.xml
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_deletarproduto.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\drawable\ic_salvar.png
 D:\Xaramarin\br.com.weblayer.venda\br.com.weblayer.venda.android\obj\Debug\res\layout\activity_base.xml
