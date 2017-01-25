@@ -16,7 +16,12 @@ namespace br.com.weblayer.venda.core.Bll
 
         public IList<Cliente> GetClientes(string filtro)
         {
-            return new ClienteRepository().List();
+            return new ClienteRepository().ListFiltro(filtro);//.List();
+        }
+
+        public IList<Cliente> GetCli(string filtro)
+        {
+            return new ClienteRepository().ListFiltro(filtro);
         }
 
         public void Save(Cliente obj)

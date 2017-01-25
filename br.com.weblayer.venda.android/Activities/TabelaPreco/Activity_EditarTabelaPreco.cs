@@ -15,7 +15,7 @@ using Java.Text;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Tabela de Preço")]
+    [Activity(Label = "Editar Tabela de Preço")]
     public class Activity_EditarTabelaPreco : Activity_Base
     {
         private EditText txtCodTabelaPreco;
@@ -24,10 +24,17 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtDescMaxTabelaPreco;
         private TabelaPreco tblPreco;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarTabelaPreco;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarTabelaPreco);
 
             var jsonnota = Intent.GetStringExtra("JsonNotaTabela");
             if (jsonnota == null)
@@ -40,12 +47,22 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             FindViews();
+            SetStyle();
             BindView();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_sobre);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
+
+            if (tblPreco == null)
+            {
+                menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -63,6 +80,14 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void SetStyle()
+        {
+            txtCodTabelaPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtDescricaoTabelaPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorTabelaPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtDescMaxTabelaPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void FindViews()

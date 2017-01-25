@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
@@ -6,7 +7,7 @@ using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
-    public class Adapter_Produtos_ListView : BaseAdapter<Produto>
+    public class Adapter_Produtos_ListView : BaseAdapter<Produto>//, IFilterable
     {
         public IList<Produto> mItems;
         private Context mContext;
@@ -54,6 +55,16 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = mItems[position].vl_Valor.ToString();
 
             return row;
+        }
+
+        private void Filtrar(SearchView letra)
+        {
+            letra.QueryTextChange += Letra_QueryTextChange;
+        }
+
+        private void Letra_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
+        {
+            
         }
     }
 }

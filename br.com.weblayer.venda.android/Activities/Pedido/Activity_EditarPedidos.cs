@@ -10,14 +10,15 @@ using br.com.weblayer.logistica.android.Helpers;
 using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.android.Adapters;
+using System.Globalization;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Pedido", MainLauncher = false)]
+    [Activity(Label = "Editar Pedidos", MainLauncher = false)]
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
-        //private EditText txtid_Vendedor;
+        private EditText txtid_Vendedor;
         private TextView txtDataEmissao;
         private TextView txtValor_Total;
         private EditText txtObservacao;
@@ -27,10 +28,32 @@ namespace br.com.weblayer.venda.android.Activities
         private Spinner spinnerClientes;
         List<mSpinner> tblclientespinner;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarPedidos;
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_salvar:
+                    Save();                  
+                    return true;
+
+                case Resource.Id.action_deletar:
+                    Delete();
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarPedidos);
 
             //Receber o JsonPedido para fazer edição e salvar
             var jsonnota = Intent.GetStringExtra("JsonPedido");
@@ -44,11 +67,12 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             FindViews();
+            SetStyle();
             BindData();
             BindViews();
 
             tblclientespinner = PopulateSpinner();
-            spinnerClientes.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblclientespinner);
+            spinnerClientes.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblclientespinner);
 
             if (pedido != null)
             {
@@ -57,6 +81,21 @@ namespace br.com.weblayer.venda.android.Activities
             else
                 pedido = null;
      
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_sobre);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
+
+            if (pedido == null)
+            {
+                menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         private int getIndex(Spinner spinner, string myString)
@@ -90,39 +129,29 @@ namespace br.com.weblayer.venda.android.Activities
             return index;
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_salvar:
-                    Save();
-                    
-                    return true;
-
-                case Resource.Id.action_deletar:
-                    Delete();
-                    return true;
-            }
-            return base.OnOptionsItemSelected(item);
-        }
-
         private void FindViews()
         {
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
             spinnerClientes = FindViewById<Spinner>(Resource.Id.spinnerIdCliente);
-            //txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
+            txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
             txtDataEmissao = FindViewById<TextView>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
 
+            txtDataEmissao.SetBackgroundColor(Android.Graphics.Color.LightGray);
+
             spinnerClientes.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(TblClientes_ItemSelected);
+        }
+
+        private void SetStyle()
+        {
+            txtid_Codigo.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinnerClientes.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtid_Vendedor.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtDataEmissao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValor_Total.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -136,10 +165,10 @@ namespace br.com.weblayer.venda.android.Activities
                 return;
 
             txtid_Codigo.Text = pedido.id_codigo.ToString();
-            //txtid_Vendedor.Text = pedido.id_vendedor.ToString();
+            txtid_Vendedor.Text = pedido.id_vendedor.ToString();
             idcliente = pedido.id_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
-            txtDataEmissao.Text = pedido.dt_emissao.ToString();
+            txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtObservacao.Text = pedido.ds_observacao.ToString();
         }
 
@@ -148,19 +177,34 @@ namespace br.com.weblayer.venda.android.Activities
             if (pedido == null)
                 pedido = new Pedido();
 
+            string data = (txtDataEmissao.Text);
+            var datahora = DateTime.Parse(data, CultureInfo.CreateSpecificCulture("pt-BR"));
+
             pedido.id_codigo = txtid_Codigo.Text;
             pedido.id_vendedor = 1;
             var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
             pedido.id_cliente = idcli.Id();
-            pedido.dt_emissao = DateTime.Parse(txtDataEmissao.Text);
+            pedido.dt_emissao = datahora;
             pedido.ds_observacao = txtObservacao.Text;
         }
 
         private void BindData()
         {
-            btnAdicionar.Click += BtnAdicionar_Click;
-            txtDataEmissao.Click += EventtxtDataEmissao_Click;
-            txtValor_Total.Click += TxtValor_Total_Click;
+            if (pedido == null)
+            {
+                txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                txtDataEmissao.Click += EventtxtDataEmissao_Click;
+            }
+            else
+            {
+                txtDataEmissao.Clickable = false;
+                if (pedido.vl_total != 0)
+                {
+                    txtValor_Total.Click += TxtValor_Total_Click;
+                }
+            }
+
+            btnAdicionar.Click += BtnAdicionar_Click;         
         }
 
         private bool ValidateViews()
@@ -172,11 +216,11 @@ namespace br.com.weblayer.venda.android.Activities
                 txtid_Codigo.Error = "Código do Pedido inválido!";
             }
 
-            //if (txtid_Vendedor.Length() == 0)
-            //{
-            //    validacao = false;
-            //    txtid_Vendedor.Error = "Código do Vendedor inválido!";
-            //}
+            if (txtid_Vendedor.Length() == 0)
+            {
+                validacao = false;
+                txtid_Vendedor.Error = "Código do Vendedor inválido!";
+            }
 
             if (spinnerClientes.SelectedItemPosition == 0)
             {
@@ -204,10 +248,10 @@ namespace br.com.weblayer.venda.android.Activities
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
-        {
+        {          
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
-            intent.PutExtra("Id_Pedido", pedido.id.ToString());
+            intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             StartActivityForResult(intent, 0);
         }
 
@@ -215,7 +259,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             DatePickerHelper frag = DatePickerHelper.NewInstance(delegate (DateTime time)
             {
-                txtDataEmissao.Text = time.ToShortDateString();
+                txtDataEmissao.Text = time.ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("pt-BR"));
             });
 
             frag.Show(FragmentManager, DatePickerHelper.TAG);
@@ -232,7 +276,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
 
-            var obj_cliente = new Cliente_Manager().Get(pedido.id);
+            var obj_cliente = new Cliente_Manager().Get(pedido.id_cliente);
 
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             intent.PutExtra("JsonCliente", Newtonsoft.Json.JsonConvert.SerializeObject(obj_cliente));
@@ -266,9 +310,8 @@ namespace br.com.weblayer.venda.android.Activities
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
 
-                Toast.MakeText(this, "Pedido atualizado com sucesso!", ToastLength.Short).Show();
                 Finish();
-                
+
             }
             catch (Exception ex)
             {

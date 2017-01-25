@@ -15,16 +15,23 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Preços")]
-    public class Activity_ProdTabelaPreco : Activity
+    [Activity(Label = "Tabela de Preço do Produto")]
+    public class Activity_ProdTabelaPreco : Activity_Base
     {
         private ListView lstViewProdTabPreco;
         private IList<ProdutoTabelaPreco> lstprecos;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_ProdTabelaPreco;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_ProdTabelaPreco);
 
             FindViews();
             BindViews(); 
@@ -33,7 +40,11 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_InserirNovo, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_sobre);
+            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_salvar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -41,7 +52,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             switch (item.ItemId)
             {
-                case Resource.Id.action_AddProduct:
+                case Resource.Id.action_adicionar:
                     Intent intent = new Intent();
                     intent.SetClass(this, typeof(Activity_EditarProdTabelaPreco));
                     StartActivityForResult(intent, 0);

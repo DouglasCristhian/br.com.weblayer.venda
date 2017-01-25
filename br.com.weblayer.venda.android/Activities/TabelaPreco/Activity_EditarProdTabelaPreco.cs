@@ -14,8 +14,8 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Preço", MainLauncher = false)]
-    public class Activity_EditarProdTabelaPreco : Activity
+    [Activity(Label = "Tabela de Preço do Produto", MainLauncher = false)]
+    public class Activity_EditarProdTabelaPreco : Activity_Base
     {
         private string valoridproduto;
         private string valoridtabpreco;
@@ -26,10 +26,17 @@ namespace br.com.weblayer.venda.android.Activities
         List<mSpinner> tblprecospinner;
         List<mSpinner> tblprodutospinner;
 
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_EditarProdTabelaPreco;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_EditarProdTabelaPreco);
 
             var jsonnota = Intent.GetStringExtra("JsonProdTblPreco");
 
@@ -43,13 +50,14 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             FindView();
+            SetStyle();
             BindView();
 
             tblprecospinner = PopulateTabPrecoSpinnerList();
-            spinIdTabPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprecospinner);
+            spinIdTabPreco.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprecospinner);
 
             tblprodutospinner = PopulateProdutoSpinnerList();
-            spinIdProduto.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerItem, tblprodutospinner);
+            spinIdProduto.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprodutospinner);
 
             if (prodtabpreco != null)
             {
@@ -61,10 +69,19 @@ namespace br.com.weblayer.venda.android.Activities
 
         }
 
-        public override bool OnCreateOptionsMenu(IMenu item)
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Layout.Botoes_Editar, item);
-            return base.OnCreateOptionsMenu(item);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            menu.RemoveItem(Resource.Id.action_sobre);
+            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_configuracoes);
+
+            if (prodtabpreco == null)
+            {
+                menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -100,6 +117,13 @@ namespace br.com.weblayer.venda.android.Activities
             valoridtabpreco = prodtabpreco.id_tabpreco.ToString();
             valoridproduto = prodtabpreco.id_produto.ToString();
             txt_ProdTabPreco.Text = prodtabpreco.vl_Valor.ToString();
+        }
+
+        private void SetStyle()
+        {
+            spinIdProduto.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            spinIdTabPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txt_ProdTabPreco.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void BindModel()

@@ -4,11 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:layout_gravity="center_vertical">
-  <TextView
-     android:id="@+id/txtAjuda"
+
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar"/>
+
+  <ListView
+     android:id="@+id/listviewSobre"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="@string/TextoTeste"/>
+     android:layout_width="match_parent"/>
+
 </LinearLayout>

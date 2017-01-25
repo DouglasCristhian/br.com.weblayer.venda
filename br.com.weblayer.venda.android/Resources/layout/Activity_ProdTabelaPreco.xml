@@ -5,8 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  
+  <include
+    android:id="@+id/toolbar"
+    layout="@layout/toolbar"/>
+
   <ListView
     android:id="@+id/lstViewProdTabPreco"
+    android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
 </LinearLayout>

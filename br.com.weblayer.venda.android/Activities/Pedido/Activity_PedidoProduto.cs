@@ -15,15 +15,24 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Escolha o Produto")]
-    public class Activity_PedidoProduto : Activity
+    [Activity(Label = "Produtos do Pedido")]
+    public class Activity_PedidoProduto : Activity_Base
     {
         private ListView lstViewProdutos;
         private IList<Produto> lstProdutos;
+        private EditText edtFiltro;
+
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_PedidoProduto;
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_PedidoProduto);
 
             FindViews();
             BindViews();
@@ -33,16 +42,23 @@ namespace br.com.weblayer.venda.android.Activities
         private void FindViews()
         {
             lstViewProdutos = FindViewById<ListView>(Resource.Id.listViewProdutos2);
+            edtFiltro = FindViewById<EditText>(Resource.Id.edtInformarFiltro2);
         }
 
         private void BindViews()
         {
             lstViewProdutos.ItemClick += LstViewProdutos_ItemClick;
+            edtFiltro.TextChanged += EdtFiltro_TextChanged;
+        }
+
+        private void EdtFiltro_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            FillList();
         }
 
         private void FillList()
         {
-            lstProdutos = new Produto_Manager().GetProduto("");
+            lstProdutos = new Produto_Manager().GetProd(edtFiltro.Text.ToString());
             lstViewProdutos.Adapter = new Adapter_Produtos_ListView(this, lstProdutos);
         }
 

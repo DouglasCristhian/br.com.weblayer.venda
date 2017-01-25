@@ -2,8 +2,8 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">br.com.weblayer.venda.android</string>
-    <string name="TextoTeste">"Dúvidas?\nEntre em contato conosco, ou se preferir preencha o formulário.\nTelefone: (11) 
-    4063-5420 (São Paulo)\nE-mail: suporte@weblayer.com.br"</string>
+    <string name="TextoTeste">
+      "     A Weblayer é especializada em desenvolvimento de software para a internet e aplicações para dispositivos móveis. Seus produtos têm foco em gestão logística do embarcador e gestão comercial, são baseados em Web fornecendo assim facilidade no acesso aos produtos e redução de gastos no investimento.\n     Dúvidas? Entre em contato conosco!\n\n     Telefone: (11) 4063-5420 (São Paulo)\n     E-mail: suporte@weblayer.com.br"</string>
     <string-array name="unidades_medida">
       <item>CX</item>
       <item>PCT</item>

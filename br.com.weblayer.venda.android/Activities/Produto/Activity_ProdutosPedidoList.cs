@@ -15,21 +15,31 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Itens do Pedido")]
-    public class Activity_ProdutosPedidoList : Activity
+    [Activity(Label = "Lista de Produtos do Pedido")]
+    public class Activity_ProdutosPedidoList : Activity_Base
     {
         private ListView lstViewProdutosPedido;
         private IList<PedidoItem> lstPedidoItem;
         private string IdPedido;
+        private Pedido ped;
+
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_ProdutosPedidoList;
+            }
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_ProdutosPedidoList);
 
-            IdPedido = Intent.GetStringExtra("Id_Pedido");
+            IdPedido = Intent.GetStringExtra("JsonPedido");
             if (IdPedido == null)
                 return;
+
+            ped = Newtonsoft.Json.JsonConvert.DeserializeObject<Pedido>(IdPedido);
 
             FindViews();
             BindViews();
@@ -48,7 +58,7 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void FillList()
         {
-            lstPedidoItem = new PedidoItem_Manager().GetPedidoItem(int.Parse(IdPedido));
+            lstPedidoItem = new PedidoItem_Manager().GetPedidoItem(int.Parse(ped.id.ToString()));
             if (lstPedidoItem.Count == 0)
             {
                 Intent intent = new Intent(this, typeof(Activity_EditarPedidos));
@@ -67,8 +77,7 @@ namespace br.com.weblayer.venda.android.Activities
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_PedidoItem));
             intent.PutExtra("JsonPedidoItem", Newtonsoft.Json.JsonConvert.SerializeObject(t));
-           // intent.PutExtra("Id_Pedido", t.id_pedido.ToString());
-           // intent.PutExtra("Operacao", "Atualizar");
+            intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(ped));
             StartActivityForResult(intent, 0);
         }
 

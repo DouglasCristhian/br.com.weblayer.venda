@@ -1,3 +1,4 @@
+using System;
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -11,14 +12,18 @@ namespace br.com.weblayer.venda.android.Activities
         CheckBox checkbox2;
         CheckBox checkbox3;
         LinearLayout lnrLayout;
-        TextView txt1;
-        TextView txt2;
-        TextView txt3;
+
+        protected override int LayoutResource
+        {
+            get
+            {
+                return Resource.Layout.Activity_Configuracoes;
+            }
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Activity_Configuracoes);
 
             FindViews();
             BindData();
@@ -30,9 +35,6 @@ namespace br.com.weblayer.venda.android.Activities
             checkbox2 = FindViewById<CheckBox>(Resource.Id.checkBox_Tema2);
             checkbox3 = FindViewById<CheckBox>(Resource.Id.checkBox_Tema3);
             lnrLayout = FindViewById<LinearLayout>(Resource.Id.linearLayout1);
-            txt1 = FindViewById<TextView>(Resource.Id.txtTema1Teste);
-            txt2 = FindViewById<TextView>(Resource.Id.txtTema2Teste);
-            txt3 = FindViewById<TextView>(Resource.Id.txtTema3Teste);
         }
 
         private void BindData()
@@ -48,13 +50,11 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 checkbox2.Enabled = false;
                 checkbox3.Enabled = false;
-                txt1.Text = "Ativado";
             }
             else
             {
                 checkbox2.Enabled = true;
                 checkbox3.Enabled = true;
-                txt1.Text = "Desativado";
             }         
         }
 
@@ -64,13 +64,11 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 checkbox1.Enabled = false;
                 checkbox3.Enabled = false;
-                txt2.Text = "Ativado";
             }
             else
             {
                 checkbox1.Enabled = true;
                 checkbox3.Enabled = true;
-                txt2.Text = "Desativado";
             }
         }
 
@@ -80,13 +78,11 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 checkbox1.Enabled = false;
                 checkbox2.Enabled = false;
-                txt3.Text = "Ativado";
             }
             else
             {
                 checkbox1.Enabled = true;
                 checkbox2.Enabled = true;
-                txt3.Text = "Desativado";
             }
         }
     }

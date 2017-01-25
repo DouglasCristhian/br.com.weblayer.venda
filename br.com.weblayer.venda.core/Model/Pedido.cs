@@ -9,16 +9,16 @@ namespace br.com.weblayer.venda.core.Model
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(20), NotNull]
         public string id_codigo { get; set; }
 
-        [MaxLength(15)]
-        public DateTime dt_emissao { get; set; }
+        [NotNull]
+        public virtual DateTime? dt_emissao { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(20), NotNull]
         public int id_cliente { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(20), NotNull]
         public int id_vendedor { get; set; }
 
         [MaxLength(20)]

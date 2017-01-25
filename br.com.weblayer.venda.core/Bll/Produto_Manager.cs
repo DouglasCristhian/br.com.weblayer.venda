@@ -14,6 +14,11 @@ namespace br.com.weblayer.venda.core.Bll
             return new ProdutoRepository().List();
         }
 
+        public IList<Produto> GetProd(string filtro)
+        {
+            return new ProdutoRepository().ListFiltro(filtro);
+        }
+
         public void Save(Produto obj)
         {            
             var erros="";

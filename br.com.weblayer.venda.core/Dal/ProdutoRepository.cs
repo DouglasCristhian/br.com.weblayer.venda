@@ -22,7 +22,6 @@ namespace br.com.weblayer.venda.core.Dal
             return Database.GetConnection().Table<Produto>().Where(x => x.id == id).FirstOrDefault();
         }
 
-
         public void Save(Produto entidade)
         {
 
@@ -45,8 +44,13 @@ namespace br.com.weblayer.venda.core.Dal
         }
 
         public IList<Produto> List()
-        {            
-            return Database.GetConnection().Table<Produto>().ToList();           
+        {
+            return Database.GetConnection().Table<Produto>().ToList();          
+        }
+
+        public IList<Produto> ListFiltro(string filtro)
+        {
+            return Database.GetConnection().Table<Produto>().Where(x => x.ds_nome.StartsWith(filtro)).ToList();
         }
 
         public void MakeDataMock()
