@@ -95,7 +95,11 @@ namespace br.com.weblayer.venda.android.Activities
             if (resultCode == Result.Ok)
             {
                 var mensagem = data.GetStringExtra("mensagem");
-                Toast.MakeText(this, mensagem, ToastLength.Short).Show();
+
+                if (mensagem != null)
+                {
+                    Toast.MakeText(this, mensagem, ToastLength.Short).Show();
+                }
                 //Seja novo ou atualizado, se o retorno das intents foi igual a Ok, a lista é repopulada
                 FillList();
             }

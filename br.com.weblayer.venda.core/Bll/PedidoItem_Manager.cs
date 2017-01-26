@@ -29,6 +29,9 @@ namespace br.com.weblayer.venda.core.Bll
         {
             var Repository = new PedidoItemRepository();
             Repository.Save(obj);
+
+            Mensagem = $"Item do pedido {obj.id_pedido} atualizado com sucesso";
+
         }
 
         public void Delete(PedidoItem obj)
@@ -36,7 +39,7 @@ namespace br.com.weblayer.venda.core.Bll
             var Repository = new PedidoItemRepository();
             Repository.Delete(obj);
 
-            Mensagem = $"Pedido {obj.id_pedido} excluído com sucesso";
+            Mensagem = $"Item do pedido {obj.id_pedido} excluído com sucesso";
         }
     }
 }

@@ -87,7 +87,6 @@ namespace br.com.weblayer.venda.android.Fragments
             return base.OnOptionsItemSelected(item);
         }
 
-
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
@@ -112,6 +111,7 @@ namespace br.com.weblayer.venda.android.Fragments
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
             
             spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
+
         }
 
         private void SetStyle()
@@ -246,8 +246,8 @@ namespace br.com.weblayer.venda.android.Fragments
         {
             if (!ValidateViews())
                 return;
-            //try
-            //{
+            try
+            {
                 BindModel();
 
                 var produto = new Produto_Manager();
@@ -257,11 +257,11 @@ namespace br.com.weblayer.venda.android.Fragments
                 myIntent.PutExtra("mensagem", produto.Mensagem);
                 SetResult(Result.Ok, myIntent);
                 Finish();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
-            //}
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            }
         }
 
         private void Delete()

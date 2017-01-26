@@ -19,10 +19,11 @@ namespace br.com.weblayer.venda.android.Activities
     {
         private EditText txtid_Codigo;
         private EditText txtid_Vendedor;
-        private TextView txtDataEmissao;
+        private EditText txtDataEmissao;
         private TextView txtValor_Total;
         private EditText txtObservacao;
         private Button btnAdicionar;
+        private Button btnItensPedido;
         private Pedido pedido;
         private string idcliente;
         private Spinner spinnerClientes;
@@ -41,7 +42,12 @@ namespace br.com.weblayer.venda.android.Activities
             switch (item.ItemId)
             {
                 case Resource.Id.action_salvar:
-                    Save();                  
+                    Save();
+                    if (ValidateViews())
+                    {
+                        Finish();
+                    }
+      
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -76,7 +82,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                spinnerClientes.SetSelection(getIndexByValue(spinnerClientes, pedido.id));
+                spinnerClientes.SetSelection(getIndexByValue(spinnerClientes, pedido.id_cliente));
             }
             else
                 pedido = null;
@@ -133,11 +139,12 @@ namespace br.com.weblayer.venda.android.Activities
             txtid_Codigo = FindViewById<EditText>(Resource.Id.txtCodigoPedido);
             spinnerClientes = FindViewById<Spinner>(Resource.Id.spinnerIdCliente);
             txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
-            txtDataEmissao = FindViewById<TextView>(Resource.Id.txtDataEmissao);
+            txtDataEmissao = FindViewById<EditText>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
-
+            btnItensPedido = FindViewById<Button>(Resource.Id.btnItensPedido);
+            
             txtDataEmissao.SetBackgroundColor(Android.Graphics.Color.LightGray);
 
             spinnerClientes.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(TblClientes_ItemSelected);
@@ -164,8 +171,8 @@ namespace br.com.weblayer.venda.android.Activities
                 return;
 
             txtid_Codigo.Text = pedido.id_codigo.ToString();
-            txtid_Vendedor.Text = pedido.id_vendedor.ToString();
-            idcliente = pedido.id_cliente.ToString();
+            txtid_Vendedor.Text = pedido.ds_vendedor.ToString();
+            idcliente = pedido.ds_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString();
             txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtObservacao.Text = pedido.ds_observacao.ToString();
@@ -181,6 +188,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             pedido.id_codigo = txtid_Codigo.Text;
             pedido.id_vendedor = 1;
+            pedido.ds_cliente = idcliente;
+            pedido.ds_vendedor = txtid_Vendedor.Text.ToString();
             var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
             pedido.id_cliente = idcli.Id();
             pedido.dt_emissao = datahora;
@@ -194,15 +203,9 @@ namespace br.com.weblayer.venda.android.Activities
                 txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 txtDataEmissao.Click += EventtxtDataEmissao_Click;
             }
-            else
-            {
-                txtDataEmissao.Clickable = false;
-                if (pedido.vl_total != 0)
-                {
-                    txtValor_Total.Click += TxtValor_Total_Click;
-                }
-            }
 
+            txtValor_Total.Click += TxtValor_Total_Click;
+            btnItensPedido.Click += TxtValor_Total_Click;
             btnAdicionar.Click += BtnAdicionar_Click;         
         }
 
@@ -243,11 +246,13 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
             return minhalista;
-
         }
 
         private void TxtValor_Total_Click(object sender, EventArgs e)
-        {          
+        {
+            if (txtValor_Total.Text.ToString() == "0")
+                return;
+
             Intent intent = new Intent();
             intent.SetClass(this, typeof(Activity_ProdutosPedidoList));
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
@@ -272,11 +277,10 @@ namespace br.com.weblayer.venda.android.Activities
             //Começa intent para adicionar um novo pedidoitem. Aguarda resultado para trazer o valor do item de volta
             Save();
 
-            Intent intent = new Intent();
-            intent.SetClass(this, typeof(Activity_PedidoItem));
-
             var obj_cliente = new Cliente_Manager().Get(pedido.id_cliente);
 
+            Intent intent = new Intent();
+            intent.SetClass(this, typeof(Activity_PedidoItem));
             intent.PutExtra("JsonPedido", Newtonsoft.Json.JsonConvert.SerializeObject(pedido));
             intent.PutExtra("JsonCliente", Newtonsoft.Json.JsonConvert.SerializeObject(obj_cliente));
             StartActivityForResult(intent, 0);
@@ -287,9 +291,18 @@ namespace br.com.weblayer.venda.android.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
+                string mensagem = data.GetStringExtra("mensagem");
+
+                if (mensagem != null)
+                {
+                    Toast.MakeText(this, mensagem, ToastLength.Short).Show();
+                }
                 //Atualizar o obj de pedido
                 pedido = new Pedido_Manager().Get(pedido.id);
                 BindViews();
+
+                Intent intent = new Intent();
+                SetResult(Result.Ok, intent);
             }
         }
 
@@ -305,12 +318,10 @@ namespace br.com.weblayer.venda.android.Activities
                 ped.Save(pedido);
 
                 //Começa intent para enviar mensagem à Activity anterior (Activity_Pedido)
+               // Toast.MakeText(this, ped.Mensagem, ToastLength.Short).Show();
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
-
-                Finish();
-
             }
             catch (Exception ex)
             {

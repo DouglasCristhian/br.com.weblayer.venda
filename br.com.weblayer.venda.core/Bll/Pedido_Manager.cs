@@ -19,6 +19,11 @@ namespace br.com.weblayer.venda.core.Bll
             return new PedidoRepository().List();
         }
 
+        public IList<Pedido> GetPedidoUnico(string filtro)
+        {
+            return new PedidoRepository().List();
+        }
+
         public void Save(Pedido obj)
         {
            /* var erros = "";

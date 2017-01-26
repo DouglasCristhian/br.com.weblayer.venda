@@ -76,13 +76,14 @@
        android:layout_width="match_parent"
        android:text="Valor total"/>
 
-    <TextView
+    <EditText
        android:id="@+id/txtValorTotal"
-       android:layout_marginLeft = "18dip"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:layout_marginTop="3dp"
-       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:editable="false"
        android:clickable="true"
        android:text="0"/>
 
@@ -96,14 +97,14 @@
        android:layout_width="match_parent"
        android:text="Data de Emissão"/>
 
-    <TextView
+    <EditText
        android:id="@+id/txtDataEmissao"
        android:layout_marginLeft = "18dip"
        android:layout_marginRight = "18dip"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:layout_marginTop="3dp"
-       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:editable="false"
        android:clickable="true"/>
 
     <TextView
@@ -125,11 +126,19 @@
        android:layout_marginRight = "18dip"/>
 
     <Button
+       android:id="@+id/btnItensPedido"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:text="Itens do Pedido"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
+
+    <Button
        android:id="@+id/btnAdicionar"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:text="Adicionar Item"
-       android:layout_marginTop="10dp"
        android:layout_marginLeft = "18dip"
        android:layout_marginRight = "18dip"/>
 

@@ -7,7 +7,7 @@ using br.com.weblayer.venda.core.Model;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
-    public class Adapter_Produtos_ListView : BaseAdapter<Produto>//, IFilterable
+    public class Adapter_Produtos_ListView : BaseAdapter<Produto>
     {
         public IList<Produto> mItems;
         private Context mContext;

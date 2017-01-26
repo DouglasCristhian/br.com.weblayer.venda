@@ -63,9 +63,9 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
 
-            Save(new PedidoItem() { id_pedido = 1, id_produto = 01, nr_quantidade = 5, vl_item = 15.00 });
-            Save(new PedidoItem() { id_pedido = 2, id_produto = 02, nr_quantidade = 6, vl_item = 10.00 });
-            Save(new PedidoItem() { id_pedido = 3, id_produto = 03, nr_quantidade = 7, vl_item = 5.00 });
+            //Save(new PedidoItem() { id_pedido = 1, id_produto = 01, ds_produto = "LAPIS DE COR AMARELO", nr_quantidade = 5, vl_item = 15.00 });
+            //Save(new PedidoItem() { id_pedido = 2, id_produto = 02, ds_produto = "LAPIS DE COR VERMELHO", nr_quantidade = 6, vl_item = 10.00 });
+            //Save(new PedidoItem() { id_pedido = 3, id_produto = 03, ds_produto = "LAPIS DE COR AZUL", nr_quantidade = 7, vl_item = 5.00 });
         }
     }
 }

@@ -31,8 +31,7 @@
       android:layout_height="wrap_content"
       android:textSize="18sp"
       android:layout_marginLeft = "18dip"
-      android:layout_marginRight = "18dip"
-      android:text=""/>
+      android:layout_marginRight = "18dip"/>
 
     <TextView
       android:id="@+id/lblNome"
