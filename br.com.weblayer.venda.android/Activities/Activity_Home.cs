@@ -6,11 +6,13 @@ using br.com.weblayer.venda.android.Activities;
 using Android.Views;
 using System;
 using Android.Support.V7.App;
+using br.com.weblayer.venda.core.Sinc;
+using System.Threading;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(MainLauncher = true)]
-    public class MainActivity : Activity
+    [Activity(MainLauncher = false)]
+    public class Activity_Home : Activity
     {
         Android.Support.V7.Widget.Toolbar toolbar;
         private List<string> ItensLista;
@@ -34,6 +36,31 @@ namespace br.com.weblayer.venda.android
                 case Resource.Id.action_sobre:
                     StartActivity(typeof(Activity_Sobre));
                     break;
+
+                case Resource.Id.action_refresh:
+
+                    var manager = new Sinc_Manager();
+                    
+
+                    var progressDialog = ProgressDialog.Show(this, "Por favor aguarde...", "Verificando os dados...", true);
+                    new Thread(new ThreadStart(delegate
+                    {
+                        System.Threading.Thread.Sleep(1000);
+
+                        //LOAD METHOD TO GET ACCOUNT INFO
+                        RunOnUiThread(() => manager.Sincronizar());
+                        //HIDE PROGRESS DIALOG
+                        RunOnUiThread(() => progressDialog.Hide());
+                    })).Start();
+
+                    Toast.MakeText(this, "Sincronização Finalizada", ToastLength.Short).Show();
+                    break;
+
+
+                case Resource.Id.action_sair:
+
+                    Finish();
+                    break;
             }
         }
 
@@ -44,11 +71,12 @@ namespace br.com.weblayer.venda.android
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             toolbar.Title = " W/Vendas";
             toolbar.SetLogo(Resource.Mipmap.ic_launcher);
-            toolbar.InflateMenu(Resource.Menu.menu_toolbar);
-            toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
-            toolbar.Menu.RemoveItem(Resource.Id.action_deletar);
-            toolbar.Menu.RemoveItem(Resource.Id.action_salvar);
-            toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
+            toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
+
+            //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
+            //toolbar.Menu.RemoveItem(Resource.Id.action_deletar);
+            //toolbar.Menu.RemoveItem(Resource.Id.action_salvar);
+            //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
         }
 
         private void BindData()
@@ -67,7 +95,6 @@ namespace br.com.weblayer.venda.android
 
             toolbar.MenuItemClick += Toolbar_MenuItemClick;
         }
-
 
         private void ListViewHome_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {

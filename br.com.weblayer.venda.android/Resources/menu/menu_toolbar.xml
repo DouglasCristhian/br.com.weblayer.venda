@@ -20,4 +20,10 @@
     android:icon="@mipmap/ic_help"
     app:showAsAction="never"/>
 
+    <item
+    android:id="@+id/action_refresh"
+    android:title="Atualizar"
+    android:icon="@mipmap/ic_refresh"
+    app:showAsAction="always"/>
+
 </menu>

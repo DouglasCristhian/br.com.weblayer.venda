@@ -31,7 +31,9 @@
       android:layout_height="wrap_content"
       android:textSize="18sp"
       android:layout_marginLeft = "18dip"
-      android:layout_marginRight = "18dip"/>
+      android:layout_marginRight = "18dip"
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblNome"
@@ -49,7 +51,8 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblUnidadeMedida"
@@ -102,7 +105,8 @@
       android:textSize="18sp"
       android:layout_marginLeft = "18dip"
       android:layout_marginRight = "18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
   </LinearLayout>
 </ScrollView>

@@ -41,6 +41,7 @@ namespace br.com.weblayer.venda.core.Bll
                 throw new Exception(erros);
 
             var Repository = new ClienteRepository();
+
             Repository.Save(obj);
 
             Mensagem = $"Cliente {obj.ds_RazaoSocial} atualizado com sucesso";

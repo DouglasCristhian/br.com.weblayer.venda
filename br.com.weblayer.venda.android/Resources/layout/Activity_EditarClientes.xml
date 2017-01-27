@@ -31,7 +31,8 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblRazaoSocial"
@@ -49,8 +50,8 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:inputType="text"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblNomeFantasia"
@@ -68,8 +69,8 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:inputType="text"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblCNPJ"
@@ -87,7 +88,8 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblSpinner"

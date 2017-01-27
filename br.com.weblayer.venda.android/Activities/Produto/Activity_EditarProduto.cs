@@ -58,6 +58,7 @@ namespace br.com.weblayer.venda.android.Fragments
             FindViews();
             SetStyle();
             BindView();
+            BindData();
 
             spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, unidades_medida);
 
@@ -89,14 +90,20 @@ namespace br.com.weblayer.venda.android.Fragments
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_refresh);
+            menu.RemoveItem(Resource.Id.action_sair);
 
-            if (prod == null)
-            {
-                menu.RemoveItem(Resource.Id.action_deletar);
-            }
+
+            //menu.RemoveItem(Resource.Id.action_sobre);
+            //menu.RemoveItem(Resource.Id.action_adicionar);
+            //menu.RemoveItem(Resource.Id.action_refresh);
+
+            //if (prod == null)
+            //{
+            menu.RemoveItem(Resource.Id.action_deletar);
+        //    }
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -146,6 +153,12 @@ namespace br.com.weblayer.venda.android.Fragments
             prod.id_tabpreco = mytabelapreco.Id();
             prod.ds_unimedida= spinValor.ToString();
             prod.vl_Valor = double.Parse(txtValorProd.Text.ToString());
+        }
+
+        private void BindData()
+        {
+            spinnerTblPrecoProd.Enabled = false;
+            spinUniMedidaProd.Enabled = false;
         }
 
         private bool ValidateViews()

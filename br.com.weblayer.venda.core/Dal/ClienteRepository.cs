@@ -31,7 +31,8 @@ namespace br.com.weblayer.venda.core.Dal
         {
             try
             {
-                if (entidade.id>0)
+
+                if (entidade.id>0 && Get(entidade.id)!=null)
                     Database.GetConnection().Update(entidade);
                 else
                     Database.GetConnection().Insert(entidade);

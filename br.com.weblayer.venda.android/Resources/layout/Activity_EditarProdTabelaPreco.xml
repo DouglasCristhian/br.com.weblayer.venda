@@ -60,6 +60,8 @@
       android:textSize="18sp"
       android:inputType="numberDecimal"
       android:layout_marginLeft = "18dip"
-      android:layout_marginRight = "18dip"/>
+      android:layout_marginRight = "18dip"
+      android:focusable="false"
+      android:editable="false"/>
   </LinearLayout>
 </ScrollView>

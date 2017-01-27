@@ -77,18 +77,24 @@ namespace br.com.weblayer.venda.android.Activities
             }
             else
                 cli = null;
+
+            BindData();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
+            menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_adicionar);
 
-            if (cli == null)
-            {
-                menu.RemoveItem(Resource.Id.action_deletar);
-            }
+            //menu.RemoveItem(Resource.Id.action_sobre);
+            //menu.RemoveItem(Resource.Id.action_adicionar);
+            //menu.RemoveItem(Resource.Id.action_refresh);
+
+            //if (cli == null)
+            //{
+            //    menu.RemoveItem(Resource.Id.action_deletar);
+            //}
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -139,6 +145,11 @@ namespace br.com.weblayer.venda.android.Activities
             cli.ds_Cnpj = txtCNPJCli.Text;
             var mytabelapreco = tblprecospinner[spinnerTabelaPreco.SelectedItemPosition];
             cli.id_tabelapreco = mytabelapreco.Id();
+        }
+
+        private void BindData()
+        {
+            spinnerTabelaPreco.Enabled = false;
         }
 
         private bool ValidateViews()

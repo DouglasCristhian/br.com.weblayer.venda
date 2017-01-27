@@ -38,11 +38,11 @@ namespace br.com.weblayer.venda.core.Dal
         {
             CreateDatabase(GetConnection());
 
-            new ProdutoRepository().MakeDataMock();
-            new TabelaPrecoRepository().MakeDataMock();
-            new ClienteRepository().MakeDataMock();
+            //new ProdutoRepository().MakeDataMock();
+            //new TabelaPrecoRepository().MakeDataMock();
+            //new ClienteRepository().MakeDataMock();
             new PedidoRepository().MakeDataMock();
-            new ProdutoTabelaPrecoRepository().MakeDataMock();
+            //new ProdutoTabelaPrecoRepository().MakeDataMock();
             //new PedidoItemRepository().MakeDataMock();
 
         } 

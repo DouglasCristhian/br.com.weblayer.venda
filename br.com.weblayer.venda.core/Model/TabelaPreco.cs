@@ -5,7 +5,7 @@ namespace br.com.weblayer.venda.core.Model
     [Table("TabelaPreco")]
     public class TabelaPreco
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int id { get; set; }
 
         [MaxLength(20)]

@@ -50,10 +50,15 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
+            menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_salvar);
-            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_sair);
+
+            //menu.RemoveItem(Resource.Id.action_sobre);
+            //menu.RemoveItem(Resource.Id.action_salvar);
+            //menu.RemoveItem(Resource.Id.action_deletar);
+            //menu.RemoveItem(Resource.Id.action_refresh);
 
             return base.OnCreateOptionsMenu(menu);
         }

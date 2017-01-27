@@ -87,6 +87,12 @@
     <Compile Include="Model\TabelaPreco.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sinc\Model\Cliente.cs" />
+    <Compile Include="Sinc\Model\Produto.cs" />
+    <Compile Include="Sinc\Model\ProdutoTabelaPreco.cs" />
+    <Compile Include="Sinc\Model\TabelaPreco.cs" />
+    <Compile Include="Sinc\Sinc_Manager.cs" />
+    <Compile Include="Sinc\WebServiceMock.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

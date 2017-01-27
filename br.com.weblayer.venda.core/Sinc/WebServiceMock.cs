@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using br.com.weblayer.venda.core.Sinc.Model;
+
+namespace br.com.weblayer.venda.core.Sinc
+{
+    public class WebServiceMock
+    {
+        public IList<Cliente> GetClientes()
+        {
+
+            var clientes = new List<Cliente>();
+
+            clientes.Add(new Cliente { id = 1, ds_Cnpj = "99999999999999", ds_NomeFantasia = "Cliente vindo do webservice 1", ds_RazaoSocial = "Teste 1", id_Codigo = "00001", id_tabelapreco = 1 });
+            clientes.Add(new Cliente { id = 2, ds_Cnpj = "88888888888888", ds_NomeFantasia = "Cliente vindo do webservice 2", ds_RazaoSocial = "Teste 2", id_Codigo = "00002", id_tabelapreco = 2 });
+            clientes.Add(new Cliente { id = 3, ds_Cnpj = "77777777777777", ds_NomeFantasia = "Cliente vindo do webservice 3", ds_RazaoSocial = "Teste 3", id_Codigo = "00003", id_tabelapreco = 3 });
+
+            return clientes;
+        }
+
+        public IList<Produto> GetProdutos()
+        {
+
+            var produtos = new List<Produto>();
+
+            produtos.Add(new Produto { id = 1, ds_nome = "LÁPIS VERMELHO", ds_unimedida = "CX", id_codigo = "001", id_tabpreco = 111, vl_Valor = 5.00 });
+            produtos.Add(new Produto { id = 2, ds_nome = "BOLO DE LARANJA", ds_unimedida = "PCT", id_codigo = "002", id_tabpreco = 222, vl_Valor = 10.00 });
+            produtos.Add(new Produto { id = 3, ds_nome = "BALAS SORTIDA", ds_unimedida = "PCT", id_codigo = "003", id_tabpreco = 333, vl_Valor = 15.00 });
+
+
+            return produtos;
+        }
+
+        public IList<TabelaPreco> GetTabelaPreco()
+        {
+
+            var tabPreco = new List<TabelaPreco>();
+
+            tabPreco.Add(new TabelaPreco {id = 1, ds_descricao = "TABELA_NORMAL", id_codigo = "1", vl_descontomaximo = 5, vl_valor = 10 });
+            tabPreco.Add(new TabelaPreco { id = 2, ds_descricao = "TABELA_PROMOÇÃO", id_codigo = "1", vl_descontomaximo = 5, vl_valor = 10 });
+
+            return tabPreco;
+        }
+
+        public IList<ProdutoTabelaPreco> GetProdTabelaPreco()
+        {
+
+            var prodTabPreco = new List<ProdutoTabelaPreco>();
+
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 1, id_produto = 111, id_tabpreco = 001, vl_Valor = 7 });
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 2, id_produto = 222, id_tabpreco = 002, vl_Valor = 8 });
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 3, id_produto = 333, id_tabpreco = 003, vl_Valor = 9 });
+
+            return prodTabPreco;
+        }
+
+
+    }
+
+   
+
+}

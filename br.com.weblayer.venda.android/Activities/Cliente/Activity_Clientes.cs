@@ -3,11 +3,12 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.android.Adapters;
 using System;
+using br.com.weblayer.venda.core.Sinc;
+using Android.Widget;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -15,6 +16,7 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_Clientes : Activity_Base
     {
         private ListView lstViewClientes;
+        //private IList<Cliente> lstClientes;
         private IList<Cliente> lstClientes;
         private EditText edtFiltro;
 
@@ -50,10 +52,15 @@ namespace br.com.weblayer.venda.android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
+            menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_deletar);
-            menu.RemoveItem(Resource.Id.action_salvar);
+
+
+            //menu.RemoveItem(Resource.Id.action_sobre);
+            //menu.RemoveItem(Resource.Id.action_deletar);
+            //menu.RemoveItem(Resource.Id.action_salvar);
+            //menu.RemoveItem(Resource.Id.action_refresh);
             return base.OnCreateOptionsMenu(menu);
         }
 

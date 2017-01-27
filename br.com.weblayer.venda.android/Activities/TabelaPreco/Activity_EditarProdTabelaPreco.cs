@@ -67,18 +67,24 @@ namespace br.com.weblayer.venda.android.Activities
             else
                 prodtabpreco = null;
 
+            BindData();
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
+            menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_adicionar);
+            menu.RemoveItem(Resource.Id.action_sair);
 
-            if (prodtabpreco == null)
-            {
-                menu.RemoveItem(Resource.Id.action_deletar);
-            }
+            //menu.RemoveItem(Resource.Id.action_sobre);
+            //menu.RemoveItem(Resource.Id.action_adicionar);
+            //menu.RemoveItem(Resource.Id.action_refresh);
+            //if (prodtabpreco == null)
+            //{
+            //    menu.RemoveItem(Resource.Id.action_deletar);
+            //}
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -135,6 +141,12 @@ namespace br.com.weblayer.venda.android.Activities
             var mytabpreco = tblprecospinner[spinIdTabPreco.SelectedItemPosition];
             prodtabpreco.id_tabpreco = mytabpreco.Id();
             prodtabpreco.vl_Valor = double.Parse(txt_ProdTabPreco.Text.ToString());
+        }
+
+        private void BindData()
+        {
+            spinIdProduto.Enabled = false;
+            spinIdTabPreco.Enabled = false;
         }
 
         private bool ValidateViews()

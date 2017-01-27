@@ -29,7 +29,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblDescricaoTabelaPreco"
@@ -45,7 +46,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblValorTabelaPreco"
@@ -62,7 +64,8 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
       android:inputType="numberDecimal"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
 
     <TextView
       android:id="@+id/lblDescontoMaxTabelaPreco"
@@ -79,6 +82,7 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
       android:inputType="numberDecimal"
-      android:text=""/>
+      android:focusable="false"
+      android:editable="false"/>
   </LinearLayout>
 </ScrollView>
