@@ -29,7 +29,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             switch (item.ItemId)
             {
-                //case Android.Resource.Id.Home:
+                //case Resource.Id.action_sair:
                 //    Finish();
 
                 //    return true;

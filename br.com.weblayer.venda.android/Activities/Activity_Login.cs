@@ -34,6 +34,17 @@ namespace br.com.weblayer.venda.android.Activities
             btnEntrar.Click += BtnEntrar_Click;
         }
 
+        //public override bool OnOptionsItemSelected(IMenuItem item)
+        //{
+        //    switch (item.ItemId)
+        //    {
+        //        case Resource.Id.action_sair:
+        //        Finish();
+        //        break;
+        //    }
+        //    return true;
+        //}
+
         private void FindViews()
         {
             edtServidor = FindViewById<EditText>(Resource.Id.edtServidor);
@@ -48,6 +59,7 @@ namespace br.com.weblayer.venda.android.Activities
             toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
             toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             toolbar.Menu.RemoveItem(Resource.Id.action_refresh);
+            toolbar.MenuItemClick += Toolbar_MenuItemClick;
 
             //toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             //toolbar.Menu.RemoveItem(Resource.Id.action_salvar);
@@ -55,6 +67,16 @@ namespace br.com.weblayer.venda.android.Activities
             //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
             //toolbar.Menu.RemoveItem(Resource.Id.action_refresh);
 
+        }
+
+        private void Toolbar_MenuItemClick(object sender, Android.Support.V7.Widget.Toolbar.MenuItemClickEventArgs e)
+        {
+            switch (e.Item.ItemId)
+            {
+                case Resource.Id.action_sair:
+                    Finish();
+                    break;
+            }
         }
 
         private bool ValidateViews()
