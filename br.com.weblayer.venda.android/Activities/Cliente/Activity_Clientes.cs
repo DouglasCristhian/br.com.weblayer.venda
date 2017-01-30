@@ -55,7 +55,7 @@ namespace br.com.weblayer.venda.android.Activities
             MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
             menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-
+            menu.RemoveItem(Resource.Id.action_sair);
 
             //menu.RemoveItem(Resource.Id.action_sobre);
             //menu.RemoveItem(Resource.Id.action_deletar);

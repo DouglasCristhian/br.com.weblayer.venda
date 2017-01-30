@@ -34,17 +34,6 @@ namespace br.com.weblayer.venda.android.Activities
             btnEntrar.Click += BtnEntrar_Click;
         }
 
-        //public override bool OnOptionsItemSelected(IMenuItem item)
-        //{
-        //    switch (item.ItemId)
-        //    {
-        //        case Resource.Id.action_sair:
-        //        Finish();
-        //        break;
-        //    }
-        //    return true;
-        //}
-
         private void FindViews()
         {
             edtServidor = FindViewById<EditText>(Resource.Id.edtServidor);
