@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
@@ -60,6 +62,58 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtValor_Total).Text = "Valor Total: " + mItems[position].vl_total.ToString();
             row.FindViewById<TextView>(Resource.Id.txtData_Emissao).Text = "Data de Emissão " + mItems[position].dt_emissao.Value.ToString("dd/MM/yyyy"); 
             row.FindViewById<TextView>(Resource.Id.txt_Observacao).Text = "Observação: " + mItems[position].ds_observacao.ToString();
+
+            if (mItems[position].fl_status == 0)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
+            }
+
+            if (mItems[position].fl_status == 1)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
+            }
+
+
+            if (mItems[position].fl_status == 2)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Azul);
+            }
+
+
+            if (mItems[position].fl_status == 3)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Vermelho);
+            }
+
+            if (mItems[position].fl_status == 4)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
+            }
+
+
+
+            //if (mItems[position].fl_status.ToString() == "Aberto")
+            //{
+            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
+            //}
+
+
+            //if (mItems[position].fl_status.ToString() == "Sincronizado")
+            //{
+            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Azul);
+            //}
+
+
+            //if (mItems[position].fl_status.ToString() == "Recusado")
+            //{
+            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Vermelho);
+            //}
+
+
+            //if (mItems[position].fl_status.ToString() == "Incluído")
+            //{
+            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
+            //}
 
             return row;
         }

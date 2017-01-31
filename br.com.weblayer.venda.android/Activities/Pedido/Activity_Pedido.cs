@@ -8,6 +8,7 @@ using Android.Widget;
 using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.android.Adapters;
+using br.com.weblayer.venda.android.Fragments;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -39,6 +40,12 @@ namespace br.com.weblayer.venda.android.Activities
                     intent.SetClass(this, typeof(Activity_EditarPedidos));
                     StartActivityForResult(intent, 0);
                     break;
+
+                case Resource.Id.action_help:
+                    FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                    Fragment_Legendas dialog = new Fragment_Legendas();
+                    dialog.Show(transaction, "dialog");
+                    break;
             }
             return base.OnOptionsItemSelected(item);
         }
@@ -55,10 +62,10 @@ namespace br.com.weblayer.venda.android.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
-            menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_deletar);
             menu.RemoveItem(Resource.Id.action_salvar);
             menu.RemoveItem(Resource.Id.action_refresh);
+            menu.RemoveItem(Resource.Id.action_sobre);
             return base.OnCreateOptionsMenu(menu);
         }
 

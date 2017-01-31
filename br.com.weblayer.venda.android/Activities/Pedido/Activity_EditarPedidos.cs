@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.android.Adapters;
 using System.Globalization;
+using Android.Graphics;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -21,9 +22,12 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtid_Vendedor;
         private EditText txtDataEmissao;
         private TextView txtValor_Total;
+        private TextView txtStatusPedido;
         private EditText txtObservacao;
+        private TextView lblStatusPedido;
         private Button btnAdicionar;
         private Button btnItensPedido;
+        private Button btnFinalizar;
         private Pedido pedido;
         private string idcliente;
         private Spinner spinnerClientes;
@@ -95,10 +99,20 @@ namespace br.com.weblayer.venda.android.Activities
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_adicionar);
             menu.RemoveItem(Resource.Id.action_refresh);
+            menu.RemoveItem(Resource.Id.action_help);
 
             if (pedido == null)
             {
                 menu.RemoveItem(Resource.Id.action_deletar);
+            }
+
+            if (pedido != null)
+            {
+                if (pedido.fl_status != 0)
+                {
+                    menu.RemoveItem(Resource.Id.action_salvar);
+                    menu.RemoveItem(Resource.Id.action_deletar);
+                }
             }
 
             return base.OnCreateOptionsMenu(menu);
@@ -143,9 +157,12 @@ namespace br.com.weblayer.venda.android.Activities
             txtDataEmissao = FindViewById<EditText>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
             txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
+            lblStatusPedido = FindViewById<TextView>(Resource.Id.lblStatusPedido);
+            txtStatusPedido = FindViewById<TextView>(Resource.Id.txtStatusPedido);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
             btnItensPedido = FindViewById<Button>(Resource.Id.btnItensPedido);
-            
+            btnFinalizar = FindViewById<Button>(Resource.Id.btnFinalizar);
+
             txtDataEmissao.SetBackgroundColor(Android.Graphics.Color.LightGray);
 
             spinnerClientes.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(TblClientes_ItemSelected);
@@ -159,6 +176,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtDataEmissao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtValor_Total.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtStatusPedido.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -177,6 +195,39 @@ namespace br.com.weblayer.venda.android.Activities
             txtValor_Total.Text = pedido.vl_total.ToString();
             txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtObservacao.Text = pedido.ds_observacao.ToString();
+            txtStatusPedido.Text = Status();
+        }
+
+        private string Status()
+        {
+            string status = "";
+
+            if (pedido.fl_status == 0)
+            {
+                status ="Aberto";
+            }
+
+            if (pedido.fl_status == 1)
+            {
+                status = "Finalizado";
+            }
+
+            if(pedido.fl_status == 2)
+            {
+                status = "Sincronizado";
+            }
+
+            if (pedido.fl_status == 3)
+            {
+                status = "Recusado";
+            }
+
+            if (pedido.fl_status == 4)
+            {
+                status = "Realizado";
+            }
+
+            return status;
         }
 
         private void BindModel()
@@ -195,6 +246,7 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.id_cliente = idcli.Id();
             pedido.dt_emissao = datahora;
             pedido.ds_observacao = txtObservacao.Text;
+            //pedido.fl_status = 0;
         }
 
         private void BindData()
@@ -203,11 +255,27 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 txtDataEmissao.Click += EventtxtDataEmissao_Click;
+                txtStatusPedido.Visibility = ViewStates.Gone;
+                lblStatusPedido.Visibility = ViewStates.Gone;
             }
 
+            if (pedido != null)
+            {
+                if (pedido.fl_status != 0)
+                {
+                    txtid_Codigo.Enabled = false;
+                    txtid_Vendedor.Enabled = false;
+                    txtObservacao.Enabled = false;
+                    spinnerClientes.Enabled = false;
+                    btnFinalizar.Visibility = ViewStates.Gone;
+                    btnAdicionar.Visibility = ViewStates.Gone;
+                }
+            }
+
+            btnAdicionar.Click += BtnAdicionar_Click;
+            btnFinalizar.Click += BtnFinalizar_Click;
             txtValor_Total.Click += TxtValor_Total_Click;
             btnItensPedido.Click += TxtValor_Total_Click;
-            btnAdicionar.Click += BtnAdicionar_Click;         
         }
 
         private bool ValidateViews()
@@ -287,6 +355,18 @@ namespace br.com.weblayer.venda.android.Activities
             StartActivityForResult(intent, 0);
         }
 
+        private void BtnFinalizar_Click(object sender, EventArgs e)
+        {
+            if (!ValidateViews())
+                return;
+
+            pedido.fl_status = 1;
+            Save();
+
+            if (ValidateViews())
+                Finish();
+        }
+
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
@@ -323,7 +403,7 @@ namespace br.com.weblayer.venda.android.Activities
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
-            }
+        }
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();

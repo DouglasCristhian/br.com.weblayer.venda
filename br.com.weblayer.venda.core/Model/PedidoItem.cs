@@ -5,7 +5,7 @@ namespace br.com.weblayer.venda.core.Model
     [Table("PedidoItem")]
     public class PedidoItem
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
         [MaxLength(20), NotNull]

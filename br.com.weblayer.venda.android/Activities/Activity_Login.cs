@@ -48,6 +48,7 @@ namespace br.com.weblayer.venda.android.Activities
             toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
             toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             toolbar.Menu.RemoveItem(Resource.Id.action_refresh);
+            toolbar.Menu.RemoveItem(Resource.Id.action_help);
             toolbar.MenuItemClick += Toolbar_MenuItemClick;
 
             //toolbar.Menu.RemoveItem(Resource.Id.action_sobre);

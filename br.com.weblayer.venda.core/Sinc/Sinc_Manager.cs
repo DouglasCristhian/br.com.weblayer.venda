@@ -26,6 +26,9 @@ namespace br.com.weblayer.venda.core.Sinc
             Sincronizar_Produto(webservice.GetProdutos());
             Sincronizar_TabelaPreco(webservice.GetTabelaPreco());
             Sincronizar_ProdutoTabelaPreco(webservice.GetProdTabelaPreco());
+
+            //System.Threading.Thread.Sleep(3000);
+
         }
 
         private void Sincronizar_Cliente(IList<Cliente> Clientes)
@@ -113,5 +116,6 @@ namespace br.com.weblayer.venda.core.Sinc
                 baselocal.Save(produtotabprecodatabase);
             }
         }
+
     }
 }

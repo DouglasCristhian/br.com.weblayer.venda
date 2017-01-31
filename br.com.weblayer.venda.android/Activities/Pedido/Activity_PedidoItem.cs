@@ -161,9 +161,25 @@ namespace br.com.weblayer.venda.android.Activities
             btnCancelarPedidoItem.Click += BtnCancelarPedidoItem_Click;
             btnExcluirPedidoItem.Click += BtnExcluirPedidoItem_Click;
 
-            txtIdProduto.Click += TxtIdProduto_Click;
             txtValorItem.TextChanged += TxtValorItem_TextChanged;
             txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
+
+            if (Operacao == "incluir")
+            {
+                if (pedido.fl_status == 0)
+                {
+                    txtIdProduto.Click += TxtIdProduto_Click;
+                }
+            }
+
+            if (pedido.fl_status != 0)
+            {
+                txtValorItem.Enabled = false;
+                txtQuantidadeItem.Enabled = false;
+                btnSalvarAtualizar.Visibility = ViewStates.Gone;
+                btnCancelarPedidoItem.Visibility = ViewStates.Gone;
+                btnExcluirPedidoItem.Visibility = ViewStates.Gone;
+            }
         }
 
         private void Clean()

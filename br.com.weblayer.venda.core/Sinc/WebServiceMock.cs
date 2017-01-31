@@ -62,8 +62,6 @@ namespace br.com.weblayer.venda.core.Sinc
 
             return prodTabPreco;
         }
-
-
     }
 
    

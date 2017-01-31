@@ -17,13 +17,17 @@
     <item
     android:id="@+id/action_sobre"
     android:title="Sobre"
-    android:icon="@mipmap/ic_help"
     app:showAsAction="never"/>
 
     <item
     android:id="@+id/action_refresh"
     android:title="Atualizar"
     android:icon="@mipmap/ic_refresh"
+    app:showAsAction="always"/>
+
+    <item
+    android:id="@+id/action_help"
+    android:icon="@mipmap/ic_help"
     app:showAsAction="always"/>
 
 </menu>

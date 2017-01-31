@@ -8,6 +8,7 @@ using System;
 using Android.Support.V7.App;
 using br.com.weblayer.venda.core.Sinc;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace br.com.weblayer.venda.android
 {
@@ -17,6 +18,7 @@ namespace br.com.weblayer.venda.android
         Android.Support.V7.Widget.Toolbar toolbar;
         private List<string> ItensLista;
         private ListView ListViewHome;
+        ProgressDialog pd;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -39,24 +41,23 @@ namespace br.com.weblayer.venda.android
 
                 case Resource.Id.action_refresh:
 
-                    var manager = new Sinc_Manager();
+                    Sinc_Manager manager = new Sinc_Manager();
 
                     var progressDialog = ProgressDialog.Show(this, "Por favor aguarde...", "Verificando os dados...", true);
                     new Thread(new ThreadStart(delegate
                     {
-                    System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(3000);
 
-                    //LOAD METHOD TO GET ACCOUNT INFO
-                    RunOnUiThread(() => manager.Sincronizar());
-                    RunOnUiThread(() => Toast.MakeText(this, "Sincronização Finalizada", ToastLength.Short).Show());
+                        //LOAD METHOD TO GET ACCOUNT INFO
+                        RunOnUiThread(() => manager.Sincronizar());
+                        RunOnUiThread(() => Toast.MakeText(this, "Sincronização Finalizada", ToastLength.Short).Show());
 
-                    //HIDE PROGRESS DIALOG
-                    RunOnUiThread(() => progressDialog.Hide());
-                    
+                        //HIDE PROGRESS DIALOG
+                        RunOnUiThread(() => progressDialog.Hide());
+
 
                     })).Start();
-
-                   // Toast.MakeText(this, "Sincronização Finalizada", ToastLength.Short).Show();
+                    
                     break;
 
 
@@ -67,7 +68,14 @@ namespace br.com.weblayer.venda.android
             }
         }
 
-        private void FindViews()
+            private void PlotView()
+            {
+                var manager = new Sinc_Manager();
+            manager.Sincronizar();
+                pd.Dismiss();
+            }
+
+    private void FindViews()
         {
             ListViewHome = FindViewById<ListView>(Resource.Id.listviewHome);
 

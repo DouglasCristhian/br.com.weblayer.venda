@@ -6,7 +6,7 @@ namespace br.com.weblayer.venda.core.Model
     [Table("Pedidos")]
     public class Pedido
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
 
         [MaxLength(20), NotNull]
@@ -32,5 +32,7 @@ namespace br.com.weblayer.venda.core.Model
 
         [MaxLength(200)]
         public string ds_observacao { get; set; }
+
+        public int fl_status { get; set; }
     }
 }
