@@ -1571,70 +1571,67 @@ namespace br.com.weblayer.venda.android
 			public const int Azul = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int bolinha_vermelha = 2130837588;
+			public const int bolinha_azul = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int bolinhaazul = 2130837589;
+			public const int bolinha_cinza = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int bolinhacinza = 2130837590;
+			public const int bolinha_verde = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int bolinhaverde = 2130837591;
+			public const int bolinha_vermelha = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int bolinhavermelha = 2130837592;
+			public const int Cinza = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int Cinza = 2130837593;
+			public const int EditTextStyle = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int EditTextStyle = 2130837594;
+			public const int ic_AddProduct = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_AddProduct = 2130837595;
+			public const int ic_ajuda = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_ajuda = 2130837596;
+			public const int ic_configuracoes = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_configuracoes = 2130837597;
+			public const int ic_deletarproduto = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_deletarproduto = 2130837598;
+			public const int ic_salvar = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_salvar = 2130837599;
+			public const int Icon = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int Icon = 2130837600;
+			public const int legenda1 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int legenda1 = 2130837601;
+			public const int legenda2 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int legenda2 = 2130837602;
+			public const int legenda3 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int legenda3 = 2130837603;
-			
-			// aapt resource value: 0x7f020064
-			public const int legenda4 = 2130837604;
-			
-			// aapt resource value: 0x7f020069
-			public const int notification_template_icon_bg = 2130837609;
-			
-			// aapt resource value: 0x7f020065
-			public const int search = 2130837605;
-			
-			// aapt resource value: 0x7f020066
-			public const int Verde = 2130837606;
-			
-			// aapt resource value: 0x7f020067
-			public const int Vermelho = 2130837607;
+			public const int legenda4 = 2130837603;
 			
 			// aapt resource value: 0x7f020068
-			public const int Weblayer_Logo = 2130837608;
+			public const int notification_template_icon_bg = 2130837608;
+			
+			// aapt resource value: 0x7f020064
+			public const int search = 2130837604;
+			
+			// aapt resource value: 0x7f020065
+			public const int Verde = 2130837605;
+			
+			// aapt resource value: 0x7f020066
+			public const int Vermelho = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int Weblayer_Logo = 2130837607;
 			
 			static Drawable()
 			{
@@ -1649,11 +1646,11 @@ namespace br.com.weblayer.venda.android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int action0 = 2131427528;
+			// aapt resource value: 0x7f0b00c7
+			public const int action0 = 2131427527;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int action_adicionar = 2131427543;
+			// aapt resource value: 0x7f0b00d6
+			public const int action_adicionar = 2131427542;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int action_bar = 2131427397;
@@ -1679,14 +1676,14 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0046
 			public const int action_context_bar = 2131427398;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int action_deletar = 2131427542;
+			// aapt resource value: 0x7f0b00d5
+			public const int action_deletar = 2131427541;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int action_divider = 2131427532;
+			// aapt resource value: 0x7f0b00cb
+			public const int action_divider = 2131427531;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int action_help = 2131427546;
+			// aapt resource value: 0x7f0b00d9
+			public const int action_help = 2131427545;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1703,17 +1700,17 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0026
 			public const int action_mode_close_button = 2131427366;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int action_refresh = 2131427545;
-			
-			// aapt resource value: 0x7f0b00db
-			public const int action_sair = 2131427547;
-			
-			// aapt resource value: 0x7f0b00d5
-			public const int action_salvar = 2131427541;
-			
 			// aapt resource value: 0x7f0b00d8
-			public const int action_sobre = 2131427544;
+			public const int action_refresh = 2131427544;
+			
+			// aapt resource value: 0x7f0b00da
+			public const int action_sair = 2131427546;
+			
+			// aapt resource value: 0x7f0b00d4
+			public const int action_salvar = 2131427540;
+			
+			// aapt resource value: 0x7f0b00d7
+			public const int action_sobre = 2131427543;
 			
 			// aapt resource value: 0x7f0b0027
 			public const int activity_chooser_view_content = 2131427367;
@@ -1738,9 +1735,6 @@ namespace br.com.weblayer.venda.android
 			
 			// aapt resource value: 0x7f0b00a2
 			public const int btnCancelar = 2131427490;
-			
-			// aapt resource value: 0x7f0b00c7
-			public const int btnEntendi = 2131427527;
 			
 			// aapt resource value: 0x7f0b0093
 			public const int btnEntrar = 2131427475;
@@ -1769,14 +1763,14 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b002e
 			public const int buttonPanel = 2131427374;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int cancel_action = 2131427529;
+			// aapt resource value: 0x7f0b00c8
+			public const int cancel_action = 2131427528;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int checkbox = 2131427388;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int chronometer = 2131427535;
+			// aapt resource value: 0x7f0b00ce
+			public const int chronometer = 2131427534;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int collapseActionView = 2131427358;
@@ -1820,8 +1814,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b001b
 			public const int end = 2131427355;
 			
-			// aapt resource value: 0x7f0b00d4
-			public const int end_padder = 2131427540;
+			// aapt resource value: 0x7f0b00d3
+			public const int end_padder = 2131427539;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int expand_activities_button = 2131427368;
@@ -1859,8 +1853,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b00ab
 			public const int imgView = 2131427499;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int info = 2131427539;
+			// aapt resource value: 0x7f0b00d2
+			public const int info = 2131427538;
 			
 			// aapt resource value: 0x7f0b005e
 			public const int lblCNPJ = 2131427422;
@@ -1943,11 +1937,11 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0068
 			public const int lblValorTotal = 2131427432;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int line1 = 2131427533;
+			// aapt resource value: 0x7f0b00cc
+			public const int line1 = 2131427532;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int line3 = 2131427537;
+			// aapt resource value: 0x7f0b00d0
+			public const int line3 = 2131427536;
 			
 			// aapt resource value: 0x7f0b008c
 			public const int linearLayout1 = 2131427468;
@@ -1985,8 +1979,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b00a5
 			public const int lstViewProdTabPreco = 2131427493;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int media_actions = 2131427531;
+			// aapt resource value: 0x7f0b00ca
+			public const int media_actions = 2131427530;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int middle = 2131427356;
@@ -2108,8 +2102,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0018
 			public const int src_over = 2131427352;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int status_bar_latest_event_content = 2131427530;
+			// aapt resource value: 0x7f0b00c9
+			public const int status_bar_latest_event_content = 2131427529;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int submenuarrow = 2131427391;
@@ -2120,17 +2114,17 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
-			// aapt resource value: 0x7f0b00d2
-			public const int text = 2131427538;
+			// aapt resource value: 0x7f0b00d1
+			public const int text = 2131427537;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int text2 = 2131427536;
+			// aapt resource value: 0x7f0b00cf
+			public const int text2 = 2131427535;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int textSpacerNoButtons = 2131427383;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int time = 2131427534;
+			// aapt resource value: 0x7f0b00cd
+			public const int time = 2131427533;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int title = 2131427373;
@@ -2495,46 +2489,49 @@ namespace br.com.weblayer.venda.android
 			public const int Adapter_Produtos_ListView = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int Fragment_Legendas = 2130968625;
+			public const int Adapter_TabelaPreco_ListView = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_media_action = 2130968626;
+			public const int Fragment_Legendas = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_media_cancel_action = 2130968627;
+			public const int notification_media_action = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_big_media = 2130968628;
+			public const int notification_media_cancel_action = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_big_media_narrow = 2130968629;
+			public const int notification_template_big_media = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_lines = 2130968630;
+			public const int notification_template_big_media_narrow = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_media = 2130968631;
+			public const int notification_template_lines = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_template_part_chronometer = 2130968632;
+			public const int notification_template_media = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_template_part_time = 2130968633;
+			public const int notification_template_part_chronometer = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_item_material = 2130968634;
+			public const int notification_template_part_time = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_multichoice_material = 2130968635;
+			public const int select_dialog_item_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int select_dialog_singlechoice_material = 2130968636;
+			public const int select_dialog_multichoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int support_simple_spinner_dropdown_item = 2130968637;
+			public const int select_dialog_singlechoice_material = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int toolbar = 2130968638;
+			public const int support_simple_spinner_dropdown_item = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int toolbar = 2130968639;
 			
 			static Layout()
 			{
