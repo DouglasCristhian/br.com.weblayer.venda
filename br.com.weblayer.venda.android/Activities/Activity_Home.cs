@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(MainLauncher = false)]
+    [Activity(MainLauncher = true)]
     public class Activity_Home : Activity
     {
         Android.Support.V7.Widget.Toolbar toolbar;
         private List<string> ItensLista;
         private ListView ListViewHome;
-        ProgressDialog pd;
+        //ProgressDialog pd;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -68,12 +68,12 @@ namespace br.com.weblayer.venda.android
             }
         }
 
-            private void PlotView()
-            {
-                var manager = new Sinc_Manager();
-            manager.Sincronizar();
-                pd.Dismiss();
-            }
+            //private void PlotView()
+            //{
+            //    var manager = new Sinc_Manager();
+            //manager.Sincronizar();
+            //    pd.Dismiss();
+            //}
 
     private void FindViews()
         {
