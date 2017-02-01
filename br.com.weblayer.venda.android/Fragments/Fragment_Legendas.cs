@@ -26,6 +26,13 @@ namespace br.com.weblayer.venda.android.Fragments
             return view;
         }
 
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            base.OnActivityCreated(savedInstanceState);
+        }
+
+
         //private void BtnEntendi_Click(object sender, EventArgs e)
         //{
         //    DialogClosed(this, new DialogEventArgs { ReturnValue = Retorno});

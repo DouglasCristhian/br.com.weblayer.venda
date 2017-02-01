@@ -1646,11 +1646,11 @@ namespace br.com.weblayer.venda.android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int action0 = 2131427527;
+			// aapt resource value: 0x7f0b00c8
+			public const int action0 = 2131427528;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int action_adicionar = 2131427542;
+			// aapt resource value: 0x7f0b00d7
+			public const int action_adicionar = 2131427543;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int action_bar = 2131427397;
@@ -1676,14 +1676,14 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0046
 			public const int action_context_bar = 2131427398;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int action_deletar = 2131427541;
+			// aapt resource value: 0x7f0b00d6
+			public const int action_deletar = 2131427542;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int action_divider = 2131427531;
+			// aapt resource value: 0x7f0b00cc
+			public const int action_divider = 2131427532;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int action_help = 2131427545;
+			// aapt resource value: 0x7f0b00da
+			public const int action_help = 2131427546;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1700,17 +1700,17 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0026
 			public const int action_mode_close_button = 2131427366;
 			
+			// aapt resource value: 0x7f0b00d9
+			public const int action_refresh = 2131427545;
+			
+			// aapt resource value: 0x7f0b00db
+			public const int action_sair = 2131427547;
+			
+			// aapt resource value: 0x7f0b00d5
+			public const int action_salvar = 2131427541;
+			
 			// aapt resource value: 0x7f0b00d8
-			public const int action_refresh = 2131427544;
-			
-			// aapt resource value: 0x7f0b00da
-			public const int action_sair = 2131427546;
-			
-			// aapt resource value: 0x7f0b00d4
-			public const int action_salvar = 2131427540;
-			
-			// aapt resource value: 0x7f0b00d7
-			public const int action_sobre = 2131427543;
+			public const int action_sobre = 2131427544;
 			
 			// aapt resource value: 0x7f0b0027
 			public const int activity_chooser_view_content = 2131427367;
@@ -1735,6 +1735,9 @@ namespace br.com.weblayer.venda.android
 			
 			// aapt resource value: 0x7f0b00a2
 			public const int btnCancelar = 2131427490;
+			
+			// aapt resource value: 0x7f0b00c7
+			public const int btnEntendi = 2131427527;
 			
 			// aapt resource value: 0x7f0b0093
 			public const int btnEntrar = 2131427475;
@@ -1763,14 +1766,14 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b002e
 			public const int buttonPanel = 2131427374;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int cancel_action = 2131427528;
+			// aapt resource value: 0x7f0b00c9
+			public const int cancel_action = 2131427529;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int checkbox = 2131427388;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int chronometer = 2131427534;
+			// aapt resource value: 0x7f0b00cf
+			public const int chronometer = 2131427535;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int collapseActionView = 2131427358;
@@ -1814,8 +1817,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b001b
 			public const int end = 2131427355;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int end_padder = 2131427539;
+			// aapt resource value: 0x7f0b00d4
+			public const int end_padder = 2131427540;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int expand_activities_button = 2131427368;
@@ -1853,8 +1856,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b00ab
 			public const int imgView = 2131427499;
 			
-			// aapt resource value: 0x7f0b00d2
-			public const int info = 2131427538;
+			// aapt resource value: 0x7f0b00d3
+			public const int info = 2131427539;
 			
 			// aapt resource value: 0x7f0b005e
 			public const int lblCNPJ = 2131427422;
@@ -1937,11 +1940,11 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0068
 			public const int lblValorTotal = 2131427432;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int line1 = 2131427532;
+			// aapt resource value: 0x7f0b00cd
+			public const int line1 = 2131427533;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int line3 = 2131427536;
+			// aapt resource value: 0x7f0b00d1
+			public const int line3 = 2131427537;
 			
 			// aapt resource value: 0x7f0b008c
 			public const int linearLayout1 = 2131427468;
@@ -1979,8 +1982,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b00a5
 			public const int lstViewProdTabPreco = 2131427493;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int media_actions = 2131427530;
+			// aapt resource value: 0x7f0b00cb
+			public const int media_actions = 2131427531;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int middle = 2131427356;
@@ -2102,8 +2105,8 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b0018
 			public const int src_over = 2131427352;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int status_bar_latest_event_content = 2131427529;
+			// aapt resource value: 0x7f0b00ca
+			public const int status_bar_latest_event_content = 2131427530;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int submenuarrow = 2131427391;
@@ -2114,17 +2117,17 @@ namespace br.com.weblayer.venda.android
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int text = 2131427537;
+			// aapt resource value: 0x7f0b00d2
+			public const int text = 2131427538;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int text2 = 2131427535;
+			// aapt resource value: 0x7f0b00d0
+			public const int text2 = 2131427536;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int textSpacerNoButtons = 2131427383;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int time = 2131427533;
+			// aapt resource value: 0x7f0b00ce
+			public const int time = 2131427534;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int title = 2131427373;
