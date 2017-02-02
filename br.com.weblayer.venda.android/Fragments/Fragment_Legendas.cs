@@ -21,8 +21,11 @@ namespace br.com.weblayer.venda.android.Fragments
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = inflater.Inflate(Resource.Layout.Fragment_Legendas, container, false);
-          //  btnEntendi = view.FindViewById<Button>(Resource.Id.btnEntendi);
-            //btnEntendi.Click += BtnEntendi_Click;
+            this.Dialog.SetCanceledOnTouchOutside(false);
+
+            btnEntendi = view.FindViewById<Button>(Resource.Id.btnEntendi);
+            btnEntendi.Click += BtnEntendi_Click;
+
             return view;
         }
 
@@ -33,11 +36,10 @@ namespace br.com.weblayer.venda.android.Fragments
         }
 
 
-        //private void BtnEntendi_Click(object sender, EventArgs e)
-        //{
-        //    DialogClosed(this, new DialogEventArgs { ReturnValue = Retorno});
-        //    //OnDismiss(this.Dialog);
-        //}
+        private void BtnEntendi_Click(object sender, EventArgs e)
+        {
+            OnDismiss(this.Dialog);
+        }
 
         //public override void OnDismiss(IDialogInterface dialog)
         //{

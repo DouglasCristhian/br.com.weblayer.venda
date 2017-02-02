@@ -87,33 +87,18 @@ namespace br.com.weblayer.venda.android.Adapters
 
             if (mItems[position].fl_status == 4)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Roxo);
             }
 
+            if (mItems[position].fl_status == 5)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Amarelo);
+            }
 
-
-            //if (mItems[position].fl_status.ToString() == "Aberto")
-            //{
-            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
-            //}
-
-
-            //if (mItems[position].fl_status.ToString() == "Sincronizado")
-            //{
-            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Azul);
-            //}
-
-
-            //if (mItems[position].fl_status.ToString() == "Recusado")
-            //{
-            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Vermelho);
-            //}
-
-
-            //if (mItems[position].fl_status.ToString() == "Incluído")
-            //{
-            //    row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
-            //}
+            if (mItems[position].fl_status == 6)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
+            }
 
             return row;
         }

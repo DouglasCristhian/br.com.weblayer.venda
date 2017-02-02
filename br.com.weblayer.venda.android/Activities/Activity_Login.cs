@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(MainLauncher = false, NoHistory = true)]
+    [Activity(MainLauncher = true, NoHistory = true)]
     public class Activity_Login : Activity
     {
         public static string MyPREFERENCES = "MyPrefs";
@@ -49,6 +49,7 @@ namespace br.com.weblayer.venda.android.Activities
             toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             toolbar.Menu.RemoveItem(Resource.Id.action_refresh);
             toolbar.Menu.RemoveItem(Resource.Id.action_help);
+            toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             toolbar.MenuItemClick += Toolbar_MenuItemClick;
 
             //toolbar.Menu.RemoveItem(Resource.Id.action_sobre);

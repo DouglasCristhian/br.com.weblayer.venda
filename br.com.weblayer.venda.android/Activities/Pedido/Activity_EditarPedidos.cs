@@ -108,7 +108,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                if (pedido.fl_status != 0)
+                if (pedido.fl_status != 0 || pedido.fl_status == 3)
                 {
                     menu.RemoveItem(Resource.Id.action_salvar);
                     menu.RemoveItem(Resource.Id.action_deletar);
@@ -176,7 +176,27 @@ namespace br.com.weblayer.venda.android.Activities
             txtDataEmissao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtValor_Total.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
-            txtStatusPedido.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+
+            if (pedido != null)
+            {
+                if ((pedido.fl_status == 0) || (pedido.fl_status == 1))
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusAbertoFinalizado);
+
+                if (pedido.fl_status == 2)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusSincronizado);
+
+                if (pedido.fl_status == 3)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusRecusado);
+
+                if (pedido.fl_status == 4)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusRealizado);
+
+                if (pedido.fl_status == 5)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusFaturado);
+
+                if (pedido.fl_status == 6)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusEntregue);
+            }          
         }
 
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -227,6 +247,18 @@ namespace br.com.weblayer.venda.android.Activities
                 status = "Realizado";
             }
 
+
+            if (pedido.fl_status == 5)
+            {
+                status = "Faturado";
+            }
+
+
+            if (pedido.fl_status ==6)
+            {
+                status = "Entregue";
+            }
+
             return status;
         }
 
@@ -246,22 +278,28 @@ namespace br.com.weblayer.venda.android.Activities
             pedido.id_cliente = idcli.Id();
             pedido.dt_emissao = datahora;
             pedido.ds_observacao = txtObservacao.Text;
-            //pedido.fl_status = 0;
         }
 
         private void BindData()
         {
+            txtStatusPedido.Enabled = false;
+
             if (pedido == null)
             {
                 txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 txtDataEmissao.Click += EventtxtDataEmissao_Click;
                 txtStatusPedido.Visibility = ViewStates.Gone;
                 lblStatusPedido.Visibility = ViewStates.Gone;
+
+                if (txtValor_Total.Text == "0")
+                {
+                    btnFinalizar.Visibility = ViewStates.Gone;
+                }
             }
 
             if (pedido != null)
             {
-                if (pedido.fl_status != 0)
+                if (pedido.fl_status != 0 && pedido.fl_status != 3)
                 {
                     txtid_Codigo.Enabled = false;
                     txtid_Vendedor.Enabled = false;
@@ -269,6 +307,11 @@ namespace br.com.weblayer.venda.android.Activities
                     spinnerClientes.Enabled = false;
                     btnFinalizar.Visibility = ViewStates.Gone;
                     btnAdicionar.Visibility = ViewStates.Gone;
+                }
+
+                if (pedido.vl_total == 0)
+                {
+                    btnFinalizar.Visibility = ViewStates.Gone;
                 }
             }
 
@@ -360,11 +403,30 @@ namespace br.com.weblayer.venda.android.Activities
             if (!ValidateViews())
                 return;
 
-            pedido.fl_status = 1;
-            Save();
+            if (pedido != null)
+            {
+                if (pedido.vl_total == 0)
+                {
+                    Toast.MakeText(this, "Um pedido não pode ser finalizado sem conter itens", ToastLength.Long).Show();
+                    return;
+                }     
+                else
+                {
+                        pedido.fl_status = 1;
+                        Save();
 
-            if (ValidateViews())
-                Finish();
+                        if (ValidateViews())
+                            Finish();
+                 }         
+            }
+            else
+            {
+                if (txtValor_Total.Text == "0")
+                {
+                    Toast.MakeText(this, "Um pedido não pode ser finalizado sem conter itens", ToastLength.Long).Show();
+                    return;
+                }
+            }
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -398,8 +460,6 @@ namespace br.com.weblayer.venda.android.Activities
                 var ped = new Pedido_Manager();
                 ped.Save(pedido);
 
-                //Começa intent para enviar mensagem à Activity anterior (Activity_Pedido)
-               // Toast.MakeText(this, ped.Mensagem, ToastLength.Short).Show();
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);

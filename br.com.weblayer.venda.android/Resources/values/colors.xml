@@ -5,4 +5,10 @@
   <color name="colorAccent">#423E3E</color>
 
   <color name="grey">#E5E5E5</color>
+  <color name="AbertoFinalizado">#95a5a6</color>
+  <color name="Sincronizado">#3498db</color>
+  <color name="Recusado">#c0392b</color>
+  <color name="Realizado">#6a5eb7</color>
+  <color name="Faturado">#f3a512</color>
+  <color name="Entregue">#2ecc71</color>
 </resources>

@@ -76,7 +76,6 @@ namespace br.com.weblayer.venda.android.Activities
             if (jsonCliente != null)
                 cliente = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(jsonCliente);
 
-
             FindViews();
             SetStyle();
             BindData();
@@ -166,13 +165,15 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (Operacao == "incluir")
             {
-                if (pedido.fl_status == 0)
+                if (pedido.fl_status == 0 || pedido.fl_status == 3)
                 {
                     txtIdProduto.Click += TxtIdProduto_Click;
+                    txtValorItem.Enabled = true;
+                    txtQuantidadeItem.Enabled = true;
                 }
             }
 
-            if (pedido.fl_status != 0)
+            if (pedido.fl_status != 0 && pedido.fl_status != 3)
             {
                 txtValorItem.Enabled = false;
                 txtQuantidadeItem.Enabled = false;
