@@ -159,5 +159,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="10dip"
-        android:text="Entendi!" />
+        android:text="Ok" />
 </LinearLayout>

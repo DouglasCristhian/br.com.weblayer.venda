@@ -10,7 +10,7 @@ using Android.Views;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Adicionar Itens ao Pedido")]
+    [Activity(Label = "Item do Pedido")]
     public class Activity_PedidoItem : Activity_Base
     {
         private EditText txtIdProduto;
@@ -117,9 +117,9 @@ namespace br.com.weblayer.venda.android.Activities
 
             txtIdProduto.Text = ped_item.ds_produto.ToString();
             txtQuantidadeItem.Text = ped_item.nr_quantidade.ToString();
-            txtValorItem.Text = ped_item.vl_item.ToString();
+            txtValorItem.Text = ped_item.vl_item.ToString("#,##0.00");
             double go = double.Parse(ped_item.nr_quantidade.ToString()) * double.Parse(ped_item.vl_item.ToString());
-            txtValorTotal.Text = go.ToString();
+            txtValorTotal.Text = go.ToString("#,##0.00");
         }
 
         private void SetStyle()

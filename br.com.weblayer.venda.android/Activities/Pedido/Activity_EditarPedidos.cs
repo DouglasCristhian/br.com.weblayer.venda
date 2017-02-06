@@ -15,7 +15,7 @@ using Android.Graphics;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Editar Pedidos", MainLauncher = false)]
+    [Activity(Label = "Pedido", MainLauncher = false)]
     public class Activity_EditarPedidos : Activity_Base
     {
         private EditText txtid_Codigo;
@@ -212,7 +212,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtid_Codigo.Text = pedido.id_codigo.ToString();
             txtid_Vendedor.Text = pedido.ds_vendedor.ToString();
             idcliente = pedido.ds_cliente.ToString();
-            txtValor_Total.Text = pedido.vl_total.ToString();
+            txtValor_Total.Text = pedido.vl_total.ToString(("##,##0.00"));
             txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtObservacao.Text = pedido.ds_observacao.ToString();
             txtStatusPedido.Text = Status();

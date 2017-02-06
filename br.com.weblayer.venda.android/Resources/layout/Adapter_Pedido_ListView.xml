@@ -25,11 +25,11 @@
       android:padding="18dip"
       android:orientation="vertical">       
     
-        <TextView
+        <!--<TextView
           android:id="@+id/txtId_Pedido"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textSize="17sp"/>
+          android:textSize="17sp"/>-->
         <TextView
           android:id="@+id/txtId_Cliente"
           android:layout_width="wrap_content"

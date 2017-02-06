@@ -56,10 +56,10 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_Pedido_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtId_Pedido).Text = "Código Pedido: " + mItems[position].id_codigo.ToString();
+            //row.FindViewById<TextView>(Resource.Id.txtId_Pedido).Text = "Código Pedido: " + mItems[position].id_codigo.ToString();
             row.FindViewById<TextView>(Resource.Id.txtId_Cliente).Text = "Cliente: " + mItems[position].ds_cliente.ToString();
             row.FindViewById<TextView>(Resource.Id.txtId_Vendedor).Text = "Vendedor: " + mItems[position].ds_vendedor.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValor_Total).Text = "Valor Total: " + mItems[position].vl_total.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValor_Total).Text = "Valor Total: " + mItems[position].vl_total.ToString("##,##0.00");
             row.FindViewById<TextView>(Resource.Id.txtData_Emissao).Text = "Data de Emissão " + mItems[position].dt_emissao.Value.ToString("dd/MM/yyyy"); 
             row.FindViewById<TextView>(Resource.Id.txt_Observacao).Text = "Observação: " + mItems[position].ds_observacao.ToString();
 

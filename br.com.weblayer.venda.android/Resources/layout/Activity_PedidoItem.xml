@@ -52,7 +52,7 @@
        android:layout_marginTop="10dip"
        android:layout_marginLeft="18dip"
        android:textSize="18sp"
-       android:text="Valor Item"/>
+       android:text="Valor Unitário"/>
 
     <EditText
        android:id="@+id/txtValorItem"
