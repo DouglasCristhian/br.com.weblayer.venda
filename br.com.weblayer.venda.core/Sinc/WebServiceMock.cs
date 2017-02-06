@@ -46,7 +46,7 @@ namespace br.com.weblayer.venda.core.Sinc
             var tabPreco = new List<TabelaPreco>();
 
             tabPreco.Add(new TabelaPreco {id = 1, ds_descricao = "TABELA_NORMAL", id_codigo = "1", vl_descontomaximo = 5, vl_valor = 10 });
-            tabPreco.Add(new TabelaPreco { id = 2, ds_descricao = "TABELA_PROMOÇÃO", id_codigo = "1", vl_descontomaximo = 5, vl_valor = 10 });
+            tabPreco.Add(new TabelaPreco { id = 2, ds_descricao = "TABELA_PROMOÇÃO", id_codigo = "2", vl_descontomaximo = 5, vl_valor = 10 });
 
             return tabPreco;
         }
