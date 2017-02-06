@@ -43,8 +43,7 @@ namespace br.com.weblayer.venda.android.Activities
             lblmensagem = FindViewById<TextView>(Resource.Id.txtMensagem);
 
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            toolbar.Title = " W/Venda";
-            toolbar.SetLogo(Resource.Mipmap.ic_launcher);
+            toolbar.Title = "W/Venda";
             toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
             toolbar.Menu.RemoveItem(Resource.Id.action_sobre);
             toolbar.Menu.RemoveItem(Resource.Id.action_refresh);

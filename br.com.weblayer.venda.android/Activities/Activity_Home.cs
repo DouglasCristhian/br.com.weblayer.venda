@@ -80,8 +80,7 @@ namespace br.com.weblayer.venda.android
             ListViewHome = FindViewById<ListView>(Resource.Id.listviewHome);
 
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            toolbar.Title = " W/Vendas";
-            toolbar.SetLogo(Resource.Mipmap.ic_launcher);
+            toolbar.Title = "W/Vendas";
             toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
 
             //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
