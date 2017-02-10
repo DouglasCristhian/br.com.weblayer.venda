@@ -20,6 +20,10 @@ namespace br.com.weblayer.venda.core.Model
         [MaxLength(20), NotNull]
         public int id_tabpreco { get; set; }
 
-        public double vl_Valor {get; set;}
+        //public double vl_Valor {get; set;}
+
+        public double vl_Lista { get; set; }
+
+        public double vl_Venda { get; set; }
     }
 }

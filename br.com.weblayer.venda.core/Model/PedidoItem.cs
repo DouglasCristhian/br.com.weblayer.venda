@@ -17,8 +17,14 @@ namespace br.com.weblayer.venda.core.Model
         [MaxLength(200), NotNull]
         public string ds_produto { get; set; }
 
-        [MaxLength(20), NotNull]
-        public double vl_item { get; set; }
+        //[MaxLength(20)]
+        //public double vl_item { get; set; }
+
+        [MaxLength(20)]
+        public double vl_Lista { get; set; }
+
+        [MaxLength(20)]
+        public double vl_Venda { get; set; }
 
         [MaxLength(20), NotNull]
         public int nr_quantidade { get; set; }

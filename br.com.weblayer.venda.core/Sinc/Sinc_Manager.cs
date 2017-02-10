@@ -69,7 +69,7 @@ namespace br.com.weblayer.venda.core.Sinc
                     ds_unimedida = item.ds_unimedida,
                     id_codigo = item.id_codigo,
                     id_tabpreco = item.id_tabpreco,
-                    vl_Valor = item.vl_Valor
+                    vl_Lista = item.vl_Lista,
                 };
 
                 baselocal.Save(produtodatabase);

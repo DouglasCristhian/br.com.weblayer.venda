@@ -23,7 +23,9 @@ namespace br.com.weblayer.venda.android.Activities
         private EditText txtDataEmissao;
         private TextView txtValor_Total;
         private TextView txtStatusPedido;
-        private EditText txtObservacao;
+        private EditText txtMsgPedido;
+        private EditText txtMsgNF;
+        //private EditText txtObservacao;
         private TextView lblStatusPedido;
         private Button btnAdicionar;
         private Button btnItensPedido;
@@ -156,7 +158,9 @@ namespace br.com.weblayer.venda.android.Activities
             txtid_Vendedor = FindViewById<EditText>(Resource.Id.txtIdvendedor);
             txtDataEmissao = FindViewById<EditText>(Resource.Id.txtDataEmissao);
             txtValor_Total = FindViewById<TextView>(Resource.Id.txtValorTotal);
-            txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
+            txtMsgPedido = FindViewById<EditText>(Resource.Id.txtMsgPedido);
+            txtMsgNF = FindViewById<EditText>(Resource.Id.txtMsgNF);
+            //txtObservacao = FindViewById<EditText>(Resource.Id.txtObservacao);
             lblStatusPedido = FindViewById<TextView>(Resource.Id.lblStatusPedido);
             txtStatusPedido = FindViewById<TextView>(Resource.Id.txtStatusPedido);
             btnAdicionar = FindViewById<Button>(Resource.Id.btnAdicionar);
@@ -175,26 +179,41 @@ namespace br.com.weblayer.venda.android.Activities
             txtid_Vendedor.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtDataEmissao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtValor_Total.SetBackgroundResource(Resource.Drawable.EditTextStyle);
-            txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtMsgPedido.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtMsgNF.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+
+            //txtObservacao.SetBackgroundResource(Resource.Drawable.EditTextStyle);
 
             if (pedido != null)
             {
-                if ((pedido.fl_status == 0) || (pedido.fl_status == 1))
-                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusAbertoFinalizado);
+                if (pedido.fl_status == 0) 
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.Status_Orcamento);
+
+                if (pedido.fl_status == 1)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusFinalizado);
 
                 if (pedido.fl_status == 2)
                     txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusSincronizado);
 
                 if (pedido.fl_status == 3)
-                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusRecusado);
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusParcProcessado);
 
                 if (pedido.fl_status == 4)
-                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusRealizado);
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusNaoProcessado);
 
                 if (pedido.fl_status == 5)
-                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusFaturado);
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusCancelado);
 
                 if (pedido.fl_status == 6)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusParcFaturado);
+
+                if (pedido.fl_status == 7)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusFaturado);
+
+                if (pedido.fl_status == 8)
+                    txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusParcEntregue);
+
+                if (pedido.fl_status == 9)
                     txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusEntregue);
             }          
         }
@@ -214,7 +233,9 @@ namespace br.com.weblayer.venda.android.Activities
             idcliente = pedido.ds_cliente.ToString();
             txtValor_Total.Text = pedido.vl_total.ToString(("##,##0.00"));
             txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
-            txtObservacao.Text = pedido.ds_observacao.ToString();
+            txtMsgPedido.Text = pedido.ds_MsgPedido.ToString();
+            txtMsgNF.Text = pedido.ds_MsgNF.ToString();
+            //txtObservacao.Text = pedido.ds_observacao.ToString();
             txtStatusPedido.Text = Status();
         }
 
@@ -224,37 +245,52 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido.fl_status == 0)
             {
-                status ="Aberto";
+                status ="Orçamento";
             }
 
             if (pedido.fl_status == 1)
             {
-                status = "Finalizado";
+                status = "Pedido Finalizado";
             }
 
             if(pedido.fl_status == 2)
             {
-                status = "Sincronizado";
+                status = "Sincronizado/Em Processamento";
             }
 
             if (pedido.fl_status == 3)
             {
-                status = "Recusado";
+                status = "Parcialmente Processado";
             }
 
             if (pedido.fl_status == 4)
             {
-                status = "Realizado";
+                status = "Não Processado/Recusado";
             }
 
 
             if (pedido.fl_status == 5)
             {
-                status = "Faturado";
+                status = "Cancelado";
             }
 
 
             if (pedido.fl_status ==6)
+            {
+                status = "Parcialmente Faturado";
+            }
+
+            if (pedido.fl_status == 7)
+            {
+                status = "Faturado";
+            }
+
+            if (pedido.fl_status == 8)
+            {
+                status = "Parcialmente Entregue";
+            }
+
+            if (pedido.fl_status == 9)
             {
                 status = "Entregue";
             }
@@ -277,7 +313,9 @@ namespace br.com.weblayer.venda.android.Activities
             var idcli = tblclientespinner[spinnerClientes.SelectedItemPosition];
             pedido.id_cliente = idcli.Id();
             pedido.dt_emissao = datahora;
-            pedido.ds_observacao = txtObservacao.Text;
+            //pedido.ds_observacao = txtObservacao.Text;
+            pedido.ds_MsgNF = txtMsgNF.Text.ToString();
+            pedido.ds_MsgPedido = txtMsgPedido.Text.ToString();
         }
 
         private void BindData()
@@ -303,8 +341,11 @@ namespace br.com.weblayer.venda.android.Activities
                 {
                     txtid_Codigo.Enabled = false;
                     txtid_Vendedor.Enabled = false;
-                    txtObservacao.Enabled = false;
+                    //txtObservacao.Enabled = false;
                     spinnerClientes.Enabled = false;
+                    txtDataEmissao.Enabled = false;
+                    txtMsgNF.Enabled = false;
+                    txtMsgPedido.Enabled = false;
                     btnFinalizar.Visibility = ViewStates.Gone;
                     btnAdicionar.Visibility = ViewStates.Gone;
                 }

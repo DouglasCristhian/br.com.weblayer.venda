@@ -61,44 +61,63 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtId_Vendedor).Text = "Vendedor: " + mItems[position].ds_vendedor.ToString();
             row.FindViewById<TextView>(Resource.Id.txtValor_Total).Text = "Valor Total: " + mItems[position].vl_total.ToString("##,##0.00");
             row.FindViewById<TextView>(Resource.Id.txtData_Emissao).Text = "Data de Emissão " + mItems[position].dt_emissao.Value.ToString("dd/MM/yyyy"); 
-            row.FindViewById<TextView>(Resource.Id.txt_Observacao).Text = "Observação: " + mItems[position].ds_observacao.ToString();
+            //row.FindViewById<TextView>(Resource.Id.txt_Observacao).Text = "Observação: " + mItems[position].ds_observacao.ToString();
 
             if (mItems[position].fl_status == 0)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaCinzaClaro);
             }
 
             if (mItems[position].fl_status == 1)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Cinza);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaCinzaEscuro);
             }
 
 
             if (mItems[position].fl_status == 2)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Azul);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaAzul);
             }
 
 
             if (mItems[position].fl_status == 3)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Vermelho);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaRoxa);
             }
 
             if (mItems[position].fl_status == 4)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Roxo);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaVermelha);
             }
 
             if (mItems[position].fl_status == 5)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Amarelo);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaVermelhaParcial);
             }
 
             if (mItems[position].fl_status == 6)
             {
-                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.Verde);
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaAmarela);
             }
+
+
+            if (mItems[position].fl_status == 7)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaAmarelaParcial);
+            }
+
+
+            if (mItems[position].fl_status == 8)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaVerde);
+            }
+
+
+            if (mItems[position].fl_status == 9)
+            {
+                row.FindViewById<ImageView>(Resource.Id.imgView).SetBackgroundResource(Resource.Drawable.BarrinhaVerdeParcial);
+            }
+
 
             return row;
         }

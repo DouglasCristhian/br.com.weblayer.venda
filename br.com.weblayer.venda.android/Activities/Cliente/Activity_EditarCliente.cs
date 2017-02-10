@@ -14,7 +14,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Editar Cliente")]
+    [Activity(Label = "Cliente")]
     public class Activity_EditarCliente : Activity_Base
     {
         private string spinvalortbl;

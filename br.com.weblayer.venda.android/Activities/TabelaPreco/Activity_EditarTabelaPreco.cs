@@ -15,7 +15,7 @@ using Java.Text;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(Label = "Editar Tabela de Preço")]
+    [Activity(Label = "Tabela de Preço")]
     public class Activity_EditarTabelaPreco : Activity_Base
     {
         private EditText txtCodTabelaPreco;

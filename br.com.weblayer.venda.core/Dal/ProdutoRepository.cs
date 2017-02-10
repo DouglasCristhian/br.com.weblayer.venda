@@ -58,10 +58,10 @@ namespace br.com.weblayer.venda.core.Dal
             if (List().Count > 0)
                 return;
             
-            Save(new Produto() { id_codigo = "1111", ds_nome = "LAPIS DE COR AMARELO", ds_unimedida = "CX", id_tabpreco = 1, vl_Valor = 1.00 });
-            Save(new Produto() { id_codigo = "2222", ds_nome = "LAPIS DE COR VERMELHO", ds_unimedida = "PCT", id_tabpreco = 2, vl_Valor = 1.00 });
-            Save(new Produto() { id_codigo = "3333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 2, vl_Valor = 1.00 });
-            Save(new Produto() { id_codigo = "4444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "UN", id_tabpreco = 1, vl_Valor = 1.00 });
+            Save(new Produto() { id_codigo = "1111", ds_nome = "LAPIS DE COR AMARELO", ds_unimedida = "CX", id_tabpreco = 1, /*vl_Valor = 1.00*/ vl_Lista = 1.00 });
+            Save(new Produto() { id_codigo = "2222", ds_nome = "LAPIS DE COR VERMELHO", ds_unimedida = "PCT", id_tabpreco = 2, /*vl_Valor = 1.00*/ vl_Lista = 1.00 });
+            Save(new Produto() { id_codigo = "3333", ds_nome = "LAPIS DE COR AZUL", ds_unimedida = "CX", id_tabpreco = 2, /*vl_Valor = 1.00 */ vl_Lista = 1.00 });
+            Save(new Produto() { id_codigo = "4444", ds_nome = "LAPIS DE COR PRETO", ds_unimedida = "UN", id_tabpreco = 1, /*vl_Valor = 1.00*/ vl_Lista = 1.00 });
         }
 
     }

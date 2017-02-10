@@ -14,7 +14,7 @@ using br.com.weblayer.venda.android.Adapters;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
-    [Activity(Label = "Editar Produtos", MainLauncher = false)]
+    [Activity(Label = "Produto", MainLauncher = false)]
     public class Activity_EditarProduto : Activity_Base
     {
         private EditText txtCodigoProd;
@@ -137,7 +137,7 @@ namespace br.com.weblayer.venda.android.Fragments
 
             txtCodigoProd.Text = prod.id_codigo;
             txtNomeProd.Text = prod.ds_nome;
-            txtValorProd.Text = prod.vl_Valor.ToString();
+            txtValorProd.Text = prod.vl_Lista.ToString();
             valortbpreco = prod.id_tabpreco.ToString();
             spinValor = prod.ds_unimedida.ToString();
         }
@@ -152,7 +152,7 @@ namespace br.com.weblayer.venda.android.Fragments
             var mytabelapreco = tblprecoList[spinnerTblPrecoProd.SelectedItemPosition];
             prod.id_tabpreco = mytabelapreco.Id();
             prod.ds_unimedida= spinValor.ToString();
-            prod.vl_Valor = double.Parse(txtValorProd.Text.ToString());
+            prod.vl_Lista = double.Parse(txtValorProd.Text.ToString());
         }
 
         private void BindData()

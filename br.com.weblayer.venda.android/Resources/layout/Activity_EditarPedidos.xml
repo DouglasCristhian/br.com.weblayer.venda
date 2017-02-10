@@ -112,6 +112,42 @@
        android:clickable="true"/>
 
     <TextView
+       android:id="@+id/lblMsgPedido"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:text="Mensagem Pedido:"/>
+
+    <EditText
+       android:id="@+id/txtMsgPedido"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
+
+    <TextView
+       android:id="@+id/lblMsgNF"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:text="Mensagem NF:"/>
+
+    <EditText
+       android:id="@+id/txtMsgNF"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"/>
+
+    <!--<TextView
        android:id="@+id/lblObservacao"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
@@ -127,7 +163,7 @@
        android:layout_width="match_parent"
        android:layout_marginTop="3dp"
        android:layout_marginLeft = "18dip"
-       android:layout_marginRight = "18dip"/>
+       android:layout_marginRight = "18dip"/>-->
 
     <TextView
        android:id="@+id/lblCodigoPedido"

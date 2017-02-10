@@ -7,6 +7,7 @@ using Android.Text;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
 using Android.Views;
+//using br.com.weblayer.venda.core.Sinc.Model;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -14,12 +15,14 @@ namespace br.com.weblayer.venda.android.Activities
     public class Activity_PedidoItem : Activity_Base
     {
         private EditText txtIdProduto;
-        private EditText txtValorItem;
+        //private EditText txtValorItem;
+        private TextView txtValorLista;
+        private EditText txtValorVenda;
         private EditText txtQuantidadeItem;
         private TextView txtValorTotal;
+        private TextView txtDesconto;
         private Button btnSalvarPedidoItem;
         private Button btnSalvarOutroPedItem;
-        private Button btnCancelarPedidoItem;
         private Button btnLimparPedidoItem;
         private Button btnSalvarAtualizar;
         private Button btnExcluirPedidoItem;
@@ -85,13 +88,15 @@ namespace br.com.weblayer.venda.android.Activities
         private void FindViews()
         {
             txtIdProduto = FindViewById<EditText>(Resource.Id.txtIdProduto);
-            txtValorItem = FindViewById<EditText>(Resource.Id.txtValorItem);
+            txtValorLista = FindViewById<TextView>(Resource.Id.txtValorLista);
+            txtValorVenda = FindViewById<EditText>(Resource.Id.txtValorVenda);
+            txtDesconto =  FindViewById<EditText>(Resource.Id.txtDesconto);
             txtQuantidadeItem = FindViewById<EditText>(Resource.Id.txtQuantidade);
-            txtValorTotal = FindViewById<TextView>(Resource.Id.txtValorTotal);
+            txtValorTotal = FindViewById<EditText>(Resource.Id.txtValorTotal);
 
             btnSalvarPedidoItem = FindViewById<Button>(Resource.Id.btnSalvar);
             btnSalvarOutroPedItem = FindViewById<Button>(Resource.Id.btnSalvarOutro);
-            btnCancelarPedidoItem = FindViewById<Button>(Resource.Id.btnCancelar);
+            //btnCancelarPedidoItem = FindViewById<Button>(Resource.Id.btnCancelar);
             btnLimparPedidoItem = FindViewById<Button>(Resource.Id.btnLimparPedidoItem);
 
             btnSalvarAtualizar = FindViewById<Button>(Resource.Id.btnSalvarAtualizar);
@@ -117,17 +122,23 @@ namespace br.com.weblayer.venda.android.Activities
 
             txtIdProduto.Text = ped_item.ds_produto.ToString();
             txtQuantidadeItem.Text = ped_item.nr_quantidade.ToString();
-            txtValorItem.Text = ped_item.vl_item.ToString("#,##0.00");
-            double go = double.Parse(ped_item.nr_quantidade.ToString()) * double.Parse(ped_item.vl_item.ToString());
+            txtValorLista.Text = ped_item.vl_Lista.ToString();
+            txtValorVenda.Text = ped_item.vl_Venda.ToString();
+            //txtValorItem.Text = ped_item.vl_item.ToString("#,##0.00");
+            double go = double.Parse(ped_item.nr_quantidade.ToString()) * double.Parse(ped_item.vl_Venda.ToString());
+
             txtValorTotal.Text = go.ToString("#,##0.00");
         }
 
         private void SetStyle()
         {
             txtIdProduto.SetBackgroundResource(Resource.Drawable.EditTextStyle);
-            txtValorItem.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorLista.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtValorVenda.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            //txtValorItem.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtQuantidadeItem.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtValorTotal.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            txtDesconto.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
         private void BindModel()
@@ -148,7 +159,9 @@ namespace br.com.weblayer.venda.android.Activities
             }
            
             ped_item.nr_quantidade = int.Parse(txtQuantidadeItem.Text.ToString());
-            ped_item.vl_item = double.Parse(txtValorItem.Text.ToString());
+            ped_item.vl_Lista = double.Parse(txtValorLista.Text.ToString());
+            ped_item.vl_Venda = double.Parse(txtValorVenda.Text.ToString());
+            //ped_item.vl_item = double.Parse(txtValorTotal.Text.ToString());
         }
 
         private void BindData()
@@ -157,10 +170,9 @@ namespace br.com.weblayer.venda.android.Activities
             btnSalvarOutroPedItem.Click += BtnSalvarOutroPedItem_Click;
             btnSalvarAtualizar.Click += BtnSalvarAtualizar_Click;
             btnLimparPedidoItem.Click += BtnLimparPedidoItem_Click;
-            btnCancelarPedidoItem.Click += BtnCancelarPedidoItem_Click;
             btnExcluirPedidoItem.Click += BtnExcluirPedidoItem_Click;
 
-            txtValorItem.TextChanged += TxtValorItem_TextChanged;
+            txtValorVenda.TextChanged += TxtValorVenda_TextChanged;
             txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
 
             if (Operacao == "incluir")
@@ -168,27 +180,32 @@ namespace br.com.weblayer.venda.android.Activities
                 if (pedido.fl_status == 0 || pedido.fl_status == 3)
                 {
                     txtIdProduto.Click += TxtIdProduto_Click;
-                    txtValorItem.Enabled = true;
+                    txtValorVenda.Enabled = true;
                     txtQuantidadeItem.Enabled = true;
                 }
             }
 
             if (pedido.fl_status != 0 && pedido.fl_status != 3)
             {
-                txtValorItem.Enabled = false;
-                txtQuantidadeItem.Enabled = false;
+                txtValorVenda.Focusable = false;
+                txtQuantidadeItem.Focusable = false;
+                //txtValorVenda.Enabled = false;
+                //txtQuantidadeItem.Enabled = false;
                 btnSalvarAtualizar.Visibility = ViewStates.Gone;
-                btnCancelarPedidoItem.Visibility = ViewStates.Gone;
                 btnExcluirPedidoItem.Visibility = ViewStates.Gone;
             }
+
+            txtDesconto.Text = "0";
         }
 
         private void Clean()
         {
             txtIdProduto.Text = "";
-            txtValorItem.Text = "";
+            //txtValorItem.Text = "";
             txtQuantidadeItem.Text = "";
-            txtValorTotal.Text = "0";
+            txtValorVenda.Text = "0";
+            txtValorLista.Text = "0";
+            txtDesconto.Text = "0";
         }
 
         private bool ValidateViews()
@@ -207,10 +224,10 @@ namespace br.com.weblayer.venda.android.Activities
                 txtQuantidadeItem.Error = "Nome do produto inválido!";
             }
 
-            if (txtValorItem.Length() == 0)
+            if (txtValorVenda.Length() == 0)
             {
                 validacao = false;
-                txtValorItem.Error = "Tabela de preço inválida!";
+                txtValorVenda.Error = "Valor de venda inválido!";
             }
 
             return validacao;
@@ -222,31 +239,46 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 go = 0;
             }
-            else if ((txtQuantidadeItem.Text.Length != 0) && (txtValorItem.Text.Length == 0))
+            else if ((txtQuantidadeItem.Text.Length != 0) && (txtValorVenda.Text.Length == 0))
             {
                 go = 0;
             }
             else
             {
-                go = double.Parse(txtQuantidadeItem.Text.ToString()) * double.Parse(txtValorItem.Text.ToString());
+                go = double.Parse(txtQuantidadeItem.Text.ToString()) * double.Parse(txtValorVenda.Text.ToString());
             }
             txtValorTotal.Text = go.ToString();
         }
 
-        private void TxtValorItem_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtValorVenda_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtValorItem.Text.Length == 0)
+            if ((txtValorVenda.Text.Length == 0) || (txtValorVenda.Text.ToString()) == "") 
             {
                 go = 0;
+                double desconto = 0;
+                txtDesconto.Text = desconto.ToString();
             }
-            else if ((txtValorItem.Text.Length != 0) && (txtQuantidadeItem.Text.Length == 0))
+            else if (double.Parse(txtValorVenda.Text.ToString()) > double.Parse(txtValorLista.Text.ToString()))
+            {
+                go = double.Parse(txtValorVenda.Text.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString());
+                double desconto = 0;
+                txtDesconto.Text = desconto.ToString();
+            }
+            else if ((txtValorVenda.Text.Length != 0) && (txtQuantidadeItem.Text.Length == 0))
             {
                 go = 0;
             }
             else
             {
-                go = double.Parse(txtValorItem.Text.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString());
+                go = double.Parse(txtValorVenda.Text.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString());
+                if (txtIdProduto.Text != null)
+                {
+                    double desconto;
+                    desconto = double.Parse(txtValorLista.Text.ToString()) - double.Parse(txtValorVenda.Text.ToString());
+                    txtDesconto.Text = desconto.ToString();
+                }  
             }
+
             txtValorTotal.Text = go.ToString();
         }
 
@@ -328,12 +360,16 @@ namespace br.com.weblayer.venda.android.Activities
                 var jsonidproduto = data.GetStringExtra("JsonIdProduto");
                 produto = Newtonsoft.Json.JsonConvert.DeserializeObject<Produto>(jsonidproduto);
                 txtIdProduto.Text = produto.ds_nome;
-                txtValorItem.Text = produto.vl_Valor.ToString();
+                //txtValorLista.Text = produto.vl_Lista.ToString();
+                //txtValorVenda.Text = produto.vl_Lista.ToString();
 
                 var tabprecoprod = new ProdutoTabelaPreco_Manager().Get(cliente.id_tabelapreco, produto.id);
 
                 if (tabprecoprod != null)
-                    txtValorItem.Text = tabprecoprod.vl_Valor.ToString();
+                {
+                    txtValorLista.Text = tabprecoprod.vl_Valor.ToString();
+                    txtValorVenda.Text = tabprecoprod.vl_Valor.ToString();
+                }
             }
         }
 

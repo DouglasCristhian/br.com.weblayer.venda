@@ -52,7 +52,7 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = mItems[position].ds_nome.ToString();
             row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = mItems[position].ds_unimedida.ToString();
             row.FindViewById<TextView>(Resource.Id.txtTabPreco).Text = mItems[position].id_tabpreco.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = mItems[position].vl_Valor.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = mItems[position].vl_Lista.ToString();
 
             return row;
         }

@@ -3,5 +3,5 @@
        android:thickness="20dp"
        android:shape="rectangle">
   <stroke android:width="2dp"
-          android:color="@color/Realizado"/>
+          android:color="@color/Orcamento"/>
 </shape>

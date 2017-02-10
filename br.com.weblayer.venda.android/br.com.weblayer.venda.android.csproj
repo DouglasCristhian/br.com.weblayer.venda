@@ -411,37 +411,76 @@
     <AndroidResource Include="Resources\drawable\BolaCinza.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Cinza.png" />
+    <AndroidResource Include="Resources\drawable\Status_Orcamento.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Roxo.png" />
+    <AndroidResource Include="Resources\drawable\BolaAmarelaParcial.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Verde.png" />
+    <AndroidResource Include="Resources\drawable\BolaVermelhaParcial.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Vermelho.png" />
+    <AndroidResource Include="Resources\drawable\BolaVerdeParcial.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Amarelo.png" />
+    <AndroidResource Include="Resources\drawable\BolaCinzaEscura.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Azul.png" />
+    <AndroidResource Include="Resources\drawable\BarrinhaAmarelaParcial.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\StatusAbertoFinalizado.xml" />
+    <AndroidResource Include="Resources\drawable\BarrinhaAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaAzulParcial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaCinzaClaro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaCinzaEscuro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaRoxa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaVerde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaVerdeParcial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaVermelha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaVermelhaParcial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BarrinhaAmarela.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\StatusFinalizado.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\StatusSincronizado.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\StatusRecusado.xml" />
+    <AndroidResource Include="Resources\drawable\StatusParcProcessado.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\StatusRealizado.xml" />
+    <AndroidResource Include="Resources\drawable\StatusNaoProcessado.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\StatusCancelado.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\StatusParcFaturado.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\StatusFaturado.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\StatusParcEntregue.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\StatusEntregue.xml" />

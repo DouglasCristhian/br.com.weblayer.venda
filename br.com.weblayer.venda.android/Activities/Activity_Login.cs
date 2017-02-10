@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace br.com.weblayer.venda.android.Activities
 {
-    [Activity(MainLauncher = true, NoHistory = true)]
+    [Activity(MainLauncher = false, NoHistory = true)]
     public class Activity_Login : Activity
     {
         public static string MyPREFERENCES = "MyPrefs";

@@ -33,6 +33,12 @@ namespace br.com.weblayer.venda.core.Model
         [MaxLength(200)]
         public string ds_observacao { get; set; }
 
+        [MaxLength(200)]
+        public string ds_MsgPedido { get; set; }
+
+        [MaxLength(200)]
+        public string ds_MsgNF { get; set; }
+
         public int fl_status { get; set; }
     }
 }

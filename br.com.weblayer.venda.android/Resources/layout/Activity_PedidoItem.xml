@@ -25,14 +25,6 @@
        android:focusable="false"
        android:text="Produto"/>
 
-    <!--<TextView
-       android:id="@+id/txtIdProduto"
-       android:layout_height="wrap_content"
-       android:layout_width="match_parent"
-       android:textSize="18sp"
-       android:layout_marginLeft="18dip"
-       android:layout_marginRight="18dip"
-       android:textAppearance="?android:attr/textAppearanceMedium"/>-->
 
     <EditText
        android:id="@+id/txtIdProduto"
@@ -46,7 +38,65 @@
        android:clickable="true"/>
 
     <TextView
-       android:id="@+id/lblValorItem"
+       android:id="@+id/lblValorLista"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Valor da Lista"/>
+
+
+    <EditText
+       android:id="@+id/txtValorLista"
+       android:layout_marginLeft = "18dip"
+       android:layout_marginRight = "18dip"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="3dp"
+       android:text="0"
+       android:editable="false"
+       android:clickable="false"/>
+
+    <TextView
+       android:id="@+id/lblValorVenda"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Valor de Venda"/>
+
+    <EditText
+       android:id="@+id/txtValorVenda"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"
+       android:text="0"/>
+
+    <TextView
+       android:id="@+id/lblDesconto"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:layout_marginTop="10dip"
+       android:layout_marginLeft="18dip"
+       android:textSize="18sp"
+       android:text="Desconto"/>
+
+    <EditText
+       android:id="@+id/txtDesconto"
+       android:layout_height="wrap_content"
+       android:layout_width="match_parent"
+       android:textSize="18sp"
+       android:layout_marginLeft="18dip"
+       android:layout_marginRight="18dip"
+       android:editable="false"
+       android:clickable="false"/>
+
+    <!--<TextView 
+       android:id="@+id/lblValorIte
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:layout_marginTop="10dip"
@@ -61,7 +111,7 @@
        android:textSize="18sp"
        android:layout_marginLeft="18dip"
        android:layout_marginRight="18dip"
-       android:inputType="numberDecimal"/>
+       android:inputType="numberDecimal"/>-->
 
     <TextView
        android:id="@+id/lblQuantidade"
@@ -78,6 +128,7 @@
        android:inputType="number"
        android:layout_width="match_parent"
        android:textSize="18sp"
+       android:text="0"
        android:layout_marginLeft="18dip"
        android:layout_marginRight="18dip"/>
 
@@ -152,14 +203,6 @@
       android:layout_marginRight="18dip"
       android:layout_marginLeft="18dip"
       android:text="Excluir"/>
-
-    <Button
-     android:id="@+id/btnCancelar"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:layout_marginRight="18dip"
-     android:layout_marginLeft="18dip"
-     android:text="Cancelar"/>
 
   </LinearLayout>
 </ScrollView>

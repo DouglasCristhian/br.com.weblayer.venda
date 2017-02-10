@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace br.com.weblayer.venda.android
 {
-    [Activity(MainLauncher = false)]
+    [Activity(MainLauncher = true)]
     public class Activity_Home : Activity
     {
         Android.Support.V7.Widget.Toolbar toolbar;
