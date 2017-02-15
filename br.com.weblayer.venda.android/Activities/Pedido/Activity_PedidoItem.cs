@@ -25,6 +25,8 @@ namespace br.com.weblayer.venda.android.Activities
         private Button btnSalvarOutroPedItem;
         private Button btnLimparPedidoItem;
         private Button btnSalvarAtualizar;
+        private Button btnSomar;
+        private Button btnSubtrair;
         private Button btnExcluirPedidoItem;
         private PedidoItem ped_item;
         private Pedido pedido;
@@ -100,6 +102,8 @@ namespace br.com.weblayer.venda.android.Activities
             btnSalvarPedidoItem = FindViewById<Button>(Resource.Id.btnSalvar);
             btnSalvarOutroPedItem = FindViewById<Button>(Resource.Id.btnSalvarOutro);
             btnLimparPedidoItem = FindViewById<Button>(Resource.Id.btnLimparPedidoItem);
+            btnSubtrair = FindViewById<Button>(Resource.Id.btnMenos);
+            btnSomar = FindViewById<Button>(Resource.Id.btnMais);
 
             btnSalvarAtualizar = FindViewById<Button>(Resource.Id.btnSalvarAtualizar);
             btnExcluirPedidoItem = FindViewById<Button>(Resource.Id.btnExcluirPedidoItem);
@@ -172,6 +176,8 @@ namespace br.com.weblayer.venda.android.Activities
             btnSalvarAtualizar.Click += BtnSalvarAtualizar_Click;
             btnLimparPedidoItem.Click += BtnLimparPedidoItem_Click;
             btnExcluirPedidoItem.Click += BtnExcluirPedidoItem_Click;
+            btnSomar.Click += BtnSomar_Click;
+            btnSubtrair.Click += BtnSubtrair_Click;
 
             txtValorVenda.TextChanged += TxtValorVenda_TextChanged;
             txtQuantidadeItem.TextChanged += TxtQuantidadeItem_TextChanged;
@@ -184,13 +190,14 @@ namespace br.com.weblayer.venda.android.Activities
                     txtValorVenda.Enabled = true;
                     txtQuantidadeItem.Enabled = true;
                 }
-
             }
 
             if (pedido.fl_status != 0 && pedido.fl_status != 4)
             {
                 txtValorVenda.Focusable = false;
                 txtQuantidadeItem.Focusable = false;
+                btnSomar.Enabled = false;
+                btnSubtrair.Enabled = false;
                 btnSalvarAtualizar.Visibility = ViewStates.Gone;
                 btnExcluirPedidoItem.Visibility = ViewStates.Gone;
                 txtValorTotal.Enabled = false;
@@ -199,6 +206,24 @@ namespace br.com.weblayer.venda.android.Activities
             txtDesconto.Text = "0";
             txtValorLista.Enabled = false;            
             txtValorVenda.AddTextChangedListener(new CurrencyConverterHelper(txtValorVenda));
+        }
+
+        private void BtnSubtrair_Click(object sender, EventArgs e)
+        {
+            int quant = int.Parse(txtQuantidadeItem.Text.ToString()) - 1;
+
+            if ((quant < 0) || (txtQuantidadeItem.Text == ""))
+            {
+                quant = 0;
+            }
+
+            txtQuantidadeItem.Text = quant.ToString();
+        }
+
+        private void BtnSomar_Click(object sender, EventArgs e)
+        {
+            int quant = int.Parse(txtQuantidadeItem.Text.ToString()) + 1;
+            txtQuantidadeItem.Text = quant.ToString();
         }
 
         private void Clean()
@@ -271,7 +296,7 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 go = 0;
                 desconto = 0;
-                txtDesconto.Text = desconto.ToString();
+                txtDesconto.Text = desconto.ToString("#,##0.00");
             }
             else if (double.Parse(valorVenda.ToString()) > double.Parse(valorLista.ToString()))
             {
@@ -282,7 +307,7 @@ namespace br.com.weblayer.venda.android.Activities
 
                 go = (double.Parse(valorVenda.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString()));
                 desconto = 0;
-                txtDesconto.Text = desconto.ToString();
+                txtDesconto.Text = desconto.ToString("#,##0.00");
             }
             else if (double.Parse(valorVenda.ToString()) < double.Parse(valorLista.ToString()))
             {
@@ -292,7 +317,11 @@ namespace br.com.weblayer.venda.android.Activities
                 }
                 go = (double.Parse(valorVenda.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString()));
                 desconto = (double.Parse(valorLista.ToString()) - double.Parse(valorVenda.ToString()));
-                txtDesconto.Text = desconto.ToString();
+                txtDesconto.Text = desconto.ToString("#,##0.00");
+            }
+            else
+            {
+                go = (double.Parse(valorVenda.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString()));
             }
             txtValorTotal.Text = go.ToString("#,##0.00"); 
         }

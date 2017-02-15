@@ -109,33 +109,36 @@
        android:text="Quantidade"/>
 
 
-    <!--<LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">-->
+      <LinearLayout
+          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:orientation="horizontal">
 
-      <!--<Button
-        android:id="@+id/btnMenos"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="18dip"
-        android:text="-"/>-->
+        <Button
+          android:id="@+id/btnMenos"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_marginLeft="18dip"
+          android:textSize="18sp"
+          android:text="-"/>
 
-      <EditText
-         android:id="@+id/txtQuantidade"
-         android:layout_height="wrap_content"
-         android:inputType="number"
-         android:layout_width="match_parent"
-         android:layout_marginLeft="18dip"
-         android:textSize="18sp"/>
+        <EditText
+           android:id="@+id/txtQuantidade"
+           android:layout_height="wrap_content"
+           android:layout_width="150dip"
+           android:inputType="number"
+           android:gravity="center"
+           android:text="0"
+           android:textSize="18sp"/>
 
-      <!--<Button
-        android:id="@+id/btnMais"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="18dip"
-        android:text="+"/>-->
-    <!--</LinearLayout>-->
+        <Button
+          android:id="@+id/btnMais"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_marginRight="18dip"
+          android:textSize="18sp"
+          android:text="+"/>
+      </LinearLayout>
 
 
     <TextView

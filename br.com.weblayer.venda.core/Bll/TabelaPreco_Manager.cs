@@ -7,7 +7,6 @@ namespace br.com.weblayer.venda.core.Bll
     public class TabelaPreco_Manager
     {
         public string Mensagem;
-
         
         public TabelaPreco Get(int id)
         {

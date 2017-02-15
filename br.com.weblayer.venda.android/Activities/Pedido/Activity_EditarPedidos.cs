@@ -350,13 +350,23 @@ namespace br.com.weblayer.venda.android.Activities
                     txtDataEmissao.Enabled = false;
                     txtMsgNF.Enabled = false;
                     txtMsgPedido.Enabled = false;
-                    btnFinalizar.Visibility = ViewStates.Gone;                   
+                    btnFinalizar.Visibility = ViewStates.Gone;
+                    btnAdicionar.Visibility = ViewStates.Gone;
+                    if (txtValor_Total.Text == "0")
+                    {
+                        btnItensPedido.Visibility = ViewStates.Gone;
+                    }                    
                 }
 
-                if (pedido.vl_total == 0)
+                if ((pedido.vl_total == 0) || (txtValor_Total.Text == "0,00"))
                 {
                     btnFinalizar.Visibility = ViewStates.Gone;
                     btnItensPedido.Visibility = ViewStates.Gone;
+                    spinnerClientes.Enabled = true;
+                }
+                else if ((pedido.vl_total != 0) || (txtValor_Total.Text != "0,00"))
+                {
+                    spinnerClientes.Enabled = false;
                 }
             }
 
@@ -370,11 +380,6 @@ namespace br.com.weblayer.venda.android.Activities
         private bool ValidateViews()
         {
             var validacao = true;
-            //if (txtid_Codigo.Length() == 0)
-            //{
-            //    validacao = false;
-            //    txtid_Codigo.Error = "Código do Pedido inválido!";
-            //}
 
             if (txtid_Vendedor.Length() == 0)
             {

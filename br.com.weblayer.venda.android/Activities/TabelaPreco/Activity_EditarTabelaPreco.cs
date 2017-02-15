@@ -111,8 +111,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             txtCodTabelaPreco.Text = tblPreco.id_codigo;
             txtDescricaoTabelaPreco.Text = tblPreco.ds_descricao;
-            txtValorTabelaPreco.Text = tblPreco.vl_valor.ToString();
-            txtDescMaxTabelaPreco.Text = tblPreco.vl_descontomaximo.ToString();
+            txtValorTabelaPreco.Text = tblPreco.vl_valor.ToString("##,##0.00");
+            txtDescMaxTabelaPreco.Text = tblPreco.vl_descontomaximo.ToString("##,##0.00");
         }
 
         private void BindModel()

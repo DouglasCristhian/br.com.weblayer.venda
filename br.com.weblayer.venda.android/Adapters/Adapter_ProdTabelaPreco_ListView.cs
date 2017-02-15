@@ -56,9 +56,18 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_ProdTabelaPreco_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Código do Produto: " + mitems[position].id_produto.ToString();
-            //row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Descrição do Produto: " + mitems.Where(x => produto.id.ToString() == mitems[position].id.ToString().;//ToString();
-            row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Código da Tabela: " + mitems[position].id_tabpreco.ToString();
+            TabelaPreco tblPreco;
+            TabelaPreco_Manager tbl = new TabelaPreco_Manager();
+            tblPreco = tbl.Get(mitems[position].id_tabpreco);
+
+            Produto prod;
+            Produto_Manager prod_manager = new Produto_Manager();
+            prod = prod_manager.Get(mitems[position].id_produto);
+
+            //row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Código do Produto: " + mitems[position].id_produto.ToString();            
+            //row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Código da Tabela: " + mitems[position].id_tabpreco.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Descrição do Produto: " + prod.ds_nome.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Descrição da Tabela: " + tblPreco.ds_descricao.ToString();
             row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços: " + mitems[position].vl_Valor.ToString();
 
             return row;
