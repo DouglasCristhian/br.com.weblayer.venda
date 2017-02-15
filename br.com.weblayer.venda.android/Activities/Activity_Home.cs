@@ -97,7 +97,7 @@ namespace br.com.weblayer.venda.android
             ItensLista.Add("Produtos");
             ItensLista.Add("Clientes");
             ItensLista.Add("Tabela de Preços");
-            ItensLista.Add("Preços");
+            ItensLista.Add("Preços por Produto");
             ItensLista.Add("Pedidos");
 
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, ItensLista);

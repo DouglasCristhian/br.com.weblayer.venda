@@ -19,7 +19,6 @@ namespace br.com.weblayer.venda.android.Activities
     [Activity(Label = "Lista de Itens do Pedido")]
     public class Activity_ProdutosPedidoList : Activity_Base
     {
-        Android.Support.V7.Widget.Toolbar toolbar;
         private ListView lstViewProdutosPedido;
         private IList<PedidoItem> lstPedidoItem;
         private string IdPedido;

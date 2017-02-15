@@ -21,7 +21,7 @@ namespace br.com.weblayer.venda.android.Fragments
         private EditText txtNomeProd;
         private EditText txtValorProd;
         private Spinner spinUniMedidaProd;
-        private Spinner spinnerTblPrecoProd;
+        //private Spinner spinnerTblPrecoProd;
         private Produto prod;
         private string valortbpreco;
         List<mSpinner> tblprecoList;
@@ -62,13 +62,13 @@ namespace br.com.weblayer.venda.android.Fragments
 
             spinUniMedidaProd.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, unidades_medida);
 
-            tblprecoList = PopulateTabPrecoSpinnerList();
-            spinnerTblPrecoProd.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprecoList);
+            //tblprecoList = PopulateTabPrecoSpinnerList();
+            //spinnerTblPrecoProd.Adapter = new ArrayAdapter<mSpinner>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, tblprecoList);
 
             if (prod != null)
             {
                 spinUniMedidaProd.SetSelection(getIndex(spinUniMedidaProd, prod.ds_unimedida));
-                spinnerTblPrecoProd.SetSelection(getIndexByValue(spinnerTblPrecoProd, prod.id_tabpreco));
+                //spinnerTblPrecoProd.SetSelection(getIndexByValue(spinnerTblPrecoProd, prod.id_tabpreco));
             }
         }
 
@@ -113,11 +113,11 @@ namespace br.com.weblayer.venda.android.Fragments
             txtCodigoProd = FindViewById<EditText>(Resource.Id.txtCodigo);
             txtNomeProd = FindViewById<EditText>(Resource.Id.txtNome);
             txtValorProd = FindViewById<EditText>(Resource.Id.txtValorProd);
-            spinnerTblPrecoProd = FindViewById<Spinner>(Resource.Id.spinTabelaPrecosProd);
+            //spinnerTblPrecoProd = FindViewById<Spinner>(Resource.Id.spinTabelaPrecosProd);
             spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
             
-            spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
+            //spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
 
         }
 
@@ -126,7 +126,7 @@ namespace br.com.weblayer.venda.android.Fragments
             txtCodigoProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtNomeProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             txtValorProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
-            spinnerTblPrecoProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
+            //spinnerTblPrecoProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
             spinUniMedidaProd.SetBackgroundResource(Resource.Drawable.EditTextStyle);
         }
 
@@ -138,7 +138,7 @@ namespace br.com.weblayer.venda.android.Fragments
             txtCodigoProd.Text = prod.id_codigo;
             txtNomeProd.Text = prod.ds_nome;
             txtValorProd.Text = prod.vl_Lista.ToString();
-            valortbpreco = prod.id_tabpreco.ToString();
+            //valortbpreco = prod.id_tabpreco.ToString();
             spinValor = prod.ds_unimedida.ToString();
         }
 
@@ -149,15 +149,15 @@ namespace br.com.weblayer.venda.android.Fragments
 
             prod.id_codigo = txtCodigoProd.Text;
             prod.ds_nome = txtNomeProd.Text;
-            var mytabelapreco = tblprecoList[spinnerTblPrecoProd.SelectedItemPosition];
-            prod.id_tabpreco = mytabelapreco.Id();
+            //var mytabelapreco = tblprecoList[spinnerTblPrecoProd.SelectedItemPosition];
+            //prod.id_tabpreco = mytabelapreco.Id();
             prod.ds_unimedida= spinValor.ToString();
             prod.vl_Lista = double.Parse(txtValorProd.Text.ToString());
         }
 
         private void BindData()
         {
-            spinnerTblPrecoProd.Enabled = false;
+            //spinnerTblPrecoProd.Enabled = false;
             spinUniMedidaProd.Enabled = false;
         }
 
@@ -177,17 +177,11 @@ namespace br.com.weblayer.venda.android.Fragments
                 txtNomeProd.Error = "Nome do produto inválido!";
             }
 
-            if (spinnerTblPrecoProd.SelectedItemPosition == 0)
-            {
-                validacao = false;
-                Toast.MakeText(this, "Por favor, insira a tabela de preços!", ToastLength.Short).Show();
-            }
-
-            if (spinnerTblPrecoProd.SelectedItemPosition == 0)
-            {
-                validacao = false;
-                Toast.MakeText(this, "Por favor, insira a tabela de preços!", ToastLength.Short).Show();
-            }
+            //if (spinnerTblPrecoProd.SelectedItemPosition == 0)
+            //{
+            //    validacao = false;
+            //    Toast.MakeText(this, "Por favor, insira a tabela de preços!", ToastLength.Short).Show();
+            //}
 
             if (spinUniMedidaProd.SelectedItemPosition == 0)
             {
@@ -198,10 +192,10 @@ namespace br.com.weblayer.venda.android.Fragments
             return validacao;
         }
 
-        private void spinTblPrecosProd_ItemSelected(object sender, ItemSelectedEventArgs e)
-        {
-            valortbpreco = spinnerTblPrecoProd.SelectedItem.ToString();
-        }
+        //private void spinTblPrecosProd_ItemSelected(object sender, ItemSelectedEventArgs e)
+        //{
+        //    valortbpreco = spinnerTblPrecoProd.SelectedItem.ToString();
+        //}
 
         private void spinUnidadeMedidadProd_ItemSelected(object sender, ItemSelectedEventArgs e)
         {

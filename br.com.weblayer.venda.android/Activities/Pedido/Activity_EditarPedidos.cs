@@ -25,7 +25,6 @@ namespace br.com.weblayer.venda.android.Activities
         private TextView txtStatusPedido;
         private EditText txtMsgPedido;
         private EditText txtMsgNF;
-        //private EditText txtObservacao;
         private TextView lblStatusPedido;
         private Button btnAdicionar;
         private Button btnItensPedido;
@@ -110,7 +109,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                if (pedido.fl_status != 0 || pedido.fl_status == 3)
+                if (pedido.fl_status != 0 || pedido.fl_status == 4)
                 {
                     menu.RemoveItem(Resource.Id.action_salvar);
                     menu.RemoveItem(Resource.Id.action_deletar);
@@ -332,27 +331,32 @@ namespace br.com.weblayer.venda.android.Activities
                 if (txtValor_Total.Text == "0")
                 {
                     btnFinalizar.Visibility = ViewStates.Gone;
+                    btnItensPedido.Visibility = ViewStates.Gone;
+                }
+
+                if (txtValor_Total.Text != "0")
+                {
+                    txtid_Codigo.Enabled = false;
                 }
             }
 
             if (pedido != null)
             {
-                if (pedido.fl_status != 0 && pedido.fl_status != 3)
+                if (pedido.fl_status != 0 && pedido.fl_status != 4)
                 {
                     txtid_Codigo.Enabled = false;
                     txtid_Vendedor.Enabled = false;
-                    //txtObservacao.Enabled = false;
                     spinnerClientes.Enabled = false;
                     txtDataEmissao.Enabled = false;
                     txtMsgNF.Enabled = false;
                     txtMsgPedido.Enabled = false;
-                    btnFinalizar.Visibility = ViewStates.Gone;
-                    btnAdicionar.Visibility = ViewStates.Gone;
+                    btnFinalizar.Visibility = ViewStates.Gone;                   
                 }
 
                 if (pedido.vl_total == 0)
                 {
                     btnFinalizar.Visibility = ViewStates.Gone;
+                    btnItensPedido.Visibility = ViewStates.Gone;
                 }
             }
 
@@ -360,16 +364,17 @@ namespace br.com.weblayer.venda.android.Activities
             btnFinalizar.Click += BtnFinalizar_Click;
             txtValor_Total.Click += TxtValor_Total_Click;
             btnItensPedido.Click += TxtValor_Total_Click;
+
         }
 
         private bool ValidateViews()
         {
             var validacao = true;
-            if (txtid_Codigo.Length() == 0)
-            {
-                validacao = false;
-                txtid_Codigo.Error = "Código do Pedido inválido!";
-            }
+            //if (txtid_Codigo.Length() == 0)
+            //{
+            //    validacao = false;
+            //    txtid_Codigo.Error = "Código do Pedido inválido!";
+            //}
 
             if (txtid_Vendedor.Length() == 0)
             {
@@ -453,11 +458,38 @@ namespace br.com.weblayer.venda.android.Activities
                 }     
                 else
                 {
-                        pedido.fl_status = 1;
-                        Save();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-                        if (ValidateViews())
-                            Finish();
+                    alert.SetTitle("Finalizar pedido? Essa ação não pode ser desfeita");
+
+                    alert.SetNegativeButton("Não!", (senderAlert, args) =>
+                    {
+
+                    });
+
+                    alert.SetPositiveButton("Sim!", (senderAlert, args) =>
+                    {
+                        try
+                        {
+                            pedido.fl_status = 1;
+                            Save();
+
+
+                            if (ValidateViews())
+                                Finish();
+                        }
+                        catch (Exception ex)
+                        {
+                            Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                        }
+
+                    });
+
+                    RunOnUiThread(() =>
+                    {
+                        alert.Show();
+                    });
+                    
                  }         
             }
             else
@@ -484,6 +516,12 @@ namespace br.com.weblayer.venda.android.Activities
                 //Atualizar o obj de pedido
                 pedido = new Pedido_Manager().Get(pedido.id);
                 BindViews();
+
+                if (pedido.vl_total == 0)
+                {
+                    btnFinalizar.Visibility = ViewStates.Gone;
+                    btnItensPedido.Visibility = ViewStates.Gone;
+                }
 
                 Intent intent = new Intent();
                 SetResult(Result.Ok, intent);

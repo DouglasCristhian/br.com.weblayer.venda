@@ -10,11 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
+using br.com.weblayer.venda.core.Bll;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
     public class Adapter_ProdTabelaPreco_ListView : BaseAdapter<ProdutoTabelaPreco>
     {
+        public Produto produto;
         public IList<ProdutoTabelaPreco> mitems;
         public Context mContext;
 
@@ -55,9 +57,9 @@ namespace br.com.weblayer.venda.android.Adapters
             }
 
             row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Código do Produto: " + mitems[position].id_produto.ToString();
+            //row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Descrição do Produto: " + mitems.Where(x => produto.id.ToString() == mitems[position].id.ToString().;//ToString();
             row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Código da Tabela: " + mitems[position].id_tabpreco.ToString();
             row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços: " + mitems[position].vl_Valor.ToString();
-
 
             return row;
         }

@@ -139,6 +139,7 @@
     <Compile Include="Adapters\Adapter_ProdTabelaPreco_ListView.cs" />
     <Compile Include="Adapters\Adapter_TabelaPreco_ListView.cs" />
     <Compile Include="Fragments\Fragment_Legendas.cs" />
+    <Compile Include="Helpers\CurrencyConverterHelper.cs" />
     <Compile Include="Helpers\DatePickerHelper.cs" />
     <Compile Include="Helpers\DialogEventArgs.cs" />
     <Compile Include="Helpers\Mask.cs" />

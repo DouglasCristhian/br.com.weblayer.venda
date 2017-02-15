@@ -71,7 +71,7 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"/>
 
-    <TextView
+    <!--<TextView
       android:id="@+id/lblTabelaPrecos"
       android:layout_marginTop="10dp"
       android:layout_marginLeft = "18dip"
@@ -87,7 +87,7 @@
       android:textSize="18sp"
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
-      android:text=""/>
+      android:text=""/>-->
 
     <TextView
      android:id="@+id/lblValorProd"

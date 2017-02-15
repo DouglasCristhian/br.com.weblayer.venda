@@ -32,9 +32,9 @@ namespace br.com.weblayer.venda.core.Sinc
 
             var produtos = new List<Produto>();
 
-            produtos.Add(new Produto { id = 1, ds_nome = "LÁPIS VERMELHO", ds_unimedida = "CX", id_codigo = "001", id_tabpreco = 1, vl_Lista = 5.00 });
-            produtos.Add(new Produto { id = 2, ds_nome = "BOLO DE LARANJA", ds_unimedida = "PCT", id_codigo = "002", id_tabpreco = 1, vl_Lista = 10.00 });
-            produtos.Add(new Produto { id = 3, ds_nome = "BALAS SORTIDA", ds_unimedida = "PCT", id_codigo = "003", id_tabpreco = 2, vl_Lista = 15.00 });
+            produtos.Add(new Produto { id = 1, ds_nome = "LÁPIS VERMELHO", ds_unimedida = "CX", id_codigo = "001",/* id_tabpreco = 1,*/ vl_Lista = 5.25 });
+            produtos.Add(new Produto { id = 2, ds_nome = "BOLO DE LARANJA", ds_unimedida = "PCT", id_codigo = "002", /*id_tabpreco = 1,*/ vl_Lista = 11.75 });
+            produtos.Add(new Produto { id = 3, ds_nome = "BALAS SORTIDA", ds_unimedida = "PCT", id_codigo = "003", /*id_tabpreco = 2,*/ vl_Lista = 15.00 });
 
 
             return produtos;
@@ -45,8 +45,8 @@ namespace br.com.weblayer.venda.core.Sinc
 
             var tabPreco = new List<TabelaPreco>();
 
-            tabPreco.Add(new TabelaPreco {id = 1, ds_descricao = "TABELA_NORMAL", id_codigo = "1", vl_descontomaximo = 5, vl_valor = 10 });
-            tabPreco.Add(new TabelaPreco { id = 2, ds_descricao = "TABELA_PROMOÇÃO", id_codigo = "2", vl_descontomaximo = 5, vl_valor = 10 });
+            tabPreco.Add(new TabelaPreco {id = 1, ds_descricao = "TABELA_NORMAL", id_codigo = "1", vl_descontomaximo = 5.00, vl_valor = 10.00 });
+            tabPreco.Add(new TabelaPreco {id = 2, ds_descricao = "TABELA_PROMOÇÃO", id_codigo = "2", vl_descontomaximo = 7.00, vl_valor = 12.00 });
 
             return tabPreco;
         }
@@ -56,9 +56,9 @@ namespace br.com.weblayer.venda.core.Sinc
 
             var prodTabPreco = new List<ProdutoTabelaPreco>();
 
-            prodTabPreco.Add(new ProdutoTabelaPreco { id = 1, id_produto = 1, id_tabpreco = 1, vl_Valor = 7 });
-            prodTabPreco.Add(new ProdutoTabelaPreco { id = 2, id_produto = 2, id_tabpreco = 1, vl_Valor = 8 });
-            prodTabPreco.Add(new ProdutoTabelaPreco { id = 3, id_produto = 3, id_tabpreco = 2, vl_Valor = 9 });
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 1, id_produto = 1, id_tabpreco = 1, vl_Valor = 5.25 });
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 2, id_produto = 2, id_tabpreco = 1, vl_Valor = 11.75 });
+            prodTabPreco.Add(new ProdutoTabelaPreco { id = 3, id_produto = 3, id_tabpreco = 2, vl_Valor = 15.00 });
 
             return prodTabPreco;
         }

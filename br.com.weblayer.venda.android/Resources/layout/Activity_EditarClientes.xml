@@ -98,7 +98,7 @@
       android:textSize="18sp"
       android:layout_marginTop="10dp"
       android:layout_marginLeft = "18dip"
-      android:text="Tabela de Precos"/>
+      android:text="Tabela de Preços"/>
 
     <Spinner
       android:id="@+id/spinnerTblPrecos"

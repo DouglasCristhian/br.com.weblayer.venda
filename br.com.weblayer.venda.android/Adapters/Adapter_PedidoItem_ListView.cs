@@ -54,11 +54,14 @@ namespace br.com.weblayer.venda.android.Adapters
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.Adapter_PedidoItem_ListView, null, false);
             }
 
-            row.FindViewById<TextView>(Resource.Id.txtIdProdutoPedidoItem).Text = "Produto: " + mItems[position].ds_produto.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorPedidoItem).Text = "Valor Unitário: " + mItems[position].vl_Lista.ToString("##,##0.00");
-            row.FindViewById<TextView>(Resource.Id.txtQuantidadePedidoItem).Text = "Quantidade Item: " + mItems[position].nr_quantidade.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtIdProdutoPedidoItem).Text = "Descrição do Produto: " + mItems[position].ds_produto.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorPedidoItem).Text = "Valor da Lista: " + mItems[position].vl_Lista.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtValorPedidoItem).Text = "Valor de Venda: " + mItems[position].vl_Venda.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtValorPedidoItem).Text = "Desconto: " + mItems[position].vl_Desconto.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtQuantidadePedidoItem).Text = "Quantidade: " + mItems[position].nr_quantidade.ToString();
+
             double go = double.Parse(mItems[position].nr_quantidade.ToString()) * double.Parse(mItems[position].vl_Venda.ToString());
-            row.FindViewById<TextView>(Resource.Id.txtValorTotalPedidoItem).Text = "Total: " + go.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtValorTotalPedidoItem).Text = "Valor Total: " + go.ToString("##,##0.00");
 
             return row;
         }

@@ -24,6 +24,9 @@ namespace br.com.weblayer.venda.core.Model
         public double vl_Lista { get; set; }
 
         [MaxLength(20)]
+        public double vl_Desconto { get; set; }
+
+        [MaxLength(20)]
         public double vl_Venda { get; set; }
 
         [MaxLength(20), NotNull]

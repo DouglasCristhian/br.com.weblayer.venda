@@ -68,7 +68,7 @@ namespace br.com.weblayer.venda.core.Sinc
                     ds_nome = item.ds_nome,
                     ds_unimedida = item.ds_unimedida,
                     id_codigo = item.id_codigo,
-                    id_tabpreco = item.id_tabpreco,
+                    //id_tabpreco = item.id_tabpreco,
                     vl_Lista = item.vl_Lista,
                 };
 

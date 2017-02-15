@@ -12,13 +12,13 @@ namespace br.com.weblayer.venda.core.Model
         public string id_codigo { get; set; }
 
         [MaxLength(200), NotNull]
-        public string ds_nome { get; set; }
+        public string ds_nome { get; set; } 
 
         [MaxLength(20), NotNull]
         public string ds_unimedida { get; set; }
 
-        [MaxLength(20), NotNull]
-        public int id_tabpreco { get; set; }
+        //[MaxLength(20), NotNull]
+        //public int id_tabpreco { get; set; }
 
         //public double vl_Valor {get; set;}
 
