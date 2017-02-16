@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
+using System.Collections.Generic;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
@@ -52,7 +51,7 @@ namespace br.com.weblayer.venda.android.Adapters
             row.FindViewById<TextView>(Resource.Id.txtNomeProduto).Text = "Descrição do Produto: " + mItems[position].ds_nome.ToString();
             row.FindViewById<TextView>(Resource.Id.txtUniMedidaProduto).Text = "Unidade de Medida: " + mItems[position].ds_unimedida.ToString();
             //row.FindViewById<TextView>(Resource.Id.txtTabPreco).Text = mItems[position].id_tabpreco.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = "Preço do Produto: R$" + mItems[position].vl_Lista.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorProduto).Text = "Preço do Produto: R$" + mItems[position].vl_Lista.ToString("##,##0.00");
 
             return row;
         }
@@ -64,7 +63,7 @@ namespace br.com.weblayer.venda.android.Adapters
 
         private void Letra_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
         {
-            
+
         }
     }
 }

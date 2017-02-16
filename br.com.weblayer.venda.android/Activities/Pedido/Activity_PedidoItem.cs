@@ -298,6 +298,11 @@ namespace br.com.weblayer.venda.android.Activities
                 txtValorVenda.Text = "0";
             }
 
+            if (txtQuantidadeItem.Text == "")
+            {
+                txtValorVenda.Text = "0";
+            }
+
             double valorVenda = double.Parse(txtValorVenda.Text.ToString());
             double valorLista = double.Parse(txtValorLista.Text.ToString());
 

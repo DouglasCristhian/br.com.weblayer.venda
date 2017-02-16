@@ -128,7 +128,7 @@ namespace br.com.weblayer.venda.android.Fragments
 
             txtCodigoProd.Text = prod.id_codigo;
             txtNomeProd.Text = prod.ds_nome;
-            txtValorProd.Text = prod.vl_Lista.ToString();
+            txtValorProd.Text = prod.vl_Lista.ToString("##,##0.00");
             //valortbpreco = prod.id_tabpreco.ToString();
             spinValor = prod.ds_unimedida.ToString();
         }

@@ -8,6 +8,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:minWidth="400dp"
     android:minHeight="500dp">
 
@@ -51,6 +53,7 @@
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:layout_marginTop="3dp"
+       android:focusableInTouchMode="true"
        android:layout_marginLeft = "18dip"
        android:layout_marginRight = "18dip"/>
 
@@ -108,6 +111,7 @@
        android:layout_marginRight = "18dip"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
+       android:focusableInTouchMode="true"
        android:layout_marginTop="3dp"
        android:editable="false"
        android:clickable="true"/>
@@ -176,16 +180,15 @@
        android:textSize="18sp"
        android:text="Código do pedido no cliente"/>
 
-    
+
     <EditText
        android:id="@+id/txtCodigoPedido"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
        android:layout_marginTop="3dp"
        android:layout_marginLeft = "18dip"
-       android:layout_marginRight = "18dip"/>
-    
-    
+       android:layout_marginRight = "18dip"
+       android:layout_marginBottom="3dp"/>  
     
 
     <Button

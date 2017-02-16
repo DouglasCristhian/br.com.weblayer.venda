@@ -47,10 +47,10 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 case Resource.Id.action_salvar:
                     Save();
-                    if (ValidateViews())
-                    {
-                        Finish();
-                    }
+                    //if (ValidateViews())
+                    //{
+                    //    Finish();
+                    //}
 
                     return true;
 
@@ -458,14 +458,14 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 if (pedido.vl_total == 0)
                 {
-                    Toast.MakeText(this, "Um pedido não pode ser finalizado sem conter itens", ToastLength.Long).Show();
+                    Toast.MakeText(this, "Um pedido não pode ser finalizado sem conter itens! ", ToastLength.Long).Show();
                     return;
                 }
                 else
                 {
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-                    alert.SetTitle("Finalizar pedido? Essa ação não pode ser desfeita");
+                    alert.SetTitle("Finalizar pedido? Essa ação não pode ser desfeita!");
 
                     alert.SetNegativeButton("Não!", (senderAlert, args) =>
                     {

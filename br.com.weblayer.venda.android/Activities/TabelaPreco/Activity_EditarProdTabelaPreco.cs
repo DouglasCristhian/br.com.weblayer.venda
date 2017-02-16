@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.core.Model;
-using static Android.Widget.AdapterView;
-using br.com.weblayer.venda.core.Dal;
-using br.com.weblayer.venda.core.Bll;
-using br.com.weblayer.logistica.android.Helpers;
 using br.com.weblayer.venda.android.Adapters;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Dal;
+using br.com.weblayer.venda.core.Model;
+using System;
+using System.Collections.Generic;
+using static Android.Widget.AdapterView;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -79,14 +78,6 @@ namespace br.com.weblayer.venda.android.Activities
             menu.RemoveItem(Resource.Id.action_sair);
             menu.RemoveItem(Resource.Id.action_refresh);
 
-            //menu.RemoveItem(Resource.Id.action_sobre);
-            //menu.RemoveItem(Resource.Id.action_adicionar);
-            //menu.RemoveItem(Resource.Id.action_refresh);
-            //if (prodtabpreco == null)
-            //{
-            //    menu.RemoveItem(Resource.Id.action_deletar);
-            //}
-
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -122,7 +113,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             valoridtabpreco = prodtabpreco.id_tabpreco.ToString();
             valoridproduto = prodtabpreco.id_produto.ToString();
-            txt_ProdTabPreco.Text = prodtabpreco.vl_Valor.ToString();
+            txt_ProdTabPreco.Text = prodtabpreco.vl_Valor.ToString("##,##0.00");
         }
 
         private void SetStyle()
