@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.core.Model;
-using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.android.Adapters;
-using br.com.weblayer.venda.android.Fragments;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Model;
+using System.Collections.Generic;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -44,20 +38,17 @@ namespace br.com.weblayer.venda.android.Activities
 
             FindViews();
             BindViews();
-            FillList();       
+            FillList();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_toolbarvazia, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_toolbar, menu);
             menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sobre);
-            menu.RemoveItem(Resource.Id.action_sair);
-
-            //menu.RemoveItem(Resource.Id.action_sobre);
-            //menu.RemoveItem(Resource.Id.action_salvar);
-            //menu.RemoveItem(Resource.Id.action_deletar);
-            //menu.RemoveItem(Resource.Id.action_refresh);
+            menu.RemoveItem(Resource.Id.action_salvar);
+            menu.RemoveItem(Resource.Id.action_deletar);
+            menu.RemoveItem(Resource.Id.action_help);
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -76,6 +67,7 @@ namespace br.com.weblayer.venda.android.Activities
                     intent.PutExtra("JsonCliente", Newtonsoft.Json.JsonConvert.SerializeObject(obj_cliente));
                     StartActivityForResult(intent, 0);
                     break;
+
             }
             return base.OnOptionsItemSelected(item);
         }

@@ -48,7 +48,8 @@ namespace br.com.weblayer.venda.android.Activities
 
             FindViews();
             SetStyle();
-            BindView();
+            BindViews();
+            BindData();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -58,16 +59,6 @@ namespace br.com.weblayer.venda.android.Activities
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_sair);
             menu.RemoveItem(Resource.Id.action_refresh);
-
-            //menu.RemoveItem(Resource.Id.action_sobre);
-            //menu.RemoveItem(Resource.Id.action_adicionar);
-            //menu.RemoveItem(Resource.Id.action_refresh);
-
-            //if (tblPreco == null)
-            //{
-            //    menu.RemoveItem(Resource.Id.action_deletar);
-            //    menu.RemoveItem(Resource.Id.action_refresh);
-            //}
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -104,7 +95,7 @@ namespace br.com.weblayer.venda.android.Activities
             txtDescMaxTabelaPreco = FindViewById<EditText>(Resource.Id.txtDescontoMaxTabelaPreco);
         }
 
-        private void BindView()
+        private void BindViews()
         {
             if (tblPreco == null)
                 return;
@@ -113,6 +104,14 @@ namespace br.com.weblayer.venda.android.Activities
             txtDescricaoTabelaPreco.Text = tblPreco.ds_descricao;
             txtValorTabelaPreco.Text = tblPreco.vl_valor.ToString("##,##0.00");
             txtDescMaxTabelaPreco.Text = tblPreco.vl_descontomaximo.ToString("##,##0.00");
+        }
+
+        private void BindData()
+        {
+            txtCodTabelaPreco.Enabled = false;
+            txtDescricaoTabelaPreco.Enabled = false;
+            txtValorTabelaPreco.Enabled = false;
+            txtDescMaxTabelaPreco.Enabled = false;
         }
 
         private void BindModel()

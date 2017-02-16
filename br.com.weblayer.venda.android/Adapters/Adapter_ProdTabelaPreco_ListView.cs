@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.core.Model;
 using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Model;
+using System.Collections.Generic;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
@@ -68,7 +61,7 @@ namespace br.com.weblayer.venda.android.Adapters
             //row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Código da Tabela: " + mitems[position].id_tabpreco.ToString();
             row.FindViewById<TextView>(Resource.Id.txtIdProdutoTblPreco).Text = "Descrição do Produto: " + prod.ds_nome.ToString();
             row.FindViewById<TextView>(Resource.Id.txtIdTabelaPrecoTblPrecos).Text = "Descrição da Tabela: " + tblPreco.ds_descricao.ToString();
-            row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços: " + mitems[position].vl_Valor.ToString();
+            row.FindViewById<TextView>(Resource.Id.txtValorPrecos).Text = "Preços: " + mitems[position].vl_Valor.ToString("##,##0.00");
 
             return row;
         }

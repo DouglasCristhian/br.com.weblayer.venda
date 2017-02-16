@@ -1,16 +1,16 @@
-using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.android.Activities;
-using br.com.weblayer.venda.core.Bll;
-using br.com.weblayer.venda.core.Model;
-using Android.Content;
-using static Android.Widget.AdapterView;
-using System.Collections.Generic;
-using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.android.Adapters;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Dal;
+using br.com.weblayer.venda.core.Model;
+using System;
+using System.Collections.Generic;
+using static Android.Widget.AdapterView;
 
 namespace br.com.weblayer.venda.android.Fragments
 {
@@ -54,7 +54,7 @@ namespace br.com.weblayer.venda.android.Fragments
             {
                 "Selecione", "CX", "PCT", "UN"
             };
-            
+
             FindViews();
             SetStyle();
             BindView();
@@ -94,16 +94,7 @@ namespace br.com.weblayer.venda.android.Fragments
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_refresh);
             menu.RemoveItem(Resource.Id.action_sair);
-
-
-            //menu.RemoveItem(Resource.Id.action_sobre);
-            //menu.RemoveItem(Resource.Id.action_adicionar);
-            //menu.RemoveItem(Resource.Id.action_refresh);
-
-            //if (prod == null)
-            //{
             menu.RemoveItem(Resource.Id.action_deletar);
-        //    }
 
             return base.OnCreateOptionsMenu(menu);
         }
@@ -116,7 +107,7 @@ namespace br.com.weblayer.venda.android.Fragments
             //spinnerTblPrecoProd = FindViewById<Spinner>(Resource.Id.spinTabelaPrecosProd);
             spinUniMedidaProd = FindViewById<Spinner>(Resource.Id.spinnerUnidadeMedida);
             spinUniMedidaProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinUnidadeMedidadProd_ItemSelected);
-            
+
             //spinnerTblPrecoProd.ItemSelected += new EventHandler<ItemSelectedEventArgs>(spinTblPrecosProd_ItemSelected);
 
         }
@@ -151,7 +142,7 @@ namespace br.com.weblayer.venda.android.Fragments
             prod.ds_nome = txtNomeProd.Text;
             //var mytabelapreco = tblprecoList[spinnerTblPrecoProd.SelectedItemPosition];
             //prod.id_tabpreco = mytabelapreco.Id();
-            prod.ds_unimedida= spinValor.ToString();
+            prod.ds_unimedida = spinValor.ToString();
             prod.vl_Lista = double.Parse(txtValorProd.Text.ToString());
         }
 
@@ -159,6 +150,9 @@ namespace br.com.weblayer.venda.android.Fragments
         {
             //spinnerTblPrecoProd.Enabled = false;
             spinUniMedidaProd.Enabled = false;
+            txtCodigoProd.Enabled = false;
+            txtNomeProd.Enabled = false;
+            txtValorProd.Enabled = false;
         }
 
         private bool ValidateViews()

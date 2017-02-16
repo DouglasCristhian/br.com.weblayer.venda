@@ -1,13 +1,13 @@
-using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Widget;
 using Android.Text;
+using Android.Views;
+using Android.Widget;
+using br.com.weblayer.venda.android.Helpers;
 using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.venda.core.Model;
-using Android.Views;
-using br.com.weblayer.venda.android.Helpers;
+using System;
 //using br.com.weblayer.venda.core.Sinc.Model;
 
 namespace br.com.weblayer.venda.android.Activities
@@ -191,20 +191,29 @@ namespace br.com.weblayer.venda.android.Activities
                     txtQuantidadeItem.Enabled = true;
                 }
             }
+            else
+            {
+                txtIdProduto.Enabled = false;
+            }
 
             if (pedido.fl_status != 0 && pedido.fl_status != 4)
             {
                 txtValorVenda.Focusable = false;
+                txtValorVenda.Enabled = false;
                 txtQuantidadeItem.Focusable = false;
+                txtQuantidadeItem.Enabled = false;
                 btnSomar.Enabled = false;
                 btnSubtrair.Enabled = false;
+                txtDesconto.Enabled = false;
                 btnSalvarAtualizar.Visibility = ViewStates.Gone;
                 btnExcluirPedidoItem.Visibility = ViewStates.Gone;
                 txtValorTotal.Enabled = false;
             }
 
             txtDesconto.Text = "0";
-            txtValorLista.Enabled = false;            
+            txtValorLista.Enabled = false;
+            txtDesconto.Enabled = false;
+            txtValorTotal.Enabled = false;
             txtValorVenda.AddTextChangedListener(new CurrencyConverterHelper(txtValorVenda));
         }
 
@@ -276,7 +285,7 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 go = 0;
             }
-           
+
             txtValorTotal.Text = go.ToString("#,##0.00");
         }
 
@@ -323,7 +332,7 @@ namespace br.com.weblayer.venda.android.Activities
             {
                 go = (double.Parse(valorVenda.ToString()) * double.Parse(txtQuantidadeItem.Text.ToString()));
             }
-            txtValorTotal.Text = go.ToString("#,##0.00"); 
+            txtValorTotal.Text = go.ToString("#,##0.00");
         }
 
         private void TxtIdProduto_Click(object sender, EventArgs e)

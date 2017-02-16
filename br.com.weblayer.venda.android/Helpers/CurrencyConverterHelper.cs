@@ -1,9 +1,9 @@
+using Android.Text;
 using Android.Widget;
 using Java.Lang;
-using System.Text.RegularExpressions;
 using Java.Text;
 using Java.Util;
-using Android.Text;
+using System.Text.RegularExpressions;
 
 namespace br.com.weblayer.venda.android.Helpers
 {

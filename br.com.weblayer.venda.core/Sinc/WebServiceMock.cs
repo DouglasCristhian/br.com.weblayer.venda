@@ -32,7 +32,7 @@ namespace br.com.weblayer.venda.core.Sinc
 
             var produtos = new List<Produto>();
 
-            produtos.Add(new Produto { id = 1, ds_nome = "LÁPIS VERMELHO", ds_unimedida = "CX", id_codigo = "001",/* id_tabpreco = 1,*/ vl_Lista = 5.25 });
+            produtos.Add(new Produto { id = 1, ds_nome = "LAPIS VERMELHO", ds_unimedida = "CX", id_codigo = "001",/* id_tabpreco = 1,*/ vl_Lista = 5.25 });
             produtos.Add(new Produto { id = 2, ds_nome = "BOLO DE LARANJA", ds_unimedida = "PCT", id_codigo = "002", /*id_tabpreco = 1,*/ vl_Lista = 11.75 });
             produtos.Add(new Produto { id = 3, ds_nome = "BALAS SORTIDA", ds_unimedida = "PCT", id_codigo = "003", /*id_tabpreco = 2,*/ vl_Lista = 15.00 });
 

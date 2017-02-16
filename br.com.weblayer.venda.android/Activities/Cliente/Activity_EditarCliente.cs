@@ -88,15 +88,6 @@ namespace br.com.weblayer.venda.android.Activities
             menu.RemoveItem(Resource.Id.action_sobre);
             menu.RemoveItem(Resource.Id.action_sair);
 
-            //menu.RemoveItem(Resource.Id.action_sobre);
-            //menu.RemoveItem(Resource.Id.action_adicionar);
-            //menu.RemoveItem(Resource.Id.action_refresh);
-
-            //if (cli == null)
-            //{
-            //    menu.RemoveItem(Resource.Id.action_deletar);
-            //}
-
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -151,6 +142,10 @@ namespace br.com.weblayer.venda.android.Activities
         private void BindData()
         {
             spinnerTabelaPreco.Enabled = false;
+            txtCodCli.Enabled = false;
+            txtRazaoSocialCli.Enabled = false;
+            txtNomeFantasiaCli.Enabled = false;
+            txtCNPJCli.Enabled = false;
         }
 
         private bool ValidateViews()

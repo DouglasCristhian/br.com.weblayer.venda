@@ -1,17 +1,16 @@
-using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using br.com.weblayer.venda.core.Model;
-using br.com.weblayer.venda.core.Bll;
 using br.com.weblayer.logistica.android.Helpers;
-using System.Collections.Generic;
-using br.com.weblayer.venda.core.Dal;
 using br.com.weblayer.venda.android.Adapters;
+using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Dal;
+using br.com.weblayer.venda.core.Model;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-using Android.Graphics;
 
 namespace br.com.weblayer.venda.android.Activities
 {
@@ -52,7 +51,7 @@ namespace br.com.weblayer.venda.android.Activities
                     {
                         Finish();
                     }
-      
+
                     return true;
 
                 case Resource.Id.action_deletar:
@@ -91,7 +90,7 @@ namespace br.com.weblayer.venda.android.Activities
             }
             else
                 pedido = null;
-     
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -185,7 +184,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido != null)
             {
-                if (pedido.fl_status == 0) 
+                if (pedido.fl_status == 0)
                     txtStatusPedido.SetBackgroundResource(Resource.Drawable.Status_Orcamento);
 
                 if (pedido.fl_status == 1)
@@ -214,7 +213,7 @@ namespace br.com.weblayer.venda.android.Activities
 
                 if (pedido.fl_status == 9)
                     txtStatusPedido.SetBackgroundResource(Resource.Drawable.StatusEntregue);
-            }          
+            }
         }
 
         private void TblClientes_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -234,7 +233,6 @@ namespace br.com.weblayer.venda.android.Activities
             txtDataEmissao.Text = pedido.dt_emissao.Value.ToString("dd/MM/yyyy");
             txtMsgPedido.Text = pedido.ds_MsgPedido.ToString();
             txtMsgNF.Text = pedido.ds_MsgNF.ToString();
-            //txtObservacao.Text = pedido.ds_observacao.ToString();
             txtStatusPedido.Text = Status();
         }
 
@@ -244,7 +242,7 @@ namespace br.com.weblayer.venda.android.Activities
 
             if (pedido.fl_status == 0)
             {
-                status ="Orçamento";
+                status = "Orçamento";
             }
 
             if (pedido.fl_status == 1)
@@ -252,7 +250,7 @@ namespace br.com.weblayer.venda.android.Activities
                 status = "Pedido Finalizado";
             }
 
-            if(pedido.fl_status == 2)
+            if (pedido.fl_status == 2)
             {
                 status = "Sincronizado/Em Processamento";
             }
@@ -274,7 +272,7 @@ namespace br.com.weblayer.venda.android.Activities
             }
 
 
-            if (pedido.fl_status ==6)
+            if (pedido.fl_status == 6)
             {
                 status = "Parcialmente Faturado";
             }
@@ -332,6 +330,7 @@ namespace br.com.weblayer.venda.android.Activities
                 {
                     btnFinalizar.Visibility = ViewStates.Gone;
                     btnItensPedido.Visibility = ViewStates.Gone;
+                    spinnerClientes.Enabled = true;
                 }
 
                 if (txtValor_Total.Text != "0")
@@ -355,7 +354,7 @@ namespace br.com.weblayer.venda.android.Activities
                     if (txtValor_Total.Text == "0")
                     {
                         btnItensPedido.Visibility = ViewStates.Gone;
-                    }                    
+                    }
                 }
 
                 if ((pedido.vl_total == 0) || (txtValor_Total.Text == "0,00"))
@@ -370,6 +369,7 @@ namespace br.com.weblayer.venda.android.Activities
                 }
             }
 
+            txtValor_Total.Enabled = false;
             btnAdicionar.Click += BtnAdicionar_Click;
             btnFinalizar.Click += BtnFinalizar_Click;
             txtValor_Total.Click += TxtValor_Total_Click;
@@ -460,7 +460,7 @@ namespace br.com.weblayer.venda.android.Activities
                 {
                     Toast.MakeText(this, "Um pedido não pode ser finalizado sem conter itens", ToastLength.Long).Show();
                     return;
-                }     
+                }
                 else
                 {
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -494,8 +494,8 @@ namespace br.com.weblayer.venda.android.Activities
                     {
                         alert.Show();
                     });
-                    
-                 }         
+
+                }
             }
             else
             {
@@ -521,11 +521,19 @@ namespace br.com.weblayer.venda.android.Activities
                 //Atualizar o obj de pedido
                 pedido = new Pedido_Manager().Get(pedido.id);
                 BindViews();
+                //BindData();
 
                 if (pedido.vl_total == 0)
                 {
                     btnFinalizar.Visibility = ViewStates.Gone;
                     btnItensPedido.Visibility = ViewStates.Gone;
+                    spinnerClientes.Enabled = true;
+                }
+                else if (pedido.vl_total != 0)
+                {
+                    spinnerClientes.Enabled = false;
+                    btnFinalizar.Visibility = ViewStates.Visible;
+                    btnItensPedido.Visibility = ViewStates.Visible;
                 }
 
                 Intent intent = new Intent();
@@ -547,7 +555,7 @@ namespace br.com.weblayer.venda.android.Activities
                 Intent intent = new Intent();
                 intent.PutExtra("mensagem", ped.Mensagem);
                 SetResult(Result.Ok, intent);
-        }
+            }
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
@@ -558,7 +566,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-            alert.SetTitle("Tem certeza que deseja excluir este produto?");
+            alert.SetTitle("Tem certeza que deseja excluir este pedido?");
 
             alert.SetNegativeButton("Não!", (senderAlert, args) =>
             {

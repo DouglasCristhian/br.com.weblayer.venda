@@ -148,6 +148,7 @@ namespace br.com.weblayer.venda.android.Activities
         {
             spinIdProduto.Enabled = false;
             spinIdTabPreco.Enabled = false;
+            txt_ProdTabPreco.Enabled = false;
         }
 
         private bool ValidateViews()
