@@ -71,24 +71,6 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"/>
 
-    <!--<TextView
-      android:id="@+id/lblTabelaPrecos"
-      android:layout_marginTop="10dp"
-      android:layout_marginLeft = "18dip"
-      android:textSize="18sp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Tabela de Preço"/>
-
-    <Spinner
-      android:id="@+id/spinTabelaPrecosProd"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textSize="18sp"
-      android:layout_marginLeft="18dip"
-      android:layout_marginRight="18dip"
-      android:text=""/>-->
-
     <TextView
      android:id="@+id/lblValorProd"
      android:layout_marginTop="10dp"
@@ -103,6 +85,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textSize="18sp"
+      android:gravity="right"
       android:layout_marginLeft = "18dip"
       android:layout_marginRight = "18dip"
       android:focusable="false"

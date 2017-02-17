@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using br.com.weblayer.venda.core.Model;
+using System.Collections.Generic;
 
 namespace br.com.weblayer.venda.android.Adapters
 {
@@ -49,8 +49,8 @@ namespace br.com.weblayer.venda.android.Adapters
 
             row.FindViewById<TextView>(Resource.Id.txtCodigoTabelaPreco).Text = "Código da Tabela: " + mItems[position].id_codigo;
             row.FindViewById<TextView>(Resource.Id.txtDescricaoTabelaPreco).Text = "Descrição da Tabela: " + mItems[position].ds_descricao;
-            row.FindViewById<TextView>(Resource.Id.txtValorTabelaPreco).Text = "Valor da Tabela: R$" + mItems[position].vl_valor.ToString("##,##0.00");
-            row.FindViewById<TextView>(Resource.Id.txtDescontoMaxTabelaPreco).Text = "Desconto Máximo: R$" + mItems[position].vl_descontomaximo.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtValorTabelaPreco).Text = "Valor da Tabela: " + mItems[position].vl_valor.ToString("##,##0.00");
+            row.FindViewById<TextView>(Resource.Id.txtDescontoMaxTabelaPreco).Text = "Desconto Máximo: " + mItems[position].vl_descontomaximo.ToString("##,##0.00");
 
             return row;
         }

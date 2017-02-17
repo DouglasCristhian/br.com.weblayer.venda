@@ -64,6 +64,7 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
       android:inputType="numberDecimal"
+      android:gravity="right"
       android:focusable="false"
       android:editable="false"/>
 
@@ -82,6 +83,7 @@
       android:layout_marginLeft="18dip"
       android:layout_marginRight="18dip"
       android:inputType="numberDecimal"
+      android:gravity="right"
       android:focusable="false"
       android:editable="false"/>
   </LinearLayout>
