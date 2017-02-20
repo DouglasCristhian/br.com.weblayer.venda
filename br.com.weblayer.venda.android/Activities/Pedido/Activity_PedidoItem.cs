@@ -239,9 +239,9 @@ namespace br.com.weblayer.venda.android.Activities
         {
             txtIdProduto.Text = "";
             txtQuantidadeItem.Text = "0";
-            txtValorVenda.Text = "0";
-            txtValorLista.Text = "0";
-            txtDesconto.Text = "0";
+            txtValorVenda.Text = "0,00";
+            txtValorLista.Text = "0,00";
+            txtDesconto.Text = "0,00";
         }
 
         private bool ValidateViews()
