@@ -238,7 +238,7 @@ namespace br.com.weblayer.venda.android.Activities
         private void Clean()
         {
             txtIdProduto.Text = "";
-            txtQuantidadeItem.Text = "";
+            txtQuantidadeItem.Text = "0";
             txtValorVenda.Text = "0";
             txtValorLista.Text = "0";
             txtDesconto.Text = "0";

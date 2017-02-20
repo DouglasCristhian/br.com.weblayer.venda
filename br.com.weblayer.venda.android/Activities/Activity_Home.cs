@@ -18,12 +18,11 @@ namespace br.com.weblayer.venda.android
         Android.Support.V7.Widget.Toolbar toolbar;
         private List<string> ItensLista;
         private ListView ListViewHome;
-        //ProgressDialog pd;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView (Resource.Layout.Activity_Home);
+            SetContentView(Resource.Layout.Activity_Home);
 
             core.Dal.Database.Initialize();
 
@@ -57,7 +56,7 @@ namespace br.com.weblayer.venda.android
 
 
                     })).Start();
-                    
+
                     break;
 
 
@@ -68,25 +67,13 @@ namespace br.com.weblayer.venda.android
             }
         }
 
-            //private void PlotView()
-            //{
-            //    var manager = new Sinc_Manager();
-            //manager.Sincronizar();
-            //    pd.Dismiss();
-            //}
-
-    private void FindViews()
+        private void FindViews()
         {
             ListViewHome = FindViewById<ListView>(Resource.Id.listviewHome);
 
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             toolbar.Title = "W/Vendas";
             toolbar.InflateMenu(Resource.Menu.menu_toolbarvazia);
-
-            //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
-            //toolbar.Menu.RemoveItem(Resource.Id.action_deletar);
-            //toolbar.Menu.RemoveItem(Resource.Id.action_salvar);
-            //toolbar.Menu.RemoveItem(Resource.Id.action_adicionar);
         }
 
         private void BindData()
@@ -109,7 +96,7 @@ namespace br.com.weblayer.venda.android
         private void ListViewHome_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
 
-            switch(e.Position)
+            switch (e.Position)
             {
                 case 0:
                     StartActivity(typeof(Activity_Produtos));
@@ -137,4 +124,3 @@ namespace br.com.weblayer.venda.android
         }
     }
 }
-

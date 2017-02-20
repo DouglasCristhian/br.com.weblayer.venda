@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using System;
 using System.Threading;
 
 namespace br.com.weblayer.venda.android.Activities
@@ -116,9 +110,9 @@ namespace br.com.weblayer.venda.android.Activities
 
         private void ExecutarLogin()
         {
-           //TODO: IMPLEMENTAR VERIFICAÇÃO
+            //TODO: IMPLEMENTAR VERIFICAÇÃO
 
-           StartActivity(typeof(Activity_Home));
+            StartActivity(typeof(Activity_Home));
         }
 
         private void RestoreForm()

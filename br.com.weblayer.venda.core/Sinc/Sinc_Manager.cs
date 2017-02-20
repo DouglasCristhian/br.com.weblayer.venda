@@ -1,16 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using br.com.weblayer.venda.core.Sinc.Model;
 using br.com.weblayer.venda.core.Bll;
+using br.com.weblayer.venda.core.Sinc.Model;
+using System.Collections.Generic;
 
 namespace br.com.weblayer.venda.core.Sinc
 {
@@ -39,7 +29,7 @@ namespace br.com.weblayer.venda.core.Sinc
             foreach (var item in Clientes)
             {
 
-                var clientedatabase = new core.Model.Cliente 
+                var clientedatabase = new core.Model.Cliente
                 {
                     id = item.id,
                     ds_Cnpj = item.ds_Cnpj,
@@ -49,7 +39,7 @@ namespace br.com.weblayer.venda.core.Sinc
                     id_tabelapreco = item.id_tabelapreco
                 };
 
-               
+
                 baselocal.Save(clientedatabase);
             }
         }
